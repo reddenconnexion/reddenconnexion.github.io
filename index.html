@@ -291,81 +291,54 @@
         }
 
         /* Galerie */
-       <!-- Galerie -->
-<section id="galerie" class="gallery">
-    <h2>Nos Réalisations</h2>
-    <div class="gallery-grid">
-        <div class="gallery-item">
-            <img src="tableauélec" alt="Tableau électrique professionnel">
-            <div class="gallery-caption">Tableau électrique aux normes</div>
-        </div>
-        <div class="gallery-item">
-            <img src="IMG_20251010_152050.jpg" alt="Installation électrique">
-            <div class="gallery-caption">Installation professionnelle</div>
-        </div>
-        <div class="gallery-item">
-            <img src="denisélec.png" alt="Électricien professionnel">
-            <div class="gallery-caption">Votre électricien expert</div>
-        </div>
-        <div class="gallery-item">
-            <img src="filspriseancienne.jpg" alt="Rénovation électrique">
-            <div class="gallery-caption">Rénovation et mise aux normes</div>
-        </div>
-        <div class="gallery-item">
-            <img src="mutiprises.png" alt="Installation multiprises">
-            <div class="gallery-caption">Installations sécurisées</div>
-        </div>
-        <div class="gallery-item">
-            <img src="dangervssécurité" alt="Sécurité électrique">
-            <div class="gallery-caption">Votre sécurité avant tout</div>
-        </div>
-    </div>
-</section>
+        .gallery {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+        }
 
         .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
 
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s;
-    aspect-ratio: 4/3;
-    background: #2d2d2d;
-}
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            aspect-ratio: 4/3;
+            background: #2d2d2d;
+        }
 
-.gallery-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 30px rgba(255, 51, 51, 0.3);
-}
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.3);
+        }
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
-}
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
 
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
 
-.gallery-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    color: white;
-    padding: 1.5rem 1rem;
-    font-weight: bold;
-    text-align: center;
-}
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            padding: 1.5rem 1rem;
+            font-weight: bold;
+            text-align: center;
+        }
 
         /* Témoignages */
         .testimonials {
@@ -731,17 +704,31 @@
     <!-- Galerie -->
     <section id="galerie" class="gallery">
         <h2>Nos Réalisations</h2>
-        <div class="gallery-note">
-            <h3>📸 Galerie Photo</h3>
-            <p><strong>Vos photos de réalisations seront affichées ici</strong></p>
-            <p>Pour ajouter vos photos après la mise en ligne :</p>
-            <p>✓ Tableaux électriques aux normes</p>
-            <p>✓ Installations domestiques et tertiaires</p>
-            <p>✓ Photos de chantiers terminés</p>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: #999;">
-                Les photos que vous avez uploadées (tableaux électriques, électricien professionnel) 
-                peuvent être ajoutées en remplaçant cette section par les vraies images hébergées.
-            </p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="tableauélec" alt="Tableau électrique professionnel">
+                <div class="gallery-caption">Tableau électrique aux normes</div>
+            </div>
+            <div class="gallery-item">
+                <img src="IMG_20251010_152050.jpg" alt="Installation électrique">
+                <div class="gallery-caption">Installation professionnelle</div>
+            </div>
+            <div class="gallery-item">
+                <img src="denisélec.png" alt="Électricien professionnel">
+                <div class="gallery-caption">Votre électricien expert</div>
+            </div>
+            <div class="gallery-item">
+                <img src="filspriseancienne.jpg" alt="Rénovation électrique">
+                <div class="gallery-caption">Rénovation et mise aux normes</div>
+            </div>
+            <div class="gallery-item">
+                <img src="mutiprises.png" alt="Installation multiprises">
+                <div class="gallery-caption">Installations sécurisées</div>
+            </div>
+            <div class="gallery-item">
+                <img src="dangervssécurité" alt="Sécurité électrique">
+                <div class="gallery-caption">Votre sécurité avant tout</div>
+            </div>
         </div>
     </section>
 
@@ -843,34 +830,4 @@
         <p>&copy; 2025 Red Den Connexion - Tous droits réservés</p>
         <p style="margin-top: 0.5rem; opacity: 0.8;">Électricien professionnel à St Médard de Guizières</p>
         <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.9rem;">📞 06 95 10 08 23 | 📧 reddenconnexion@gmail.com</p>
-    </footer>
-
-    <script>
-        function toggleMenu() {
-            document.getElementById('menu').classList.toggle('active');
-        }
-
-        // Fermer le menu mobile quand on clique sur un lien
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('menu').classList.remove('active');
-            });
-        });
-
-        // Gestion du formulaire
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            const formMessage = document.getElementById('formMessage');
-            const formData = new FormData(event.target);
-            
-            // Créer le contenu de l'email
-            const name = formData.get('name');
-            const phone = formData.get('phone');
-            const email = formData.get('email');
-            const service = formData.get('service');
-            const message = formData.get('message');
-            
-            // Créer le lien mailto
-            const subject = `Demande de devis - ${service || 'Service non spécifié'}`;
-            const body = `Nom: ${name}%0D%0ATéléphone: ${phone}%0D%0AEmail: ${email ||
+    </footer
