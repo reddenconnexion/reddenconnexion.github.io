@@ -544,6 +544,8 @@
         .zone-content {
             position: relative;
             z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .zone h2 {
@@ -554,6 +556,23 @@
             font-size: 1.3rem;
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        #map {
+            width: 100%;
+            max-width: 900px;
+            height: 500px;
+            margin: 3rem auto 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(255, 51, 51, 0.3);
+            border: 3px solid #ff3333;
+        }
+
+        @media (max-width: 768px) {
+            #map {
+                height: 400px;
+                margin: 2rem auto 0;
+            }
         }
 
         .contact-grid {
@@ -1008,6 +1027,9 @@
             <p>📍 Basés à St Médard de Guizières</p>
             <p style="font-size: 1.5rem; margin-top: 1rem;">Nous intervenons dans un rayon de <strong style="color: #ff3333;">30 km</strong></p>
             <p style="margin-top: 1rem; opacity: 0.9;">Libourne, Coutras, Guitres, Saint-Denis-de-Pile et communes environnantes</p>
+
+            <!-- Carte Google Maps -->
+            <div id="map"></div>
         </div>
     </section>
 
@@ -1269,6 +1291,129 @@
                 faqItem.classList.add('active');
             }
         }
+
+        // Google Maps initialization
+        function initMap() {
+            // Coordonnées de St Médard de Guizières
+            const stMedard = { lat: 45.0167, lng: -0.1167 };
+
+            // Villes principales dans la zone
+            const cities = [
+                { name: 'Libourne', lat: 44.9167, lng: -0.2333 },
+                { name: 'Coutras', lat: 45.0406, lng: -0.1314 },
+                { name: 'Guitres', lat: 45.0406, lng: -0.1833 },
+                { name: 'Saint-Denis-de-Pile', lat: 44.9833, lng: -0.2167 }
+            ];
+
+            // Créer la carte
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: stMedard,
+                styles: [
+                    {
+                        featureType: 'all',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#2d2d2d' }]
+                    },
+                    {
+                        featureType: 'all',
+                        elementType: 'labels.text.fill',
+                        stylers: [{ color: '#ffffff' }]
+                    },
+                    {
+                        featureType: 'all',
+                        elementType: 'labels.text.stroke',
+                        stylers: [{ color: '#1a1a1a' }]
+                    },
+                    {
+                        featureType: 'water',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#1a3a4a' }]
+                    },
+                    {
+                        featureType: 'road',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#404040' }]
+                    }
+                ],
+                mapTypeControl: false,
+                streetViewControl: false
+            });
+
+            // Marqueur principal (St Médard de Guizières)
+            new google.maps.Marker({
+                position: stMedard,
+                map: map,
+                title: 'Red Den Connexion - St Médard de Guizières',
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 12,
+                    fillColor: '#ff3333',
+                    fillOpacity: 1,
+                    strokeColor: '#ffffff',
+                    strokeWeight: 3
+                },
+                animation: google.maps.Animation.DROP
+            });
+
+            // Info window pour le marqueur principal
+            const mainInfoWindow = new google.maps.InfoWindow({
+                content: '<div style="padding: 10px; color: #1a1a1a;"><strong style="color: #ff3333; font-size: 16px;">Red Den Connexion</strong><br>St Médard de Guizières<br>📞 06 95 10 08 23</div>'
+            });
+
+            const mainMarker = new google.maps.Marker({
+                position: stMedard,
+                map: map,
+                title: 'Red Den Connexion - St Médard de Guizières',
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 12,
+                    fillColor: '#ff3333',
+                    fillOpacity: 1,
+                    strokeColor: '#ffffff',
+                    strokeWeight: 3
+                }
+            });
+
+            mainMarker.addListener('click', () => {
+                mainInfoWindow.open(map, mainMarker);
+            });
+
+            // Cercle de 30km
+            new google.maps.Circle({
+                strokeColor: '#ff3333',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#ff3333',
+                fillOpacity: 0.15,
+                map: map,
+                center: stMedard,
+                radius: 30000 // 30 km en mètres
+            });
+
+            // Marqueurs pour les villes principales
+            cities.forEach(city => {
+                new google.maps.Marker({
+                    position: { lat: city.lat, lng: city.lng },
+                    map: map,
+                    title: city.name,
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 6,
+                        fillColor: '#ff9999',
+                        fillOpacity: 0.8,
+                        strokeColor: '#ffffff',
+                        strokeWeight: 2
+                    }
+                });
+            });
+        }
+
+        // Charger Google Maps API
+        window.initMap = initMap;
     </script>
+
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 </body>
 </html>
