@@ -322,10 +322,50 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s;
+            display: block;
+            cursor: pointer;
         }
 
         .gallery-item:hover img {
             transform: scale(1.05);
+        }
+
+        /* Lightbox pour agrandir les images */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            box-shadow: 0 0 50px rgba(255, 51, 51, 0.5);
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
         }
 
         .gallery-caption {
@@ -624,7 +664,7 @@
     <header>
         <nav>
             <div class="logo-section">
-            <img src="logo.png" alt="Red Den Connexion" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                <div class="logo-circle">⚡</div>
                 <span class="company-name">Red Den Connexion</span>
             </div>
             <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
@@ -642,9 +682,7 @@
     <!-- Hero Section -->
     <section id="accueil" class="hero">
         <div class="hero-content">
-           <div class="hero-logo">
-    <img src="logo.png" alt="Red Den Connexion" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover;">
-</div>
+            <div class="hero-logo">⚡</div>
             <h1>Red Den Connexion</h1>
             <p class="tagline">⚡ Intervention Rapide 24h/24 - 7j/7 ⚡</p>
             <p>Votre électricien de confiance à St Médard de Guizières</p>
@@ -707,32 +745,38 @@
     <section id="galerie" class="gallery">
         <h2>Nos Réalisations</h2>
         <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="tableauélec" alt="Tableau électrique professionnel">
+            <div class="gallery-item" onclick="openLightbox('tableauélec')">
+                <img src="tableauélec" alt="Tableau électrique professionnel" loading="lazy">
                 <div class="gallery-caption">Tableau électrique aux normes</div>
             </div>
-            <div class="gallery-item">
-                <img src="IMG_20251010_152050.jpg" alt="Installation électrique">
+            <div class="gallery-item" onclick="openLightbox('IMG_20251010_152050.jpg')">
+                <img src="IMG_20251010_152050.jpg" alt="Installation électrique" loading="lazy">
                 <div class="gallery-caption">Installation professionnelle</div>
             </div>
-            <div class="gallery-item">
-                <img src="denisélec.png" alt="Électricien professionnel">
+            <div class="gallery-item" onclick="openLightbox('denisélec.png')">
+                <img src="denisélec.png" alt="Électricien professionnel" loading="lazy">
                 <div class="gallery-caption">Votre électricien expert</div>
             </div>
-            <div class="gallery-item">
-                <img src="filspriseancienne.jpg" alt="Rénovation électrique">
+            <div class="gallery-item" onclick="openLightbox('filspriseancienne.jpg')">
+                <img src="filspriseancienne.jpg" alt="Rénovation électrique" loading="lazy">
                 <div class="gallery-caption">Rénovation et mise aux normes</div>
             </div>
-            <div class="gallery-item">
-                <img src="mutiprises.png" alt="Installation multiprises">
+            <div class="gallery-item" onclick="openLightbox('mutiprises.png')">
+                <img src="mutiprises.png" alt="Installation multiprises" loading="lazy">
                 <div class="gallery-caption">Installations sécurisées</div>
             </div>
-            <div class="gallery-item">
-                <img src="dangervssécurité" alt="Sécurité électrique">
+            <div class="gallery-item" onclick="openLightbox('dangervssécurité')">
+                <img src="dangervssécurité" alt="Sécurité électrique" loading="lazy">
                 <div class="gallery-caption">Votre sécurité avant tout</div>
             </div>
         </div>
     </section>
+
+    <!-- Lightbox pour agrandir les images -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Image agrandie">
+    </div>
 
     <!-- Témoignages -->
     <section id="avis" class="testimonials">
