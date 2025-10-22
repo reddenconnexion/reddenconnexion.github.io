@@ -3,7 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Den Connexion - Électricien St Médard de Guizières</title>
+    <title>Red Den Connexion - Électricien St Médard de Guizières | Intervention 24h/24</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Électricien professionnel à St Médard de Guizières avec 25 ans d'expérience. Intervention rapide 24h/24 et 7j/7. Installations électriques, dépannages urgents. Devis gratuit. Zone: Libourne, Coutras, Guitres.">
+    <meta name="keywords" content="électricien, St Médard de Guizières, Libourne, Coutras, dépannage électrique, installation électrique, électricien 24h/24, urgence électrique, Gironde">
+    <meta name="author" content="Red Den Connexion">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://reddenconnexion.github.io/">
+    <meta property="og:title" content="Red Den Connexion - Électricien St Médard de Guizières">
+    <meta property="og:description" content="Électricien professionnel avec 25 ans d'expérience. Intervention rapide 24h/24 et 7j/7. Devis gratuit.">
+    <meta property="og:image" content="https://reddenconnexion.github.io/logoredden.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://reddenconnexion.github.io/">
+    <meta property="twitter:title" content="Red Den Connexion - Électricien St Médard de Guizières">
+    <meta property="twitter:description" content="Électricien professionnel avec 25 ans d'expérience. Intervention rapide 24h/24 et 7j/7.">
+    <meta property="twitter:image" content="https://reddenconnexion.github.io/logoredden.png">
+
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Red Den Connexion",
+      "image": "https://reddenconnexion.github.io/logoredden.png",
+      "@id": "https://reddenconnexion.github.io/",
+      "url": "https://reddenconnexion.github.io/",
+      "telephone": "+33695100823",
+      "email": "reddenconnexion@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "St Médard de Guizières",
+        "addressLocality": "St Médard de Guizières",
+        "postalCode": "33230",
+        "addressRegion": "Gironde",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.0167,
+        "longitude": -0.1167
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "sameAs": [],
+      "priceRange": "$$",
+      "description": "Électricien professionnel à St Médard de Guizières avec 25 ans d'expérience. Intervention rapide 24h/24 et 7j/7.",
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 45.0167,
+          "longitude": -0.1167
+        },
+        "geoRadius": "30000"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3"
+      }
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -621,6 +699,111 @@
             padding: 0.5rem;
         }
 
+        .faq {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.2);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background: #f8f8f8;
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            color: #1a1a1a;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .faq-icon {
+            color: #ff3333;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1.5rem;
+            background: #f8f8f8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ff3333;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+            z-index: 999;
+            border: none;
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            background: #cc0000;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 51, 51, 0.6);
+        }
+
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -670,6 +853,13 @@
                 height: 40px;
                 font-size: 2rem;
             }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
         }
     </style>
 </head>
@@ -687,6 +877,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#galerie">Réalisations</a></li>
                 <li><a href="#avis">Avis</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -757,27 +948,27 @@
         <h2>Nos Réalisations</h2>
         <div class="gallery-grid">
             <div class="gallery-item" onclick="openLightbox('tableauhallescoutras.jpg')">
-                <img src="tableauhallescoutras.jpg" alt="Tableau électrique professionnel" loading="lazy">
+                <img src="tableauhallescoutras.jpg" alt="Tableau électrique professionnel installé aux normes NF C 15-100 par Red Den Connexion" loading="lazy">
                 <div class="gallery-caption">Tableau électrique aux normes</div>
             </div>
             <div class="gallery-item" onclick="openLightbox('installationpro.jpg')">
-                <img src="installationpro.jpg" alt="Installation électrique" loading="lazy">
+                <img src="installationpro.jpg" alt="Installation électrique professionnelle complète - Red Den Connexion électricien" loading="lazy">
                 <div class="gallery-caption">Installation professionnelle</div>
             </div>
             <div class="gallery-item" onclick="openLightbox('deniselec.png')">
-                <img src="deniselec.png" alt="Électricien professionnel" loading="lazy">
+                <img src="deniselec.png" alt="Électricien professionnel Red Den Connexion avec 25 ans d'expérience" loading="lazy">
                 <div class="gallery-caption">Votre électricien expert</div>
             </div>
             <div class="gallery-item" onclick="openLightbox('filspriseancienne.jpg')">
-                <img src="filspriseancienne.jpg" alt="Rénovation électrique" loading="lazy">
+                <img src="filspriseancienne.jpg" alt="Rénovation électrique et mise aux normes d'installation ancienne" loading="lazy">
                 <div class="gallery-caption">Rénovation et mise aux normes</div>
             </div>
             <div class="gallery-item" onclick="openLightbox('mutiprises.png')">
-                <img src="mutiprises.png" alt="Installation multiprises" loading="lazy">
+                <img src="mutiprises.png" alt="Installation de multiprises sécurisées et conformes aux normes" loading="lazy">
                 <div class="gallery-caption">Installations sécurisées</div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('dangervssécurité')">
-                <img src="dangervssécurité" alt="Sécurité électrique" loading="lazy">
+            <div class="gallery-item" onclick="openLightbox('dangervssecurite.jpg')">
+                <img src="dangervssecurite.jpg" alt="Comparaison danger vs sécurité électrique - importance des normes" loading="lazy">
                 <div class="gallery-caption">Votre sécurité avant tout</div>
             </div>
         </div>
@@ -817,6 +1008,91 @@
             <p>📍 Basés à St Médard de Guizières</p>
             <p style="font-size: 1.5rem; margin-top: 1rem;">Nous intervenons dans un rayon de <strong style="color: #ff3333;">30 km</strong></p>
             <p style="margin-top: 1rem; opacity: 0.9;">Libourne, Coutras, Guitres, Saint-Denis-de-Pile et communes environnantes</p>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <h2>Questions Fréquentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Intervenez-vous en urgence ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, nous sommes disponibles 24h/24 et 7j/7 pour toutes vos urgences électriques. Que ce soit pour une panne de courant, un disjoncteur qui saute ou tout autre problème électrique urgent, nous intervenons rapidement pour assurer votre sécurité. Appelez-nous au 06 95 10 08 23.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Proposez-vous un devis gratuit ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolument ! Nous proposons un devis gratuit et sans engagement pour tous vos projets électriques. Contactez-nous pour décrire votre projet, et nous vous fournirons une estimation détaillée et transparente de nos services.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Êtes-vous certifié et assuré ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, avec 25 ans d'expérience, nous sommes un professionnel qualifié et certifié. Tous nos travaux respectent strictement la norme NF C 15-100 en vigueur. Nous disposons également de toutes les assurances professionnelles nécessaires pour garantir votre sécurité et celle de vos installations.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Quelle est votre zone d'intervention ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Nous sommes basés à St Médard de Guizières et intervenons dans un rayon de 30 km, incluant Libourne, Coutras, Guitres, Saint-Denis-de-Pile et toutes les communes environnantes en Gironde.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Quels types de travaux réalisez-vous ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Nous réalisons tous types de travaux électriques : installations complètes (domestiques et tertiaires), rénovations électriques, mise aux normes, installation de tableaux électriques, pose de prises et interrupteurs, éclairages, chauffage électrique, et dépannages urgents.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Combien de temps prend une installation électrique ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>La durée varie selon l'ampleur du projet. Une installation simple peut prendre quelques heures, tandis qu'une installation complète ou une rénovation peut nécessiter plusieurs jours. Lors du devis, nous vous fournirons une estimation précise du délai d'intervention.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Acceptez-vous les paiements échelonnés ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Pour les projets importants, nous pouvons étudier des solutions de paiement adaptées. N'hésitez pas à nous en parler lors de l'établissement du devis. Nous nous efforçons de trouver des arrangements qui conviennent à tous.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Fournissez-vous le matériel électrique ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, nous pouvons fournir tout le matériel électrique nécessaire pour vos travaux. Nous travaillons avec des marques de qualité reconnues pour garantir la sécurité et la durabilité de vos installations. Le coût du matériel est inclus dans le devis.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -883,7 +1159,10 @@
         <p>&copy; 2025 Red Den Connexion - Tous droits réservés</p>
         <p style="margin-top: 0.5rem; opacity: 0.8;">Électricien professionnel à St Médard de Guizières</p>
         <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.9rem;">📞 06 95 10 08 23 | 📧 reddenconnexion@gmail.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.5; font-size: 0.8rem;"><a href="mentions-legales.html" style="color: #ff9999; text-decoration: none;">Mentions légales</a> | <a href="confidentialite.html" style="color: #ff9999; text-decoration: none;">Politique de confidentialité</a></p>
     </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
 
     <script>
         function toggleMenu() {
@@ -932,29 +1211,63 @@
 
         function handleSubmit(event) {
             event.preventDefault();
-            
+
             const formMessage = document.getElementById('formMessage');
             const formData = new FormData(event.target);
-            
+
             const name = formData.get('name');
             const phone = formData.get('phone');
             const email = formData.get('email') || 'Non renseigné';
             const service = formData.get('service') || 'Non spécifié';
             const message = formData.get('message');
-            
+
             const subject = encodeURIComponent(`Demande de devis - ${service}`);
             const body = encodeURIComponent(`Nom: ${name}\nTéléphone: ${phone}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`);
-            
+
             window.location.href = `mailto:reddenconnexion@gmail.com?subject=${subject}&body=${body}`;
-            
+
             formMessage.className = 'success';
             formMessage.textContent = 'Votre demande va s\'ouvrir dans votre application email. Merci !';
             formMessage.style.display = 'block';
-            
+
             setTimeout(() => {
                 event.target.reset();
                 formMessage.style.display = 'none';
             }, 3000);
+        }
+
+        // Back to top button functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // FAQ toggle functionality
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
         }
     </script>
 </body>
