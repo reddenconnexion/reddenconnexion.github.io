@@ -21,7 +21,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Header */
         header {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
@@ -91,7 +90,6 @@
             color: #ff3333;
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
             color: white;
@@ -177,7 +175,6 @@
             box-shadow: 0 8px 25px rgba(255, 51, 51, 0.6);
         }
 
-        /* Sections */
         section {
             padding: 80px 2rem;
             max-width: 1200px;
@@ -202,7 +199,6 @@
             box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
         }
 
-        /* Pourquoi nous choisir */
         .why-us {
             background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
         }
@@ -239,7 +235,6 @@
             font-size: 1.3rem;
         }
 
-        /* Services */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -290,7 +285,6 @@
             color: #1a1a1a;
         }
 
-        /* Galerie */
         .gallery {
             background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
         }
@@ -310,6 +304,7 @@
             transition: all 0.3s;
             aspect-ratio: 4/3;
             background: #2d2d2d;
+            cursor: pointer;
         }
 
         .gallery-item:hover {
@@ -323,14 +318,24 @@
             object-fit: cover;
             transition: transform 0.3s;
             display: block;
-            cursor: pointer;
         }
 
         .gallery-item:hover img {
             transform: scale(1.05);
         }
 
-        /* Lightbox pour agrandir les images */
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            padding: 1.5rem 1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
         .lightbox {
             display: none;
             position: fixed;
@@ -346,7 +351,7 @@
         }
 
         .lightbox.active {
-            display: flex;
+            display: flex !important;
         }
 
         .lightbox-content {
@@ -392,19 +397,6 @@
             transform: rotate(90deg);
         }
 
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            color: white;
-            padding: 1.5rem 1rem;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        /* Témoignages */
         .testimonials {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
@@ -452,7 +444,6 @@
             color: #ff9999;
         }
 
-        /* Zone d'intervention */
         .zone {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
@@ -481,17 +472,12 @@
             color: white;
         }
 
-        .zone h2::after {
-            background: #ff3333;
-        }
-
         .zone p {
             font-size: 1.3rem;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Contact */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -539,7 +525,6 @@
             color: #cc0000;
         }
 
-        /* Formulaire de contact */
         .contact-form {
             max-width: 600px;
             margin: 3rem auto 0;
@@ -619,7 +604,6 @@
             display: block;
         }
 
-        /* Footer */
         footer {
             background: #1a1a1a;
             color: white;
@@ -627,7 +611,6 @@
             padding: 2rem;
         }
 
-        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -635,9 +618,9 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -652,7 +635,7 @@
             }
 
             nav ul.active {
-                display: flex;
+                display: flex !important;
             }
 
             .mobile-menu-btn {
@@ -680,11 +663,17 @@
             .company-name {
                 font-size: 1.2rem;
             }
+
+            .lightbox-close {
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav>
             <div class="logo-section">
@@ -703,7 +692,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="accueil" class="hero">
         <div class="hero-content">
             <div class="hero-logo">⚡</div>
@@ -716,7 +704,6 @@
         </div>
     </section>
 
-    <!-- Pourquoi nous choisir -->
     <section id="pourquoi" class="why-us">
         <h2>Pourquoi Nous Choisir ?</h2>
         <div class="why-grid">
@@ -743,7 +730,6 @@
         </div>
     </section>
 
-    <!-- Services -->
     <section id="services">
         <h2>Nos Services</h2>
         <div class="services-grid">
@@ -765,7 +751,6 @@
         </div>
     </section>
 
-    <!-- Galerie -->
     <section id="galerie" class="gallery">
         <h2>Nos Réalisations</h2>
         <div class="gallery-grid">
@@ -796,7 +781,6 @@
         </div>
     </section>
 
-    <!-- Lightbox pour agrandir les images -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
         <div class="lightbox-content" onclick="closeLightbox(event)">
@@ -804,7 +788,6 @@
         </div>
     </div>
 
-    <!-- Témoignages -->
     <section id="avis" class="testimonials">
         <h2>Ils Nous Font Confiance</h2>
         <div class="testimonials-grid">
@@ -826,7 +809,6 @@
         </div>
     </section>
 
-    <!-- Zone d'intervention -->
     <section id="zone" class="zone">
         <div class="zone-content">
             <h2>Zone d'Intervention</h2>
@@ -836,7 +818,6 @@
         </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
         <h2>Contactez-nous</h2>
         <div class="contact-grid">
@@ -860,7 +841,6 @@
             </div>
         </div>
 
-        <!-- Formulaire de contact -->
         <div class="contact-form">
             <h3 style="text-align: center; margin-bottom: 2rem; color: #ff3333;">Demande de devis gratuit</h3>
             <form id="contactForm" onsubmit="handleSubmit(event)">
@@ -897,9 +877,83 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Red Den Connexion - Tous droits réservés</p>
         <p style="margin-top: 0.5rem; opacity: 0.8;">Électricien professionnel à St Médard de Guizières</p>
         <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.9rem;">📞 06 95 10 08 23 | 📧 reddenconnexion@gmail.com</p>
-    </footer
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                menuBtn.innerHTML = '✕';
+            } else {
+                menuBtn.innerHTML = '☰';
+            }
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('menu');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                menu.classList.remove('active');
+                menuBtn.innerHTML = '☰';
+            });
+        });
+
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            const formData = new FormData(event.target);
+            
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const email = formData.get('email') || 'Non renseigné';
+            const service = formData.get('service') || 'Non spécifié';
+            const message = formData.get('message');
+            
+            const subject = encodeURIComponent(`Demande de devis - ${service}`);
+            const body = encodeURIComponent(`Nom: ${name}\nTéléphone: ${phone}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`);
+            
+            window.location.href = `mailto:reddenconnexion@gmail.com?subject=${subject}&body=${body}`;
+            
+            formMessage.className = 'success';
+            formMessage.textContent = 'Votre demande va s\'ouvrir dans votre application email. Merci !';
+            formMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                event.target.reset();
+                formMessage.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
