@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dépannage Électrique Urgent 24h/24 - St Médard de Guizières | Red Den Connexion</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Dépannage électrique urgent 24h/24 et 7j/7 à St Médard de Guizières, Libourne, Coutras. Intervention rapide pour panne de courant, disjoncteur qui saute, court-circuit. Électricien disponible immédiatement.">
+    <meta name="keywords" content="dépannage électrique urgent, électricien urgence, panne électrique, disjoncteur saute, court-circuit, 24h/24, St Médard de Guizières, Libourne, Coutras, Gironde">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reddenconnexion.github.io/depannage-urgent.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dépannage Électrique Urgent 24h/24 - Red Den Connexion">
+    <meta property="og:description" content="Intervention rapide 24h/24 pour vos urgences électriques. Dépannage immédiat à St Médard de Guizières et environs.">
+    <meta property="og:url" content="https://reddenconnexion.github.io/depannage-urgent.html">
+    <meta property="og:image" content="https://reddenconnexion.github.io/logoredden.png">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Dépannage Électrique Urgent",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Red Den Connexion",
+        "telephone": "+33695100823",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "St Médard de Guizières",
+          "postalCode": "33230",
+          "addressCountry": "FR"
+        }
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 45.0167,
+          "longitude": -0.1167
+        },
+        "geoRadius": "30000"
+      },
+      "hoursAvailable": "24/7"
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-section img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .company-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff3333;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff3333;
+        }
+
+        .hero-service {
+            background: linear-gradient(135deg, #cc0000 0%, #ff3333 100%);
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+        }
+
+        .hero-service h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-service .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .urgence-badge {
+            display: inline-block;
+            background: white;
+            color: #ff3333;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-urgent {
+            display: inline-block;
+            background: white;
+            color: #ff3333;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            margin: 0.5rem;
+        }
+
+        .cta-urgent:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff3333;
+            margin: 1rem auto;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid #ff3333;
+            transition: all 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 51, 51, 0.2);
+        }
+
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card h3 {
+            color: #ff3333;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .solutions-bg {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .why-us-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .why-us-list li {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .why-us-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 1rem;
+            color: #ff3333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f8f8f8;
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            color: #1a1a1a;
+            font-size: 1.1rem;
+        }
+
+        .faq-icon {
+            color: #ff3333;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+            background: #f8f8f8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .contact-cta {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 2rem;
+            margin-top: 4rem;
+            border-radius: 15px;
+        }
+
+        .contact-cta h2 {
+            color: white;
+        }
+
+        .contact-cta h2::after {
+            background: #ff3333;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: #ff9999;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-service h1 {
+                font-size: 2rem;
+            }
+
+            .hero-service .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .cta-urgent {
+                font-size: 1.1rem;
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-section">
+                <img src="logoredden.png" alt="Red Den Connexion">
+                <span class="company-name">Red Den Connexion</span>
+            </div>
+            <a href="index.html">← Retour à l'accueil</a>
+        </nav>
+    </header>
+
+    <section class="hero-service">
+        <div class="urgence-badge">🚨 URGENCE 24h/24 - 7j/7</div>
+        <h1>Dépannage Électrique Urgent</h1>
+        <p class="subtitle">Intervention Rapide à St Médard de Guizières et dans un rayon de 30 km</p>
+        <a href="tel:0695100823" class="cta-urgent">📞 06 95 10 08 23 - Appelez Maintenant</a>
+    </section>
+
+    <section>
+        <h2>Problèmes Électriques Courants</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
+            Vous rencontrez une urgence électrique ? Nous intervenons rapidement pour tous types de pannes.
+        </p>
+        <div class="problems-grid">
+            <div class="problem-card">
+                <div class="problem-icon">⚠️</div>
+                <h3>Panne de Courant Totale</h3>
+                <p>Plus d'électricité dans toute la maison ou une partie ? Nous diagnostiquons et réparons rapidement la source du problème.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🔌</div>
+                <h3>Disjoncteur qui Saute</h3>
+                <p>Votre disjoncteur saute en permanence ? C'est un signe de surcharge ou de court-circuit. Intervention immédiate nécessaire.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">⚡</div>
+                <h3>Court-Circuit</h3>
+                <p>Odeur de brûlé, étincelles ou fumée ? Danger imminent ! Coupez le courant et appelez-nous en urgence.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🔥</div>
+                <h3>Prise ou Interrupteur Chaud</h3>
+                <p>Une prise ou un interrupteur anormalement chaud indique un problème grave. Ne touchez pas et contactez-nous immédiatement.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">💡</div>
+                <h3>Lumières qui Clignotent</h3>
+                <p>Des variations de tension peuvent endommager vos appareils. Nous identifions et corrigeons le problème rapidement.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🛡️</div>
+                <h3>Tableau Électrique Défaillant</h3>
+                <p>Tableau qui fait du bruit, qui chauffe ou qui sent le brûlé ? Risque d'incendie élevé. Intervention urgente requise.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="solutions-bg">
+        <h2>Notre Processus d'Intervention</h2>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Appel d'Urgence</h3>
+                <p>Vous nous appelez 24h/24 au 06 95 10 08 23. Nous répondons immédiatement.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Diagnostic Rapide</h3>
+                <p>Nous vous posons quelques questions pour évaluer l'urgence et préparer notre intervention.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Déplacement Immédiat</h3>
+                <p>Nous arrivons sur place dans les meilleurs délais avec tout le matériel nécessaire.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Réparation</h3>
+                <p>Nous identifions la panne et effectuons la réparation conformément aux normes en vigueur.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3>Vérification</h3>
+                <p>Nous testons l'installation complète pour garantir votre sécurité et le bon fonctionnement.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Pourquoi Choisir Red Den Connexion pour vos Urgences ?</h2>
+        <ul class="why-us-list">
+            <li><strong>Disponibilité 24h/24 et 7j/7</strong> - Nous répondons même la nuit, le weekend et les jours fériés</li>
+            <li><strong>Intervention rapide</strong> - Nous nous déplaçons dans les meilleurs délais pour limiter la panne</li>
+            <li><strong>25 ans d'expérience</strong> - Un quart de siècle d'expertise en dépannage électrique</li>
+            <li><strong>Diagnostic précis</strong> - Nous identifions rapidement la source du problème</li>
+            <li><strong>Matériel professionnel</strong> - Nous arrivons équipés pour toutes les situations</li>
+            <li><strong>Travail aux normes NF C 15-100</strong> - Sécurité et conformité garanties</li>
+            <li><strong>Zone d'intervention : 30 km</strong> - St Médard, Libourne, Coutras, Guitres et environs</li>
+            <li><strong>Tarifs transparents</strong> - Devis clair avant intervention, pas de surprise</li>
+        </ul>
+    </section>
+
+    <section class="solutions-bg">
+        <h2>Questions Fréquentes - Dépannage Urgent</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaqService(this)">
+                    <h3>Combien coûte un dépannage électrique en urgence ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Le tarif dépend de la nature de la panne, du moment d'intervention (jour/nuit/weekend) et des pièces nécessaires. Nous vous communiquons un devis transparent avant toute intervention. En cas d'urgence vitale (risque d'incendie), nous intervenons d'abord pour sécuriser, puis établissons le devis pour la réparation complète.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaqService(this)">
+                    <h3>Intervenez-vous vraiment 24h/24 ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, absolument ! Nous sommes joignables 24 heures sur 24, 7 jours sur 7, y compris la nuit, les weekends et les jours fériés. Les urgences électriques ne choisissent pas leur moment, et nous non plus. Un seul numéro : 06 95 10 08 23.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaqService(this)">
+                    <h3>Quel est votre délai d'intervention ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Nous nous efforçons d'intervenir dans les plus brefs délais, généralement sous 1 à 2 heures selon votre localisation et notre disponibilité. Pour les urgences critiques (risque d'incendie, danger immédiat), nous priorisons votre intervention.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaqService(this)">
+                    <h3>Que faire en attendant votre arrivée ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>En cas d'urgence : 1) Coupez le disjoncteur général si vous sentez une odeur de brûlé ou voyez de la fumée. 2) N'utilisez pas d'eau sur un feu électrique. 3) Éloignez-vous des zones dangereuses. 4) Ne tentez pas de réparer vous-même. 5) Attendez notre arrivée en lieu sûr. En cas de feu déclaré, appelez les pompiers (18) immédiatement.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaqService(this)">
+                    <h3>Avez-vous le matériel nécessaire dans votre véhicule ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, notre véhicule d'intervention est équipé d'un stock important de matériel électrique : disjoncteurs, câbles, prises, interrupteurs différentiels, etc. Dans 90% des cas, nous pouvons effectuer la réparation immédiatement sans avoir à commander de pièces.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaqService(this)">
+                    <h3>Ma panne est-elle vraiment une urgence ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Appelez-nous en urgence si : disjoncteur qui saute en permanence, odeur de brûlé, prise/tableau qui chauffe, étincelles, fumée, panne totale d'électricité, câbles apparents endommagés. Pour les autres situations (prise qui ne fonctionne pas, lumière grillée), un rendez-vous classique peut suffire, mais nous restons disponibles 24h/24 si vous préférez une intervention rapide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-cta">
+        <h2>Une Urgence Électrique ?</h2>
+        <p style="font-size: 1.3rem; margin: 2rem 0;">Ne prenez aucun risque avec l'électricité</p>
+        <a href="tel:0695100823" class="cta-urgent">📞 Appelez-nous Maintenant : 06 95 10 08 23</a>
+        <p style="margin-top: 2rem; opacity: 0.9;">Disponibles 24h/24 - 7j/7 pour votre sécurité</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Red Den Connexion - Tous droits réservés</p>
+        <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
+    </footer>
+
+    <script>
+        function toggleFaqService(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
