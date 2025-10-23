@@ -1,0 +1,26 @@
+# robots.txt pour Red Den Connexion
+# https://reddenconnexion.github.io
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://reddenconnexion.github.io/sitemap.xml
+
+# Optimisation pour Google
+User-agent: Googlebot
+Allow: /
+
+# Optimisation pour Bing
+User-agent: Bingbot
+Allow: /
+
+# Bloquer les mauvais bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
