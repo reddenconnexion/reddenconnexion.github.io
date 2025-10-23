@@ -9,6 +9,28 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Pages de services -->
+  <url>
+    <loc>https://reddenconnexion.github.io/depannage-urgent.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://reddenconnexion.github.io/renovation-electrique.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://reddenconnexion.github.io/installation-tableau.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Mentions légales -->
   <url>
     <loc>https://reddenconnexion.github.io/mentions-legales.html</loc>
