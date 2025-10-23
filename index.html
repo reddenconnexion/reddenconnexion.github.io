@@ -1943,6 +1943,19 @@
             }
         }
 
+        // Auto-flip animation on page load
+        window.addEventListener('load', function() {
+            // Wait 500ms after page load to start the animation
+            setTimeout(function() {
+                flipLogo(); // First flip: logo → photo
+
+                // After 3 seconds, flip back to logo
+                setTimeout(function() {
+                    flipLogo(); // Second flip: photo → logo
+                }, 3000);
+            }, 500);
+        });
+
         function openLightbox(imgSrc) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
