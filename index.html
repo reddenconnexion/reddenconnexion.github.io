@@ -1546,7 +1546,7 @@
 
         <div class="contact-form animate-on-scroll">
             <h3 style="text-align: center; margin-bottom: 2rem; color: #ff3333;">Demande de devis gratuit</h3>
-            <form id="contactForm" onsubmit="handleSubmit(event)">
+            <form id="contactForm" action="https://formspree.io/f/xeorbyrg" method="POST">
                 <div class="form-group">
                     <label for="name">Nom complet *</label>
                     <input type="text" id="name" name="name" required>
@@ -1563,11 +1563,11 @@
                     <label for="service">Type de service</label>
                     <select id="service" name="service">
                         <option value="">Sélectionnez un service</option>
-                        <option value="depannage">Dépannage urgent</option>
-                        <option value="installation-domestique">Installation domestique</option>
-                        <option value="installation-tertiaire">Installation tertiaire</option>
-                        <option value="renovation">Rénovation électrique</option>
-                        <option value="autre">Autre</option>
+                        <option value="Dépannage urgent">Dépannage urgent</option>
+                        <option value="Installation domestique">Installation domestique</option>
+                        <option value="Installation tertiaire">Installation tertiaire</option>
+                        <option value="Rénovation électrique">Rénovation électrique</option>
+                        <option value="Autre">Autre</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -1634,31 +1634,68 @@
             }
         });
 
-        function handleSubmit(event) {
-            event.preventDefault();
+        // Gestion du formulaire avec Formspree
+        const form = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
 
-            const formMessage = document.getElementById('formMessage');
-            const formData = new FormData(event.target);
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
 
-            const name = formData.get('name');
-            const phone = formData.get('phone');
-            const email = formData.get('email') || 'Non renseigné';
-            const service = formData.get('service') || 'Non spécifié';
-            const message = formData.get('message');
+                const submitBtn = form.querySelector('.submit-btn');
+                const originalBtnText = submitBtn.textContent;
 
-            const subject = encodeURIComponent(`Demande de devis - ${service}`);
-            const body = encodeURIComponent(`Nom: ${name}\nTéléphone: ${phone}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`);
+                // Désactiver le bouton pendant l'envoi
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Envoi en cours...';
+                submitBtn.style.opacity = '0.6';
 
-            window.location.href = `mailto:reddenconnexion@gmail.com?subject=${subject}&body=${body}`;
+                // Récupérer les données du formulaire
+                const formData = new FormData(form);
 
-            formMessage.className = 'success';
-            formMessage.textContent = 'Votre demande va s\'ouvrir dans votre application email. Merci !';
-            formMessage.style.display = 'block';
+                // Envoyer via AJAX à Formspree
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Succès
+                        formMessage.style.display = 'block';
+                        formMessage.className = 'success';
+                        formMessage.textContent = '✅ Votre demande a été envoyée avec succès ! Nous vous recontacterons rapidement.';
+                        form.reset();
+                    } else {
+                        // Erreur serveur
+                        return response.json().then(data => {
+                            throw new Error(data.error || 'Erreur lors de l\'envoi');
+                        });
+                    }
+                })
+                .catch(error => {
+                    // Erreur
+                    formMessage.style.display = 'block';
+                    formMessage.className = 'error';
+                    formMessage.style.background = '#f8d7da';
+                    formMessage.style.color = '#721c24';
+                    formMessage.style.border = '1px solid #f5c6cb';
+                    formMessage.textContent = '❌ Une erreur est survenue. Veuillez nous contacter directement au 06 95 10 08 23.';
+                })
+                .finally(() => {
+                    // Réactiver le bouton
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.style.opacity = '1';
 
-            setTimeout(() => {
-                event.target.reset();
-                formMessage.style.display = 'none';
-            }, 3000);
+                    // Masquer le message après 5 secondes
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                });
+            });
         }
 
         // Back to top button functionality
