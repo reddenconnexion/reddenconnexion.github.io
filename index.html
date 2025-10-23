@@ -373,25 +373,34 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
             margin-top: 2rem;
         }
 
         .gallery-item {
-            position: relative;
-            overflow: hidden;
+            background: white;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all 0.3s;
-            aspect-ratio: 4/3;
-            background: #2d2d2d;
-            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid transparent;
         }
 
         .gallery-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 51, 51, 0.25);
+            border-color: #ff3333;
+        }
+
+        .gallery-image-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
         }
 
         .gallery-item img {
@@ -403,19 +412,88 @@
         }
 
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        .gallery-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff3333, #cc0000);
             color: white;
-            padding: 1.5rem 1rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: bold;
-            text-align: center;
+            margin-bottom: 0.8rem;
+            width: fit-content;
+            box-shadow: 0 2px 8px rgba(255, 51, 51, 0.3);
+        }
+
+        .gallery-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .gallery-description {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+
+        .gallery-benefits li {
+            color: #333;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .gallery-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff3333;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .gallery-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .gallery-location {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .gallery-duration {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
 
         .lightbox {
@@ -970,29 +1048,136 @@
     <section id="galerie" class="gallery">
         <h2>Nos Réalisations</h2>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox('tableauhallescoutras.jpg')">
-                <img src="tableauhallescoutras.jpg" alt="Tableau électrique professionnel installé aux normes NF C 15-100 par Red Den Connexion" loading="lazy">
-                <div class="gallery-caption">Tableau électrique aux normes</div>
+            <!-- Réalisation 1 : Tableau électrique -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" onclick="openLightbox('tableauhallescoutras.jpg')">
+                    <img src="tableauhallescoutras.jpg" alt="Tableau électrique professionnel installé aux normes NF C 15-100 par Red Den Connexion" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">✓ CONFORMITÉ NF C 15-100</span>
+                    <h3 class="gallery-title">Rénovation complète de tableau électrique</h3>
+                    <p class="gallery-description">Remplacement d'un ancien tableau non conforme par une installation moderne et sécurisée avec protection différentielle.</p>
+                    <ul class="gallery-benefits">
+                        <li>Protection différentielle 30mA</li>
+                        <li>Disjoncteurs divisionnaires neufs</li>
+                        <li>Câblage aux normes</li>
+                        <li>Sécurité optimale garantie</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 Coutras</span>
+                        <span class="gallery-duration">⏱️ 1 journée</span>
+                    </div>
+                </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('installationpro.jpg')">
-                <img src="installationpro.jpg" alt="Installation électrique professionnelle complète - Red Den Connexion électricien" loading="lazy">
-                <div class="gallery-caption">Installation professionnelle</div>
+
+            <!-- Réalisation 2 : Installation professionnelle -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" onclick="openLightbox('installationpro.jpg')">
+                    <img src="installationpro.jpg" alt="Installation électrique professionnelle complète - Red Den Connexion électricien" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">✓ INSTALLATION NEUVE</span>
+                    <h3 class="gallery-title">Installation électrique complète</h3>
+                    <p class="gallery-description">Installation électrique totale pour un local commercial neuf avec réseau complet de prises et éclairages.</p>
+                    <ul class="gallery-benefits">
+                        <li>Câblage structuré professionnel</li>
+                        <li>Circuit dédié haute puissance</li>
+                        <li>Éclairage LED économique</li>
+                        <li>Prêt pour certification Consuel</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 Libourne</span>
+                        <span class="gallery-duration">⏱️ 3 jours</span>
+                    </div>
+                </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('deniselec.png')">
-                <img src="deniselec.png" alt="Électricien professionnel Red Den Connexion avec 25 ans d'expérience" loading="lazy">
-                <div class="gallery-caption">Votre électricien expert</div>
+
+            <!-- Réalisation 3 : Expertise électricien -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" onclick="openLightbox('deniselec.png')">
+                    <img src="deniselec.png" alt="Électricien professionnel Red Den Connexion avec 25 ans d'expérience" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">🏆 25 ANS D'EXPÉRIENCE</span>
+                    <h3 class="gallery-title">Votre électricien de confiance</h3>
+                    <p class="gallery-description">Un quart de siècle d'expertise au service de votre sécurité électrique. Professionnel qualifié et certifié.</p>
+                    <ul class="gallery-benefits">
+                        <li>Expertise reconnue en Gironde</li>
+                        <li>Formation continue aux normes</li>
+                        <li>Intervention soignée et propre</li>
+                        <li>Conseils personnalisés gratuits</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 St Médard de Guizières</span>
+                        <span class="gallery-duration">📞 06 95 10 08 23</span>
+                    </div>
+                </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('filspriseancienne.jpg')">
-                <img src="filspriseancienne.jpg" alt="Rénovation électrique et mise aux normes d'installation ancienne" loading="lazy">
-                <div class="gallery-caption">Rénovation et mise aux normes</div>
+
+            <!-- Réalisation 4 : Mise aux normes -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" onclick="openLightbox('filspriseancienne.jpg')">
+                    <img src="filspriseancienne.jpg" alt="Rénovation électrique et mise aux normes d'installation ancienne" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">⚡ MISE AUX NORMES</span>
+                    <h3 class="gallery-title">Rénovation installation vétuste</h3>
+                    <p class="gallery-description">Mise aux normes d'une installation électrique ancienne avec câblage obsolète. Remplacement complet pour sécurité maximale.</p>
+                    <ul class="gallery-benefits">
+                        <li>Suppression des risques électriques</li>
+                        <li>Nouveau câblage conforme</li>
+                        <li>Protection contre les surcharges</li>
+                        <li>Tranquillité d'esprit assurée</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 Guitres</span>
+                        <span class="gallery-duration">⏱️ 2 jours</span>
+                    </div>
+                </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('mutiprises.png')">
-                <img src="mutiprises.png" alt="Installation de multiprises sécurisées et conformes aux normes" loading="lazy">
-                <div class="gallery-caption">Installations sécurisées</div>
+
+            <!-- Réalisation 5 : Multiprises sécurisées -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" onclick="openLightbox('mutiprises.png')">
+                    <img src="mutiprises.png" alt="Installation de multiprises sécurisées et conformes aux normes" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">✓ INSTALLATION SÉCURISÉE</span>
+                    <h3 class="gallery-title">Réseau de prises modulaires</h3>
+                    <p class="gallery-description">Installation de prises multiples sécurisées avec protection contre les surtensions et câblage dédié.</p>
+                    <ul class="gallery-benefits">
+                        <li>Circuit dédié pour éviter surcharges</li>
+                        <li>Prises avec terre obligatoire</li>
+                        <li>Protection parafoudre intégrée</li>
+                        <li>Positionnement ergonomique</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 Saint-Denis-de-Pile</span>
+                        <span class="gallery-duration">⏱️ Demi-journée</span>
+                    </div>
+                </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox('dangervssecurite.jpg')">
-                <img src="dangervssecurite.jpg" alt="Comparaison danger vs sécurité électrique - importance des normes" loading="lazy">
-                <div class="gallery-caption">Votre sécurité avant tout</div>
+
+            <!-- Réalisation 6 : Sécurité avant/après -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" onclick="openLightbox('dangervssecurite.jpg')">
+                    <img src="dangervssecurite.jpg" alt="Comparaison danger vs sécurité électrique - importance des normes" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">🛡️ SÉCURITÉ PRIORITAIRE</span>
+                    <h3 class="gallery-title">Avant / Après : La différence qui sauve</h3>
+                    <p class="gallery-description">Illustration concrète de l'importance d'une installation conforme. À gauche le danger, à droite la sécurité.</p>
+                    <ul class="gallery-benefits">
+                        <li>Évite les risques d'incendie</li>
+                        <li>Protège vos appareils électriques</li>
+                        <li>Conforme aux assurances habitation</li>
+                        <li>Valorise votre bien immobilier</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 Toute la zone</span>
+                        <span class="gallery-duration">💡 Prévention</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
