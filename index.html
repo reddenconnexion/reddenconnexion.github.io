@@ -109,6 +109,140 @@
             scroll-behavior: smooth;
         }
 
+        /* ===== ANIMATIONS ===== */
+
+        /* Fade in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Animation classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation delays for grid items */
+        .why-grid .why-item:nth-child(1) { transition-delay: 0.1s; }
+        .why-grid .why-item:nth-child(2) { transition-delay: 0.2s; }
+        .why-grid .why-item:nth-child(3) { transition-delay: 0.3s; }
+        .why-grid .why-item:nth-child(4) { transition-delay: 0.4s; }
+
+        .services-grid .service-card:nth-child(1) { transition-delay: 0.1s; }
+        .services-grid .service-card:nth-child(2) { transition-delay: 0.2s; }
+        .services-grid .service-card:nth-child(3) { transition-delay: 0.3s; }
+
+        .testimonials-grid .testimonial-card:nth-child(1) { transition-delay: 0.1s; }
+        .testimonials-grid .testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+        .testimonials-grid .testimonial-card:nth-child(3) { transition-delay: 0.3s; }
+
+        .contact-grid .contact-item:nth-child(1) { transition-delay: 0.1s; }
+        .contact-grid .contact-item:nth-child(2) { transition-delay: 0.2s; }
+        .contact-grid .contact-item:nth-child(3) { transition-delay: 0.3s; }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .scale-in {
+            animation: scaleIn 0.6s ease-out;
+        }
+
         header {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
@@ -118,6 +252,13 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(45, 45, 45, 0.98) 100%);
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
         }
 
         nav {
@@ -179,7 +320,9 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #1a1a1a 50%, #2d2d2d 75%, #1a1a1a 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             color: white;
             padding: 180px 2rem 120px;
             text-align: center;
@@ -195,6 +338,19 @@
             right: 0;
             bottom: 0;
             background: radial-gradient(circle at center, rgba(255, 51, 51, 0.15) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            animation: float 8s ease-in-out infinite;
         }
 
         .hero-content {
@@ -245,22 +401,46 @@
 
         .cta-button {
             display: inline-block;
-            background: #ff3333;
+            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
             color: white;
             padding: 1rem 2.5rem;
             text-decoration: none;
             border-radius: 50px;
             font-size: 1.1rem;
             font-weight: bold;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
             margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .cta-button:hover {
-            background: #cc0000;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 51, 51, 0.6);
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.7);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px) scale(1.02);
         }
 
         section {
@@ -304,12 +484,29 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 51, 51, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .why-item:hover::before {
+            left: 100%;
         }
 
         .why-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.2);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 51, 51, 0.3);
         }
 
         .why-icon {
@@ -357,9 +554,17 @@
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.3);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 51, 51, 0.35);
             border-color: #ff3333;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-icon {
+            transition: transform 0.3s ease;
         }
 
         .service-icon {
@@ -1005,24 +1210,24 @@
     </section>
 
     <section id="pourquoi" class="why-us">
-        <h2>Pourquoi Nous Choisir ?</h2>
+        <h2 class="animate-on-scroll">Pourquoi Nous Choisir ?</h2>
         <div class="why-grid">
-            <div class="why-item">
+            <div class="why-item animate-on-scroll">
                 <div class="why-icon">🏆</div>
-                <h3>25 ans d'expérience</h3>
+                <h3><span class="counter-years">25 ans d'expérience</span></h3>
                 <p>Un quart de siècle d'expertise au service de votre sécurité électrique</p>
             </div>
-            <div class="why-item">
+            <div class="why-item animate-on-scroll">
                 <div class="why-icon">⚡</div>
                 <h3>Intervention rapide</h3>
                 <p>Disponible 24h/24 et 7j/7 pour vos urgences électriques</p>
             </div>
-            <div class="why-item">
+            <div class="why-item animate-on-scroll">
                 <div class="why-icon">✅</div>
                 <h3>Travail aux normes</h3>
                 <p>Respect strict de la norme NF C 15-100 et certifications à jour</p>
             </div>
-            <div class="why-item">
+            <div class="why-item animate-on-scroll">
                 <div class="why-icon">💰</div>
                 <h3>Devis gratuit</h3>
                 <p>Estimation transparente et sans engagement avant chaque intervention</p>
@@ -1031,21 +1236,21 @@
     </section>
 
     <section id="services">
-        <h2>Nos Services</h2>
+        <h2 class="animate-on-scroll">Nos Services</h2>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">🚨</div>
                 <h3>Dépannage Urgent 24h/24</h3>
                 <p>Intervention rapide pour tous vos problèmes électriques : pannes, disjoncteurs, courts-circuits. Disponible 24h/24 et 7j/7.</p>
                 <a href="depannage-urgent.html" style="display: inline-block; margin-top: 1rem; color: #ff3333; text-decoration: none; font-weight: bold;">En savoir plus →</a>
             </div>
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">🔧</div>
                 <h3>Rénovation & Mise aux Normes</h3>
                 <p>Rénovation électrique complète et mise en conformité NF C 15-100. Installation vétuste, diagnostic, mise en sécurité.</p>
                 <a href="renovation-electrique.html" style="display: inline-block; margin-top: 1rem; color: #ff3333; text-decoration: none; font-weight: bold;">En savoir plus →</a>
             </div>
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">⚡</div>
                 <h3>Installation Tableau Électrique</h3>
                 <p>Installation de tableaux électriques neufs aux normes. Protection différentielle, disjoncteurs, conformité garantie.</p>
@@ -1055,7 +1260,7 @@
     </section>
 
     <section id="galerie" class="gallery">
-        <h2>Nos Réalisations</h2>
+        <h2 class="animate-on-scroll">Nos Réalisations</h2>
         <div class="gallery-grid">
             <!-- Réalisation 1 : Tableau électrique -->
             <div class="gallery-item">
@@ -1199,19 +1404,19 @@
     </div>
 
     <section id="avis" class="testimonials">
-        <h2>Ils Nous Font Confiance</h2>
+        <h2 class="animate-on-scroll">Ils Nous Font Confiance</h2>
         <div class="testimonials-grid">
-            <div class="testimonial-card">
+            <div class="testimonial-card animate-on-scroll">
                 <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                 <p class="testimonial-text">"Intervention très rapide pour un dépannage en urgence. Professionnel et efficace. Je recommande vivement !"</p>
                 <p class="testimonial-author">- Marie D., Libourne</p>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card animate-on-scroll">
                 <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                 <p class="testimonial-text">"Excellente prestation pour la rénovation complète de mon tableau électrique. Travail soigné et aux normes."</p>
                 <p class="testimonial-author">- Jean-Pierre L., St Médard</p>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card animate-on-scroll">
                 <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                 <p class="testimonial-text">"Très satisfait de l'installation électrique de mon commerce. Respect des délais et tarifs corrects."</p>
                 <p class="testimonial-author">- Patrick M., Coutras</p>
@@ -1221,10 +1426,10 @@
 
     <section id="zone" class="zone">
         <div class="zone-content">
-            <h2>Zone d'Intervention</h2>
-            <p>📍 Basés à St Médard de Guizières</p>
-            <p style="font-size: 1.5rem; margin-top: 1rem;">Nous intervenons dans un rayon de <strong style="color: #ff3333;">30 km</strong></p>
-            <p style="margin-top: 1rem; opacity: 0.9;">Libourne, Coutras, Guitres, Saint-Denis-de-Pile et communes environnantes</p>
+            <h2 class="animate-on-scroll">Zone d'Intervention</h2>
+            <p class="animate-on-scroll">📍 Basés à St Médard de Guizières</p>
+            <p class="animate-on-scroll" style="font-size: 1.5rem; margin-top: 1rem;">Nous intervenons dans un rayon de <strong style="color: #ff3333;"><span class="counter-radius">30 km</span></strong></p>
+            <p class="animate-on-scroll" style="margin-top: 1rem; opacity: 0.9;">Libourne, Coutras, Guitres, Saint-Denis-de-Pile et communes environnantes</p>
 
             <!-- Carte Google Maps -->
             <div id="map"></div>
@@ -1232,7 +1437,7 @@
     </section>
 
     <section id="faq" class="faq">
-        <h2>Questions Fréquentes</h2>
+        <h2 class="animate-on-scroll">Questions Fréquentes</h2>
         <div class="faq-container">
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
@@ -1317,21 +1522,21 @@
     </section>
 
     <section id="contact">
-        <h2>Contactez-nous</h2>
+        <h2 class="animate-on-scroll">Contactez-nous</h2>
         <div class="contact-grid">
-            <div class="contact-item">
+            <div class="contact-item animate-on-scroll">
                 <div class="contact-icon">📞</div>
                 <h3>Téléphone</h3>
                 <a href="tel:0695100823">06 95 10 08 23</a>
                 <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Disponible 24h/24 - 7j/7</p>
             </div>
-            <div class="contact-item">
+            <div class="contact-item animate-on-scroll">
                 <div class="contact-icon">📧</div>
                 <h3>Email</h3>
                 <a href="mailto:reddenconnexion@gmail.com">reddenconnexion@gmail.com</a>
                 <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Réponse rapide garantie</p>
             </div>
-            <div class="contact-item">
+            <div class="contact-item animate-on-scroll">
                 <div class="contact-icon">📍</div>
                 <h3>Localisation</h3>
                 <p style="color: #666; margin-top: 0.5rem; font-weight: bold;">St Médard de Guizières</p>
@@ -1339,7 +1544,7 @@
             </div>
         </div>
 
-        <div class="contact-form">
+        <div class="contact-form animate-on-scroll">
             <h3 style="text-align: center; margin-bottom: 2rem; color: #ff3333;">Demande de devis gratuit</h3>
             <form id="contactForm" onsubmit="handleSubmit(event)">
                 <div class="form-group">
@@ -1490,8 +1695,82 @@
             }
         }
 
+        // ===== SCROLL-TRIGGERED ANIMATIONS =====
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    // Optional: unobserve after animation for performance
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with .animate-on-scroll class
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // ===== HEADER SCROLL EFFECT =====
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // ===== ANIMATED COUNTERS =====
+        function animateCounter(element, target, duration, suffix = '') {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start) + suffix;
+                }
+            }, 16);
+        }
+
+        // Trigger counters when they come into view
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.dataset.animated = 'true';
+
+                    if (entry.target.classList.contains('counter-years')) {
+                        animateCounter(entry.target, 25, 2000, ' ans d\'expérience');
+                    } else if (entry.target.classList.contains('counter-radius')) {
+                        animateCounter(entry.target, 30, 1500, ' km');
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
         // Initialisation de la carte Leaflet
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize counters
+            document.querySelectorAll('.counter-years, .counter-radius').forEach(el => {
+                counterObserver.observe(el);
+            });
+
             // Coordonnées de St Médard de Guizières
             const stMedard = [45.0167, -0.1167];
 
