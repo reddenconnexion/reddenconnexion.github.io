@@ -2153,8 +2153,12 @@
                 counterObserver.observe(el);
             });
 
-            // Coordonnées de St Médard de Guizières
-            const stMedard = [45.0167, -0.1167];
+            // Coordonnées précises de 13 rue Robert Boulin, St Médard de Guizières
+            // Coordonnées affinées pour le centre-ville (rue Robert Boulin)
+            const stMedard = [45.0153, -0.0583];
+
+            // Lien vers la fiche Google My Business
+            const gmbLink = 'https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières';
 
             // Villes principales dans la zone
             const cities = [
@@ -2181,9 +2185,28 @@
                 iconAnchor: [12, 12]
             });
 
-            // Marqueur principal (St Médard de Guizières)
+            // Marqueur principal (13 rue Robert Boulin)
             const mainMarker = L.marker(stMedard, { icon: mainIcon }).addTo(map);
-            mainMarker.bindPopup('<div style="padding: 5px; text-align: center;"><strong style="color: #ff3333; font-size: 14px;">Red Den Connexion</strong><br>St Médard de Guizières<br>📞 <a href="tel:0695100823" style="color: #ff3333; text-decoration: none;">06 95 10 08 23</a></div>');
+            mainMarker.bindPopup(`
+                <div style="padding: 8px; text-align: center; min-width: 200px;">
+                    <strong style="color: #ff3333; font-size: 15px;">Red Den Connexion</strong><br>
+                    <span style="font-size: 13px;">13 rue Robert Boulin</span><br>
+                    <span style="font-size: 13px;">33230 St Médard de Guizières</span><br><br>
+                    📞 <a href="tel:0695100823" style="color: #ff3333; text-decoration: none; font-weight: bold;">06 95 10 08 23</a><br><br>
+                    <a href="${gmbLink}" target="_blank" rel="noopener" style="display: inline-block; background: #4285f4; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600; margin-top: 5px;">
+                        ⭐ Voir nos avis Google
+                    </a><br>
+                    <small style="color: #666; font-size: 11px; margin-top: 8px; display: block;">Cliquez pour voir notre fiche Google</small>
+                </div>
+            `);
+
+            // Rendre le marqueur cliquable pour ouvrir GMB
+            mainMarker.on('click', function() {
+                // Ouvre le popup puis GMB après un court délai
+                setTimeout(function() {
+                    mainMarker.openPopup();
+                }, 100);
+            });
 
             // Cercle de 30km
             L.circle(stMedard, {
