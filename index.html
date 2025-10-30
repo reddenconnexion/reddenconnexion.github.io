@@ -1901,6 +1901,9 @@
 
     <button class="back-to-top" id="backToTop">↑</button>
 
+    <!-- Leaflet JavaScript - Chargé AVANT notre code -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <script>
         // ===== EVENT LISTENERS =====
         // Initialisation de tous les event listeners au chargement du DOM
@@ -2256,9 +2259,8 @@
             });
         }, { threshold: 0.5 });
 
-        // Initialisation de la carte Leaflet - IIFE pour isoler les variables
-        (function() {
-
+        // Initialisation de la carte Leaflet après chargement du DOM
+        document.addEventListener('DOMContentLoaded', function() {
             // Coordonnées GPS exactes de 13 rue Robert Boulin, St Médard de Guizières
             // Source : 45°00'48.2"N 0°03'39.9"W
             const stMedard = [45.0134, -0.0611];
@@ -2337,10 +2339,7 @@
                     .addTo(map)
                     .bindPopup(`<div style="text-align: center; padding: 3px;"><strong>${city.name}</strong></div>`);
             });
-        })();
+        });
     </script>
-
-    <!-- Leaflet JavaScript -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </body>
 </html>
