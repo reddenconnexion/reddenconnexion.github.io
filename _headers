@@ -1,0 +1,24 @@
+# Security Headers pour Red Den Connexion
+# Ces headers renforcent la sécurité du site web
+
+/*
+  # Content Security Policy - Protection contre XSS
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://formspree.io; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://formspree.io https://*.tile.openstreetmap.org; frame-ancestors 'none'
+
+  # Empêche le site d'être chargé dans une iframe
+  X-Frame-Options: DENY
+
+  # Empêche le sniffing MIME
+  X-Content-Type-Options: nosniff
+
+  # Active la protection XSS du navigateur
+  X-XSS-Protection: 1; mode=block
+
+  # Politique de referrer stricte
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Permissions restreintes pour les APIs sensibles
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=()
+
+  # Force HTTPS (HSTS) - 1 an
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
