@@ -1442,7 +1442,7 @@
                <img src="logoredden.png" alt="Red Den Connexion" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                 <span class="company-name">Red Den Connexion</span>
             </div>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
             <ul id="menu">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#pourquoi">Pourquoi nous</a></li>
@@ -1457,7 +1457,7 @@
 
     <section id="accueil" class="hero">
         <div class="hero-content">
-            <div class="hero-logo" id="heroLogo" onclick="flipLogo()">
+            <div class="hero-logo" id="heroLogo">
                 <div class="hero-logo-inner">
                     <div class="hero-logo-face front">
                         <img src="logoredden.png" alt="Red Den Connexion - Électricien professionnel St Médard de Guizières">
@@ -1573,7 +1573,7 @@
         <div class="gallery-grid">
             <!-- Réalisation 1 : Tableau électrique -->
             <div class="gallery-item">
-                <div class="gallery-image-wrapper" onclick="openLightbox('tableauhallescoutras.jpg')">
+                <div class="gallery-image-wrapper" data-lightbox="tableauhallescoutras.jpg">
                     <img src="tableauhallescoutras.jpg" alt="Tableau électrique professionnel installé aux normes NF C 15-100 par Red Den Connexion" loading="lazy">
                 </div>
                 <div class="gallery-content">
@@ -1595,7 +1595,7 @@
 
             <!-- Réalisation 2 : Installation professionnelle -->
             <div class="gallery-item">
-                <div class="gallery-image-wrapper" onclick="openLightbox('installationpro.jpg')">
+                <div class="gallery-image-wrapper" data-lightbox="installationpro.jpg">
                     <img src="installationpro.jpg" alt="Installation électrique professionnelle complète - Red Den Connexion électricien" loading="lazy">
                 </div>
                 <div class="gallery-content">
@@ -1617,7 +1617,7 @@
 
             <!-- Réalisation 3 : Expertise électricien -->
             <div class="gallery-item">
-                <div class="gallery-image-wrapper" onclick="openLightbox('deniselec.png')">
+                <div class="gallery-image-wrapper" data-lightbox="deniselec.png">
                     <img src="deniselec.png" alt="Électricien professionnel Red Den Connexion avec 25 ans d'expérience" loading="lazy">
                 </div>
                 <div class="gallery-content">
@@ -1639,7 +1639,7 @@
 
             <!-- Réalisation 4 : Mise aux normes -->
             <div class="gallery-item">
-                <div class="gallery-image-wrapper" onclick="openLightbox('filspriseancienne.jpg')">
+                <div class="gallery-image-wrapper" data-lightbox="filspriseancienne.jpg">
                     <img src="filspriseancienne.jpg" alt="Rénovation électrique et mise aux normes d'installation ancienne" loading="lazy">
                 </div>
                 <div class="gallery-content">
@@ -1661,7 +1661,7 @@
 
             <!-- Réalisation 5 : Multiprises sécurisées -->
             <div class="gallery-item">
-                <div class="gallery-image-wrapper" onclick="openLightbox('boitier4prises.jpg')">
+                <div class="gallery-image-wrapper" data-lightbox="boitier4prises.jpg">
                     <img src="boitier4prises.jpg" alt="Installation de multiprises sécurisées et conformes aux normes" loading="lazy">
                 </div>
                 <div class="gallery-content">
@@ -1683,7 +1683,7 @@
 
             <!-- Réalisation 6 : Sécurité avant/après -->
             <div class="gallery-item">
-                <div class="gallery-image-wrapper" onclick="openLightbox('dangervssecurite.jpg')">
+                <div class="gallery-image-wrapper" data-lightbox="dangervssecurite.jpg">
                     <img src="dangervssecurite.jpg" alt="Comparaison danger vs sécurité électrique - importance des normes" loading="lazy">
                 </div>
                 <div class="gallery-content">
@@ -1706,9 +1706,9 @@
     </section>
 
     <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-        <div class="lightbox-content" onclick="closeLightbox(event)">
-            <img id="lightbox-img" src="" alt="Image agrandie" onclick="event.stopPropagation()">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <div class="lightbox-content" id="lightboxContent">
+            <img id="lightbox-img" src="" alt="Image agrandie">
         </div>
     </div>
 
@@ -1749,7 +1749,7 @@
         <h2 class="animate-on-scroll">Questions Fréquentes</h2>
         <div class="faq-container">
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <div class="faq-question">
                     <h3>Intervenez-vous en urgence ?</h3>
                     <span class="faq-icon">▼</span>
                 </div>
@@ -1759,7 +1759,7 @@
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <div class="faq-question">
                     <h3>Proposez-vous un devis gratuit ?</h3>
                     <span class="faq-icon">▼</span>
                 </div>
@@ -1769,7 +1769,7 @@
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <div class="faq-question">
                     <h3>Êtes-vous certifié et assuré ?</h3>
                     <span class="faq-icon">▼</span>
                 </div>
@@ -1779,7 +1779,7 @@
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <div class="faq-question">
                     <h3>Quelle est votre zone d'intervention ?</h3>
                     <span class="faq-icon">▼</span>
                 </div>
@@ -1789,7 +1789,7 @@
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <div class="faq-question">
                     <h3>Quels types de travaux réalisez-vous ?</h3>
                     <span class="faq-icon">▼</span>
                 </div>
@@ -1799,7 +1799,7 @@
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <div class="faq-question">
                     <h3>Combien de temps prend une installation électrique ?</h3>
                     <span class="faq-icon">▼</span>
                 </div>
@@ -1809,7 +1809,7 @@
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <div class="faq-question">
                     <h3>Acceptez-vous les paiements échelonnés ?</h3>
                     <span class="faq-icon">▼</span>
                 </div>
@@ -1819,7 +1819,7 @@
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <div class="faq-question">
                     <h3>Fournissez-vous le matériel électrique ?</h3>
                     <span class="faq-icon">▼</span>
                 </div>
@@ -1856,17 +1856,20 @@
         <div class="contact-form animate-on-scroll">
             <h3 style="text-align: center; margin-bottom: 2rem; color: #ff3333;">Demande de devis gratuit</h3>
             <form id="contactForm" action="https://formspree.io/f/xeorbyrg" method="POST">
+                <!-- Honeypot field - Protection anti-spam -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
                 <div class="form-group">
                     <label for="name">Nom complet *</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" required maxlength="100" minlength="2">
                 </div>
                 <div class="form-group">
                     <label for="phone">Téléphone *</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9\s\+\-\(\)]{10,20}" title="Numéro de téléphone valide (10-20 caractères)">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" maxlength="100">
                 </div>
                 <div class="form-group">
                     <label for="service">Type de service</label>
@@ -1881,7 +1884,7 @@
                 </div>
                 <div class="form-group">
                     <label for="message">Décrivez votre projet *</label>
-                    <textarea id="message" name="message" required></textarea>
+                    <textarea id="message" name="message" required maxlength="2000" minlength="10"></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Envoyer ma demande</button>
                 <div id="formMessage"></div>
@@ -1896,88 +1899,173 @@
         <p style="margin-top: 0.5rem; opacity: 0.5; font-size: 0.8rem;"><a href="mentions-legales.html" style="color: #ff9999; text-decoration: none;">Mentions légales</a> | <a href="confidentialite.html" style="color: #ff9999; text-decoration: none;">Politique de confidentialité</a></p>
     </footer>
 
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+    <button class="back-to-top" id="backToTop">↑</button>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            menu.classList.toggle('active');
-            
-            if (menu.classList.contains('active')) {
-                menuBtn.innerHTML = '✕';
-            } else {
-                menuBtn.innerHTML = '☰';
-            }
-        }
+        // ===== EVENT LISTENERS =====
+        // Initialisation de tous les event listeners au chargement du DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu mobile toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    const menu = document.getElementById('menu');
+                    menu.classList.toggle('active');
 
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('menu');
-                const menuBtn = document.querySelector('.mobile-menu-btn');
-                menu.classList.remove('active');
-                menuBtn.innerHTML = '☰';
+                    if (menu.classList.contains('active')) {
+                        mobileMenuBtn.innerHTML = '✕';
+                    } else {
+                        mobileMenuBtn.innerHTML = '☰';
+                    }
+                });
+            }
+
+            // Fermer menu au clic sur liens
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    const menu = document.getElementById('menu');
+                    const menuBtn = document.getElementById('mobileMenuBtn');
+                    if (menu && menuBtn) {
+                        menu.classList.remove('active');
+                        menuBtn.innerHTML = '☰';
+                    }
+                });
+            });
+
+            // Hero logo flip
+            const heroLogo = document.getElementById('heroLogo');
+            if (heroLogo) {
+                heroLogo.addEventListener('click', function() {
+                    const logoInner = heroLogo.querySelector('.hero-logo-inner');
+                    logoInner.classList.remove('flip-animation', 'flip-back-animation');
+
+                    if (heroLogo.classList.contains('flipped')) {
+                        heroLogo.classList.remove('flipped');
+                        void logoInner.offsetWidth;
+                        logoInner.classList.add('flip-back-animation');
+                    } else {
+                        heroLogo.classList.add('flipped');
+                        void logoInner.offsetWidth;
+                        logoInner.classList.add('flip-animation');
+                    }
+                });
+
+                // Auto-flip au chargement
+                setTimeout(function() {
+                    heroLogo.click();
+                    setTimeout(function() {
+                        heroLogo.click();
+                    }, 3000);
+                }, 500);
+            }
+
+            // Lightbox - Ouvrir au clic sur les images
+            document.querySelectorAll('.gallery-image-wrapper').forEach(wrapper => {
+                wrapper.addEventListener('click', function() {
+                    const imgSrc = this.getAttribute('data-lightbox');
+                    if (imgSrc) {
+                        const lightbox = document.getElementById('lightbox');
+                        const lightboxImg = document.getElementById('lightbox-img');
+                        lightboxImg.src = imgSrc;
+                        lightbox.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            // Lightbox - Fermer au clic sur X
+            const lightboxClose = document.getElementById('lightboxClose');
+            if (lightboxClose) {
+                lightboxClose.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    const lightbox = document.getElementById('lightbox');
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // Lightbox - Fermer au clic sur fond
+            const lightboxContent = document.getElementById('lightboxContent');
+            if (lightboxContent) {
+                lightboxContent.addEventListener('click', function(event) {
+                    if (event.target === lightboxContent) {
+                        const lightbox = document.getElementById('lightbox');
+                        lightbox.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // Lightbox - Image ne ferme pas au clic
+            const lightboxImg = document.getElementById('lightbox-img');
+            if (lightboxImg) {
+                lightboxImg.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            }
+
+            // FAQ - Toggle au clic
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const isActive = faqItem.classList.contains('active');
+
+                    // Fermer tous les items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+
+                    // Ouvrir l'item cliqué s'il n'était pas actif
+                    if (!isActive) {
+                        faqItem.classList.add('active');
+                    }
+                });
+            });
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (backToTop) {
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Initialiser les counters
+            document.querySelectorAll('.counter-years, .counter-radius').forEach(el => {
+                counterObserver.observe(el);
             });
         });
 
-        // Flip logo hero animation (coin flip effect)
-        function flipLogo() {
-            const heroLogo = document.getElementById('heroLogo');
-            const logoInner = heroLogo.querySelector('.hero-logo-inner');
-
-            // Remove any existing animation classes
-            logoInner.classList.remove('flip-animation', 'flip-back-animation');
-
-            if (heroLogo.classList.contains('flipped')) {
-                // Currently flipped, flip back to logo
-                heroLogo.classList.remove('flipped');
-                // Force reflow
-                void logoInner.offsetWidth;
-                logoInner.classList.add('flip-back-animation');
-            } else {
-                // Currently showing logo, flip to photo
-                heroLogo.classList.add('flipped');
-                // Force reflow
-                void logoInner.offsetWidth;
-                logoInner.classList.add('flip-animation');
-            }
-        }
-
-        // Auto-flip animation on page load
-        window.addEventListener('load', function() {
-            // Wait 500ms after page load to start the animation
-            setTimeout(function() {
-                flipLogo(); // First flip: logo → photo
-
-                // After 3 seconds, flip back to logo
-                setTimeout(function() {
-                    flipLogo(); // Second flip: photo → logo
-                }, 3000);
-            }, 500);
-        });
-
-        function openLightbox(imgSrc) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = imgSrc;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox(event) {
-            if (event) {
-                event.stopPropagation();
-            }
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
+        // Fermeture lightbox avec touche Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                closeLightbox();
+                const lightbox = document.getElementById('lightbox');
+                if (lightbox && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             }
         });
+
+
+        // Fonction d'affichage des erreurs de formulaire
+        function showFormError(message) {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.style.display = 'block';
+            formMessage.className = 'error';
+            formMessage.style.background = '#f8d7da';
+            formMessage.style.color = '#721c24';
+            formMessage.style.border = '1px solid #f5c6cb';
+            formMessage.textContent = '❌ ' + message;
+
+            // Masquer après 5 secondes
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        }
 
         // Gestion du formulaire avec Formspree
         const form = document.getElementById('contactForm');
@@ -1986,6 +2074,54 @@
         if (form) {
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
+
+                // Validation côté client
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                const honeypot = form.querySelector('[name="_gotcha"]').value;
+
+                // Détection anti-spam (honeypot)
+                if (honeypot) {
+                    console.warn('Spam détecté');
+                    return false;
+                }
+
+                // Validation du nom
+                if (name.length < 2 || name.length > 100) {
+                    showFormError('Le nom doit contenir entre 2 et 100 caractères.');
+                    return false;
+                }
+
+                // Validation du téléphone
+                const phoneRegex = /^[0-9\s\+\-\(\)]{10,20}$/;
+                if (!phoneRegex.test(phone)) {
+                    showFormError('Veuillez entrer un numéro de téléphone valide.');
+                    return false;
+                }
+
+                // Validation de l'email si fourni
+                if (email && email.length > 0) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        showFormError('Veuillez entrer une adresse email valide.');
+                        return false;
+                    }
+                }
+
+                // Validation du message
+                if (message.length < 10 || message.length > 2000) {
+                    showFormError('Le message doit contenir entre 10 et 2000 caractères.');
+                    return false;
+                }
+
+                // Sanitisation basique - détection de tentatives XSS
+                const dangerousPatterns = /<script|javascript:|onerror=|onload=/i;
+                if (dangerousPatterns.test(name + phone + email + message)) {
+                    showFormError('Caractères non autorisés détectés dans le formulaire.');
+                    return false;
+                }
 
                 const submitBtn = form.querySelector('.submit-btn');
                 const originalBtnText = submitBtn.textContent;
@@ -2043,39 +2179,15 @@
             });
         }
 
-        // Back to top button functionality
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
         // Show/hide back to top button
         window.addEventListener('scroll', function() {
             const backToTop = document.getElementById('backToTop');
-            if (window.pageYOffset > 300) {
+            if (backToTop && window.pageYOffset > 300) {
                 backToTop.classList.add('show');
-            } else {
+            } else if (backToTop) {
                 backToTop.classList.remove('show');
             }
         });
-
-        // FAQ toggle functionality
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-
-            // Close all FAQ items
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            // Open clicked item if it wasn't active
-            if (!isActive) {
-                faqItem.classList.add('active');
-            }
-        }
 
         // ===== SCROLL-TRIGGERED ANIMATIONS =====
         // Intersection Observer for scroll animations
@@ -2095,10 +2207,8 @@
         }, observerOptions);
 
         // Observe all elements with .animate-on-scroll class
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
         });
 
         // ===== HEADER SCROLL EFFECT =====
@@ -2146,12 +2256,8 @@
             });
         }, { threshold: 0.5 });
 
-        // Initialisation de la carte Leaflet
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize counters
-            document.querySelectorAll('.counter-years, .counter-radius').forEach(el => {
-                counterObserver.observe(el);
-            });
+        // Initialisation de la carte Leaflet - IIFE pour isoler les variables
+        (function() {
 
             // Coordonnées GPS exactes de 13 rue Robert Boulin, St Médard de Guizières
             // Source : 45°00'48.2"N 0°03'39.9"W
@@ -2231,7 +2337,7 @@
                     .addTo(map)
                     .bindPopup(`<div style="text-align: center; padding: 3px;"><strong>${city.name}</strong></div>`);
             });
-        });
+        })();
     </script>
 
     <!-- Leaflet JavaScript -->
