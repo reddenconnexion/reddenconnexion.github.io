@@ -320,14 +320,34 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #1a1a1a 50%, #2d2d2d 75%, #1a1a1a 100%);
+            /* Gradient qui "respire" */
+            background: linear-gradient(270deg,
+                #1a1a1a 0%,
+                #2d2d2d 30%,
+                #3d1a1a 60%,
+                #2d2d2d 100%
+            );
             background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            animation: breatheGradient 12s ease infinite;
             color: white;
             padding: 160px 2rem 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        @keyframes breatheGradient {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .hero::before {
@@ -367,6 +387,12 @@
             perspective: 1000px;
             cursor: pointer;
             position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effect sur le logo */
+        .hero-logo:hover {
+            transform: scale(1.08) rotate(3deg);
         }
 
         .hero-logo-inner {
@@ -473,11 +499,39 @@
             animation: heroGlow 3s ease-in-out infinite;
         }
 
+        /* Animation cascade au chargement */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-logo {
+            animation: fadeInScale 0.8s ease-out;
+        }
+
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 0.5rem;
             color: #ff3333;
             text-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+            animation: fadeInUp 0.6s ease-out 0.3s backwards;
         }
 
         .hero-subtitle {
@@ -486,11 +540,27 @@
             color: #ffffff;
             margin-bottom: 1.5rem;
             line-height: 1.5;
+            min-height: 2.6rem;
         }
 
         .hero-subtitle strong {
             color: #ff9999;
             font-weight: 600;
+        }
+
+        /* Effet typing - Le texte démarre invisible */
+        #typingSubtitle {
+            opacity: 0;
+        }
+
+        /* Curseur typing */
+        .typing-cursor {
+            border-right: 2px solid #ff3333;
+            animation: blink 0.7s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
         }
 
         /* Hero Badges */
@@ -549,15 +619,35 @@
             align-items: center;
             gap: 0.5rem;
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Animation en cascade pour les quick facts */
+        .quick-fact:nth-child(1) {
+            animation: fadeInUp 0.5s ease-out 0.8s forwards;
+        }
+
+        .quick-fact:nth-child(2) {
+            animation: fadeInUp 0.5s ease-out 1s forwards;
+        }
+
+        .quick-fact:nth-child(3) {
+            animation: fadeInUp 0.5s ease-out 1.2s forwards;
         }
 
         .quick-fact:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.05);
         }
 
         .fact-icon {
             font-size: 2rem;
             opacity: 0.9;
+            transition: transform 0.3s ease;
+        }
+
+        .quick-fact:hover .fact-icon {
+            transform: scale(1.3) rotate(10deg);
         }
 
         .fact-content {
@@ -586,6 +676,8 @@
             gap: 1rem;
             flex-wrap: wrap;
             margin-top: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 1.4s forwards;
         }
 
         .cta-button {
@@ -620,16 +712,48 @@
             height: 300px;
         }
 
-        /* CTA Primary (Rouge - Appel) */
+        /* CTA Primary (Rouge - Appel) avec GLOW PULSE */
         .cta-primary {
             background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
             color: white;
             box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3),
+                            0 0 20px rgba(255, 51, 51, 0.2);
+            }
+            50% {
+                box-shadow: 0 6px 25px rgba(255, 51, 51, 0.6),
+                            0 0 40px rgba(255, 51, 51, 0.4),
+                            0 0 60px rgba(255, 51, 51, 0.2);
+            }
         }
 
         .cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 51, 51, 0.5);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 40px rgba(255, 51, 51, 0.8),
+                        0 0 60px rgba(255, 51, 51, 0.6) !important;
+            animation: glowPulse 1s ease-in-out infinite;
+        }
+
+        /* Effet ripple au clic */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
         }
 
         /* CTA Secondary (Simple) */
@@ -1469,7 +1593,9 @@
             </div>
 
             <h1>Red Den Connexion</h1>
-            <h2 class="hero-subtitle">Électricien professionnel à <strong>St Médard de Guizières</strong> - Dépannage <strong>24h/24</strong></h2>
+            <h2 class="hero-subtitle">
+                <span id="typingSubtitle" class="typing-cursor"></span>
+            </h2>
 
             <!-- Quick Facts réduits -->
             <div class="hero-quick-facts">
@@ -2033,6 +2159,67 @@
             // Initialiser les counters
             document.querySelectorAll('.counter-years, .counter-radius').forEach(el => {
                 counterObserver.observe(el);
+            });
+
+            // ===== EFFET TYPING SUR LE SOUS-TITRE =====
+            const typingText = "Électricien professionnel à St Médard de Guizières - Dépannage 24h/24";
+            const typingElement = document.getElementById('typingSubtitle');
+            let typingIndex = 0;
+
+            function typeWriter() {
+                if (typingIndex < typingText.length) {
+                    // Ajouter le prochain caractère
+                    const currentText = typingText.substring(0, typingIndex + 1);
+
+                    // Gérer les balises <strong> pour St Médard et 24h/24
+                    let displayText = currentText;
+                    if (currentText.includes('St Médard de Guizières')) {
+                        displayText = currentText.replace(
+                            'St Médard de Guizières',
+                            '<strong>St Médard de Guizières</strong>'
+                        );
+                    }
+                    if (currentText.includes('24h/24')) {
+                        displayText = displayText.replace('24h/24', '<strong>24h/24</strong>');
+                    }
+
+                    typingElement.innerHTML = displayText;
+                    typingElement.style.opacity = '1';
+                    typingIndex++;
+
+                    // Vitesse variable pour plus de naturel
+                    const speed = Math.random() * 50 + 30;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    // Retirer le curseur après avoir fini
+                    setTimeout(() => {
+                        typingElement.classList.remove('typing-cursor');
+                    }, 500);
+                }
+            }
+
+            // Démarrer l'animation typing après un court délai
+            setTimeout(typeWriter, 1000);
+
+            // ===== EFFET RIPPLE AU CLIC SUR LES BOUTONS CTA =====
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+
+                    this.appendChild(ripple);
+
+                    setTimeout(() => ripple.remove(), 600);
+                });
             });
         });
 
