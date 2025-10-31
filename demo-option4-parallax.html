@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DÉMO - Option 4 : Parallaxe Subtil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .demo-label {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff3333;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            z-index: 10000;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.5);
+        }
+
+        .instruction {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 160px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background layer avec parallaxe */
+        .parallax-bg {
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            right: -50px;
+            bottom: -50px;
+            background: radial-gradient(circle at 30% 50%,
+                rgba(255, 51, 51, 0.15) 0%,
+                rgba(139, 0, 0, 0.1) 30%,
+                transparent 70%
+            );
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Logo avec effet parallaxe au scroll */
+        .hero-logo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 1.5rem;
+            transition: transform 0.3s ease-out;
+            will-change: transform;
+        }
+
+        .logo-circle {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(139, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+            border: 5px solid #ff3333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 0 40px rgba(255, 51, 51, 0.6);
+            transition: transform 0.3s ease-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ff3333;
+            text-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+            transition: transform 0.3s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            transition: transform 0.3s ease-out;
+        }
+
+        .quick-facts {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem auto;
+            flex-wrap: wrap;
+            transition: transform 0.3s ease-out;
+        }
+
+        .fact {
+            text-align: center;
+        }
+
+        .fact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 51, 51, 0.6);
+        }
+
+        .explanation {
+            background: white;
+            color: #333;
+            padding: 3rem 2rem;
+            text-align: center;
+            min-height: 80vh;
+        }
+
+        .explanation h2 {
+            color: #ff3333;
+            margin-bottom: 1rem;
+        }
+
+        .explanation ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 2rem auto;
+            line-height: 2;
+        }
+
+        .scroll-indicator {
+            margin-top: 3rem;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-label">DÉMO - Option 4 : Parallaxe 🎯</div>
+    <div class="instruction">
+        👆 Bougez votre souris sur le fond<br>
+        👇 Scrollez pour voir l'effet 3D
+    </div>
+
+    <section class="hero">
+        <div class="parallax-bg" id="parallaxBg"></div>
+
+        <div class="hero-content">
+            <div class="hero-logo" id="heroLogo">
+                <div class="logo-circle" id="logoCircle">⚡</div>
+            </div>
+
+            <h1 id="heroTitle">Red Den Connexion</h1>
+            <p class="subtitle" id="heroSubtitle">Électricien professionnel à <strong>St Médard de Guizières</strong> - Dépannage <strong>24h/24</strong></p>
+
+            <div class="quick-facts" id="quickFacts">
+                <div class="fact">
+                    <div class="fact-icon">💰</div>
+                    <strong>Devis gratuit</strong>
+                </div>
+                <div class="fact">
+                    <div class="fact-icon">📍</div>
+                    <strong>Secteur Libourne</strong>
+                </div>
+                <div class="fact">
+                    <div class="fact-icon">⭐</div>
+                    <strong>Avis 5 étoiles</strong>
+                </div>
+            </div>
+
+            <a href="#explanation" class="cta-button">📞 Appelez maintenant</a>
+
+            <div class="scroll-indicator">👇</div>
+        </div>
+    </section>
+
+    <section class="explanation" id="explanation">
+        <h2>🎯 Option 4 : Parallaxe Subtil</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Le logo et le fond se déplacent à des vitesses différentes</p>
+
+        <ul>
+            <li><strong>✅ Effet 3D et profondeur</strong> - Sensation d'immersion</li>
+            <li><strong>✅ Interactif</strong> - Réagit au mouvement de la souris</li>
+            <li><strong>✅ Premium</strong> - Design haut de gamme 2025</li>
+            <li><strong>✅ Double effet</strong> :
+                <ul style="margin-top: 0.5rem;">
+                    <li>Mouvement souris → Background suit légèrement</li>
+                    <li>Scroll → Logo monte plus lentement que le texte</li>
+                </ul>
+            </li>
+            <li><strong>✅ Subtil</strong> - Élégant sans être agressif</li>
+            <li><strong>⚠️ Desktop focus</strong> - Effet réduit sur mobile</li>
+        </ul>
+
+        <p style="color: #666; margin-top: 2rem;">
+            Remontez en haut et bougez votre souris pour voir l'effet complet. Puis scrollez doucement pour voir le parallaxe au scroll.
+        </p>
+
+        <p style="margin-top: 2rem;">Plus de contenu pour tester le scroll...</p>
+    </section>
+
+    <script>
+        // PARALLAXE AU MOUVEMENT DE LA SOURIS
+        const parallaxBg = document.getElementById('parallaxBg');
+        const logoCircle = document.getElementById('logoCircle');
+
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+            // Background bouge légèrement
+            parallaxBg.style.transform = `translate(${x}px, ${y}px)`;
+
+            // Logo bouge dans l'autre sens (parallaxe inversé)
+            logoCircle.style.transform = `translate(${-x * 0.5}px, ${-y * 0.5}px)`;
+        });
+
+        // PARALLAXE AU SCROLL
+        const heroLogo = document.getElementById('heroLogo');
+        const heroTitle = document.getElementById('heroTitle');
+        const heroSubtitle = document.getElementById('heroSubtitle');
+        const quickFacts = document.getElementById('quickFacts');
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+
+            // Le logo monte plus lentement (effet de profondeur)
+            heroLogo.style.transform = `translateY(${scrolled * 0.3}px)`;
+
+            // Le titre et le sous-titre montent à vitesse normale
+            heroTitle.style.transform = `translateY(${scrolled * 0.5}px)`;
+            heroSubtitle.style.transform = `translateY(${scrolled * 0.6}px)`;
+            quickFacts.style.transform = `translateY(${scrolled * 0.7}px)`;
+        });
+    </script>
+</body>
+</html>
