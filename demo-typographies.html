@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typographies - Red Den Connexion</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Audiowide&family=Electrolize&family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Russo+One&family=Teko:wght@300;400;500;600;700&family=Black+Ops+One&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            border-bottom: 3px solid #ff3333;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #ff3333;
+            margin-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .demo-card {
+            background: #2d2d2d;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff3333;
+            box-shadow: 0 10px 40px rgba(255, 51, 51, 0.3);
+        }
+
+        .demo-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ff3333;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .font-name {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .demo-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .description {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(255, 51, 51, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: #ff9999;
+        }
+
+        .recommended {
+            border: 3px solid #ffff00;
+        }
+
+        .recommended::before {
+            content: '⭐ TOP CHOIX';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffff00;
+            color: #1a1a1a;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        /* Option 1: Orbitron */
+        .option1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            color: #ff3333;
+            text-shadow: 0 0 30px rgba(255, 51, 51, 0.7),
+                         0 0 60px rgba(255, 51, 51, 0.4);
+            letter-spacing: 2px;
+        }
+
+        /* Option 2: Audiowide */
+        .option2 {
+            font-family: 'Audiowide', sans-serif;
+            color: #ff3333;
+            text-shadow: 0 5px 15px rgba(255, 51, 51, 0.5);
+            text-transform: uppercase;
+        }
+
+        /* Option 3: Electrolize */
+        .option3 {
+            font-family: 'Electrolize', sans-serif;
+            font-weight: 400;
+            background: linear-gradient(135deg, #ff3333 0%, #ff6666 50%, #ff3333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(255, 51, 51, 0.6));
+            letter-spacing: 4px;
+        }
+
+        /* Option 4: Bebas Neue */
+        .option4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ff3333,
+                         0 0 20px #ff3333,
+                         0 0 30px #ff3333,
+                         0 3px 5px rgba(0,0,0,0.5);
+            letter-spacing: 8px;
+        }
+
+        /* Option 5: Rajdhani */
+        .option5 {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            color: #ff3333;
+            text-shadow: 0 0 20px rgba(255, 51, 51, 0.8),
+                         0 5px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Option 6: Russo One */
+        .option6 {
+            font-family: 'Russo One', sans-serif;
+            background: linear-gradient(180deg, #ffffff 0%, #ff3333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 5px 15px rgba(255, 51, 51, 0.5));
+        }
+
+        /* Option 7: Teko */
+        .option7 {
+            font-family: 'Teko', sans-serif;
+            font-weight: 600;
+            color: #ff3333;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5),
+                         0 0 30px rgba(255, 51, 51, 0.6);
+            letter-spacing: 5px;
+            font-size: 4.5rem;
+        }
+
+        /* Option 8: Black Ops One */
+        .option8 {
+            font-family: 'Black Ops One', sans-serif;
+            color: #ff3333;
+            text-shadow: 2px 2px 0 #000,
+                         0 0 20px rgba(255, 51, 51, 0.8);
+            letter-spacing: 2px;
+        }
+
+        /* Option 9: Saira Condensed + Effet néon */
+        .option9 {
+            font-family: 'Saira Condensed', sans-serif;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 0 10px #ff3333,
+                         0 0 20px #ff3333,
+                         0 0 30px #ff3333,
+                         0 0 40px #ff3333,
+                         0 0 70px #ff3333,
+                         0 0 80px #ff3333,
+                         0 0 100px #ff3333;
+            letter-spacing: 6px;
+            animation: neonFlicker 3s infinite alternate;
+        }
+
+        @keyframes neonFlicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 0 0 10px #ff3333,
+                             0 0 20px #ff3333,
+                             0 0 30px #ff3333,
+                             0 0 40px #ff3333,
+                             0 0 70px #ff3333,
+                             0 0 80px #ff3333,
+                             0 0 100px #ff3333;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-title {
+                font-size: 2.5rem;
+            }
+
+            .option7 {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ Typographies Uniques</h1>
+            <p>9 options pour "Red Den Connexion"</p>
+        </header>
+
+        <div class="grid">
+            <!-- Option 1 -->
+            <div class="demo-card recommended">
+                <div class="demo-number">1</div>
+                <div class="font-name">Orbitron - Futuriste Tech</div>
+                <div class="demo-title option1">RED DEN<br>CONNEXION</div>
+                <div class="description">
+                    Police futuriste parfaite pour l'électricité moderne. Glow rouge électrique intense.
+                    <div class="tags">
+                        <span class="tag">⚡ Tech</span>
+                        <span class="tag">🔴 Glow</span>
+                        <span class="tag">🚀 Moderne</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 2 -->
+            <div class="demo-card">
+                <div class="demo-number">2</div>
+                <div class="font-name">Audiowide - Bold Impact</div>
+                <div class="demo-title option2">RED DEN<br>CONNEXION</div>
+                <div class="description">
+                    Lettres larges et impactantes. Style rétro-futuriste années 80.
+                    <div class="tags">
+                        <span class="tag">💪 Bold</span>
+                        <span class="tag">🎮 Retro</span>
+                        <span class="tag">📢 Impact</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 3 -->
+            <div class="demo-card recommended">
+                <div class="demo-number">3</div>
+                <div class="font-name">Electrolize - Gradient Rouge</div>
+                <div class="demo-title option3">RED DEN CONNEXION</div>
+                <div class="description">
+                    Police "électrique" avec gradient rouge lumineux. Très thématique !
+                    <div class="tags">
+                        <span class="tag">⚡ Électrique</span>
+                        <span class="tag">🌈 Gradient</span>
+                        <span class="tag">✨ Élégant</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 4 -->
+            <div class="demo-card">
+                <div class="demo-number">4</div>
+                <div class="font-name">Bebas Neue - Néon Classique</div>
+                <div class="demo-title option4">RED DEN CONNEXION</div>
+                <div class="description">
+                    Style enseigne néon blanc avec glow rouge. Très lisible et percutant.
+                    <div class="tags">
+                        <span class="tag">💡 Néon</span>
+                        <span class="tag">📖 Lisible</span>
+                        <span class="tag">🎯 Percutant</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 5 -->
+            <div class="demo-card">
+                <div class="demo-number">5</div>
+                <div class="font-name">Rajdhani - Sport Tech</div>
+                <div class="demo-title option5">RED DEN CONNEXION</div>
+                <div class="description">
+                    Police technique et sportive. Énergie et dynamisme.
+                    <div class="tags">
+                        <span class="tag">⚡ Dynamique</span>
+                        <span class="tag">🏃 Sport</span>
+                        <span class="tag">🔧 Tech</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 6 -->
+            <div class="demo-card">
+                <div class="demo-number">6</div>
+                <div class="font-name">Russo One - Dégradé Premium</div>
+                <div class="demo-title option6">RED DEN<br>CONNEXION</div>
+                <div class="description">
+                    Dégradé blanc vers rouge. Élégant et haut de gamme.
+                    <div class="tags">
+                        <span class="tag">💎 Premium</span>
+                        <span class="tag">🌈 Dégradé</span>
+                        <span class="tag">✨ Classe</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 7 -->
+            <div class="demo-card">
+                <div class="demo-number">7</div>
+                <div class="font-name">Teko - Super Condensé</div>
+                <div class="demo-title option7">RED DEN<br>CONNEXION</div>
+                <div class="description">
+                    Police haute et condensée. Impact maximal en hauteur.
+                    <div class="tags">
+                        <span class="tag">📏 Condensé</span>
+                        <span class="tag">⬆️ Vertical</span>
+                        <span class="tag">💥 Impact</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 8 -->
+            <div class="demo-card">
+                <div class="demo-number">8</div>
+                <div class="font-name">Black Ops One - Militaire</div>
+                <div class="demo-title option8">RED DEN<br>CONNEXION</div>
+                <div class="description">
+                    Style pochoir militaire. Robuste et solide.
+                    <div class="tags">
+                        <span class="tag">💪 Robuste</span>
+                        <span class="tag">🎖️ Militaire</span>
+                        <span class="tag">🔨 Solide</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 9 -->
+            <div class="demo-card recommended">
+                <div class="demo-number">9</div>
+                <div class="font-name">Saira Condensed - Néon Animé</div>
+                <div class="demo-title option9">RED DEN CONNEXION</div>
+                <div class="description">
+                    Effet néon qui clignote légèrement. Vraiment unique !
+                    <div class="tags">
+                        <span class="tag">💡 Néon</span>
+                        <span class="tag">✨ Animé</span>
+                        <span class="tag">🌟 Unique</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🎨 Typographies pour Red Den Connexion</p>
+            <p style="margin-top: 0.5rem;">Choisissez votre préférée et je l'implémente immédiatement !</p>
+        </div>
+    </div>
+</body>
+</html>
