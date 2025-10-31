@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DÉMO - Option 2 : Gradient Animé</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .demo-label {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff3333;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            z-index: 10000;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.5);
+        }
+
+        .hero {
+            /* GRADIENT ANIMÉ DYNAMIQUE */
+            background: linear-gradient(270deg,
+                #1a1a1a 0%,
+                #2d2d2d 20%,
+                #3d1a1a 40%,
+                #2d2d2d 60%,
+                #1a1a1a 80%,
+                #0d0d0d 100%
+            );
+            background-size: 600% 600%;
+            animation: gradientWave 20s ease infinite;
+
+            color: white;
+            padding: 160px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientWave {
+            0% {
+                background-position: 0% 50%;
+            }
+            25% {
+                background-position: 50% 75%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            75% {
+                background-position: 50% 25%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Overlay subtil pour plus de profondeur */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
+            animation: overlayMove 15s ease-in-out infinite;
+        }
+
+        @keyframes overlayMove {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translate(0, 0);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translate(20px, -20px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-logo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .logo-circle {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(139, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+            border: 5px solid #ff3333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 0 40px rgba(255, 51, 51, 0.6);
+            animation: logoPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% {
+                box-shadow: 0 0 40px rgba(255, 51, 51, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(255, 51, 51, 0.9);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ff3333;
+            text-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .quick-facts {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem auto;
+            flex-wrap: wrap;
+        }
+
+        .fact {
+            text-align: center;
+        }
+
+        .fact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 51, 51, 0.6);
+        }
+
+        .explanation {
+            background: white;
+            color: #333;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .explanation h2 {
+            color: #ff3333;
+            margin-bottom: 1rem;
+        }
+
+        .explanation ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 2rem auto;
+            line-height: 2;
+        }
+
+        .gradient-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-label">DÉMO - Option 2 : Gradient 🌊</div>
+    <div class="gradient-indicator">👀 Regardez le fond se déplacer lentement...</div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <div class="logo-circle">⚡</div>
+            </div>
+
+            <h1>Red Den Connexion</h1>
+            <p class="subtitle">Électricien professionnel à <strong>St Médard de Guizières</strong> - Dépannage <strong>24h/24</strong></p>
+
+            <div class="quick-facts">
+                <div class="fact">
+                    <div class="fact-icon">💰</div>
+                    <strong>Devis gratuit</strong>
+                </div>
+                <div class="fact">
+                    <div class="fact-icon">📍</div>
+                    <strong>Secteur Libourne</strong>
+                </div>
+                <div class="fact">
+                    <div class="fact-icon">⭐</div>
+                    <strong>Avis 5 étoiles</strong>
+                </div>
+            </div>
+
+            <a href="#" class="cta-button">📞 Appelez maintenant</a>
+        </div>
+    </section>
+
+    <section class="explanation">
+        <h2>🌟 Option 2 : Gradient Animé Dynamique</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Le fond se déplace lentement, créant une impression de profondeur</p>
+
+        <ul>
+            <li><strong>✅ Effet hypnotique</strong> - Moderne et élégant</li>
+            <li><strong>✅ Ultra-léger</strong> - 100% CSS, zéro JavaScript</li>
+            <li><strong>✅ Performance parfaite</strong> - Aucun impact sur la vitesse</li>
+            <li><strong>✅ Subtil</strong> - On le remarque sans qu'il soit agressif</li>
+            <li><strong>✅ Tendance 2025</strong> - Design très actuel</li>
+            <li><strong>✅ Profondeur</strong> - Donne une impression 3D</li>
+        </ul>
+
+        <p style="color: #666; margin-top: 2rem;">Le gradient "respire" et se déplace doucement. Fixez le fond pendant 10 secondes pour voir l'effet complet.</p>
+    </section>
+</body>
+</html>
