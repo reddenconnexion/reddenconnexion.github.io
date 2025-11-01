@@ -72,22 +72,16 @@ fi
 HOOK_SOURCE="git-hooks/pre-commit-optimize-images"
 HOOK_DEST=".git/hooks/pre-commit"
 
-# Si le fichier source n'existe pas, créer le hook directement
+# Vérifier que le fichier source existe
 if [ ! -f "$HOOK_SOURCE" ]; then
-    echo -e "${BLUE}📝 Création du hook pre-commit...${NC}"
-
-    # Le hook a déjà été créé dans .git/hooks/pre-commit
-    if [ -f "$HOOK_DEST" ]; then
-        echo -e "${GREEN}✅ Hook pre-commit déjà installé${NC}"
-    else
-        echo -e "${RED}❌ Erreur: Hook pre-commit introuvable${NC}"
-        exit 1
-    fi
-else
-    # Copier depuis le fichier source
-    cp "$HOOK_SOURCE" "$HOOK_DEST"
-    echo -e "${GREEN}✅ Hook pre-commit copié${NC}"
+    echo -e "${RED}❌ Erreur: Fichier source du hook introuvable${NC}"
+    echo "   Attendu: $HOOK_SOURCE"
+    exit 1
 fi
+
+# Copier depuis le fichier source
+cp "$HOOK_SOURCE" "$HOOK_DEST"
+echo -e "${GREEN}✅ Hook pre-commit copié depuis $HOOK_SOURCE${NC}"
 
 # Rendre le hook exécutable
 chmod +x "$HOOK_DEST"
