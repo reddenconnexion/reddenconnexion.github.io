@@ -1,5 +1,24 @@
 # 🖼️ Guide d'optimisation des images - Red Den Connexion
 
+## 🤖 NOUVEAU : Optimisation automatique disponible !
+
+**Git Hook installé** : Vos futures images seront **automatiquement optimisées** à chaque commit !
+
+📖 **Voir [AUTOMATISATION-IMAGES.md](AUTOMATISATION-IMAGES.md)** pour plus de détails
+
+⚠️ **Action requise** : Installer ImageMagick pour activer l'optimisation
+```bash
+sudo apt install imagemagick optipng  # Ubuntu/Debian
+brew install imagemagick optipng      # macOS
+```
+
+**Ce guide reste utile pour** :
+- Optimiser les images **existantes** (une seule fois)
+- Convertir en WebP (bonus)
+- Comprendre le fonctionnement
+
+---
+
 ## 📊 Diagnostic initial
 
 ### Images trop lourdes identifiées :
