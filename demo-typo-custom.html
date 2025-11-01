@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typographies Custom - Red Den Connexion</title>
+
+    <!-- Google Fonts base -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Rajdhani:wght@700&family=Teko:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            border-bottom: 3px solid #ff3333;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #ff3333;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-section {
+            margin-bottom: 6rem;
+            padding: 4rem 2rem;
+            background: #1a1a1a;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 51, 51, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #ff9999;
+            margin-bottom: 1rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #999;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .demo-title {
+            font-size: 5rem;
+            text-align: center;
+            margin: 2rem 0;
+            line-height: 1.2;
+        }
+
+        .technique-explanation {
+            background: rgba(255, 51, 51, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #ff3333;
+            margin-top: 2rem;
+        }
+
+        .technique-explanation h3 {
+            color: #ff3333;
+            margin-bottom: 1rem;
+        }
+
+        .technique-explanation code {
+            background: #000;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #ff9999;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pros, .cons {
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .pros {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .cons {
+            background: rgba(255, 100, 0, 0.1);
+            border: 1px solid rgba(255, 100, 0, 0.3);
+        }
+
+        /* ========== TECHNIQUE 1 : LETTRES ÉLECTRIQUES ========== */
+        .electric-letters {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 5.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .electric-letters .letter {
+            display: inline-block;
+            position: relative;
+            color: #ff3333;
+            text-shadow: 0 0 20px rgba(255, 51, 51, 0.8),
+                         0 0 40px rgba(255, 51, 51, 0.6),
+                         0 0 60px rgba(255, 51, 51, 0.4);
+            animation: electricPulse 3s infinite;
+            animation-delay: calc(var(--i) * 0.1s);
+        }
+
+        @keyframes electricPulse {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 51, 51, 0.8),
+                             0 0 40px rgba(255, 51, 51, 0.6);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 51, 51, 1),
+                             0 0 60px rgba(255, 51, 51, 0.8),
+                             0 0 90px rgba(255, 51, 51, 0.6);
+            }
+        }
+
+        /* Éclairs entre les lettres */
+        .electric-letters .lightning {
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, #fff 0%, #ff3333 50%, transparent 100%);
+            top: 50%;
+            left: 100%;
+            margin-left: -10px;
+            opacity: 0;
+            animation: lightningFlash 2s infinite;
+            animation-delay: calc(var(--i) * 0.15s);
+        }
+
+        @keyframes lightningFlash {
+            0%, 90%, 100% { opacity: 0; }
+            92%, 94%, 96% { opacity: 1; }
+            93%, 95% { opacity: 0.3; }
+        }
+
+        /* ========== TECHNIQUE 2 : CIRCUIT BOARD STYLE ========== */
+        .circuit-style {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            position: relative;
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.8),
+                         0 0 20px rgba(0, 255, 0, 0.6);
+            letter-spacing: 8px;
+        }
+
+        .circuit-style::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #ff3333;
+            text-shadow: 0 0 10px rgba(255, 51, 51, 0.8);
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+            animation: circuitGlitch 3s infinite;
+        }
+
+        @keyframes circuitGlitch {
+            0%, 100% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); }
+            25% { clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%); }
+            50% { clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%); }
+            75% { clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%); }
+        }
+
+        /* Lignes de circuit */
+        .circuit-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: #00ff00;
+            box-shadow: 0 0 5px #00ff00;
+            opacity: 0.3;
+        }
+
+        .circuit-line.h {
+            height: 2px;
+            width: 100%;
+            animation: circuitFlow 4s infinite;
+        }
+
+        .circuit-line.v {
+            width: 2px;
+            height: 100%;
+            animation: circuitFlow 3s infinite;
+        }
+
+        @keyframes circuitFlow {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* ========== TECHNIQUE 3 : VOLTAGE DISPLAY ========== */
+        .voltage-display {
+            font-family: 'Teko', sans-serif;
+            font-weight: 700;
+            position: relative;
+            background: linear-gradient(90deg,
+                #000 0%,
+                #1a0000 25%,
+                #ff3333 50%,
+                #1a0000 75%,
+                #000 100%
+            );
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: voltageFlow 3s linear infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 51, 51, 0.8));
+        }
+
+        @keyframes voltageFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Indicateur de voltage */
+        .voltage-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .voltage-bar {
+            width: 60px;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .voltage-bar::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff3333, #ffff00);
+            animation: voltageMeter 2s ease-in-out infinite;
+        }
+
+        @keyframes voltageMeter {
+            0%, 100% { width: 20%; }
+            50% { width: 90%; }
+        }
+
+        /* ========== TECHNIQUE 4 : NEON TUBE LETTERS ========== */
+        .neon-tube {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            color: #fff;
+            position: relative;
+            text-shadow:
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #ff3333,
+                0 0 40px #ff3333,
+                0 0 70px #ff3333,
+                0 0 80px #ff3333,
+                0 0 100px #ff3333,
+                0 0 150px #ff3333;
+            animation: neonFlicker 1.5s infinite alternate;
+            letter-spacing: 10px;
+        }
+
+        @keyframes neonFlicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                    0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 30px #ff3333,
+                    0 0 40px #ff3333,
+                    0 0 70px #ff3333,
+                    0 0 80px #ff3333,
+                    0 0 100px #ff3333,
+                    0 0 150px #ff3333;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        /* Reflet au sol */
+        .neon-reflection {
+            position: relative;
+        }
+
+        .neon-reflection::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 100%;
+            transform: scaleY(-1);
+            opacity: 0.3;
+            background: linear-gradient(to bottom, rgba(255, 51, 51, 0.3) 0%, transparent 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: blur(4px);
+        }
+
+        /* ========== TECHNIQUE 5 : ARC ÉLECTRIQUE ========== */
+        .arc-electric {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            position: relative;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+
+        .arc-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .electric-arc {
+            position: absolute;
+            width: 100%;
+            height: 120%;
+            top: -10%;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .arc-path {
+            stroke: #00ffff;
+            stroke-width: 2;
+            fill: none;
+            filter: drop-shadow(0 0 5px #00ffff) drop-shadow(0 0 10px #00ffff);
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: arcFlow 2s linear infinite;
+        }
+
+        @keyframes arcFlow {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .demo-title {
+                font-size: 2.5rem;
+            }
+
+            .electric-letters {
+                font-size: 3rem;
+            }
+
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 2rem 1rem;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.6);
+        }
+
+        .recommendation {
+            background: rgba(255, 255, 0, 0.1);
+            border: 2px solid #ffff00;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .recommendation h3 {
+            color: #ffff00;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔥 Typographies 100% UNIQUES</h1>
+            <p>Créer une police qui N'EXISTE NULLE PART AILLEURS</p>
+            <p style="margin-top: 1rem; color: #999;">5 techniques avancées pour un rendu unique</p>
+        </header>
+
+        <!-- TECHNIQUE 1 -->
+        <div class="demo-section">
+            <div class="section-title">Technique 1 : Lettres Électriques Animées</div>
+            <div class="section-subtitle">Chaque lettre pulse indépendamment + éclairs entre les lettres</div>
+
+            <div class="demo-title">
+                <div class="electric-letters">
+                    <span class="letter" style="--i:0">R<span class="lightning" style="--i:0"></span></span>
+                    <span class="letter" style="--i:1">E<span class="lightning" style="--i:1"></span></span>
+                    <span class="letter" style="--i:2">D<span class="lightning" style="--i:2"></span></span>
+                    <span style="display: inline-block; width: 40px;"></span>
+                    <span class="letter" style="--i:3">D<span class="lightning" style="--i:3"></span></span>
+                    <span class="letter" style="--i:4">E<span class="lightning" style="--i:4"></span></span>
+                    <span class="letter" style="--i:5">N<span class="lightning" style="--i:5"></span></span>
+                </div>
+                <br>
+                <div class="electric-letters">
+                    <span class="letter" style="--i:6">C<span class="lightning" style="--i:6"></span></span>
+                    <span class="letter" style="--i:7">O<span class="lightning" style="--i:7"></span></span>
+                    <span class="letter" style="--i:8">N<span class="lightning" style="--i:8"></span></span>
+                    <span class="letter" style="--i:9">N<span class="lightning" style="--i:9"></span></span>
+                    <span class="letter" style="--i:10">E<span class="lightning" style="--i:10"></span></span>
+                    <span class="letter" style="--i:11">X<span class="lightning" style="--i:11"></span></span>
+                    <span class="letter" style="--i:12">I<span class="lightning" style="--i:12"></span></span>
+                    <span class="letter" style="--i:13">O<span class="lightning" style="--i:13"></span></span>
+                    <span class="letter" style="--i:14">N<span class="lightning" style="--i:14"></span></span>
+                </div>
+            </div>
+
+            <div class="technique-explanation">
+                <h3>💡 Comment ça marche ?</h3>
+                <p>Chaque lettre est un élément indépendant avec son propre timing d'animation. Des mini-éclairs apparaissent aléatoirement entre les lettres.</p>
+
+                <div class="pros-cons">
+                    <div class="pros">
+                        <strong>✅ Avantages:</strong>
+                        <ul>
+                            <li>100% unique - personne n'a ça</li>
+                            <li>Très thématique (électricité)</li>
+                            <li>Attire immédiatement l'œil</li>
+                            <li>Pure CSS/HTML - rapide</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <strong>⚠️ À considérer:</strong>
+                        <ul>
+                            <li>Animation continue (peut distraire)</li>
+                            <li>Besoin de wrap chaque lettre</li>
+                            <li>Moins lisible en petit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TECHNIQUE 2 -->
+        <div class="demo-section">
+            <div class="section-title">Technique 2 : Style Circuit Imprimé</div>
+            <div class="section-subtitle">Effet glitch électronique + lignes de circuit qui circulent</div>
+
+            <div style="position: relative;">
+                <div class="circuit-lines">
+                    <div class="circuit-line h" style="top: 20%;"></div>
+                    <div class="circuit-line h" style="top: 80%;"></div>
+                    <div class="circuit-line v" style="left: 20%;"></div>
+                    <div class="circuit-line v" style="left: 80%;"></div>
+                </div>
+
+                <div class="demo-title circuit-style" data-text="RED DEN CONNEXION">
+                    RED DEN CONNEXION
+                </div>
+            </div>
+
+            <div class="technique-explanation">
+                <h3>💡 Comment ça marche ?</h3>
+                <p>Effet de glitch entre vert (circuit) et rouge (électricité) avec des lignes de circuit animées en arrière-plan.</p>
+
+                <div class="pros-cons">
+                    <div class="pros">
+                        <strong>✅ Avantages:</strong>
+                        <ul>
+                            <li>Évoque l'électronique moderne</li>
+                            <li>Effet glitch subtil</li>
+                            <li>Bicolore unique</li>
+                            <li>Très tech/professionnel</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <strong>⚠️ À considérer:</strong>
+                        <ul>
+                            <li>Peut être trop "tech" vs artisan</li>
+                            <li>Vert pas dans votre charte</li>
+                            <li>Animation peut sembler bug</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TECHNIQUE 3 -->
+        <div class="demo-section">
+            <div class="section-title">Technique 3 : Affichage Voltage</div>
+            <div class="section-subtitle">Gradient qui circule comme l'électricité + indicateur de tension</div>
+
+            <div class="demo-title voltage-display">
+                RED DEN CONNEXION
+            </div>
+
+            <div class="voltage-indicator">
+                <span style="color: #ff3333;">⚡</span>
+                <div class="voltage-bar"></div>
+                <span style="color: #999;">220V</span>
+            </div>
+
+            <div class="technique-explanation">
+                <h3>💡 Comment ça marche ?</h3>
+                <p>Un gradient lumineux circule à travers le texte comme un courant électrique. Indicateur de voltage animé en bonus.</p>
+
+                <div class="pros-cons">
+                    <div class="pros">
+                        <strong>✅ Avantages:</strong>
+                        <ul>
+                            <li>Mouvement hypnotique</li>
+                            <li>Évoque le courant électrique</li>
+                            <li>Indicateur voltage = détail pro</li>
+                            <li>Subtil mais impactant</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <strong>⚠️ À considérer:</strong>
+                        <ul>
+                            <li>Animation permanente</li>
+                            <li>Peut être trop subtil</li>
+                            <li>Nécessite fond sombre</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TECHNIQUE 4 -->
+        <div class="demo-section" style="background: #000;">
+            <div class="section-title">Technique 4 : Tube Néon Réaliste</div>
+            <div class="section-subtitle">Effet néon authentique qui clignote + reflet au sol</div>
+
+            <div class="demo-title">
+                <div class="neon-reflection neon-tube" data-text="RED DEN CONNEXION">
+                    RED DEN CONNEXION
+                </div>
+            </div>
+
+            <div class="technique-explanation">
+                <h3>💡 Comment ça marche ?</h3>
+                <p>Simule un vrai tube néon avec clignotement aléatoire et reflet. Comme une vraie enseigne électrique !</p>
+
+                <div class="pros-cons">
+                    <div class="pros">
+                        <strong>✅ Avantages:</strong>
+                        <ul>
+                            <li>Très réaliste (vrai néon)</li>
+                            <li>Effet "enseigne" professionnel</li>
+                            <li>Reflet = détail premium</li>
+                            <li>Impact visuel maximal</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <strong>⚠️ À considérer:</strong>
+                        <ul>
+                            <li>Clignotement peut agacer</li>
+                            <li>Très lumineux (fatigue)</li>
+                            <li>Nécessite fond noir</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TECHNIQUE 5 -->
+        <div class="demo-section">
+            <div class="section-title">Technique 5 : Arc Électrique</div>
+            <div class="section-subtitle">Arcs électriques qui circulent autour des lettres</div>
+
+            <div class="demo-title">
+                <div class="arc-container">
+                    <svg class="electric-arc" viewBox="0 0 800 150">
+                        <path class="arc-path" d="M 50,75 Q 200,20 350,75 T 650,75" />
+                        <path class="arc-path" d="M 100,100 Q 250,130 400,100 T 700,100" style="animation-delay: 0.5s;" />
+                    </svg>
+                    <div class="arc-electric">RED DEN CONNEXION</div>
+                </div>
+            </div>
+
+            <div class="technique-explanation">
+                <h3>💡 Comment ça marche ?</h3>
+                <p>Des arcs électriques (SVG) circulent autour du texte comme de vraies décharges électriques.</p>
+
+                <div class="pros-cons">
+                    <div class="pros">
+                        <strong>✅ Avantages:</strong>
+                        <ul>
+                            <li>Arcs = thématique parfaite</li>
+                            <li>Mouvement fluide et élégant</li>
+                            <li>Peut être subtil ou intense</li>
+                            <li>Très original</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <strong>⚠️ À considérer:</strong>
+                        <ul>
+                            <li>Nécessite SVG (plus complexe)</li>
+                            <li>Peut sembler chargé</li>
+                            <li>Responsive plus délicat</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RECOMMANDATION -->
+        <div class="recommendation">
+            <h3>🏆 MA RECOMMANDATION PERSONNALISÉE</h3>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Combiner la <strong>Technique 1</strong> (Lettres Électriques) + un <strong>subtil arc électrique</strong> (Technique 5)
+            </p>
+            <p style="color: #ccc;">
+                Pourquoi ? Les lettres qui pulsent créent l'énergie électrique, et l'arc rappelle subtilement votre métier sans être trop chargé.
+                C'est unique, thématique et personne n'aura jamais la même chose.
+            </p>
+            <div style="margin-top: 2rem;">
+                <a href="#" class="cta-button">✅ Implémenter cette version</a>
+                <a href="#" class="cta-button" style="background: linear-gradient(135deg, #666, #333);">🎨 Créer mon propre mix</a>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem; padding: 2rem; background: rgba(255, 51, 51, 0.1); border-radius: 15px;">
+            <h3 style="color: #ff3333; margin-bottom: 1rem;">💬 Quelle technique préférez-vous ?</h3>
+            <p style="color: #ccc;">
+                Dites-moi simplement le numéro (1 à 5) ou "Mix de 1+5" et je l'implémente dans votre site !
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #999;">
+                Vous pouvez aussi me demander de modifier les couleurs, la vitesse, l'intensité, etc.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
