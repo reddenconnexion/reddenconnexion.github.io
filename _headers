@@ -1,5 +1,14 @@
 # Security Headers pour Red Den Connexion
 # Ces headers renforcent la sécurité du site web
+#
+# ⚠️ IMPORTANT : Ce fichier NE FONCTIONNE PAS sur GitHub Pages !
+#
+# Ce fichier fonctionne uniquement sur :
+# ✅ Cloudflare Pages (gratuit)
+# ✅ Netlify (gratuit)
+# ✅ Vercel (gratuit)
+#
+# Pour GitHub Pages, utilisez Cloudflare Workers (voir GUIDE_CLOUDFLARE_WORKERS.md)
 
 /*
   # Content Security Policy - Protection contre XSS
