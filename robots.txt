@@ -1,11 +1,11 @@
 # robots.txt pour Red Den Connexion
-# https://reddenconnexion.github.io
+# https://reddenconnexion.fr
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://reddenconnexion.github.io/sitemap.xml
+Sitemap: https://reddenconnexion.fr/sitemap.xml
 
 # Optimisation pour Google
 User-agent: Googlebot
