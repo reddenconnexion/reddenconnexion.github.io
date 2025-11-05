@@ -356,6 +356,51 @@
             animation: subtleFloat 2s ease-in-out infinite;
         }
 
+        /* Animations coinFlip pour le logo navbar */
+        @keyframes navCoinFlip {
+            0% {
+                transform: rotateY(0deg) scale(1);
+            }
+            25% {
+                transform: rotateY(225deg) scale(0.85);
+            }
+            50% {
+                transform: rotateY(450deg) scale(1);
+            }
+            75% {
+                transform: rotateY(675deg) scale(0.85);
+            }
+            100% {
+                transform: rotateY(900deg) scale(1);
+            }
+        }
+
+        @keyframes navCoinFlipBack {
+            0% {
+                transform: rotateY(900deg) scale(1);
+            }
+            25% {
+                transform: rotateY(675deg) scale(0.85);
+            }
+            50% {
+                transform: rotateY(450deg) scale(1);
+            }
+            75% {
+                transform: rotateY(225deg) scale(0.85);
+            }
+            100% {
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+
+        .nav-flip-animation {
+            animation: navCoinFlip 1.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards !important;
+        }
+
+        .nav-flip-back-animation {
+            animation: navCoinFlipBack 1.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards !important;
+        }
+
         .company-name {
             font-size: 1.5rem;
             font-weight: bold;
@@ -441,32 +486,120 @@
             z-index: 1;
         }
 
-        /* Styles pour le camion dans la hero section */
+        /* Styles pour le camion dans la hero section - Effet Glassmorphism */
         .hero-logo {
-            width: 280px;
-            height: 180px;
+            width: 320px;
+            height: 200px;
             margin: 0 auto 1.5rem;
             position: relative;
-            transition: transform 0.3s ease;
-            animation: fadeInScale 0.8s ease-out, truckFloat 3s ease-in-out infinite;
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        .hero-logo::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            background: linear-gradient(135deg,
+                rgba(255, 51, 51, 0.15) 0%,
+                rgba(139, 0, 0, 0.1) 50%,
+                rgba(255, 51, 51, 0.15) 100%
+            );
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 51, 51, 0.3);
+            box-shadow:
+                0 8px 32px rgba(255, 51, 51, 0.2),
+                inset 0 0 20px rgba(255, 51, 51, 0.1);
+            z-index: -1;
+            animation: glassGlow 3s ease-in-out infinite;
+        }
+
+        .hero-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: shadowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glassGlow {
+            0%, 100% {
+                box-shadow:
+                    0 8px 32px rgba(255, 51, 51, 0.2),
+                    inset 0 0 20px rgba(255, 51, 51, 0.1);
+                border-color: rgba(255, 51, 51, 0.3);
+            }
+            50% {
+                box-shadow:
+                    0 8px 40px rgba(255, 51, 51, 0.4),
+                    inset 0 0 30px rgba(255, 51, 51, 0.2);
+                border-color: rgba(255, 51, 51, 0.5);
+            }
+        }
+
+        @keyframes shadowPulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateX(-50%) scale(1.1);
+            }
         }
 
         .hero-truck {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 0 30px rgba(255, 51, 51, 0.6));
-            transition: filter 0.3s ease, transform 0.3s ease;
+            filter: drop-shadow(0 0 20px rgba(255, 51, 51, 0.4));
+            transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            animation: truckFloat 3s ease-in-out infinite, truckDrive 4s ease-in-out infinite;
         }
 
         .hero-logo:hover .hero-truck {
-            filter: drop-shadow(0 0 50px rgba(255, 51, 51, 0.9));
-            transform: scale(1.05);
+            filter: drop-shadow(0 0 40px rgba(255, 51, 51, 0.8));
+            transform: scale(1.08) translateX(5px);
         }
 
         @keyframes truckFloat {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes truckDrive {
+            0%, 100% {
+                transform: translateX(0px);
+            }
+            25% {
+                transform: translateX(3px);
+            }
+            75% {
+                transform: translateX(-3px);
+            }
+        }
+
+        /* Effet de particules électriques autour du camion */
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: translate(0, 0) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(var(--tx), var(--ty)) scale(1);
+            }
         }
 
         @keyframes subtleFloat {
@@ -2422,14 +2555,21 @@
                 });
             });
 
-            // Nav logo flip
+            // Nav logo flip avec animation coinFlip
             const navLogo = document.getElementById('navLogo');
             if (navLogo) {
                 navLogo.addEventListener('click', function() {
+                    const logoInner = navLogo.querySelector('.nav-logo-inner');
+                    logoInner.classList.remove('nav-flip-animation', 'nav-flip-back-animation');
+
                     if (navLogo.classList.contains('flipped')) {
                         navLogo.classList.remove('flipped');
+                        void logoInner.offsetWidth; // Force reflow
+                        logoInner.classList.add('nav-flip-back-animation');
                     } else {
                         navLogo.classList.add('flipped');
+                        void logoInner.offsetWidth; // Force reflow
+                        logoInner.classList.add('nav-flip-animation');
                     }
                 });
 
