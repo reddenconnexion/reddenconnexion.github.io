@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Interactive - Red Den Connexion</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            padding: 2rem;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* ============================================ */
+        /* CONTENEUR PRINCIPAL INTERACTIF */
+        /* ============================================ */
+        .interactive-hero {
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Badge "NE PAS TOUCHER" au-dessus du titre */
+        .warning-label {
+            background: linear-gradient(135deg, #1a0000 0%, #000 100%);
+            border: 3px solid #ff3333;
+            border-radius: 15px;
+            padding: 1rem 2.5rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 0 30px rgba(255, 51, 51, 0.6),
+                inset 0 0 20px rgba(255, 51, 51, 0.1);
+            animation: warningPulse 2s ease-in-out infinite;
+            transition: all 0.3s;
+        }
+
+        .interactive-hero:hover .warning-label {
+            transform: scale(1.05);
+            box-shadow:
+                0 0 50px rgba(255, 51, 51, 1),
+                inset 0 0 40px rgba(255, 51, 51, 0.3);
+        }
+
+        @keyframes warningPulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 30px rgba(255, 51, 51, 0.6),
+                    inset 0 0 20px rgba(255, 51, 51, 0.1);
+            }
+            50% {
+                box-shadow:
+                    0 0 50px rgba(255, 51, 51, 1),
+                    inset 0 0 40px rgba(255, 51, 51, 0.3);
+            }
+        }
+
+        /* Rayures de danger animées */
+        .warning-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 15px,
+                rgba(255, 51, 51, 0.15) 15px,
+                rgba(255, 51, 51, 0.15) 30px
+            );
+            animation: hazardStripes 2s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes hazardStripes {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(42px); }
+        }
+
+        .warning-text {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: #fff;
+            text-shadow:
+                0 0 10px rgba(255, 51, 51, 0.8);
+        }
+
+        .warning-icon {
+            font-size: 1.8rem;
+            animation: iconBlink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes iconBlink {
+            0%, 100% {
+                opacity: 1;
+                text-shadow:
+                    0 0 20px rgba(255, 255, 0, 1),
+                    0 0 40px rgba(255, 255, 0, 0.6);
+            }
+            50% {
+                opacity: 0.4;
+                text-shadow:
+                    0 0 5px rgba(255, 255, 0, 0.3);
+            }
+        }
+
+        .danger-text {
+            color: #ffff00;
+            letter-spacing: 2px;
+        }
+
+        /* Flèche pointant vers le titre */
+        .pointer-arrow {
+            font-size: 2rem;
+            color: #ff3333;
+            animation: bounceDown 1.5s ease-in-out infinite;
+            margin: 0.5rem 0;
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(10px); opacity: 0.5; }
+        }
+
+        /* ============================================ */
+        /* TITRE PRINCIPAL */
+        /* ============================================ */
+        .power-charge {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 5rem;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .interactive-hero:hover .power-charge {
+            transform: scale(1.02);
+        }
+
+        .power-charge .word {
+            display: block;
+            margin: 1.5rem 0;
+        }
+
+        /* VARIANTE 4 : Charge Progressive (base) */
+        .power-charge .letter {
+            display: inline-block;
+            position: relative;
+            color: #333;
+            text-shadow: none;
+            animation: chargeUp 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.25s);
+            transition: all 0.3s;
+        }
+
+        @keyframes chargeUp {
+            0%, 100% {
+                color: #333;
+                text-shadow: none;
+            }
+            25% {
+                color: #666;
+                text-shadow: 0 0 5px rgba(255, 51, 51, 0.3);
+            }
+            50% {
+                color: #ff6666;
+                text-shadow:
+                    0 0 10px rgba(255, 51, 51, 0.6),
+                    0 0 20px rgba(255, 51, 51, 0.4);
+            }
+            75% {
+                color: #ff3333;
+                text-shadow:
+                    0 0 20px rgba(255, 51, 51, 0.8),
+                    0 0 40px rgba(255, 51, 51, 0.6),
+                    0 0 60px rgba(255, 51, 51, 0.4);
+            }
+        }
+
+        /* Barre de charge sous chaque lettre */
+        .power-charge .letter::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 10%;
+            width: 80%;
+            height: 4px;
+            background: #1a1a1a;
+            border-radius: 2px;
+            border: 1px solid #333;
+        }
+
+        .power-charge .letter::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 10%;
+            height: 4px;
+            width: 0%;
+            background: linear-gradient(90deg, #ff3333, #ffff00, #fff);
+            border-radius: 2px;
+            z-index: 1;
+            animation: chargeBar 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.25s);
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.8);
+        }
+
+        @keyframes chargeBar {
+            0%, 100% { width: 0%; }
+            25% { width: 30%; }
+            50% { width: 65%; }
+            75%, 90% { width: 85%; }
+        }
+
+        /* ============================================ */
+        /* EFFET COURT-CIRCUIT (activé au clic) */
+        /* ============================================ */
+        .interactive-hero.short-circuited .power-charge .letter {
+            animation: shortCircuitGlitch 0.15s steps(1) infinite, chargeUp 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.05s);
+        }
+
+        @keyframes shortCircuitGlitch {
+            0% {
+                color: #fff;
+                text-shadow:
+                    0 0 30px rgba(255, 255, 255, 1),
+                    3px 0 0 rgba(255, 0, 0, 0.9),
+                    -3px 0 0 rgba(0, 255, 255, 0.9);
+                transform: translate(0, 0) skew(0deg);
+            }
+            20% {
+                color: #ff3333;
+                text-shadow:
+                    0 0 50px rgba(255, 51, 51, 1),
+                    -3px 0 0 rgba(255, 0, 0, 0.9),
+                    3px 0 0 rgba(0, 255, 255, 0.9);
+                transform: translate(-3px, 2px) skew(-2deg);
+            }
+            40% {
+                color: #00ffff;
+                text-shadow:
+                    0 0 50px rgba(0, 255, 255, 1),
+                    3px 3px 0 rgba(255, 0, 0, 0.9);
+                transform: translate(3px, -2px) skew(2deg);
+            }
+            60% {
+                color: #ffff00;
+                text-shadow:
+                    0 0 70px rgba(255, 255, 0, 1);
+                transform: translate(-2px, -2px) skew(-1deg);
+            }
+            80% {
+                color: #fff;
+                text-shadow:
+                    0 0 100px rgba(255, 255, 255, 1),
+                    0 0 120px rgba(255, 51, 51, 1);
+                transform: translate(2px, 2px) skew(1deg);
+            }
+        }
+
+        /* Arc électrique au clic */
+        .interactive-hero::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            border: 4px solid #ff3333;
+            border-radius: 20px;
+            opacity: 0;
+            transition: all 0.3s;
+            box-shadow:
+                0 0 30px rgba(255, 51, 51, 0.8),
+                inset 0 0 30px rgba(255, 51, 51, 0.6);
+            pointer-events: none;
+        }
+
+        .interactive-hero.short-circuited::before {
+            opacity: 1;
+            animation: arcPulseIntense 0.3s ease-in-out infinite;
+        }
+
+        @keyframes arcPulseIntense {
+            0%, 100% {
+                border-color: #ff3333;
+                box-shadow:
+                    0 0 40px rgba(255, 51, 51, 1),
+                    inset 0 0 40px rgba(255, 51, 51, 0.8);
+            }
+            25% {
+                border-color: #ffff00;
+                box-shadow:
+                    0 0 60px rgba(255, 255, 0, 1),
+                    inset 0 0 60px rgba(255, 255, 0, 0.9);
+            }
+            50% {
+                border-color: #00ffff;
+                box-shadow:
+                    0 0 60px rgba(0, 255, 255, 1),
+                    inset 0 0 60px rgba(0, 255, 255, 0.9);
+            }
+            75% {
+                border-color: #fff;
+                box-shadow:
+                    0 0 80px rgba(255, 255, 255, 1),
+                    inset 0 0 80px rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        /* Effet de flash global au clic */
+        .interactive-hero.short-circuited::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            animation: screenFlash 0.3s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes screenFlash {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* Message d'avertissement pendant le court-circuit */
+        .shock-warning {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.95);
+            color: #fff;
+            padding: 2rem 4rem;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+            border: 4px solid #ffff00;
+            box-shadow: 0 0 50px rgba(255, 255, 0, 1);
+            animation: shockAppear 0.3s ease-in-out infinite;
+        }
+
+        .interactive-hero.short-circuited .shock-warning {
+            opacity: 1;
+        }
+
+        @keyframes shockAppear {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* ============================================ */
+        /* INSTRUCTIONS */
+        /* ============================================ */
+        .instructions {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 51, 51, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #ff3333;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .instructions h3 {
+            color: #ff3333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .instructions p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .instructions ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .instructions li {
+            color: #999;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .instructions li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: #ff3333;
+        }
+
+        .click-instruction {
+            background: rgba(255, 255, 0, 0.1);
+            border: 2px solid #ffff00;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            animation: instructionPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes instructionPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .click-instruction p {
+            color: #ffff00;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .power-charge {
+                font-size: 3rem;
+            }
+
+            .warning-text {
+                font-size: 1rem;
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .shock-warning {
+                font-size: 1.3rem;
+                padding: 1.5rem 2rem;
+            }
+        }
+
+        /* CTA */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 1rem 0.5rem;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.6);
+        }
+
+        /* Effet de fond subtil */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 51, 51, 0.03) 0%,
+                transparent 50%
+            );
+            animation: bgPulse 10s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Hero interactif avec badge et titre -->
+        <div class="interactive-hero" id="hero">
+            <!-- Badge "NE PAS TOUCHER" au-dessus -->
+            <div class="warning-label">
+                <div class="warning-text">
+                    <span class="warning-icon">⚠️</span>
+                    <span>DANGER</span>
+                    <span class="danger-text">NE PAS TOUCHER</span>
+                    <span class="warning-icon">⚡</span>
+                </div>
+            </div>
+
+            <!-- Flèche indicative -->
+            <div class="pointer-arrow">👇</div>
+
+            <!-- Titre principal avec effet de charge -->
+            <div class="power-charge">
+                <div class="word">
+                    <span class="letter" style="--i:0">R</span>
+                    <span class="letter" style="--i:1">E</span>
+                    <span class="letter" style="--i:2">D</span>
+                </div>
+                <div class="word">
+                    <span class="letter" style="--i:3">D</span>
+                    <span class="letter" style="--i:4">E</span>
+                    <span class="letter" style="--i:5">N</span>
+                </div>
+                <div class="word">
+                    <span class="letter" style="--i:6">C</span>
+                    <span class="letter" style="--i:7">O</span>
+                    <span class="letter" style="--i:8">N</span>
+                    <span class="letter" style="--i:9">N</span>
+                    <span class="letter" style="--i:10">E</span>
+                    <span class="letter" style="--i:11">X</span>
+                    <span class="letter" style="--i:12">I</span>
+                    <span class="letter" style="--i:13">O</span>
+                    <span class="letter" style="--i:14">N</span>
+                </div>
+            </div>
+
+            <!-- Message de choc (visible pendant le court-circuit) -->
+            <div class="shock-warning">
+                ⚡ COURT-CIRCUIT ! ⚡
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <div class="click-instruction">
+                <p>👆 CLIQUEZ SUR LE TITRE POUR DÉCLENCHER LE COURT-CIRCUIT ! 👆</p>
+            </div>
+
+            <h3 style="margin-top: 2rem;">🎯 Comment ça fonctionne ?</h3>
+            <p><strong>Psychologie inverse UX :</strong></p>
+            <ul>
+                <li>Le badge "DANGER - NE PAS TOUCHER" attire l'attention</li>
+                <li>La flèche pointe vers le titre = invitation à interagir</li>
+                <li>Au <strong>clic</strong> sur le titre → BOOM ! Court-circuit violent</li>
+                <li>Effet glitch multicolore + arc électrique + flash d'écran</li>
+                <li>Message "COURT-CIRCUIT !" apparaît</li>
+                <li>Relâchez pour arrêter (ou recliquez)</li>
+            </ul>
+
+            <h3 style="margin-top: 2rem;">✨ Effets combinés</h3>
+            <ul>
+                <li><strong>En continu :</strong> Charge progressive des lettres (variante 4)</li>
+                <li><strong>Au survol :</strong> Léger grossissement du titre</li>
+                <li><strong>Au clic :</strong> Court-circuit intense (variante 2) + effets visuels</li>
+                <li><strong>Badge :</strong> Rayures de danger animées + pulse</li>
+            </ul>
+
+            <h3 style="margin-top: 2rem;">💡 Pourquoi c'est efficace ?</h3>
+            <ul>
+                <li>"NE PAS TOUCHER" = invitation naturelle à cliquer (psychologie inverse)</li>
+                <li>Crée de l'engagement utilisateur</li>
+                <li>Mémorable et unique</li>
+                <li>Renforce l'identité "électricité" de manière ludique</li>
+                <li>Fonctionne sur mobile (tactile)</li>
+            </ul>
+
+            <div style="margin-top: 2rem; text-align: center;">
+                <button class="cta-button" onclick="alert('Dites-moi : J\'ADOPTE CETTE VERSION et je l\'implémente dans votre hero section !')">
+                    ⚡ Implémenter dans mon site
+                </button>
+                <button class="cta-button" style="background: linear-gradient(135deg, #333, #1a1a1a);" onclick="alert('Dites-moi vos ajustements : texte du badge, intensité, durée, etc.')">
+                    🎨 Personnaliser
+                </button>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; padding: 1.5rem; background: rgba(0,0,0,0.5); border-radius: 15px;">
+            <p style="color: #666; font-size: 0.9rem;">
+                🔥 <strong>Astuce UX :</strong> Cette interaction transforme une simple typographie en une expérience mémorable.<br>
+                Les visiteurs vont naturellement cliquer par curiosité = plus d'engagement !
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Gestion du court-circuit au clic
+        const hero = document.getElementById('hero');
+        let isShortCircuited = false;
+
+        hero.addEventListener('click', function() {
+            if (!isShortCircuited) {
+                // Activer le court-circuit
+                hero.classList.add('short-circuited');
+                isShortCircuited = true;
+
+                // Vibration si supportée (mobile)
+                if (navigator.vibrate) {
+                    navigator.vibrate([50, 30, 50, 30, 50]);
+                }
+
+                // Désactiver après 2 secondes
+                setTimeout(() => {
+                    hero.classList.remove('short-circuited');
+                    isShortCircuited = false;
+                }, 2000);
+            }
+        });
+
+        // Alternative : maintenir le clic
+        hero.addEventListener('mousedown', function() {
+            hero.classList.add('short-circuited');
+            isShortCircuited = true;
+        });
+
+        hero.addEventListener('mouseup', function() {
+            setTimeout(() => {
+                hero.classList.remove('short-circuited');
+                isShortCircuited = false;
+            }, 300);
+        });
+
+        hero.addEventListener('mouseleave', function() {
+            if (isShortCircuited) {
+                setTimeout(() => {
+                    hero.classList.remove('short-circuited');
+                    isShortCircuited = false;
+                }, 300);
+            }
+        });
+
+        // Support tactile pour mobile
+        hero.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            hero.classList.add('short-circuited');
+            isShortCircuited = true;
+
+            if (navigator.vibrate) {
+                navigator.vibrate([50, 30, 50, 30, 50]);
+            }
+        });
+
+        hero.addEventListener('touchend', function() {
+            setTimeout(() => {
+                hero.classList.remove('short-circuited');
+                isShortCircuited = false;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
