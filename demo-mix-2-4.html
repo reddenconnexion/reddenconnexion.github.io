@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mix Variantes 2+4 avec Sécurité - Red Den Connexion</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            padding: 2rem;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* ============================================ */
+        /* TITRE PRINCIPAL : COMBINAISON 2 + 4 */
+        /* ============================================ */
+        .main-title {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .power-charge {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 5rem;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .power-charge .word {
+            display: block;
+            margin: 1.5rem 0;
+        }
+
+        /* VARIANTE 4 : Charge Progressive (base) */
+        .power-charge .letter {
+            display: inline-block;
+            position: relative;
+            color: #333;
+            text-shadow: none;
+            animation: chargeUp 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.25s);
+            transition: all 0.3s;
+        }
+
+        @keyframes chargeUp {
+            0%, 100% {
+                color: #333;
+                text-shadow: none;
+            }
+            25% {
+                color: #666;
+                text-shadow: 0 0 5px rgba(255, 51, 51, 0.3);
+            }
+            50% {
+                color: #ff6666;
+                text-shadow:
+                    0 0 10px rgba(255, 51, 51, 0.6),
+                    0 0 20px rgba(255, 51, 51, 0.4);
+            }
+            75% {
+                color: #ff3333;
+                text-shadow:
+                    0 0 20px rgba(255, 51, 51, 0.8),
+                    0 0 40px rgba(255, 51, 51, 0.6),
+                    0 0 60px rgba(255, 51, 51, 0.4);
+            }
+        }
+
+        /* Barre de charge sous chaque lettre */
+        .power-charge .letter::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 10%;
+            width: 80%;
+            height: 4px;
+            background: #1a1a1a;
+            border-radius: 2px;
+            border: 1px solid #333;
+        }
+
+        .power-charge .letter::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 10%;
+            height: 4px;
+            width: 0%;
+            background: linear-gradient(90deg, #ff3333, #ffff00, #fff);
+            border-radius: 2px;
+            z-index: 1;
+            animation: chargeBar 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.25s);
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.8);
+        }
+
+        @keyframes chargeBar {
+            0%, 100% { width: 0%; }
+            25% { width: 30%; }
+            50% { width: 65%; }
+            75%, 90% { width: 85%; }
+        }
+
+        /* VARIANTE 2 : Court-Circuit au survol */
+        .power-charge:hover .letter {
+            animation: shortCircuitGlitch 0.3s steps(1) infinite, chargeUp 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.25s);
+        }
+
+        @keyframes shortCircuitGlitch {
+            0% {
+                color: #fff;
+                text-shadow:
+                    0 0 20px rgba(255, 255, 255, 1),
+                    2px 0 0 rgba(255, 0, 0, 0.8),
+                    -2px 0 0 rgba(0, 255, 255, 0.8);
+                transform: translate(0, 0);
+            }
+            20% {
+                color: #ff3333;
+                text-shadow:
+                    0 0 40px rgba(255, 51, 51, 1),
+                    -2px 0 0 rgba(255, 0, 0, 0.8),
+                    2px 0 0 rgba(0, 255, 255, 0.8);
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                color: #00ffff;
+                text-shadow:
+                    0 0 40px rgba(0, 255, 255, 1),
+                    2px 2px 0 rgba(255, 0, 0, 0.8);
+                transform: translate(2px, -2px);
+            }
+            60% {
+                color: #ffff00;
+                text-shadow:
+                    0 0 60px rgba(255, 255, 0, 1);
+                transform: translate(-1px, -1px);
+            }
+            80% {
+                color: #fff;
+                text-shadow:
+                    0 0 80px rgba(255, 255, 255, 1),
+                    0 0 100px rgba(255, 51, 51, 1);
+                transform: translate(1px, 1px);
+            }
+        }
+
+        /* Effet d'arc électrique au survol */
+        .power-charge::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            border: 3px solid #ff3333;
+            border-radius: 10px;
+            opacity: 0;
+            transition: all 0.3s;
+            box-shadow:
+                0 0 20px rgba(255, 51, 51, 0.6),
+                inset 0 0 20px rgba(255, 51, 51, 0.4);
+            pointer-events: none;
+        }
+
+        .power-charge:hover::before {
+            opacity: 1;
+            animation: arcPulse 0.5s ease-in-out infinite;
+        }
+
+        @keyframes arcPulse {
+            0%, 100% {
+                border-color: #ff3333;
+                box-shadow:
+                    0 0 20px rgba(255, 51, 51, 0.6),
+                    inset 0 0 20px rgba(255, 51, 51, 0.4);
+            }
+            50% {
+                border-color: #ffff00;
+                box-shadow:
+                    0 0 40px rgba(255, 255, 0, 0.8),
+                    inset 0 0 40px rgba(255, 255, 0, 0.6);
+            }
+        }
+
+        /* ============================================ */
+        /* INDICATION "NE PAS TOUCHER" */
+        /* ============================================ */
+        .warning-badge {
+            position: relative;
+            margin-top: 3rem;
+            display: inline-block;
+        }
+
+        .danger-sign {
+            background: linear-gradient(135deg, #000 0%, #1a0000 100%);
+            border: 3px solid #ff3333;
+            border-radius: 15px;
+            padding: 1.5rem 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 0 30px rgba(255, 51, 51, 0.6),
+                inset 0 0 30px rgba(255, 51, 51, 0.1);
+            animation: warningPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes warningPulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 30px rgba(255, 51, 51, 0.6),
+                    inset 0 0 30px rgba(255, 51, 51, 0.1);
+            }
+            50% {
+                box-shadow:
+                    0 0 50px rgba(255, 51, 51, 1),
+                    inset 0 0 50px rgba(255, 51, 51, 0.3);
+            }
+        }
+
+        /* Rayures de danger animées */
+        .danger-sign::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 51, 51, 0.1) 20px,
+                rgba(255, 51, 51, 0.1) 40px
+            );
+            animation: hazardStripes 3s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes hazardStripes {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(56px); }
+        }
+
+        .danger-text {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow:
+                0 0 10px rgba(255, 51, 51, 0.8),
+                0 0 20px rgba(255, 51, 51, 0.6);
+        }
+
+        .danger-icon {
+            font-size: 3rem;
+            animation: iconBlink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes iconBlink {
+            0%, 100% {
+                opacity: 1;
+                text-shadow:
+                    0 0 20px rgba(255, 255, 0, 1),
+                    0 0 40px rgba(255, 255, 0, 0.6);
+            }
+            50% {
+                opacity: 0.3;
+                text-shadow:
+                    0 0 5px rgba(255, 255, 0, 0.3);
+            }
+        }
+
+        /* Voltage indicator */
+        .voltage-warning {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: #ffff00;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        .voltage-value {
+            background: rgba(255, 51, 51, 0.2);
+            border: 2px solid #ff3333;
+            padding: 0.5rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
+            animation: voltageFlicker 3s ease-in-out infinite;
+        }
+
+        @keyframes voltageFlicker {
+            0%, 100% { opacity: 1; }
+            25% { opacity: 0.8; }
+            50% { opacity: 1; }
+            75% { opacity: 0.9; }
+        }
+
+        /* Instructions */
+        .instructions {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 51, 51, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #ff3333;
+        }
+
+        .instructions h3 {
+            color: #ff3333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .instructions p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .instructions ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .instructions li {
+            color: #999;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .instructions li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: #ff3333;
+        }
+
+        /* CTA Buttons */
+        .cta-section {
+            margin-top: 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 0.5rem;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.6);
+        }
+
+        .cta-button.secondary {
+            background: linear-gradient(135deg, #333, #1a1a1a);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .power-charge {
+                font-size: 3rem;
+            }
+
+            .danger-text {
+                font-size: 1.2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .danger-icon {
+                font-size: 2rem;
+            }
+
+            .voltage-warning {
+                flex-direction: column;
+            }
+        }
+
+        /* Effet de fond subtil */
+        @keyframes bgPulse {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 51, 51, 0.03) 0%,
+                transparent 50%
+            );
+            animation: bgPulse 10s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Titre principal avec combinaison des effets 2+4 -->
+        <div class="main-title">
+            <div class="power-charge">
+                <div class="word">
+                    <span class="letter" style="--i:0">R</span>
+                    <span class="letter" style="--i:1">E</span>
+                    <span class="letter" style="--i:2">D</span>
+                </div>
+                <div class="word">
+                    <span class="letter" style="--i:3">D</span>
+                    <span class="letter" style="--i:4">E</span>
+                    <span class="letter" style="--i:5">N</span>
+                </div>
+                <div class="word">
+                    <span class="letter" style="--i:6">C</span>
+                    <span class="letter" style="--i:7">O</span>
+                    <span class="letter" style="--i:8">N</span>
+                    <span class="letter" style="--i:9">N</span>
+                    <span class="letter" style="--i:10">E</span>
+                    <span class="letter" style="--i:11">X</span>
+                    <span class="letter" style="--i:12">I</span>
+                    <span class="letter" style="--i:13">O</span>
+                    <span class="letter" style="--i:14">N</span>
+                </div>
+            </div>
+
+            <p style="color: #999; margin-top: 3rem; font-size: 1rem;">
+                👆 Survolez le texte pour déclencher le court-circuit !
+            </p>
+        </div>
+
+        <!-- Badge de danger "NE PAS TOUCHER" -->
+        <div class="warning-badge">
+            <div class="danger-sign">
+                <div class="danger-text">
+                    <span class="danger-icon">⚠️</span>
+                    <span>DANGER</span>
+                    <span style="color: #ffff00;">NE PAS TOUCHER</span>
+                    <span class="danger-icon">⚡</span>
+                </div>
+            </div>
+
+            <div class="voltage-warning">
+                <span>HAUTE TENSION</span>
+                <span class="voltage-value">⚡ 220V-400V ⚡</span>
+                <span>RISQUE ÉLECTRIQUE</span>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>🎨 Combinaison Variantes 2 + 4 avec Badge de Sécurité</h3>
+            <p><strong>Ce que vous voyez :</strong></p>
+            <ul>
+                <li><strong>Charge Progressive</strong> (Variante 4) : Les lettres se chargent en énergie avec barres de progression</li>
+                <li><strong>Court-Circuit au survol</strong> (Variante 2) : Effet glitch électrique quand vous survolez</li>
+                <li><strong>Badge "NE PAS TOUCHER"</strong> : Indication de sécurité avec rayures de danger animées</li>
+                <li><strong>Voltage Warning</strong> : Indicateur de haute tension clignotant</li>
+            </ul>
+
+            <h3 style="margin-top: 2rem;">💡 Utilisations possibles</h3>
+            <ul>
+                <li><strong>Hero section</strong> : Titre principal avec effet de charge</li>
+                <li><strong>Badge de sécurité</strong> : Dans sections "Normes" ou "Sécurité électrique"</li>
+                <li><strong>CTA</strong> : Bouton d'urgence "Dépannage 24h/24"</li>
+                <li><strong>Footer</strong> : Rappel des consignes de sécurité</li>
+            </ul>
+
+            <h3 style="margin-top: 2rem;">🔧 Personnalisable</h3>
+            <p>Je peux ajuster :</p>
+            <ul>
+                <li>Vitesse de charge (actuellement 5s)</li>
+                <li>Intensité du glitch au survol</li>
+                <li>Texte du badge ("NE PAS TOUCHER", "INTERVENTION D'UN PRO REQUISE", etc.)</li>
+                <li>Voltage affiché (220V, 400V, etc.)</li>
+                <li>Couleurs et effets</li>
+            </ul>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <button class="cta-button" onclick="alert('Parfait ! Dites-moi : IMPLÉMENTER CETTE VERSION et je l\'intègre dans votre index.html')">
+                ⚡ J'adopte cette version !
+            </button>
+            <button class="cta-button secondary" onclick="alert('Dites-moi vos modifications : vitesse, couleurs, texte, etc.')">
+                🎨 Personnaliser encore
+            </button>
+        </div>
+
+        <div style="margin-top: 3rem; padding: 1.5rem; background: rgba(0,0,0,0.5); border-radius: 15px;">
+            <p style="color: #666; font-size: 0.9rem;">
+                💡 Cette combinaison est <strong>100% unique</strong> et reflète parfaitement votre métier :<br>
+                L'effet de charge évoque l'électricité qui circule + Le badge de sécurité rappelle la prudence nécessaire
+            </p>
+        </div>
+    </div>
+</body>
+</html>
