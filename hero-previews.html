@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Den Connexion - Aperçu des Variantes Hero Section</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #ff3333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            font-weight: 400;
+        }
+
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .variant-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .variant-card:hover {
+            border-color: #ff3333;
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255, 51, 51, 0.3);
+        }
+
+        .variant-label {
+            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .variant-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .variant-description {
+            color: #aaa;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features-list li {
+            padding: 8px 0;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: #ff3333;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .view-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .view-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.5);
+        }
+
+        .recommendations {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 187, 0, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .recommendations h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .recommendations p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .best-choice {
+            background: rgba(255, 187, 0, 0.1);
+            border: 2px solid rgba(255, 187, 0, 0.5);
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .best-choice strong {
+            color: #ffbb00;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .variants-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Aperçu des Hero Sections</h1>
+            <p class="subtitle">Choisissez la variante qui correspond le mieux à votre vision</p>
+        </header>
+
+        <div class="variants-grid">
+            <!-- Variante A -->
+            <div class="variant-card">
+                <span class="variant-label">VARIANTE A</span>
+                <h2 class="variant-title">Layout Centré Épuré</h2>
+                <p class="variant-description">
+                    Design classique et élégant avec tous les éléments centrés. Idéal pour une présentation claire et directe.
+                </p>
+                <ul class="features-list">
+                    <li>Camion central avec effet de flottement</li>
+                    <li>Badge 24/7 avec animation pulse</li>
+                    <li>Hiérarchie visuelle simple et claire</li>
+                    <li>USPs bien organisés en ligne</li>
+                    <li>CTA principal très visible</li>
+                </ul>
+                <a href="hero-variante-a.html" class="view-button" target="_blank">
+                    Voir la Variante A →
+                </a>
+            </div>
+
+            <!-- Variante B -->
+            <div class="variant-card">
+                <span class="variant-label">VARIANTE B</span>
+                <h2 class="variant-title">Layout Asymétrique Moderne</h2>
+                <p class="variant-description">
+                    Design moderne et dynamique avec layout en deux colonnes. Parfait pour un look professionnel et contemporain.
+                </p>
+                <ul class="features-list">
+                    <li>Camion à droite avec effet glow</li>
+                    <li>Contenu aligné à gauche pour meilleure lecture</li>
+                    <li>Liste de features détaillées</li>
+                    <li>Design asymétrique plus dynamique</li>
+                    <li>Utilise mieux l'espace large</li>
+                </ul>
+                <a href="hero-variante-b.html" class="view-button" target="_blank">
+                    Voir la Variante B →
+                </a>
+            </div>
+
+            <!-- Variante C -->
+            <div class="variant-card">
+                <span class="variant-label">VARIANTE C</span>
+                <h2 class="variant-title">Camion en Arrière-plan</h2>
+                <p class="variant-description">
+                    Design immersif avec le camion en arrière-plan. Idéal pour mettre l'accent sur le contenu et les chiffres clés.
+                </p>
+                <ul class="features-list">
+                    <li>Camion en parallaxe en arrière-plan</li>
+                    <li>Focus maximal sur le texte et CTAs</li>
+                    <li>Grille de statistiques impactante</li>
+                    <li>Trust bar avec indicateurs de confiance</li>
+                    <li>Design le plus épuré visuellement</li>
+                </ul>
+                <a href="hero-variante-c.html" class="view-button" target="_blank">
+                    Voir la Variante C →
+                </a>
+            </div>
+        </div>
+
+        <div class="recommendations">
+            <h2>💡 Recommandations</h2>
+            <p>
+                <strong>Variante A</strong> : Parfaite si vous voulez un design intemporel et facile à comprendre.
+                Convient parfaitement aux visiteurs de tous âges et niveaux technologiques.
+            </p>
+            <p>
+                <strong>Variante B</strong> : Recommandée pour un look plus professionnel et moderne.
+                Excellente pour desktop et se transforme élégamment en mobile.
+            </p>
+            <p>
+                <strong>Variante C</strong> : Idéale si vous voulez mettre l'accent sur les chiffres (25 ans, 24/7, etc.)
+                et créer un effet visuel immersif. La plus épurée des trois.
+            </p>
+
+            <div class="best-choice">
+                <strong>🏆 Mon choix recommandé : Variante B</strong><br>
+                Elle offre le meilleur équilibre entre impact visuel, lisibilité et professionnalisme.
+                Le layout asymétrique est moderne sans être trop radical, et la séparation contenu/visuel
+                optimise la compréhension instantanée du message.
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 Red Den Connexion - Électricien Professionnel</p>
+            <p style="margin-top: 10px; font-size: 14px;">
+                Ces aperçus sont des prototypes pour vous aider à choisir le meilleur design pour votre hero section.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
