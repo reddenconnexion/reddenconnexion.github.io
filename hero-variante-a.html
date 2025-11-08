@@ -169,80 +169,90 @@
         }
 
         .electrical-panel {
-            width: 100px;
-            height: 120px;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            border: 3px solid #444;
-            border-radius: 8px;
+            width: 180px;
+            height: auto;
             position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7));
         }
 
         .electrical-panel:hover {
-            transform: scale(1.05);
-            border-color: #ff3333;
-            box-shadow: 0 8px 30px rgba(255, 51, 51, 0.4);
+            transform: scale(1.08);
+            filter: drop-shadow(0 8px 35px rgba(255, 51, 51, 0.7));
         }
 
-        .panel-label {
-            background: #ffcc00;
-            color: #000;
-            font-size: 9px;
-            font-weight: 900;
-            padding: 4px;
-            text-align: center;
-            border-radius: 4px 4px 0 0;
+        .electrical-panel:active {
+            transform: scale(0.98);
         }
 
-        .circuit-breakers {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            padding: 12px 10px;
-        }
-
-        .breaker {
+        .panel-image {
             width: 100%;
-            height: 30px;
-            background: linear-gradient(135deg, #555 0%, #333 100%);
-            border: 2px solid #666;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
+            height: auto;
+            border-radius: 8px;
+            display: block;
         }
 
-        .breaker::after {
+        /* Overlay rouge pour l'effet de court-circuit */
+        .electrical-panel::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-            height: 40%;
-            background: #888;
-            border-radius: 2px;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255, 51, 51, 0.8) 0%, rgba(255, 0, 0, 0.3) 100%);
+            opacity: 0;
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 2;
+            transition: opacity 0.1s;
         }
 
-        .warning-led {
+        .electrical-panel.active::before {
+            animation: redFlash 0.5s ease-in-out;
+        }
+
+        @keyframes redFlash {
+            0%, 100% { opacity: 0; }
+            20%, 60% { opacity: 1; }
+            40%, 80% { opacity: 0.3; }
+        }
+
+        /* Arcs électriques sur l'image */
+        .electric-arcs {
             position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 8px;
-            background: #0f0;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #0f0;
-            animation: ledBlink 2s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
         }
 
-        @keyframes ledBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        .arc {
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, #ffff00, transparent);
+            opacity: 0;
+            box-shadow: 0 0 10px #ffff00;
         }
+
+        .electrical-panel.active .arc {
+            animation: arcFlash 0.5s ease-out;
+        }
+
+        @keyframes arcFlash {
+            0%, 100% { opacity: 0; }
+            20%, 40%, 60% { opacity: 1; }
+            30%, 50% { opacity: 0; }
+        }
+
+        .arc:nth-child(1) { top: 30%; left: 25%; transform: rotate(45deg); }
+        .arc:nth-child(2) { top: 40%; right: 25%; transform: rotate(-45deg); }
+        .arc:nth-child(3) { bottom: 30%; left: 35%; transform: rotate(-20deg); }
+        .arc:nth-child(4) { top: 50%; left: 50%; transform: rotate(90deg); }
 
         /* Effet de court-circuit */
         .short-circuit {
@@ -255,24 +265,36 @@
             20%, 40%, 60%, 80% { transform: translateX(-50%) rotate(5deg); }
         }
 
-        .short-circuit .breaker {
-            animation: breakerFlicker 0.5s ease-in-out;
+        /* Effet de fumée/surchauffe */
+        .smoke {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, rgba(100, 100, 100, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 3;
         }
 
-        @keyframes breakerFlicker {
-            0%, 100% { background: linear-gradient(135deg, #555 0%, #333 100%); }
-            20%, 60% { background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%); }
+        .electrical-panel.active .smoke {
+            animation: smokeRise 1s ease-out forwards;
         }
 
-        .short-circuit .warning-led {
-            background: #f00;
-            box-shadow: 0 0 20px #f00;
-            animation: ledDanger 0.1s ease-in-out infinite;
-        }
-
-        @keyframes ledDanger {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        @keyframes smokeRise {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(0) scale(0.5);
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-80px) scale(2);
+            }
         }
 
         /* Flash électrique */
@@ -462,6 +484,15 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .electrical-panel {
+                width: 140px;
+            }
+
+            .warning-badge {
+                font-size: 11px;
+                padding: 6px 16px;
+            }
+
             .usps {
                 flex-direction: column;
                 gap: 20px;
@@ -475,6 +506,16 @@
             .cta-button {
                 width: 100%;
                 justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .electrical-panel {
+                width: 120px;
+            }
+
+            .hero-logo {
+                padding-top: 50px;
             }
         }
     </style>
@@ -498,25 +539,32 @@
                     </div>
                     <div class="pointer-arrow">👇</div>
                     <div class="electrical-panel" id="electricalPanel">
-                        <div class="panel-label">TABLEAU ÉLECTRIQUE</div>
-                        <div class="circuit-breakers">
-                            <div class="breaker"></div>
-                            <div class="breaker"></div>
-                            <div class="breaker"></div>
-                            <div class="breaker"></div>
-                        </div>
-                        <div class="warning-led"></div>
+                        <!-- Image du tableau électrique vétuste -->
+                        <img src="tableauvetuste.png" alt="Tableau électrique vétuste" class="panel-image">
 
-                        <!-- Particules électriques -->
+                        <!-- Arcs électriques -->
+                        <div class="electric-arcs">
+                            <div class="arc"></div>
+                            <div class="arc"></div>
+                            <div class="arc"></div>
+                            <div class="arc"></div>
+                        </div>
+
+                        <!-- Fumée de surchauffe -->
+                        <div class="smoke"></div>
+
+                        <!-- Particules électriques explosives -->
                         <div class="electric-particles">
-                            <div class="particle" style="--tx: -40px; --ty: -40px;"></div>
-                            <div class="particle" style="--tx: 40px; --ty: -40px;"></div>
-                            <div class="particle" style="--tx: -40px; --ty: 40px;"></div>
-                            <div class="particle" style="--tx: 40px; --ty: 40px;"></div>
-                            <div class="particle" style="--tx: -60px; --ty: 0px;"></div>
-                            <div class="particle" style="--tx: 60px; --ty: 0px;"></div>
-                            <div class="particle" style="--tx: 0px; --ty: -60px;"></div>
-                            <div class="particle" style="--tx: 0px; --ty: 60px;"></div>
+                            <div class="particle" style="--tx: -50px; --ty: -50px;"></div>
+                            <div class="particle" style="--tx: 50px; --ty: -50px;"></div>
+                            <div class="particle" style="--tx: -50px; --ty: 50px;"></div>
+                            <div class="particle" style="--tx: 50px; --ty: 50px;"></div>
+                            <div class="particle" style="--tx: -70px; --ty: 0px;"></div>
+                            <div class="particle" style="--tx: 70px; --ty: 0px;"></div>
+                            <div class="particle" style="--tx: 0px; --ty: -70px;"></div>
+                            <div class="particle" style="--tx: 0px; --ty: 70px;"></div>
+                            <div class="particle" style="--tx: -40px; --ty: -30px;"></div>
+                            <div class="particle" style="--tx: 40px; --ty: 30px;"></div>
                         </div>
                     </div>
                 </div>
