@@ -103,19 +103,13 @@
             max-width: 600px;
             margin: 0 auto 40px;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 280px;
         }
 
-        .hero-logo .truck-image {
+        .hero-logo img {
             width: 100%;
             height: auto;
             filter: drop-shadow(0 10px 40px rgba(255, 51, 51, 0.3));
             animation: floatTruck 3s ease-in-out infinite;
-            position: relative;
-            z-index: 2;
         }
 
         @keyframes floatTruck {
@@ -123,33 +117,26 @@
             50% { transform: translateY(-15px); }
         }
 
-        /* Tableau électrique interactif */
-        .electrical-panel-wrapper {
-            position: absolute;
-            top: 75%;
-            left: 15%;
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
+        /* Étiquette de danger */
+        .danger-label-wrapper {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        .warning-badge {
+        .danger-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
             color: #000;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 8px;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 13px;
             font-weight: 900;
-            letter-spacing: 0.3px;
+            letter-spacing: 1px;
             box-shadow: 0 4px 20px rgba(255, 204, 0, 0.4);
             animation: warningPulse 1.5s ease-in-out infinite;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            border: 1.5px solid #000;
-            white-space: nowrap;
+            border: 2px solid #000;
         }
 
         @keyframes warningPulse {
@@ -163,143 +150,15 @@
             }
         }
 
-        .pointer-arrow {
-            font-size: 14px;
+        .pointer-down {
+            font-size: 24px;
+            margin-top: 5px;
             animation: pointDown 1s ease-in-out infinite;
         }
 
         @keyframes pointDown {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(5px); }
-        }
-
-        .electrical-panel {
-            width: 70px;
-            height: auto;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7));
-        }
-
-        .electrical-panel:hover {
-            transform: scale(1.08);
-            filter: drop-shadow(0 8px 35px rgba(255, 51, 51, 0.7));
-        }
-
-        .electrical-panel:active {
-            transform: scale(0.98);
-        }
-
-        .panel-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            display: block;
-        }
-
-        /* Overlay rouge pour l'effet de court-circuit */
-        .electrical-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle, rgba(255, 51, 51, 0.8) 0%, rgba(255, 0, 0, 0.3) 100%);
-            opacity: 0;
-            border-radius: 8px;
-            pointer-events: none;
-            z-index: 2;
-            transition: opacity 0.1s;
-        }
-
-        .electrical-panel.active::before {
-            animation: redFlash 0.5s ease-in-out;
-        }
-
-        @keyframes redFlash {
-            0%, 100% { opacity: 0; }
-            20%, 60% { opacity: 1; }
-            40%, 80% { opacity: 0.3; }
-        }
-
-        /* Arcs électriques sur l'image */
-        .electric-arcs {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        .arc {
-            position: absolute;
-            width: 2px;
-            height: 30px;
-            background: linear-gradient(to bottom, #ffff00, transparent);
-            opacity: 0;
-            box-shadow: 0 0 10px #ffff00;
-        }
-
-        .electrical-panel.active .arc {
-            animation: arcFlash 0.5s ease-out;
-        }
-
-        @keyframes arcFlash {
-            0%, 100% { opacity: 0; }
-            20%, 40%, 60% { opacity: 1; }
-            30%, 50% { opacity: 0; }
-        }
-
-        .arc:nth-child(1) { top: 30%; left: 25%; transform: rotate(45deg); }
-        .arc:nth-child(2) { top: 40%; right: 25%; transform: rotate(-45deg); }
-        .arc:nth-child(3) { bottom: 30%; left: 35%; transform: rotate(-20deg); }
-        .arc:nth-child(4) { top: 50%; left: 50%; transform: rotate(90deg); }
-
-        /* Effet de court-circuit */
-        .short-circuit {
-            animation: shortCircuitShake 0.5s ease-in-out;
-        }
-
-        @keyframes shortCircuitShake {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            10%, 30%, 50%, 70%, 90% { transform: translate(-3px, 2px) rotate(-5deg); }
-            20%, 40%, 60%, 80% { transform: translate(3px, -2px) rotate(5deg); }
-        }
-
-        /* Effet de fumée/surchauffe */
-        .smoke {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle, rgba(100, 100, 100, 0.6) 0%, transparent 70%);
-            border-radius: 50%;
-            opacity: 0;
-            z-index: 3;
-        }
-
-        .electrical-panel.active .smoke {
-            animation: smokeRise 1s ease-out forwards;
-        }
-
-        @keyframes smokeRise {
-            0% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(0) scale(0.5);
-            }
-            50% {
-                opacity: 0.8;
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-80px) scale(2);
-            }
         }
 
         /* Flash électrique */
@@ -327,43 +186,8 @@
             40%, 100% { opacity: 0; }
         }
 
-        /* Particules électriques */
-        .electric-particles {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
 
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #ffff00;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #ffff00;
-            opacity: 0;
-        }
-
-        .electrical-panel.active .particle {
-            animation: particleExplode 0.6s ease-out forwards;
-        }
-
-        @keyframes particleExplode {
-            0% {
-                opacity: 1;
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(var(--tx), var(--ty)) scale(0);
-            }
-        }
-
-        /* Titre principal */
+        /* Titre principal interactif */
         h1 {
             font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 900;
@@ -374,6 +198,43 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: fadeInUp 0.8s ease-out;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px rgba(255, 51, 51, 0.5));
+        }
+
+        h1:active {
+            transform: scale(0.98);
+        }
+
+        /* Effet de court-circuit sur le titre */
+        h1.short-circuit {
+            animation: titleShake 0.5s ease-in-out, titleGlitch 0.5s ease-in-out;
+        }
+
+        @keyframes titleShake {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            10%, 30%, 50%, 70%, 90% { transform: translate(-5px, 2px) rotate(-2deg); }
+            20%, 40%, 60%, 80% { transform: translate(5px, -2px) rotate(2deg); }
+        }
+
+        @keyframes titleGlitch {
+            0%, 100% {
+                background: linear-gradient(135deg, #ffffff 0%, #ff3333 100%);
+            }
+            20%, 60% {
+                background: linear-gradient(135deg, #ff3333 0%, #ffff00 100%);
+                filter: drop-shadow(0 0 30px rgba(255, 51, 51, 1));
+            }
+            40%, 80% {
+                background: linear-gradient(135deg, #ffffff 0%, #ff3333 100%);
+            }
         }
 
         @keyframes fadeInUp {
@@ -489,23 +350,14 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .electrical-panel {
-                width: 60px;
+            .danger-label {
+                font-size: 11px;
+                padding: 6px 16px;
+                gap: 6px;
             }
 
-            .electrical-panel-wrapper {
-                left: 10%;
-                top: 72%;
-            }
-
-            .warning-badge {
-                font-size: 7px;
-                padding: 3px 6px;
-                gap: 3px;
-            }
-
-            .pointer-arrow {
-                font-size: 12px;
+            .pointer-down {
+                font-size: 20px;
             }
 
             .usps {
@@ -525,26 +377,14 @@
         }
 
         @media (max-width: 480px) {
-            .electrical-panel {
-                width: 50px;
+            .danger-label {
+                font-size: 9px;
+                padding: 5px 12px;
+                gap: 5px;
             }
 
-            .electrical-panel-wrapper {
-                left: 8%;
-                top: 70%;
-            }
-
-            .warning-badge {
-                font-size: 6px;
-                padding: 2px 5px;
-            }
-
-            .pointer-arrow {
-                font-size: 10px;
-            }
-
-            .hero-logo {
-                min-height: 220px;
+            .pointer-down {
+                font-size: 18px;
             }
         }
     </style>
@@ -559,49 +399,19 @@
             </div>
 
             <div class="hero-logo">
-                <!-- Tableau électrique interactif -->
-                <div class="electrical-panel-wrapper">
-                    <div class="warning-badge">
-                        <span>⚠️</span>
-                        <span>DANGER - NE PAS TOUCHER</span>
-                        <span>⚡</span>
-                    </div>
-                    <div class="pointer-arrow">👇</div>
-                    <div class="electrical-panel" id="electricalPanel">
-                        <!-- Image du tableau électrique vétuste -->
-                        <img src="tableauvetuste.jpg" alt="Tableau électrique vétuste" class="panel-image">
-
-                        <!-- Arcs électriques -->
-                        <div class="electric-arcs">
-                            <div class="arc"></div>
-                            <div class="arc"></div>
-                            <div class="arc"></div>
-                            <div class="arc"></div>
-                        </div>
-
-                        <!-- Fumée de surchauffe -->
-                        <div class="smoke"></div>
-
-                        <!-- Particules électriques explosives -->
-                        <div class="electric-particles">
-                            <div class="particle" style="--tx: -50px; --ty: -50px;"></div>
-                            <div class="particle" style="--tx: 50px; --ty: -50px;"></div>
-                            <div class="particle" style="--tx: -50px; --ty: 50px;"></div>
-                            <div class="particle" style="--tx: 50px; --ty: 50px;"></div>
-                            <div class="particle" style="--tx: -70px; --ty: 0px;"></div>
-                            <div class="particle" style="--tx: 70px; --ty: 0px;"></div>
-                            <div class="particle" style="--tx: 0px; --ty: -70px;"></div>
-                            <div class="particle" style="--tx: 0px; --ty: 70px;"></div>
-                            <div class="particle" style="--tx: -40px; --ty: -30px;"></div>
-                            <div class="particle" style="--tx: 40px; --ty: 30px;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <img src="camionurgence.png" alt="Camion Red Den Connexion" class="truck-image">
+                <img src="camionurgence.png" alt="Camion Red Den Connexion">
             </div>
 
-            <h1>Électricien Professionnel</h1>
+            <div class="danger-label-wrapper">
+                <div class="danger-label">
+                    <span>⚠️</span>
+                    <span>DANGER - NE PAS TOUCHER</span>
+                    <span>⚡</span>
+                </div>
+                <div class="pointer-down">👇</div>
+            </div>
+
+            <h1 id="mainTitle">Électricien Professionnel</h1>
 
             <div class="hero-subtitle">
                 Dépannage & Installation <span class="highlight">Expert</span>
@@ -645,37 +455,31 @@
     <div class="electric-flash" id="electricFlash"></div>
 
     <script>
-        // Effet de court-circuit au clic sur le tableau électrique
-        const electricalPanel = document.getElementById('electricalPanel');
+        // Effet de court-circuit au clic sur le titre
+        const mainTitle = document.getElementById('mainTitle');
         const electricFlash = document.getElementById('electricFlash');
-        const wrapper = document.querySelector('.electrical-panel-wrapper');
 
-        electricalPanel.addEventListener('click', function() {
-            // Ajouter la classe de court-circuit
-            wrapper.classList.add('short-circuit');
-            electricalPanel.classList.add('active');
+        mainTitle.addEventListener('click', function() {
+            // Ajouter la classe de court-circuit sur le titre
+            mainTitle.classList.add('short-circuit');
 
-            // Flash électrique
+            // Flash électrique blanc
             electricFlash.classList.add('active');
 
-            // Faire trembler le héros
+            // Faire trembler toute la section hero
             document.querySelector('.hero').style.animation = 'shake 0.5s ease-in-out';
 
-            // Sons et vibrations (si disponible)
+            // Vibration du dispositif (si disponible)
             if (navigator.vibrate) {
                 navigator.vibrate([100, 50, 100, 50, 100]);
             }
 
             // Retirer les effets après l'animation
             setTimeout(() => {
-                wrapper.classList.remove('short-circuit');
+                mainTitle.classList.remove('short-circuit');
                 electricFlash.classList.remove('active');
                 document.querySelector('.hero').style.animation = '';
             }, 500);
-
-            setTimeout(() => {
-                electricalPanel.classList.remove('active');
-            }, 600);
         });
 
         // Animation de shake pour le fond
@@ -683,8 +487,8 @@
         style.textContent = `
             @keyframes shake {
                 0%, 100% { transform: translate(0, 0); }
-                10%, 30%, 50%, 70%, 90% { transform: translate(-2px, 2px); }
-                20%, 40%, 60%, 80% { transform: translate(2px, -2px); }
+                10%, 30%, 50%, 70%, 90% { transform: translate(-3px, 3px); }
+                20%, 40%, 60%, 80% { transform: translate(3px, -3px); }
             }
         `;
         document.head.appendChild(style);
