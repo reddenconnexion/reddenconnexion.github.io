@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DÉMO - Camion Route Défilante + Étincelles ⚡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .demo-header h1 {
+            font-size: 2.5rem;
+            color: #ff3333;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+        }
+
+        .demo-header p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .hero-section {
+            width: 100%;
+            max-width: 1000px;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Route défilante */
+        .road-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            height: 300px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+
+        .road {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background:
+                linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(40, 40, 40, 0.5) 20%,
+                    rgba(60, 60, 60, 0.8) 100%
+                );
+            transform-origin: bottom center;
+            transform: perspective(500px) rotateX(60deg);
+            overflow: hidden;
+        }
+
+        .road::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: repeating-linear-gradient(
+                to right,
+                #ffcc00 0px,
+                #ffcc00 30px,
+                transparent 30px,
+                transparent 60px
+            );
+            transform: translateY(-50%);
+            animation: roadScroll 1s linear infinite;
+        }
+
+        @keyframes roadScroll {
+            0% { transform: translateY(-50%) translateX(0); }
+            100% { transform: translateY(-50%) translateX(-60px); }
+        }
+
+        /* Camion avec effets */
+        .truck-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 500px;
+            height: 250px;
+            z-index: 10;
+        }
+
+        .truck-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            animation: truckBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes truckBounce {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(-1deg); }
+            75% { transform: translateY(-5px) rotate(1deg); }
+        }
+
+        .truck-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(255, 51, 51, 0.6));
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Phares lumineux */
+        .headlights {
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            width: 200px;
+            height: 150px;
+            background: radial-gradient(ellipse at left,
+                rgba(255, 230, 100, 0.8) 0%,
+                rgba(255, 200, 50, 0.4) 30%,
+                transparent 70%
+            );
+            transform: translateY(-50%);
+            filter: blur(10px);
+            animation: headlightPulse 2s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes headlightPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Particules électriques */
+        .spark {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff3333;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff3333, 0 0 20px #ff3333;
+            pointer-events: none;
+            animation: sparkFly 2s ease-out infinite;
+        }
+
+        @keyframes sparkFly {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) scale(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(1);
+            }
+        }
+
+        .spark:nth-child(1) { --tx: -100px; --ty: -80px; animation-delay: 0s; top: 40%; left: 60%; }
+        .spark:nth-child(2) { --tx: 120px; --ty: -100px; animation-delay: 0.3s; top: 50%; left: 50%; }
+        .spark:nth-child(3) { --tx: -80px; --ty: 100px; animation-delay: 0.6s; top: 30%; left: 70%; }
+        .spark:nth-child(4) { --tx: 90px; --ty: 90px; animation-delay: 0.9s; top: 60%; left: 40%; }
+        .spark:nth-child(5) { --tx: -110px; --ty: -60px; animation-delay: 1.2s; top: 45%; left: 65%; }
+        .spark:nth-child(6) { --tx: 100px; --ty: -90px; animation-delay: 1.5s; top: 55%; left: 55%; }
+        .spark:nth-child(7) { --tx: -70px; --ty: 80px; animation-delay: 0.2s; top: 35%; left: 75%; }
+        .spark:nth-child(8) { --tx: 130px; --ty: -70px; animation-delay: 0.8s; top: 50%; left: 45%; }
+
+        /* Effet de vitesse */
+        .speed-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            opacity: 0.3;
+        }
+
+        .speed-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ff3333, transparent);
+            animation: speedLine 1.5s linear infinite;
+        }
+
+        @keyframes speedLine {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        .speed-line:nth-child(1) { top: 20%; width: 150px; animation-delay: 0s; }
+        .speed-line:nth-child(2) { top: 40%; width: 200px; animation-delay: 0.3s; }
+        .speed-line:nth-child(3) { top: 60%; width: 180px; animation-delay: 0.6s; }
+        .speed-line:nth-child(4) { top: 80%; width: 220px; animation-delay: 0.9s; }
+
+        /* Badge urgence */
+        .urgence-badge {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            background: #ff3333;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.5);
+            animation: badgePulse 1.5s ease-in-out infinite;
+            z-index: 20;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .back-link {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #ff3333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.8rem 2rem;
+            border: 2px solid #ff3333;
+            border-radius: 30px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .back-link a:hover {
+            background: #ff3333;
+            color: white;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-header">
+        <h1>⚡ Option 1 : Route Défilante + Étincelles ⚡</h1>
+        <p>Effet dynamique - Action - Urgence 24/7</p>
+    </div>
+
+    <div class="hero-section">
+        <div class="urgence-badge">🚨 DÉPANNAGE 24h/24</div>
+
+        <div class="road-container">
+            <!-- Camion avec effets -->
+            <div class="truck-wrapper">
+                <div class="truck-container">
+                    <div class="headlights"></div>
+                    <img src="camionurgence.png" alt="Camion d'urgence" class="truck-img">
+
+                    <!-- Particules électriques -->
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                </div>
+            </div>
+
+            <!-- Lignes de vitesse -->
+            <div class="speed-lines">
+                <div class="speed-line"></div>
+                <div class="speed-line"></div>
+                <div class="speed-line"></div>
+                <div class="speed-line"></div>
+            </div>
+
+            <!-- Route -->
+            <div class="road"></div>
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="demo-camion-index.html">← Retour aux démos</a>
+    </div>
+</body>
+</html>
