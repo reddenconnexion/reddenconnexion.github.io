@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DÉMO - Camion Badge 3D Rotatif 🎯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .demo-header h1 {
+            font-size: 2.5rem;
+            color: #ff3333;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+        }
+
+        .demo-header p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .hero-section {
+            width: 100%;
+            max-width: 1000px;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Badge 3D Container */
+        .badge-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            margin: 0 auto;
+            perspective: 1500px;
+        }
+
+        .badge-3d {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            height: 450px;
+            transform-style: preserve-3d;
+            animation: rotate3D 20s linear infinite;
+            cursor: pointer;
+            transition: animation-play-state 0.3s;
+        }
+
+        .badge-3d:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes rotate3D {
+            0% {
+                transform: translate(-50%, -50%) rotateY(0deg) rotateX(5deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotateY(360deg) rotateX(5deg);
+            }
+        }
+
+        /* Badge circles - multiple layers pour profondeur */
+        .badge-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle-outer {
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(
+                from 0deg,
+                #ff3333 0deg,
+                #ff6666 90deg,
+                #ff3333 180deg,
+                #cc0000 270deg,
+                #ff3333 360deg
+            );
+            box-shadow:
+                0 0 40px rgba(255, 51, 51, 0.6),
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 0 30px rgba(255, 51, 51, 0.3);
+            animation: rotateGradient 10s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotateGradient {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .circle-mid {
+            width: 90%;
+            height: 90%;
+            background: linear-gradient(135deg,
+                rgba(26, 26, 26, 0.95) 0%,
+                rgba(45, 45, 45, 0.95) 50%,
+                rgba(26, 26, 26, 0.95) 100%
+            );
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+            z-index: 2;
+        }
+
+        .circle-inner {
+            width: 85%;
+            height: 85%;
+            background: radial-gradient(circle at 30% 30%,
+                rgba(60, 60, 60, 0.5) 0%,
+                rgba(20, 20, 20, 0.9) 100%
+            );
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.6),
+                inset 0 -5px 20px rgba(255, 51, 51, 0.2);
+            z-index: 3;
+        }
+
+        /* Camion au centre */
+        .truck-showcase {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            z-index: 10;
+            animation: truckLevitate 3s ease-in-out infinite;
+        }
+
+        @keyframes truckLevitate {
+            0%, 100% {
+                transform: translate(-50%, -50%) translateY(0px) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) translateY(-15px) scale(1.03);
+            }
+        }
+
+        .truck-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 40px rgba(255, 51, 51, 0.7));
+        }
+
+        /* Ombre dynamique sous le badge */
+        .badge-shadow {
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 40px;
+            background: radial-gradient(ellipse,
+                rgba(0, 0, 0, 0.6) 0%,
+                transparent 70%
+            );
+            filter: blur(20px);
+            animation: shadowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes shadowPulse {
+            0%, 100% {
+                opacity: 0.6;
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                opacity: 0.9;
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        /* Anneaux lumineux tournants */
+        .light-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid transparent;
+            border-radius: 50%;
+            border-top-color: rgba(255, 51, 51, 0.6);
+            border-right-color: rgba(255, 51, 51, 0.3);
+        }
+
+        .ring-1 {
+            width: 110%;
+            height: 110%;
+            animation: ringRotate 4s linear infinite;
+        }
+
+        .ring-2 {
+            width: 115%;
+            height: 115%;
+            animation: ringRotate 6s linear infinite reverse;
+            border-top-color: rgba(255, 100, 100, 0.4);
+        }
+
+        @keyframes ringRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Badge urgence */
+        .urgence-badge {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff3333;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.5);
+            animation: badgePulse 2s ease-in-out infinite;
+            z-index: 20;
+            white-space: nowrap;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+
+        .instruction {
+            text-align: center;
+            margin-top: 2rem;
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        .back-link {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #ff3333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.8rem 2rem;
+            border: 2px solid #ff3333;
+            border-radius: 30px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .back-link a:hover {
+            background: #ff3333;
+            color: white;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-header">
+        <h1>🎯 Option 2 : Badge 3D Rotatif 🎯</h1>
+        <p>Effet premium - Professionnel - Moderne</p>
+    </div>
+
+    <div class="hero-section">
+        <div class="urgence-badge">⚡ INTERVENTION 24h/24 ⚡</div>
+
+        <div class="badge-container">
+            <div class="badge-3d">
+                <!-- Anneaux lumineux -->
+                <div class="light-ring ring-1"></div>
+                <div class="light-ring ring-2"></div>
+
+                <!-- Cercles du badge -->
+                <div class="badge-circle circle-outer">
+                    <div class="badge-circle circle-mid">
+                        <div class="badge-circle circle-inner">
+                            <!-- Camion au centre -->
+                            <div class="truck-showcase">
+                                <img src="camionurgence.png" alt="Camion d'urgence" class="truck-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ombre -->
+            <div class="badge-shadow"></div>
+        </div>
+
+        <p class="instruction">💡 Survole le badge pour arrêter la rotation</p>
+    </div>
+
+    <div class="back-link">
+        <a href="demo-camion-index.html">← Retour aux démos</a>
+    </div>
+</body>
+</html>

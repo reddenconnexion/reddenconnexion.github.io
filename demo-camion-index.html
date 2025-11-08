@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DÉMOS - Effets Camion "Wahou" 🚛</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            padding: 3rem 2rem;
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            color: #ff3333;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 51, 51, 0.5);
+            animation: titleGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 30px rgba(255, 51, 51, 0.5); }
+            50% { text-shadow: 0 0 50px rgba(255, 51, 51, 0.8); }
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #999;
+        }
+
+        .demos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .demo-card {
+            background: linear-gradient(135deg,
+                rgba(40, 40, 40, 0.9) 0%,
+                rgba(30, 30, 30, 0.9) 100%
+            );
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 51, 51, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .demo-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #ff3333, #ff6666, #ff3333);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+            filter: blur(10px);
+        }
+
+        .demo-card:hover::before {
+            opacity: 0.6;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 51, 51, 0.3);
+        }
+
+        .demo-preview {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-preview::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                transparent,
+                rgba(255, 51, 51, 0.1),
+                transparent
+            );
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+
+        .demo-card:hover .demo-preview::after {
+            transform: translateX(100%);
+        }
+
+        .demo-content {
+            padding: 2rem;
+        }
+
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff3333;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-number {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .demo-description {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            background: rgba(255, 51, 51, 0.2);
+            color: #ff6666;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 51, 51, 0.3);
+        }
+
+        .demo-link {
+            display: block;
+            text-align: center;
+            background: #ff3333;
+            color: white;
+            padding: 1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.3);
+        }
+
+        .demo-link:hover {
+            background: #ff4444;
+            box-shadow: 0 8px 30px rgba(255, 51, 51, 0.5);
+            transform: scale(1.02);
+        }
+
+        .recommended {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ffcc00;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            box-shadow: 0 3px 10px rgba(255, 204, 0, 0.5);
+            z-index: 10;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 51, 51, 0.3);
+        }
+
+        footer p {
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #ff3333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .demos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚛 Effets Camion "Wahou" 🚛</h1>
+            <p>6 options modernes et attractives pour votre hero section</p>
+            <p class="subtitle">Cliquez sur une démo pour la voir en action</p>
+        </header>
+
+        <div class="demos-grid">
+            <!-- Option 1 -->
+            <div class="demo-card">
+                <div class="recommended">⭐ RECOMMANDÉ</div>
+                <div class="demo-preview">⚡</div>
+                <div class="demo-content">
+                    <div class="demo-number">OPTION 1</div>
+                    <h2 class="demo-title">Route Défilante + Étincelles</h2>
+                    <p class="demo-description">
+                        Route animée qui défile sous le camion avec particules électriques, phares brillants et lignes de vitesse. Parfait pour l'urgence 24/7.
+                    </p>
+                    <div class="demo-features">
+                        <span class="feature-tag">Dynamique</span>
+                        <span class="feature-tag">Action</span>
+                        <span class="feature-tag">Urgence</span>
+                        <span class="feature-tag">Mouvement</span>
+                    </div>
+                    <a href="demo-camion-route-etincelles.html" class="demo-link">Voir la démo →</a>
+                </div>
+            </div>
+
+            <!-- Option 2 -->
+            <div class="demo-card">
+                <div class="recommended">⭐ RECOMMANDÉ</div>
+                <div class="demo-preview">🎯</div>
+                <div class="demo-content">
+                    <div class="demo-number">OPTION 2</div>
+                    <h2 class="demo-title">Badge 3D Rotatif</h2>
+                    <p class="demo-description">
+                        Badge circulaire premium qui tourne automatiquement avec anneaux lumineux et effet de lévitation. Style showcase professionnel.
+                    </p>
+                    <div class="demo-features">
+                        <span class="feature-tag">Premium</span>
+                        <span class="feature-tag">Professionnel</span>
+                        <span class="feature-tag">3D</span>
+                        <span class="feature-tag">Moderne</span>
+                    </div>
+                    <a href="demo-camion-badge-3d.html" class="demo-link">Voir la démo →</a>
+                </div>
+            </div>
+
+            <!-- Option 3 -->
+            <div class="demo-card">
+                <div class="demo-preview">🌟</div>
+                <div class="demo-content">
+                    <div class="demo-number">OPTION 3</div>
+                    <h2 class="demo-title">Néon Cyberpunk</h2>
+                    <p class="demo-description">
+                        Contours néon cyan/magenta animés, grille électrique, scanlines et effets glitch. Style futuriste high-tech.
+                    </p>
+                    <div class="demo-features">
+                        <span class="feature-tag">Futuriste</span>
+                        <span class="feature-tag">High-tech</span>
+                        <span class="feature-tag">Cyberpunk</span>
+                        <span class="feature-tag">Néon</span>
+                    </div>
+                    <a href="demo-camion-neon-cyberpunk.html" class="demo-link">Voir la démo →</a>
+                </div>
+            </div>
+
+            <!-- Option 4 -->
+            <div class="demo-card">
+                <div class="demo-preview">💳</div>
+                <div class="demo-content">
+                    <div class="demo-number">OPTION 4</div>
+                    <h2 class="demo-title">Carte 3D Interactive</h2>
+                    <p class="demo-description">
+                        Carte qui se soulève et s'incline au mouvement de la souris avec reflets lumineux qui suivent le curseur. Très immersif.
+                    </p>
+                    <div class="demo-features">
+                        <span class="feature-tag">Interactif</span>
+                        <span class="feature-tag">Immersif</span>
+                        <span class="feature-tag">Tilt effect</span>
+                        <span class="feature-tag">3D</span>
+                    </div>
+                    <a href="demo-camion-carte-3d.html" class="demo-link">Voir la démo →</a>
+                </div>
+            </div>
+
+            <!-- Option 5 -->
+            <div class="demo-card">
+                <div class="demo-preview">↔️</div>
+                <div class="demo-content">
+                    <div class="demo-number">OPTION 5</div>
+                    <h2 class="demo-title">Split Screen Asymétrique</h2>
+                    <p class="demo-description">
+                        Design asymétrique tendance : camion à gauche, contenu à droite avec lignes diagonales animées. Style magazine moderne.
+                    </p>
+                    <div class="demo-features">
+                        <span class="feature-tag">Magazine</span>
+                        <span class="feature-tag">Éditorial</span>
+                        <span class="feature-tag">Moderne</span>
+                        <span class="feature-tag">Layout unique</span>
+                    </div>
+                    <a href="demo-camion-split-screen.html" class="demo-link">Voir la démo →</a>
+                </div>
+            </div>
+
+            <!-- Option 6 -->
+            <div class="demo-card">
+                <div class="demo-preview">📽️</div>
+                <div class="demo-content">
+                    <div class="demo-number">OPTION 6</div>
+                    <h2 class="demo-title">Hologramme / Projection</h2>
+                    <p class="demo-description">
+                        Effet de projection holographique avec grille 3D en perspective, rayon de projection et particules montantes. Très sci-fi.
+                    </p>
+                    <div class="demo-features">
+                        <span class="feature-tag">Sci-fi</span>
+                        <span class="feature-tag">Technologique</span>
+                        <span class="feature-tag">Innovant</span>
+                        <span class="feature-tag">Hologramme</span>
+                    </div>
+                    <a href="demo-camion-hologramme.html" class="demo-link">Voir la démo →</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>💡 <strong>Conseil :</strong> Je recommande l'<strong>Option 1</strong> (dynamique/urgence) ou l'<strong>Option 2</strong> (premium/professionnel)</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html">← Retour au site principal</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

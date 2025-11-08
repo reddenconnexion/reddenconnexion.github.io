@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DÉMO - Camion Split Screen Asymétrique ↔️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .demo-header h1 {
+            font-size: 2.5rem;
+            color: #ff3333;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+        }
+
+        .demo-header p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .hero-section {
+            width: 100%;
+            max-width: 1200px;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Split container */
+        .split-container {
+            display: flex;
+            min-height: 500px;
+            position: relative;
+        }
+
+        /* Côté gauche - Camion */
+        .split-left {
+            flex: 0 0 60%;
+            background: linear-gradient(135deg,
+                #1a1a1a 0%,
+                #2d2d2d 50%,
+                #1a1a1a 100%
+            );
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%);
+        }
+
+        /* Lignes diagonales animées */
+        .diagonal-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 51, 51, 0.05) 20px,
+                rgba(255, 51, 51, 0.05) 40px
+            );
+            animation: linesMove 20s linear infinite;
+        }
+
+        @keyframes linesMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(40px); }
+        }
+
+        .truck-container {
+            position: relative;
+            z-index: 5;
+            width: 100%;
+            max-width: 550px;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .truck-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 50px rgba(255, 51, 51, 0.6));
+            animation: truckFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes truckFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Côté droit - Texte */
+        .split-right {
+            flex: 0 0 40%;
+            background: linear-gradient(135deg,
+                #ff3333 0%,
+                #cc0000 100%
+            );
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .split-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .split-right h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .split-right p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: white;
+            color: #ff3333;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+        }
+
+        .feature-text {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Ligne de séparation animée */
+        .separator {
+            position: absolute;
+            right: 40%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                #ff3333,
+                transparent
+            );
+            animation: separatorGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes separatorGlow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 51, 51, 1);
+            }
+        }
+
+        .back-link {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #ff3333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.8rem 2rem;
+            border: 2px solid #ff3333;
+            border-radius: 30px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .back-link a:hover {
+            background: #ff3333;
+            color: white;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .split-container {
+                flex-direction: column;
+            }
+
+            .split-left, .split-right {
+                flex: 1 1 100%;
+                clip-path: none;
+            }
+
+            .separator {
+                display: none;
+            }
+
+            .split-right h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-header">
+        <h1>↔️ Option 5 : Split Screen Asymétrique ↔️</h1>
+        <p>Effet magazine - Éditorial - Moderne</p>
+    </div>
+
+    <div class="hero-section">
+        <div class="split-container">
+            <!-- Ligne de séparation -->
+            <div class="separator"></div>
+
+            <!-- Côté gauche - Camion -->
+            <div class="split-left">
+                <div class="diagonal-lines"></div>
+                <div class="truck-container">
+                    <img src="camionurgence.png" alt="Camion d'urgence" class="truck-img">
+                </div>
+            </div>
+
+            <!-- Côté droit - Contenu -->
+            <div class="split-right">
+                <div class="content">
+                    <span class="badge">⚡ SERVICE D'URGENCE</span>
+                    <h2>Dépannage Électrique 24h/24</h2>
+                    <p>Intervention rapide partout dans la région. Notre équipe est prête à intervenir à tout moment.</p>
+
+                    <div class="features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🚨</span>
+                            <span class="feature-text">Disponible 7j/7</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">⚡</span>
+                            <span class="feature-text">Intervention sous 30 min</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span class="feature-text">Devis gratuit</span>
+                        </div>
+                    </div>
+
+                    <button class="cta-button">
+                        <span>📞</span>
+                        <span>Appelez maintenant</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="demo-camion-index.html">← Retour aux démos</a>
+    </div>
+</body>
+</html>
