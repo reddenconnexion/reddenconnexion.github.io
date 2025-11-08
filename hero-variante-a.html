@@ -103,14 +103,19 @@
             max-width: 600px;
             margin: 0 auto 40px;
             position: relative;
-            padding-top: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
         }
 
-        .hero-logo img {
+        .hero-logo .truck-image {
             width: 100%;
             height: auto;
             filter: drop-shadow(0 10px 40px rgba(255, 51, 51, 0.3));
             animation: floatTruck 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
         }
 
         @keyframes floatTruck {
@@ -121,12 +126,12 @@
         /* Tableau électrique interactif */
         .electrical-panel-wrapper {
             position: absolute;
-            bottom: 25%;
-            left: 20%;
-            z-index: 5;
+            bottom: 15%;
+            left: 2%;
+            z-index: 3;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             gap: 8px;
         }
 
@@ -169,12 +174,12 @@
         }
 
         .electrical-panel {
-            width: 100px;
+            width: 120px;
             height: auto;
             position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
-            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7));
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.8));
         }
 
         .electrical-panel:hover {
@@ -485,12 +490,12 @@
         /* Responsive */
         @media (max-width: 768px) {
             .electrical-panel {
-                width: 80px;
+                width: 90px;
             }
 
             .electrical-panel-wrapper {
-                left: 15%;
-                bottom: 20%;
+                left: 5%;
+                bottom: 12%;
             }
 
             .warning-badge {
@@ -521,12 +526,12 @@
 
         @media (max-width: 480px) {
             .electrical-panel {
-                width: 70px;
+                width: 75px;
             }
 
             .electrical-panel-wrapper {
-                left: 10%;
-                bottom: 18%;
+                left: 3%;
+                bottom: 10%;
             }
 
             .warning-badge {
@@ -535,7 +540,7 @@
             }
 
             .hero-logo {
-                padding-top: 50px;
+                min-height: 220px;
             }
         }
     </style>
@@ -589,7 +594,7 @@
                     </div>
                 </div>
 
-                <img src="camionurgence.png" alt="Camion Red Den Connexion">
+                <img src="camionurgence.png" alt="Camion Red Den Connexion" class="truck-image">
             </div>
 
             <h1>Électricien Professionnel</h1>
