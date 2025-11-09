@@ -434,6 +434,7 @@
             padding: 140px 20px 40px;
             position: relative;
             overflow: hidden;
+            max-width: none;
         }
 
         /* Effet de grille subtile en arrière-plan */
@@ -784,6 +785,32 @@
 
     <!-- Styles pour le reste de la page -->
     <style>
+        /* Styles généraux pour les sections */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Styles généraux pour les titres h2 */
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1a1a1a;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff3333;
+            margin: 1rem auto;
+            box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+        }
+
         .why-us {
             background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
         }
