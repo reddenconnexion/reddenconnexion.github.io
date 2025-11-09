@@ -1587,71 +1587,54 @@
 
     <section id="accueil" class="hero">
         <div class="hero-content">
+            <div class="availability-badge">
+                ⚡ DISPONIBLE 24H/24 - 7J/7
+            </div>
+
             <div class="hero-logo">
-                <img src="camionurgence.png" alt="Camion d'urgence Red Den Connexion - Intervention rapide 24h/24" class="hero-truck">
+                <img src="camionurgence.png" alt="Camion Red Den Connexion">
             </div>
 
-            <!-- Titre interactif avec badge "NE PAS TOUCHER" -->
-            <div class="interactive-title-wrapper" id="interactiveTitle">
-                <!-- Badge "NE PAS TOUCHER" au-dessus -->
-                <div class="warning-label">
-                    <div class="warning-text">
-                        <span class="warning-icon">⚠️</span>
-                        <span>DANGER</span>
-                        <span class="danger-text">NE PAS TOUCHER</span>
-                        <span class="warning-icon">⚡</span>
-                    </div>
+            <div class="danger-label-wrapper">
+                <div class="danger-label">
+                    <span>⚠️</span>
+                    <span>DANGER - NE PAS TOUCHER</span>
+                    <span>⚡</span>
                 </div>
-
-                <!-- Flèche indicative -->
-                <div class="pointer-arrow">👇</div>
-
-                <!-- Titre principal avec effet de charge (H1 pour SEO) -->
-                <h1 class="power-charge">
-                    <span class="letter" style="--i:0">R</span><span class="letter" style="--i:1">e</span><span class="letter" style="--i:2">d</span><span style="display: inline-block; width: 0.3em;"></span><span class="letter" style="--i:3">D</span><span class="letter" style="--i:4">e</span><span class="letter" style="--i:5">n</span><span style="display: inline-block; width: 0.5em;"></span><span class="letter" style="--i:6">C</span><span class="letter" style="--i:7">o</span><span class="letter" style="--i:8">n</span><span class="letter" style="--i:9">n</span><span class="letter" style="--i:10">e</span><span class="letter" style="--i:11">x</span><span class="letter" style="--i:12">i</span><span class="letter" style="--i:13">o</span><span class="letter" style="--i:14">n</span>
-                </h1>
-
-                <!-- Message de choc (visible pendant le court-circuit) -->
-                <div class="shock-warning">
-                    ⚡ COURT-CIRCUIT ! ⚡
-                </div>
+                <div class="pointer-down">👇</div>
             </div>
-            <h2 class="hero-subtitle">
-                <span id="typingSubtitle" class="typing-cursor"></span>
-            </h2>
 
-            <!-- Quick Facts réduits -->
-            <div class="hero-quick-facts">
-                <div class="quick-fact">
-                    <div class="fact-icon">💰</div>
-                    <div class="fact-content">
-                        <strong>Devis gratuit</strong>
-                        <span>Sans engagement</span>
-                    </div>
+            <h1 id="mainTitle">Électricien Professionnel</h1>
+
+            <div class="hero-subtitle">
+                Dépannage & Installation <span class="highlight">Expert</span>
+            </div>
+
+            <div class="experience">
+                ⭐ 25 ans d'expérience à votre service
+            </div>
+
+            <div class="usps">
+                <div class="usp-item">
+                    <span class="icon">⚡</span>
+                    <span>Intervention rapide</span>
                 </div>
-                <div class="quick-fact">
-                    <div class="fact-icon">📍</div>
-                    <div class="fact-content">
-                        <strong>Secteur Libourne</strong>
-                        <span>Rayon 30 km</span>
-                    </div>
+                <div class="usp-item">
+                    <span class="icon">✅</span>
+                    <span>Normes NF C 15-100</span>
                 </div>
-                <div class="quick-fact">
-                    <div class="fact-icon">⭐</div>
-                    <div class="fact-content">
-                        <strong>Avis 5 étoiles</strong>
-                        <span>Satisfaction garantie</span>
-                    </div>
+                <div class="usp-item">
+                    <span class="icon">💰</span>
+                    <span>Devis gratuit</span>
                 </div>
             </div>
 
-            <!-- CTA principal simplifié -->
-            <div class="hero-cta-group">
+            <div class="cta-group">
                 <a href="tel:0695100823" class="cta-button cta-primary">
                     <span class="cta-icon">📞</span>
-                    <span class="cta-text">
-                        <strong>Appelez maintenant</strong>
-                        <small>06 95 10 08 23</small>
+                    <span>
+                        Urgence
+                        <span class="phone-number">06 95 10 08 23</span>
                     </span>
                 </a>
                 <a href="#contact" class="cta-button cta-secondary">
@@ -2075,47 +2058,32 @@
                 }, 500);
             }
 
-            // ===== INTERACTION TITRE "NE PAS TOUCHER" =====
-            const interactiveTitle = document.getElementById('interactiveTitle');
-            if (interactiveTitle) {
-                let isShortCircuited = false;
+            // ===== EFFET DE COURT-CIRCUIT SUR LE TITRE =====
+            const mainTitle = document.getElementById('mainTitle');
+            const electricFlash = document.getElementById('electricFlash');
 
-                // Déclencher le court-circuit au clic
-                interactiveTitle.addEventListener('click', function() {
-                    if (!isShortCircuited) {
-                        // Activer le court-circuit
-                        interactiveTitle.classList.add('short-circuited');
-                        isShortCircuited = true;
+            if (mainTitle && electricFlash) {
+                mainTitle.addEventListener('click', function() {
+                    // Ajouter la classe de court-circuit sur le titre
+                    mainTitle.classList.add('short-circuit');
 
-                        // Vibration si supportée (mobile)
-                        if (navigator.vibrate) {
-                            navigator.vibrate([50, 30, 50, 30, 50]);
-                        }
+                    // Flash électrique blanc
+                    electricFlash.classList.add('active');
 
-                        // Désactiver après 2 secondes
-                        setTimeout(() => {
-                            interactiveTitle.classList.remove('short-circuited');
-                            isShortCircuited = false;
-                        }, 2000);
+                    // Faire trembler toute la section hero
+                    document.querySelector('.hero').style.animation = 'shake 0.5s ease-in-out';
+
+                    // Vibration du dispositif (si disponible)
+                    if (navigator.vibrate) {
+                        navigator.vibrate([100, 50, 100, 50, 100]);
                     }
-                });
 
-                // Support tactile pour mobile
-                interactiveTitle.addEventListener('touchstart', function(e) {
-                    if (!isShortCircuited) {
-                        e.preventDefault();
-                        interactiveTitle.classList.add('short-circuited');
-                        isShortCircuited = true;
-
-                        if (navigator.vibrate) {
-                            navigator.vibrate([50, 30, 50, 30, 50]);
-                        }
-
-                        setTimeout(() => {
-                            interactiveTitle.classList.remove('short-circuited');
-                            isShortCircuited = false;
-                        }, 2000);
-                    }
+                    // Retirer les effets après l'animation
+                    setTimeout(() => {
+                        mainTitle.classList.remove('short-circuit');
+                        electricFlash.classList.remove('active');
+                        document.querySelector('.hero').style.animation = '';
+                    }, 500);
                 });
             }
 
@@ -2197,46 +2165,6 @@
             document.querySelectorAll('.counter-years, .counter-radius').forEach(el => {
                 counterObserver.observe(el);
             });
-
-            // ===== EFFET TYPING SUR LE SOUS-TITRE =====
-            const typingText = "Électricien professionnel à St Médard de Guizières - Dépannage 24h/24";
-            const typingElement = document.getElementById('typingSubtitle');
-            let typingIndex = 0;
-
-            function typeWriter() {
-                if (typingIndex < typingText.length) {
-                    // Ajouter le prochain caractère
-                    const currentText = typingText.substring(0, typingIndex + 1);
-
-                    // Gérer les balises <strong> pour St Médard et 24h/24
-                    let displayText = currentText;
-                    if (currentText.includes('St Médard de Guizières')) {
-                        displayText = currentText.replace(
-                            'St Médard de Guizières',
-                            '<strong>St Médard de Guizières</strong>'
-                        );
-                    }
-                    if (currentText.includes('24h/24')) {
-                        displayText = displayText.replace('24h/24', '<strong>24h/24</strong>');
-                    }
-
-                    typingElement.innerHTML = displayText;
-                    typingElement.style.opacity = '1';
-                    typingIndex++;
-
-                    // Vitesse variable pour plus de naturel
-                    const speed = Math.random() * 50 + 30;
-                    setTimeout(typeWriter, speed);
-                } else {
-                    // Retirer le curseur après avoir fini
-                    setTimeout(() => {
-                        typingElement.classList.remove('typing-cursor');
-                    }, 500);
-                }
-            }
-
-            // Démarrer l'animation typing après un court délai
-            setTimeout(typeWriter, 1000);
 
             // ===== EFFET RIPPLE AU CLIC SUR LES BOUTONS CTA =====
             document.querySelectorAll('.cta-button').forEach(button => {
