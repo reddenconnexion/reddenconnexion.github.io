@@ -472,76 +472,24 @@
             margin: 0 auto;
         }
 
-        /* Styles pour le camion dans la hero section - Effet Glassmorphism */
+        /* Logo camion central */
         .hero-logo {
             width: 100%;
-            max-width: 700px;
-            height: 280px;
-            margin: 0 auto 1.5rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
             position: relative;
-            animation: fadeInScale 0.8s ease-out;
         }
 
-        .hero-logo::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 110%;
-            height: 110%;
-            background: linear-gradient(135deg,
-                rgba(255, 51, 51, 0.15) 0%,
-                rgba(139, 0, 0, 0.1) 50%,
-                rgba(255, 51, 51, 0.15) 100%
-            );
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 51, 51, 0.3);
-            box-shadow:
-                0 8px 32px rgba(255, 51, 51, 0.2),
-                inset 0 0 20px rgba(255, 51, 51, 0.1);
-            z-index: -1;
-            animation: glassGlow 3s ease-in-out infinite;
+        .hero-logo img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 40px rgba(255, 51, 51, 0.3));
+            animation: floatTruck 3s ease-in-out infinite;
         }
 
-        .hero-logo::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 10px;
-            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: shadowPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes glassGlow {
-            0%, 100% {
-                box-shadow:
-                    0 8px 32px rgba(255, 51, 51, 0.2),
-                    inset 0 0 20px rgba(255, 51, 51, 0.1);
-                border-color: rgba(255, 51, 51, 0.3);
-            }
-            50% {
-                box-shadow:
-                    0 8px 40px rgba(255, 51, 51, 0.4),
-                    inset 0 0 30px rgba(255, 51, 51, 0.2);
-                border-color: rgba(255, 51, 51, 0.5);
-            }
-        }
-
-        @keyframes shadowPulse {
-            0%, 100% {
-                opacity: 0.3;
-                transform: translateX(-50%) scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: translateX(-50%) scale(1.1);
-            }
+        @keyframes floatTruck {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
         }
 
         /* Flash électrique */
@@ -2536,6 +2484,17 @@
                 });
             }
 
+            // Animation de shake pour le fond
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translate(0, 0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translate(-3px, 3px); }
+                    20%, 40%, 60%, 80% { transform: translate(3px, -3px); }
+                }
+            `;
+            document.head.appendChild(style);
+
             // Lightbox - Ouvrir au clic sur les images
             document.querySelectorAll('.gallery-image-wrapper').forEach(wrapper => {
                 wrapper.addEventListener('click', function() {
@@ -2936,5 +2895,9 @@
             });
         });
     </script>
+
+    <!-- Flash électrique -->
+    <div class="electric-flash" id="electricFlash"></div>
+
 </body>
 </html>
