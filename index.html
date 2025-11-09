@@ -1,0 +1,3072 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Den Connexion - Électricien St Médard de Guizières | Intervention 24h/24</title>
+
+    <!-- Security Headers managed by Cloudflare Worker -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Électricien professionnel à St Médard de Guizières avec 25 ans d'expérience. Intervention rapide 24h/24 et 7j/7. Installations électriques, dépannages urgents. Devis gratuit. Zone: Libourne, Coutras, Guitres.">
+    <meta name="keywords" content="électricien, St Médard de Guizières, Libourne, Coutras, dépannage électrique, installation électrique, électricien 24h/24, urgence électrique, Gironde">
+    <meta name="author" content="Red Den Connexion">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reddenconnexion.fr/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="logoredden.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logoredden.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="logoredden.png">
+    <link rel="shortcut icon" href="logoredden.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://reddenconnexion.fr/">
+    <meta property="og:title" content="Red Den Connexion - Électricien St Médard de Guizières">
+    <meta property="og:description" content="Électricien professionnel avec 25 ans d'expérience. Intervention rapide 24h/24 et 7j/7. Devis gratuit.">
+    <meta property="og:image" content="https://reddenconnexion.fr/logoredden.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://reddenconnexion.fr/">
+    <meta property="twitter:title" content="Red Den Connexion - Électricien St Médard de Guizières">
+    <meta property="twitter:description" content="Électricien professionnel avec 25 ans d'expérience. Intervention rapide 24h/24 et 7j/7.">
+    <meta property="twitter:image" content="https://reddenconnexion.fr/logoredden.png">
+
+    <!-- Preload Critical Images -->
+    <link rel="preload" as="image" href="logoredden.png" type="image/png">
+    <link rel="preload" as="image" href="deniselec.png" type="image/png">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+    <!-- Google Fonts - Orbitron pour le titre -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Red Den Connexion",
+      "image": "https://reddenconnexion.fr/logoredden.png",
+      "@id": "https://reddenconnexion.fr/",
+      "url": "https://reddenconnexion.fr/",
+      "telephone": "+33695100823",
+      "email": "reddenconnexion@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "13 rue Robert Boulin",
+        "addressLocality": "St Médard de Guizières",
+        "postalCode": "33230",
+        "addressRegion": "Gironde",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.0134,
+        "longitude": -0.0611
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "sameAs": [],
+      "priceRange": "$$",
+      "description": "Électricien professionnel à St Médard de Guizières avec 25 ans d'expérience. Intervention rapide 24h/24 et 7j/7.",
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 45.0134,
+          "longitude": -0.0611
+        },
+        "geoRadius": "30000"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3"
+      }
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== ANIMATIONS ===== */
+
+        /* Fade in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Animation classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation delays for grid items */
+        .why-grid .why-item:nth-child(1) { transition-delay: 0.1s; }
+        .why-grid .why-item:nth-child(2) { transition-delay: 0.2s; }
+        .why-grid .why-item:nth-child(3) { transition-delay: 0.3s; }
+        .why-grid .why-item:nth-child(4) { transition-delay: 0.4s; }
+
+        .services-grid .service-card:nth-child(1) { transition-delay: 0.1s; }
+        .services-grid .service-card:nth-child(2) { transition-delay: 0.2s; }
+        .services-grid .service-card:nth-child(3) { transition-delay: 0.3s; }
+
+        .testimonials-grid .testimonial-card:nth-child(1) { transition-delay: 0.1s; }
+        .testimonials-grid .testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+        .testimonials-grid .testimonial-card:nth-child(3) { transition-delay: 0.3s; }
+
+        .contact-grid .contact-item:nth-child(1) { transition-delay: 0.1s; }
+        .contact-grid .contact-item:nth-child(2) { transition-delay: 0.2s; }
+        .contact-grid .contact-item:nth-child(3) { transition-delay: 0.3s; }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .scale-in {
+            animation: scaleIn 0.6s ease-out;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(45, 45, 45, 0.98) 100%);
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Styles pour le logo navbar animé */
+        .nav-logo {
+            width: 60px;
+            height: 60px;
+            perspective: 1000px;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-logo-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 1.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        .nav-logo.flipped .nav-logo-inner {
+            transform: rotateY(900deg);
+        }
+
+        .nav-logo-face {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 50%;
+            border: 3px solid #ff3333;
+            box-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: radial-gradient(circle, rgba(139, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+            animation: navLogoGlow 3s ease-in-out infinite;
+        }
+
+        .nav-logo-face.front {
+            transform: rotateY(0deg);
+        }
+
+        .nav-logo-face.back {
+            transform: rotateY(180deg);
+        }
+
+        .nav-logo-face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes navLogoGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 51, 51, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(255, 51, 51, 0.8); }
+        }
+
+        .nav-logo:hover .nav-logo-inner {
+            animation: subtleFloat 2s ease-in-out infinite;
+        }
+
+        /* Animations coinFlip pour le logo navbar */
+        @keyframes navCoinFlip {
+            0% {
+                transform: rotateY(0deg) scale(1);
+            }
+            25% {
+                transform: rotateY(225deg) scale(0.85);
+            }
+            50% {
+                transform: rotateY(450deg) scale(1);
+            }
+            75% {
+                transform: rotateY(675deg) scale(0.85);
+            }
+            100% {
+                transform: rotateY(900deg) scale(1);
+            }
+        }
+
+        @keyframes navCoinFlipBack {
+            0% {
+                transform: rotateY(900deg) scale(1);
+            }
+            25% {
+                transform: rotateY(675deg) scale(0.85);
+            }
+            50% {
+                transform: rotateY(450deg) scale(1);
+            }
+            75% {
+                transform: rotateY(225deg) scale(0.85);
+            }
+            100% {
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+
+        .nav-flip-animation {
+            animation: navCoinFlip 1.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards !important;
+        }
+
+        .nav-flip-back-animation {
+            animation: navCoinFlipBack 1.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards !important;
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff3333;
+            text-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #ff3333;
+        }
+
+        .hero {
+            /* Gradient qui "respire" */
+            background: linear-gradient(270deg,
+                #1a1a1a 0%,
+                #2d2d2d 30%,
+                #3d1a1a 60%,
+                #2d2d2d 100%
+            );
+            background-size: 400% 400%;
+            animation: breatheGradient 12s ease infinite;
+            color: white;
+            padding: 160px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes breatheGradient {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 51, 51, 0.15) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Styles pour le camion dans la hero section - Effet Glassmorphism */
+        .hero-logo {
+            width: 100%;
+            max-width: 700px;
+            height: 280px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        .hero-logo::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            background: linear-gradient(135deg,
+                rgba(255, 51, 51, 0.15) 0%,
+                rgba(139, 0, 0, 0.1) 50%,
+                rgba(255, 51, 51, 0.15) 100%
+            );
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 51, 51, 0.3);
+            box-shadow:
+                0 8px 32px rgba(255, 51, 51, 0.2),
+                inset 0 0 20px rgba(255, 51, 51, 0.1);
+            z-index: -1;
+            animation: glassGlow 3s ease-in-out infinite;
+        }
+
+        .hero-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: shadowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glassGlow {
+            0%, 100% {
+                box-shadow:
+                    0 8px 32px rgba(255, 51, 51, 0.2),
+                    inset 0 0 20px rgba(255, 51, 51, 0.1);
+                border-color: rgba(255, 51, 51, 0.3);
+            }
+            50% {
+                box-shadow:
+                    0 8px 40px rgba(255, 51, 51, 0.4),
+                    inset 0 0 30px rgba(255, 51, 51, 0.2);
+                border-color: rgba(255, 51, 51, 0.5);
+            }
+        }
+
+        @keyframes shadowPulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        .hero-truck {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(255, 51, 51, 0.4));
+            transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            animation: truckFloat 3s ease-in-out infinite, truckDrive 4s ease-in-out infinite;
+        }
+
+        .hero-logo:hover .hero-truck {
+            filter: drop-shadow(0 0 40px rgba(255, 51, 51, 0.8));
+            transform: scale(1.08) translateX(5px);
+        }
+
+        @keyframes truckFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes truckDrive {
+            0%, 100% {
+                transform: translateX(0px);
+            }
+            25% {
+                transform: translateX(3px);
+            }
+            75% {
+                transform: translateX(-3px);
+            }
+        }
+
+        /* Effet de particules électriques autour du camion */
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: translate(0, 0) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(var(--tx), var(--ty)) scale(1);
+            }
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Animation cascade au chargement */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-logo {
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: #ff3333;
+            text-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+            animation: fadeInUp 0.6s ease-out 0.3s backwards;
+        }
+
+        /* ============================================ */
+        /* TITRE INTERACTIF CUSTOM - "NE PAS TOUCHER" */
+        /* ============================================ */
+        .interactive-title-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            user-select: none;
+            margin: 1.5rem 0;
+        }
+
+        /* Badge "NE PAS TOUCHER" au-dessus du titre */
+        .warning-label {
+            background: linear-gradient(135deg, #1a0000 0%, #000 100%);
+            border: 2px solid #ff3333;
+            border-radius: 12px;
+            padding: 0.6rem 1.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 0 20px rgba(255, 51, 51, 0.5),
+                inset 0 0 15px rgba(255, 51, 51, 0.1);
+            animation: warningPulse 2s ease-in-out infinite;
+            transition: all 0.3s;
+        }
+
+        .interactive-title-wrapper:hover .warning-label {
+            transform: scale(1.05);
+            box-shadow:
+                0 0 30px rgba(255, 51, 51, 0.8),
+                inset 0 0 25px rgba(255, 51, 51, 0.2);
+        }
+
+        @keyframes warningPulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 20px rgba(255, 51, 51, 0.5),
+                    inset 0 0 15px rgba(255, 51, 51, 0.1);
+            }
+            50% {
+                box-shadow:
+                    0 0 35px rgba(255, 51, 51, 0.9),
+                    inset 0 0 30px rgba(255, 51, 51, 0.3);
+            }
+        }
+
+        /* Rayures de danger animées */
+        .warning-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 12px,
+                rgba(255, 51, 51, 0.12) 12px,
+                rgba(255, 51, 51, 0.12) 24px
+            );
+            animation: hazardStripes 2s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes hazardStripes {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(34px); }
+        }
+
+        .warning-text {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.9rem;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 51, 51, 0.8);
+        }
+
+        .warning-icon {
+            font-size: 1.3rem;
+            animation: iconBlink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes iconBlink {
+            0%, 100% {
+                opacity: 1;
+                text-shadow:
+                    0 0 15px rgba(255, 255, 0, 1),
+                    0 0 30px rgba(255, 255, 0, 0.5);
+            }
+            50% {
+                opacity: 0.4;
+                text-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+            }
+        }
+
+        .danger-text {
+            color: #ffff00;
+            letter-spacing: 1px;
+        }
+
+        /* Flèche pointant vers le titre */
+        .pointer-arrow {
+            font-size: 1.5rem;
+            color: #ff3333;
+            animation: bounceDown 1.5s ease-in-out infinite;
+            margin: 0.3rem 0;
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(8px); opacity: 0.5; }
+        }
+
+        /* Titre principal avec effet de charge */
+        .power-charge {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s;
+            color: #ff3333;
+            line-height: 1.3;
+        }
+
+        .interactive-title-wrapper:hover .power-charge {
+            transform: scale(1.02);
+        }
+
+        .power-charge .letter {
+            display: inline-block;
+            position: relative;
+            color: #333;
+            text-shadow: none;
+            animation: chargeUp 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s);
+            transition: all 0.3s;
+        }
+
+        @keyframes chargeUp {
+            0%, 100% {
+                color: #333;
+                text-shadow: none;
+            }
+            25% {
+                color: #666;
+                text-shadow: 0 0 5px rgba(255, 51, 51, 0.3);
+            }
+            50% {
+                color: #ff6666;
+                text-shadow:
+                    0 0 10px rgba(255, 51, 51, 0.6),
+                    0 0 20px rgba(255, 51, 51, 0.4);
+            }
+            75% {
+                color: #ff3333;
+                text-shadow:
+                    0 0 20px rgba(255, 51, 51, 0.8),
+                    0 0 40px rgba(255, 51, 51, 0.6),
+                    0 0 60px rgba(255, 51, 51, 0.4);
+            }
+        }
+
+        /* Barre de charge sous chaque lettre */
+        .power-charge .letter::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: #1a1a1a;
+            border-radius: 2px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .power-charge .letter::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, #ff3333, #ffff00, #fff);
+            border-radius: 2px;
+            z-index: 1;
+            animation: chargeBar 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s);
+            box-shadow: 0 0 10px rgba(255, 51, 51, 0.8);
+        }
+
+        @keyframes chargeBar {
+            0%, 100% { width: 0%; }
+            25% { width: 30%; }
+            50% { width: 65%; }
+            75%, 90% { width: 80%; }
+        }
+
+        /* EFFET COURT-CIRCUIT (activé au clic) */
+        .interactive-title-wrapper.short-circuited .power-charge .letter {
+            animation: shortCircuitGlitch 0.15s steps(1) infinite, chargeUp 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.05s);
+        }
+
+        @keyframes shortCircuitGlitch {
+            0% {
+                color: #fff;
+                text-shadow:
+                    0 0 30px rgba(255, 255, 255, 1),
+                    2px 0 0 rgba(255, 0, 0, 0.9),
+                    -2px 0 0 rgba(0, 255, 255, 0.9);
+                transform: translate(0, 0);
+            }
+            20% {
+                color: #ff3333;
+                text-shadow:
+                    0 0 40px rgba(255, 51, 51, 1),
+                    -2px 0 0 rgba(255, 0, 0, 0.9),
+                    2px 0 0 rgba(0, 255, 255, 0.9);
+                transform: translate(-2px, 1px);
+            }
+            40% {
+                color: #00ffff;
+                text-shadow:
+                    0 0 40px rgba(0, 255, 255, 1),
+                    2px 2px 0 rgba(255, 0, 0, 0.9);
+                transform: translate(2px, -1px);
+            }
+            60% {
+                color: #ffff00;
+                text-shadow: 0 0 50px rgba(255, 255, 0, 1);
+                transform: translate(-1px, -1px);
+            }
+            80% {
+                color: #fff;
+                text-shadow:
+                    0 0 60px rgba(255, 255, 255, 1),
+                    0 0 80px rgba(255, 51, 51, 1);
+                transform: translate(1px, 1px);
+            }
+        }
+
+        /* Arc électrique au clic */
+        .interactive-title-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border: 3px solid #ff3333;
+            border-radius: 15px;
+            opacity: 0;
+            transition: all 0.3s;
+            box-shadow:
+                0 0 20px rgba(255, 51, 51, 0.6),
+                inset 0 0 20px rgba(255, 51, 51, 0.4);
+            pointer-events: none;
+        }
+
+        .interactive-title-wrapper.short-circuited::before {
+            opacity: 1;
+            animation: arcPulseIntense 0.3s ease-in-out infinite;
+        }
+
+        @keyframes arcPulseIntense {
+            0%, 100% {
+                border-color: #ff3333;
+                box-shadow:
+                    0 0 30px rgba(255, 51, 51, 1),
+                    inset 0 0 30px rgba(255, 51, 51, 0.6);
+            }
+            25% {
+                border-color: #ffff00;
+                box-shadow:
+                    0 0 50px rgba(255, 255, 0, 1),
+                    inset 0 0 50px rgba(255, 255, 0, 0.8);
+            }
+            50% {
+                border-color: #00ffff;
+                box-shadow:
+                    0 0 50px rgba(0, 255, 255, 1),
+                    inset 0 0 50px rgba(0, 255, 255, 0.8);
+            }
+            75% {
+                border-color: #fff;
+                box-shadow:
+                    0 0 60px rgba(255, 255, 255, 1),
+                    inset 0 0 60px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Message d'avertissement pendant le court-circuit */
+        .shock-warning {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.95);
+            color: #fff;
+            padding: 1.2rem 2.5rem;
+            border-radius: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+            border: 3px solid #ffff00;
+            box-shadow: 0 0 40px rgba(255, 255, 0, 1);
+            animation: shockAppear 0.3s ease-in-out infinite;
+        }
+
+        .interactive-title-wrapper.short-circuited .shock-warning {
+            opacity: 1;
+        }
+
+        @keyframes shockAppear {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            min-height: 2.6rem;
+        }
+
+        .hero-subtitle strong {
+            color: #ff9999;
+            font-weight: 600;
+        }
+
+        /* Effet typing - Le texte démarre invisible */
+        #typingSubtitle {
+            opacity: 0;
+        }
+
+        /* Curseur typing */
+        .typing-cursor {
+            border-right: 2px solid #ff3333;
+            animation: blink 0.7s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Hero Badges */
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            border: 1px solid;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .hero-badge.urgent {
+            background: rgba(255, 51, 51, 0.15);
+            border-color: rgba(255, 51, 51, 0.4);
+            color: #ffffff;
+        }
+
+        .hero-badge.prestige {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.4);
+            color: #ffd700;
+        }
+
+        .hero-badge:hover {
+            transform: translateY(-2px);
+            border-color: #ff3333;
+        }
+
+        /* Quick Facts Grid */
+        .hero-quick-facts {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2.5rem 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            flex-wrap: wrap;
+        }
+
+        .quick-fact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Animation en cascade pour les quick facts */
+        .quick-fact:nth-child(1) {
+            animation: fadeInUp 0.5s ease-out 0.8s forwards;
+        }
+
+        .quick-fact:nth-child(2) {
+            animation: fadeInUp 0.5s ease-out 1s forwards;
+        }
+
+        .quick-fact:nth-child(3) {
+            animation: fadeInUp 0.5s ease-out 1.2s forwards;
+        }
+
+        .quick-fact:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .fact-icon {
+            font-size: 2rem;
+            opacity: 0.9;
+            transition: transform 0.3s ease;
+        }
+
+        .quick-fact:hover .fact-icon {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        .fact-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .fact-content strong {
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .fact-content span {
+            font-size: 0.85rem;
+            color: #cccccc;
+            font-weight: 400;
+        }
+
+        /* Hero CTA Group */
+        .hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 1.4s forwards;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.8rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* CTA Primary (Rouge - Appel) avec GLOW PULSE */
+        .cta-primary {
+            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3),
+                            0 0 20px rgba(255, 51, 51, 0.2);
+            }
+            50% {
+                box-shadow: 0 6px 25px rgba(255, 51, 51, 0.6),
+                            0 0 40px rgba(255, 51, 51, 0.4),
+                            0 0 60px rgba(255, 51, 51, 0.2);
+            }
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 40px rgba(255, 51, 51, 0.8),
+                        0 0 60px rgba(255, 51, 51, 0.6) !important;
+            animation: glowPulse 1s ease-in-out infinite;
+        }
+
+        /* Effet ripple au clic */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* CTA Secondary (Simple) */
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        .cta-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .cta-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        .cta-text strong {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-text small {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1a1a1a;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff3333;
+            margin: 1rem auto;
+            box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+        }
+
+        .why-us {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 51, 51, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .why-item:hover::before {
+            left: 100%;
+        }
+
+        .why-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 51, 51, 0.3);
+        }
+
+        .why-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-item h3 {
+            color: #ff3333;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff3333, #cc0000);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 51, 51, 0.35);
+            border-color: #ff3333;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .gallery {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid transparent;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 51, 51, 0.25);
+            border-color: #ff3333;
+        }
+
+        .gallery-image-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            width: fit-content;
+            box-shadow: 0 2px 8px rgba(255, 51, 51, 0.3);
+        }
+
+        .gallery-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .gallery-description {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+
+        .gallery-benefits li {
+            color: #333;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .gallery-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff3333;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .gallery-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .gallery-location {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .gallery-duration {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex !important;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            box-shadow: 0 0 50px rgba(255, 51, 51, 0.5);
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .lightbox-close:hover {
+            background: #ff3333;
+            transform: rotate(90deg);
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+        }
+
+        .testimonials h2 {
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 51, 51, 0.3);
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #ff3333;
+            transform: translateY(-5px);
+        }
+
+        .testimonial-stars {
+            color: #ff3333;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #ff9999;
+        }
+
+        .zone {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 80px 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .zone::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
+        }
+
+        .zone-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .zone h2 {
+            color: white;
+        }
+
+        .zone p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #map {
+            width: 100%;
+            max-width: 900px;
+            height: 500px;
+            margin: 3rem auto 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(255, 51, 51, 0.3);
+            border: 3px solid #ff3333;
+        }
+
+        @media (max-width: 768px) {
+            #map {
+                height: 400px;
+                margin: 2rem auto 0;
+            }
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 51, 51, 0.2);
+            border-color: #ff3333;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .contact-item a {
+            color: #ff3333;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            word-break: break-all;
+            display: block;
+        }
+
+        .contact-item a:hover {
+            color: #cc0000;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff3333;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: #ff3333;
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 51, 51, 0.6);
+        }
+
+        #formMessage {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        #formMessage.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .faq {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.2);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background: #f8f8f8;
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            color: #1a1a1a;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .faq-icon {
+            color: #ff3333;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1.5rem;
+            background: #f8f8f8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ff3333;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+            z-index: 999;
+            border: none;
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            background: #cc0000;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 51, 51, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1a1a;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            }
+
+            nav ul.active {
+                display: flex !important;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            /* Responsive titre interactif */
+            .power-charge {
+                font-size: 2rem;
+            }
+
+            .warning-text {
+                font-size: 0.75rem;
+                flex-direction: row;
+                gap: 0.4rem;
+            }
+
+            .warning-icon {
+                font-size: 1rem;
+            }
+
+            .pointer-arrow {
+                font-size: 1.2rem;
+            }
+
+            .shock-warning {
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .power-charge .letter::after,
+            .power-charge .letter::before {
+                bottom: -8px;
+                height: 2px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-logo {
+                width: 100%;
+                max-width: 450px;
+                height: 200px;
+            }
+
+            .nav-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .hero-badges {
+                gap: 0.5rem;
+            }
+
+            .hero-badge {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .hero-quick-facts {
+                gap: 2rem;
+            }
+
+            .fact-icon {
+                font-size: 1.8rem;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cta-text {
+                align-items: center;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .company-name {
+                font-size: 1.2rem;
+            }
+
+            .lightbox-close {
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-section">
+                <div class="nav-logo" id="navLogo">
+                    <div class="nav-logo-inner">
+                        <div class="nav-logo-face front">
+                            <img src="logoredden.png" alt="Red Den Connexion - Électricien professionnel St Médard de Guizières">
+                        </div>
+                        <div class="nav-logo-face back">
+                            <img src="deniselec.png" alt="Denis - Électricien professionnel avec 25 ans d'expérience" style="object-position: center 30%; transform: scale(1.3);">
+                        </div>
+                    </div>
+                </div>
+                <span class="company-name">Red Den Connexion</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <ul id="menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#pourquoi">Pourquoi nous</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#galerie">Réalisations</a></li>
+                <li><a href="#avis">Avis</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="camionurgence.png" alt="Camion d'urgence Red Den Connexion - Intervention rapide 24h/24" class="hero-truck">
+            </div>
+
+            <!-- Titre interactif avec badge "NE PAS TOUCHER" -->
+            <div class="interactive-title-wrapper" id="interactiveTitle">
+                <!-- Badge "NE PAS TOUCHER" au-dessus -->
+                <div class="warning-label">
+                    <div class="warning-text">
+                        <span class="warning-icon">⚠️</span>
+                        <span>DANGER</span>
+                        <span class="danger-text">NE PAS TOUCHER</span>
+                        <span class="warning-icon">⚡</span>
+                    </div>
+                </div>
+
+                <!-- Flèche indicative -->
+                <div class="pointer-arrow">👇</div>
+
+                <!-- Titre principal avec effet de charge (H1 pour SEO) -->
+                <h1 class="power-charge">
+                    <span class="letter" style="--i:0">R</span><span class="letter" style="--i:1">e</span><span class="letter" style="--i:2">d</span><span style="display: inline-block; width: 0.3em;"></span><span class="letter" style="--i:3">D</span><span class="letter" style="--i:4">e</span><span class="letter" style="--i:5">n</span><span style="display: inline-block; width: 0.5em;"></span><span class="letter" style="--i:6">C</span><span class="letter" style="--i:7">o</span><span class="letter" style="--i:8">n</span><span class="letter" style="--i:9">n</span><span class="letter" style="--i:10">e</span><span class="letter" style="--i:11">x</span><span class="letter" style="--i:12">i</span><span class="letter" style="--i:13">o</span><span class="letter" style="--i:14">n</span>
+                </h1>
+
+                <!-- Message de choc (visible pendant le court-circuit) -->
+                <div class="shock-warning">
+                    ⚡ COURT-CIRCUIT ! ⚡
+                </div>
+            </div>
+            <h2 class="hero-subtitle">
+                <span id="typingSubtitle" class="typing-cursor"></span>
+            </h2>
+
+            <!-- Quick Facts réduits -->
+            <div class="hero-quick-facts">
+                <div class="quick-fact">
+                    <div class="fact-icon">💰</div>
+                    <div class="fact-content">
+                        <strong>Devis gratuit</strong>
+                        <span>Sans engagement</span>
+                    </div>
+                </div>
+                <div class="quick-fact">
+                    <div class="fact-icon">📍</div>
+                    <div class="fact-content">
+                        <strong>Secteur Libourne</strong>
+                        <span>Rayon 30 km</span>
+                    </div>
+                </div>
+                <div class="quick-fact">
+                    <div class="fact-icon">⭐</div>
+                    <div class="fact-content">
+                        <strong>Avis 5 étoiles</strong>
+                        <span>Satisfaction garantie</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA principal simplifié -->
+            <div class="hero-cta-group">
+                <a href="tel:0695100823" class="cta-button cta-primary">
+                    <span class="cta-icon">📞</span>
+                    <span class="cta-text">
+                        <strong>Appelez maintenant</strong>
+                        <small>06 95 10 08 23</small>
+                    </span>
+                </a>
+                <a href="#contact" class="cta-button cta-secondary">
+                    <span>Demander un devis gratuit</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pourquoi" class="why-us">
+        <h2 class="animate-on-scroll">Pourquoi Nous Choisir ?</h2>
+        <div class="why-grid">
+            <div class="why-item animate-on-scroll">
+                <div class="why-icon">🏆</div>
+                <h3><span class="counter-years">25 ans d'expérience</span></h3>
+                <p>Un quart de siècle d'expertise au service de votre sécurité électrique</p>
+            </div>
+            <div class="why-item animate-on-scroll">
+                <div class="why-icon">⚡</div>
+                <h3>Intervention rapide</h3>
+                <p>Disponible 24h/24 et 7j/7 pour vos urgences électriques</p>
+            </div>
+            <div class="why-item animate-on-scroll">
+                <div class="why-icon">✅</div>
+                <h3>Travail aux normes</h3>
+                <p>Respect strict de la norme NF C 15-100 et certifications à jour</p>
+            </div>
+            <div class="why-item animate-on-scroll">
+                <div class="why-icon">💰</div>
+                <h3>Devis gratuit</h3>
+                <p>Estimation transparente et sans engagement avant chaque intervention</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="animate-on-scroll">Nos Services</h2>
+        <div class="services-grid">
+            <div class="service-card animate-on-scroll">
+                <div class="service-icon">🚨</div>
+                <h3>Dépannage Urgent 24h/24</h3>
+                <p>Intervention rapide pour tous vos problèmes électriques : pannes, disjoncteurs, courts-circuits. Disponible 24h/24 et 7j/7.</p>
+                <a href="depannage-urgent.html" style="display: inline-block; margin-top: 1rem; color: #ff3333; text-decoration: none; font-weight: bold;">En savoir plus →</a>
+            </div>
+            <div class="service-card animate-on-scroll">
+                <div class="service-icon">🔧</div>
+                <h3>Rénovation & Mise aux Normes</h3>
+                <p>Rénovation électrique complète et mise en conformité NF C 15-100. Installation vétuste, diagnostic, mise en sécurité.</p>
+                <a href="renovation-electrique.html" style="display: inline-block; margin-top: 1rem; color: #ff3333; text-decoration: none; font-weight: bold;">En savoir plus →</a>
+            </div>
+            <div class="service-card animate-on-scroll">
+                <div class="service-icon">⚡</div>
+                <h3>Installation Tableau Électrique</h3>
+                <p>Installation de tableaux électriques neufs aux normes. Protection différentielle, disjoncteurs, conformité garantie.</p>
+                <a href="installation-tableau.html" style="display: inline-block; margin-top: 1rem; color: #ff3333; text-decoration: none; font-weight: bold;">En savoir plus →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerie" class="gallery">
+        <h2 class="animate-on-scroll">Nos Réalisations</h2>
+        <div class="gallery-grid">
+            <!-- Réalisation 1 : Tableau électrique -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" data-lightbox="tableauhallescoutras.jpg">
+                    <img src="tableauhallescoutras.jpg" alt="Tableau électrique professionnel installé aux normes NF C 15-100 par Red Den Connexion" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">✓ CONFORMITÉ NF C 15-100</span>
+                    <h3 class="gallery-title">Rénovation complète de tableau électrique</h3>
+                    <p class="gallery-description">Remplacement d'un ancien tableau non conforme par une installation moderne et sécurisée avec protection différentielle.</p>
+                    <ul class="gallery-benefits">
+                        <li>Protection différentielle 30mA</li>
+                        <li>Disjoncteurs divisionnaires neufs</li>
+                        <li>Câblage aux normes</li>
+                        <li>Sécurité optimale garantie</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 Coutras</span>
+                        <span class="gallery-duration">⏱️ 1 journée</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Réalisation 2 : Installation professionnelle -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" data-lightbox="installationpro.jpg">
+                    <img src="installationpro.jpg" alt="Installation électrique professionnelle complète - Red Den Connexion électricien" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">✓ INSTALLATION NEUVE</span>
+                    <h3 class="gallery-title">Installation électrique complète</h3>
+                    <p class="gallery-description">Installation électrique totale pour un local commercial neuf avec réseau complet de prises et éclairages.</p>
+                    <ul class="gallery-benefits">
+                        <li>Câblage structuré professionnel</li>
+                        <li>Circuit dédié haute puissance</li>
+                        <li>Éclairage LED économique</li>
+                        <li>Prêt pour certification Consuel</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 Libourne</span>
+                        <span class="gallery-duration">⏱️ 3 jours</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Réalisation 3 : Expertise électricien -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" data-lightbox="deniselec.png">
+                    <img src="deniselec.png" alt="Électricien professionnel Red Den Connexion avec 25 ans d'expérience" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">🏆 25 ANS D'EXPÉRIENCE</span>
+                    <h3 class="gallery-title">Votre électricien de confiance</h3>
+                    <p class="gallery-description">Un quart de siècle d'expertise au service de votre sécurité électrique. Professionnel qualifié et certifié.</p>
+                    <ul class="gallery-benefits">
+                        <li>Expertise reconnue en Gironde</li>
+                        <li>Formation continue aux normes</li>
+                        <li>Intervention soignée et propre</li>
+                        <li>Conseils personnalisés gratuits</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 St Médard de Guizières</span>
+                        <span class="gallery-duration">📞 06 95 10 08 23</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Réalisation 4 : Mise aux normes -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" data-lightbox="filspriseancienne.jpg">
+                    <img src="filspriseancienne.jpg" alt="Rénovation électrique et mise aux normes d'installation ancienne" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">⚡ MISE AUX NORMES</span>
+                    <h3 class="gallery-title">Rénovation installation vétuste</h3>
+                    <p class="gallery-description">Mise aux normes d'une installation électrique ancienne avec câblage obsolète. Remplacement complet pour sécurité maximale.</p>
+                    <ul class="gallery-benefits">
+                        <li>Suppression des risques électriques</li>
+                        <li>Nouveau câblage conforme</li>
+                        <li>Protection contre les surcharges</li>
+                        <li>Tranquillité d'esprit assurée</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 Guitres</span>
+                        <span class="gallery-duration">⏱️ 2 jours</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Réalisation 5 : Multiprises sécurisées -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" data-lightbox="boitier4prises.jpg">
+                    <img src="boitier4prises.jpg" alt="Installation de multiprises sécurisées et conformes aux normes" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">✓ INSTALLATION SÉCURISÉE</span>
+                    <h3 class="gallery-title">Réseau de prises modulaires</h3>
+                    <p class="gallery-description">Installation de prises multiples sécurisées avec protection contre les surtensions et câblage dédié.</p>
+                    <ul class="gallery-benefits">
+                        <li>Circuit dédié pour éviter surcharges</li>
+                        <li>Prises avec terre obligatoire</li>
+                        <li>Protection parafoudre intégrée</li>
+                        <li>Positionnement ergonomique</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 Saint-Denis-de-Pile</span>
+                        <span class="gallery-duration">⏱️ Demi-journée</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Réalisation 6 : Sécurité avant/après -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper" data-lightbox="dangervssecurite.jpg">
+                    <img src="dangervssecurite.jpg" alt="Comparaison danger vs sécurité électrique - importance des normes" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">🛡️ SÉCURITÉ PRIORITAIRE</span>
+                    <h3 class="gallery-title">Avant / Après : La différence qui sauve</h3>
+                    <p class="gallery-description">Illustration concrète de l'importance d'une installation conforme. À gauche le danger, à droite la sécurité.</p>
+                    <ul class="gallery-benefits">
+                        <li>Évite les risques d'incendie</li>
+                        <li>Protège vos appareils électriques</li>
+                        <li>Conforme aux assurances habitation</li>
+                        <li>Valorise votre bien immobilier</li>
+                    </ul>
+                    <div class="gallery-footer">
+                        <span class="gallery-location">📍 Toute la zone</span>
+                        <span class="gallery-duration">💡 Prévention</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <div class="lightbox-content" id="lightboxContent">
+            <img id="lightbox-img" src="" alt="Image agrandie">
+        </div>
+    </div>
+
+    <section id="avis" class="testimonials">
+        <h2 class="animate-on-scroll">Ils Nous Font Confiance</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card animate-on-scroll">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Intervention très rapide pour un dépannage en urgence. Professionnel et efficace. Je recommande vivement !"</p>
+                <p class="testimonial-author">- Marie D., Libourne</p>
+            </div>
+            <div class="testimonial-card animate-on-scroll">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Excellente prestation pour la rénovation complète de mon tableau électrique. Travail soigné et aux normes."</p>
+                <p class="testimonial-author">- Jean-Pierre L., St Médard</p>
+            </div>
+            <div class="testimonial-card animate-on-scroll">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Très satisfait de l'installation électrique de mon commerce. Respect des délais et tarifs corrects."</p>
+                <p class="testimonial-author">- Patrick M., Coutras</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="zone" class="zone">
+        <div class="zone-content">
+            <h2 class="animate-on-scroll">Zone d'Intervention</h2>
+            <p class="animate-on-scroll">📍 Basés à St Médard de Guizières</p>
+            <p class="animate-on-scroll" style="font-size: 1.5rem; margin-top: 1rem;">Nous intervenons dans un rayon de <strong style="color: #ff3333;"><span class="counter-radius">30 km</span></strong></p>
+            <p class="animate-on-scroll" style="margin-top: 1rem; opacity: 0.9;">Libourne, Coutras, Guitres, Saint-Denis-de-Pile et communes environnantes</p>
+
+            <!-- Carte Google Maps -->
+            <div id="map"></div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <h2 class="animate-on-scroll">Questions Fréquentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Intervenez-vous en urgence ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, nous sommes disponibles 24h/24 et 7j/7 pour toutes vos urgences électriques. Que ce soit pour une panne de courant, un disjoncteur qui saute ou tout autre problème électrique urgent, nous intervenons rapidement pour assurer votre sécurité. Appelez-nous au 06 95 10 08 23.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Proposez-vous un devis gratuit ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolument ! Nous proposons un devis gratuit et sans engagement pour tous vos projets électriques. Contactez-nous pour décrire votre projet, et nous vous fournirons une estimation détaillée et transparente de nos services.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Êtes-vous certifié et assuré ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, avec 25 ans d'expérience, nous sommes un professionnel qualifié et certifié. Tous nos travaux respectent strictement la norme NF C 15-100 en vigueur. Nous disposons également de toutes les assurances professionnelles nécessaires pour garantir votre sécurité et celle de vos installations.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Quelle est votre zone d'intervention ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Nous sommes basés à St Médard de Guizières et intervenons dans un rayon de 30 km, incluant Libourne, Coutras, Guitres, Saint-Denis-de-Pile et toutes les communes environnantes en Gironde.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Quels types de travaux réalisez-vous ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Nous réalisons tous types de travaux électriques : installations complètes (domestiques et tertiaires), rénovations électriques, mise aux normes, installation de tableaux électriques, pose de prises et interrupteurs, éclairages, chauffage électrique, et dépannages urgents.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Combien de temps prend une installation électrique ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>La durée varie selon l'ampleur du projet. Une installation simple peut prendre quelques heures, tandis qu'une installation complète ou une rénovation peut nécessiter plusieurs jours. Lors du devis, nous vous fournirons une estimation précise du délai d'intervention.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Acceptez-vous les paiements échelonnés ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Pour les projets importants, nous pouvons étudier des solutions de paiement adaptées. N'hésitez pas à nous en parler lors de l'établissement du devis. Nous nous efforçons de trouver des arrangements qui conviennent à tous.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Fournissez-vous le matériel électrique ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, nous pouvons fournir tout le matériel électrique nécessaire pour vos travaux. Nous travaillons avec des marques de qualité reconnues pour garantir la sécurité et la durabilité de vos installations. Le coût du matériel est inclus dans le devis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="animate-on-scroll">Contactez-nous</h2>
+        <div class="contact-grid">
+            <div class="contact-item animate-on-scroll">
+                <div class="contact-icon">📞</div>
+                <h3>Téléphone</h3>
+                <a href="tel:0695100823">06 95 10 08 23</a>
+                <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Disponible 24h/24 - 7j/7</p>
+            </div>
+            <div class="contact-item animate-on-scroll">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <a href="mailto:reddenconnexion@gmail.com">reddenconnexion@gmail.com</a>
+                <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Réponse rapide garantie</p>
+            </div>
+            <div class="contact-item animate-on-scroll">
+                <div class="contact-icon">📍</div>
+                <h3>Localisation</h3>
+                <p style="color: #666; margin-top: 0.5rem; font-weight: bold;">St Médard de Guizières</p>
+                <p style="color: #666;">33230 - Gironde</p>
+            </div>
+        </div>
+
+        <div class="contact-form animate-on-scroll">
+            <h3 style="text-align: center; margin-bottom: 2rem; color: #ff3333;">Demande de devis gratuit</h3>
+            <form id="contactForm" action="https://formspree.io/f/xeorbyrg" method="POST">
+                <!-- Honeypot field - Protection anti-spam -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+                <div class="form-group">
+                    <label for="name">Nom complet *</label>
+                    <input type="text" id="name" name="name" required maxlength="100" minlength="2">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone *</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9\s\+\-\(\)]{10,20}" title="Numéro de téléphone valide (10-20 caractères)">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="service">Type de service</label>
+                    <select id="service" name="service">
+                        <option value="">Sélectionnez un service</option>
+                        <option value="Dépannage urgent">Dépannage urgent</option>
+                        <option value="Installation domestique">Installation domestique</option>
+                        <option value="Installation tertiaire">Installation tertiaire</option>
+                        <option value="Rénovation électrique">Rénovation électrique</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Décrivez votre projet *</label>
+                    <textarea id="message" name="message" required maxlength="2000" minlength="10"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Envoyer ma demande</button>
+                <div id="formMessage"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Red Den Connexion - Tous droits réservés</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Électricien professionnel à St Médard de Guizières</p>
+        <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.9rem;">📞 06 95 10 08 23 | 📧 reddenconnexion@gmail.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.5; font-size: 0.8rem;"><a href="mentions-legales.html" style="color: #ff9999; text-decoration: none;">Mentions légales</a> | <a href="confidentialite.html" style="color: #ff9999; text-decoration: none;">Politique de confidentialité</a></p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <!-- Leaflet JavaScript - Chargé AVANT notre code -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+        // ===== EVENT LISTENERS =====
+        // Initialisation de tous les event listeners au chargement du DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu mobile toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    const menu = document.getElementById('menu');
+                    menu.classList.toggle('active');
+
+                    if (menu.classList.contains('active')) {
+                        mobileMenuBtn.innerHTML = '✕';
+                    } else {
+                        mobileMenuBtn.innerHTML = '☰';
+                    }
+                });
+            }
+
+            // Fermer menu au clic sur liens
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    const menu = document.getElementById('menu');
+                    const menuBtn = document.getElementById('mobileMenuBtn');
+                    if (menu && menuBtn) {
+                        menu.classList.remove('active');
+                        menuBtn.innerHTML = '☰';
+                    }
+                });
+            });
+
+            // Nav logo flip avec animation coinFlip
+            const navLogo = document.getElementById('navLogo');
+            if (navLogo) {
+                navLogo.addEventListener('click', function() {
+                    const logoInner = navLogo.querySelector('.nav-logo-inner');
+                    logoInner.classList.remove('nav-flip-animation', 'nav-flip-back-animation');
+
+                    if (navLogo.classList.contains('flipped')) {
+                        navLogo.classList.remove('flipped');
+                        void logoInner.offsetWidth; // Force reflow
+                        logoInner.classList.add('nav-flip-back-animation');
+                    } else {
+                        navLogo.classList.add('flipped');
+                        void logoInner.offsetWidth; // Force reflow
+                        logoInner.classList.add('nav-flip-animation');
+                    }
+                });
+
+                // Auto-flip au chargement
+                setTimeout(function() {
+                    navLogo.click();
+                    setTimeout(function() {
+                        navLogo.click();
+                    }, 3000);
+                }, 500);
+            }
+
+            // ===== INTERACTION TITRE "NE PAS TOUCHER" =====
+            const interactiveTitle = document.getElementById('interactiveTitle');
+            if (interactiveTitle) {
+                let isShortCircuited = false;
+
+                // Déclencher le court-circuit au clic
+                interactiveTitle.addEventListener('click', function() {
+                    if (!isShortCircuited) {
+                        // Activer le court-circuit
+                        interactiveTitle.classList.add('short-circuited');
+                        isShortCircuited = true;
+
+                        // Vibration si supportée (mobile)
+                        if (navigator.vibrate) {
+                            navigator.vibrate([50, 30, 50, 30, 50]);
+                        }
+
+                        // Désactiver après 2 secondes
+                        setTimeout(() => {
+                            interactiveTitle.classList.remove('short-circuited');
+                            isShortCircuited = false;
+                        }, 2000);
+                    }
+                });
+
+                // Support tactile pour mobile
+                interactiveTitle.addEventListener('touchstart', function(e) {
+                    if (!isShortCircuited) {
+                        e.preventDefault();
+                        interactiveTitle.classList.add('short-circuited');
+                        isShortCircuited = true;
+
+                        if (navigator.vibrate) {
+                            navigator.vibrate([50, 30, 50, 30, 50]);
+                        }
+
+                        setTimeout(() => {
+                            interactiveTitle.classList.remove('short-circuited');
+                            isShortCircuited = false;
+                        }, 2000);
+                    }
+                });
+            }
+
+            // Lightbox - Ouvrir au clic sur les images
+            document.querySelectorAll('.gallery-image-wrapper').forEach(wrapper => {
+                wrapper.addEventListener('click', function() {
+                    const imgSrc = this.getAttribute('data-lightbox');
+                    if (imgSrc) {
+                        const lightbox = document.getElementById('lightbox');
+                        const lightboxImg = document.getElementById('lightbox-img');
+                        lightboxImg.src = imgSrc;
+                        lightbox.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            // Lightbox - Fermer au clic sur X
+            const lightboxClose = document.getElementById('lightboxClose');
+            if (lightboxClose) {
+                lightboxClose.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    const lightbox = document.getElementById('lightbox');
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // Lightbox - Fermer au clic sur fond
+            const lightboxContent = document.getElementById('lightboxContent');
+            if (lightboxContent) {
+                lightboxContent.addEventListener('click', function(event) {
+                    if (event.target === lightboxContent) {
+                        const lightbox = document.getElementById('lightbox');
+                        lightbox.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // Lightbox - Image ne ferme pas au clic
+            const lightboxImg = document.getElementById('lightbox-img');
+            if (lightboxImg) {
+                lightboxImg.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            }
+
+            // FAQ - Toggle au clic
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const isActive = faqItem.classList.contains('active');
+
+                    // Fermer tous les items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+
+                    // Ouvrir l'item cliqué s'il n'était pas actif
+                    if (!isActive) {
+                        faqItem.classList.add('active');
+                    }
+                });
+            });
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (backToTop) {
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Initialiser les counters
+            document.querySelectorAll('.counter-years, .counter-radius').forEach(el => {
+                counterObserver.observe(el);
+            });
+
+            // ===== EFFET TYPING SUR LE SOUS-TITRE =====
+            const typingText = "Électricien professionnel à St Médard de Guizières - Dépannage 24h/24";
+            const typingElement = document.getElementById('typingSubtitle');
+            let typingIndex = 0;
+
+            function typeWriter() {
+                if (typingIndex < typingText.length) {
+                    // Ajouter le prochain caractère
+                    const currentText = typingText.substring(0, typingIndex + 1);
+
+                    // Gérer les balises <strong> pour St Médard et 24h/24
+                    let displayText = currentText;
+                    if (currentText.includes('St Médard de Guizières')) {
+                        displayText = currentText.replace(
+                            'St Médard de Guizières',
+                            '<strong>St Médard de Guizières</strong>'
+                        );
+                    }
+                    if (currentText.includes('24h/24')) {
+                        displayText = displayText.replace('24h/24', '<strong>24h/24</strong>');
+                    }
+
+                    typingElement.innerHTML = displayText;
+                    typingElement.style.opacity = '1';
+                    typingIndex++;
+
+                    // Vitesse variable pour plus de naturel
+                    const speed = Math.random() * 50 + 30;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    // Retirer le curseur après avoir fini
+                    setTimeout(() => {
+                        typingElement.classList.remove('typing-cursor');
+                    }, 500);
+                }
+            }
+
+            // Démarrer l'animation typing après un court délai
+            setTimeout(typeWriter, 1000);
+
+            // ===== EFFET RIPPLE AU CLIC SUR LES BOUTONS CTA =====
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+
+                    this.appendChild(ripple);
+
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+        });
+
+        // Fermeture lightbox avec touche Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const lightbox = document.getElementById('lightbox');
+                if (lightbox && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+
+
+        // Fonction d'affichage des erreurs de formulaire
+        function showFormError(message) {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.style.display = 'block';
+            formMessage.className = 'error';
+            formMessage.style.background = '#f8d7da';
+            formMessage.style.color = '#721c24';
+            formMessage.style.border = '1px solid #f5c6cb';
+            formMessage.textContent = '❌ ' + message;
+
+            // Masquer après 5 secondes
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // Gestion du formulaire avec Formspree
+        const form = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Validation côté client
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                const honeypot = form.querySelector('[name="_gotcha"]').value;
+
+                // Détection anti-spam (honeypot)
+                if (honeypot) {
+                    console.warn('Spam détecté');
+                    return false;
+                }
+
+                // Validation du nom
+                if (name.length < 2 || name.length > 100) {
+                    showFormError('Le nom doit contenir entre 2 et 100 caractères.');
+                    return false;
+                }
+
+                // Validation du téléphone
+                const phoneRegex = /^[0-9\s\+\-\(\)]{10,20}$/;
+                if (!phoneRegex.test(phone)) {
+                    showFormError('Veuillez entrer un numéro de téléphone valide.');
+                    return false;
+                }
+
+                // Validation de l'email si fourni
+                if (email && email.length > 0) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        showFormError('Veuillez entrer une adresse email valide.');
+                        return false;
+                    }
+                }
+
+                // Validation du message
+                if (message.length < 10 || message.length > 2000) {
+                    showFormError('Le message doit contenir entre 10 et 2000 caractères.');
+                    return false;
+                }
+
+                // Sanitisation basique - détection de tentatives XSS
+                const dangerousPatterns = /<script|javascript:|onerror=|onload=/i;
+                if (dangerousPatterns.test(name + phone + email + message)) {
+                    showFormError('Caractères non autorisés détectés dans le formulaire.');
+                    return false;
+                }
+
+                const submitBtn = form.querySelector('.submit-btn');
+                const originalBtnText = submitBtn.textContent;
+
+                // Désactiver le bouton pendant l'envoi
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Envoi en cours...';
+                submitBtn.style.opacity = '0.6';
+
+                // Récupérer les données du formulaire
+                const formData = new FormData(form);
+
+                // Envoyer via AJAX à Formspree
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Succès
+                        formMessage.style.display = 'block';
+                        formMessage.className = 'success';
+                        formMessage.textContent = '✅ Votre demande a été envoyée avec succès ! Nous vous recontacterons rapidement.';
+                        form.reset();
+                    } else {
+                        // Erreur serveur
+                        return response.json().then(data => {
+                            throw new Error(data.error || 'Erreur lors de l\'envoi');
+                        });
+                    }
+                })
+                .catch(error => {
+                    // Erreur
+                    formMessage.style.display = 'block';
+                    formMessage.className = 'error';
+                    formMessage.style.background = '#f8d7da';
+                    formMessage.style.color = '#721c24';
+                    formMessage.style.border = '1px solid #f5c6cb';
+                    formMessage.textContent = '❌ Une erreur est survenue. Veuillez nous contacter directement au 06 95 10 08 23.';
+                })
+                .finally(() => {
+                    // Réactiver le bouton
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.style.opacity = '1';
+
+                    // Masquer le message après 5 secondes
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                });
+            });
+        }
+
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (backToTop && window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else if (backToTop) {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // ===== SCROLL-TRIGGERED ANIMATIONS =====
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    // Optional: unobserve after animation for performance
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with .animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ===== HEADER SCROLL EFFECT =====
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // ===== ANIMATED COUNTERS =====
+        function animateCounter(element, target, duration, suffix = '') {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start) + suffix;
+                }
+            }, 16);
+        }
+
+        // Trigger counters when they come into view
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.dataset.animated = 'true';
+
+                    if (entry.target.classList.contains('counter-years')) {
+                        animateCounter(entry.target, 25, 2000, ' ans d\'expérience');
+                    } else if (entry.target.classList.contains('counter-radius')) {
+                        animateCounter(entry.target, 30, 1500, ' km');
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Initialisation de la carte Leaflet après chargement du DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            // Coordonnées GPS exactes de 13 rue Robert Boulin, St Médard de Guizières
+            // Source : 45°00'48.2"N 0°03'39.9"W
+            const stMedard = [45.0134, -0.0611];
+
+            // Lien vers la fiche Google My Business
+            const gmbLink = 'https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières';
+
+            // Villes principales dans la zone
+            const cities = [
+                { name: 'Libourne', coords: [44.9167, -0.2333] },
+                { name: 'Coutras', coords: [45.0406, -0.1314] },
+                { name: 'Guitres', coords: [45.0406, -0.1833] },
+                { name: 'Saint-Denis-de-Pile', coords: [44.9833, -0.2167] }
+            ];
+
+            // Créer la carte
+            const map = L.map('map').setView(stMedard, 10);
+
+            // Ajouter les tuiles OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Icône personnalisée pour le marqueur principal
+            const mainIcon = L.divIcon({
+                className: 'custom-marker-main',
+                html: '<div style="background-color: #ff3333; width: 24px; height: 24px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>',
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+
+            // Marqueur principal (13 rue Robert Boulin)
+            const mainMarker = L.marker(stMedard, { icon: mainIcon }).addTo(map);
+            mainMarker.bindPopup(`
+                <div style="padding: 8px; text-align: center; min-width: 200px;">
+                    <strong style="color: #ff3333; font-size: 15px;">Red Den Connexion</strong><br>
+                    <span style="font-size: 13px;">13 rue Robert Boulin</span><br>
+                    <span style="font-size: 13px;">33230 St Médard de Guizières</span><br><br>
+                    📞 <a href="tel:0695100823" style="color: #ff3333; text-decoration: none; font-weight: bold;">06 95 10 08 23</a><br><br>
+                    <a href="${gmbLink}" target="_blank" rel="noopener" style="display: inline-block; background: #4285f4; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600; margin-top: 5px;">
+                        ⭐ Voir nos avis Google
+                    </a><br>
+                    <small style="color: #666; font-size: 11px; margin-top: 8px; display: block;">Cliquez pour voir notre fiche Google</small>
+                </div>
+            `);
+
+            // Rendre le marqueur cliquable pour ouvrir GMB
+            mainMarker.on('click', function() {
+                // Ouvre le popup puis GMB après un court délai
+                setTimeout(function() {
+                    mainMarker.openPopup();
+                }, 100);
+            });
+
+            // Cercle de 30km
+            L.circle(stMedard, {
+                color: '#ff3333',
+                fillColor: '#ff3333',
+                fillOpacity: 0.15,
+                radius: 30000, // 30 km en mètres
+                weight: 2
+            }).addTo(map);
+
+            // Icône pour les villes secondaires
+            const cityIcon = L.divIcon({
+                className: 'custom-marker-city',
+                html: '<div style="background-color: #ff9999; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.3);"></div>',
+                iconSize: [12, 12],
+                iconAnchor: [6, 6]
+            });
+
+            // Marqueurs pour les villes principales
+            cities.forEach(city => {
+                L.marker(city.coords, { icon: cityIcon })
+                    .addTo(map)
+                    .bindPopup(`<div style="text-align: center; padding: 3px;"><strong>${city.name}</strong></div>`);
+            });
+        });
+    </script>
+</body>
+</html>
