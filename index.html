@@ -436,7 +436,11 @@
             overflow: hidden;
         }
 
-        /* Effet de grille subtile en arrière-plan */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -444,16 +448,20 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image:
-                linear-gradient(rgba(255, 51, 51, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 51, 51, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
+            background: radial-gradient(circle at center, rgba(255, 51, 51, 0.15) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
         }
 
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            animation: float 8s ease-in-out infinite;
         }
 
         .hero-content {
@@ -464,94 +472,76 @@
             margin: 0 auto;
         }
 
-        /* Badge 24/7 flottant */
-        .availability-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            animation: pulse 2s ease-in-out infinite;
-            box-shadow: 0 0 30px rgba(255, 51, 51, 0.5);
-            letter-spacing: 1px;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 0 30px rgba(255, 51, 51, 0.5);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 0 50px rgba(255, 51, 51, 0.8);
-                transform: scale(1.05);
-            }
-        }
-
-        /* Logo camion central */
+        /* Styles pour le camion dans la hero section - Effet Glassmorphism */
         .hero-logo {
             width: 100%;
-            max-width: 600px;
-            margin: 0 auto 40px;
+            max-width: 700px;
+            height: 280px;
+            margin: 0 auto 1.5rem;
             position: relative;
+            animation: fadeInScale 0.8s ease-out;
         }
 
-        .hero-logo img {
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 10px 40px rgba(255, 51, 51, 0.3));
-            animation: floatTruck 3s ease-in-out infinite;
+        .hero-logo::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            background: linear-gradient(135deg,
+                rgba(255, 51, 51, 0.15) 0%,
+                rgba(139, 0, 0, 0.1) 50%,
+                rgba(255, 51, 51, 0.15) 100%
+            );
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 51, 51, 0.3);
+            box-shadow:
+                0 8px 32px rgba(255, 51, 51, 0.2),
+                inset 0 0 20px rgba(255, 51, 51, 0.1);
+            z-index: -1;
+            animation: glassGlow 3s ease-in-out infinite;
         }
 
-        @keyframes floatTruck {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+        .hero-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: shadowPulse 3s ease-in-out infinite;
         }
 
-        /* Étiquette de danger */
-        .danger-label-wrapper {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .danger-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
-            color: #000;
-            padding: 8px 20px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 20px rgba(255, 204, 0, 0.4);
-            animation: warningPulse 1.5s ease-in-out infinite;
-            border: 2px solid #000;
-        }
-
-        @keyframes warningPulse {
+        @keyframes glassGlow {
             0%, 100% {
-                box-shadow: 0 4px 20px rgba(255, 204, 0, 0.4);
-                transform: scale(1);
+                box-shadow:
+                    0 8px 32px rgba(255, 51, 51, 0.2),
+                    inset 0 0 20px rgba(255, 51, 51, 0.1);
+                border-color: rgba(255, 51, 51, 0.3);
             }
             50% {
-                box-shadow: 0 4px 30px rgba(255, 204, 0, 0.7);
-                transform: scale(1.05);
+                box-shadow:
+                    0 8px 40px rgba(255, 51, 51, 0.4),
+                    inset 0 0 30px rgba(255, 51, 51, 0.2);
+                border-color: rgba(255, 51, 51, 0.5);
             }
         }
 
-        .pointer-down {
-            font-size: 24px;
-            margin-top: 5px;
-            animation: pointDown 1s ease-in-out infinite;
-        }
-
-        @keyframes pointDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(5px); }
+        @keyframes shadowPulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateX(-50%) scale(1.1);
+            }
         }
 
         /* Flash électrique */
@@ -578,6 +568,7 @@
             30% { opacity: 0.6; }
             40%, 100% { opacity: 0; }
         }
+
 
         /* Titre principal interactif */
         h1 {
@@ -629,10 +620,11 @@
             }
         }
 
+        /* Animation cascade au chargement */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -640,144 +632,644 @@
             }
         }
 
-        /* Sous-titre */
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 15px;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        .hero-subtitle .highlight {
+        .hero-logo {
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
             color: #ff3333;
-            font-weight: 800;
+            text-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+            animation: fadeInUp 0.6s ease-out 0.3s backwards;
         }
 
-        /* Expérience */
-        .experience {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            color: #aaa;
-            margin-bottom: 50px;
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        /* ============================================ */
+        /* TITRE INTERACTIF CUSTOM - "NE PAS TOUCHER" */
+        /* ============================================ */
+        .interactive-title-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            user-select: none;
+            margin: 1.5rem 0;
         }
 
-        /* USPs - Points clés */
-        .usps {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        /* Badge "NE PAS TOUCHER" au-dessus du titre */
+        .warning-label {
+            background: linear-gradient(135deg, #1a0000 0%, #000 100%);
+            border: 2px solid #ff3333;
+            border-radius: 12px;
+            padding: 0.6rem 1.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 0 20px rgba(255, 51, 51, 0.5),
+                inset 0 0 15px rgba(255, 51, 51, 0.1);
+            animation: warningPulse 2s ease-in-out infinite;
+            transition: all 0.3s;
         }
 
-        .usp-item {
+        .interactive-title-wrapper:hover .warning-label {
+            transform: scale(1.05);
+            box-shadow:
+                0 0 30px rgba(255, 51, 51, 0.8),
+                inset 0 0 25px rgba(255, 51, 51, 0.2);
+        }
+
+        @keyframes warningPulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 20px rgba(255, 51, 51, 0.5),
+                    inset 0 0 15px rgba(255, 51, 51, 0.1);
+            }
+            50% {
+                box-shadow:
+                    0 0 35px rgba(255, 51, 51, 0.9),
+                    inset 0 0 30px rgba(255, 51, 51, 0.3);
+            }
+        }
+
+        /* Rayures de danger animées */
+        .warning-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 12px,
+                rgba(255, 51, 51, 0.12) 12px,
+                rgba(255, 51, 51, 0.12) 24px
+            );
+            animation: hazardStripes 2s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes hazardStripes {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(34px); }
+        }
+
+        .warning-text {
+            position: relative;
+            z-index: 1;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 16px;
+            gap: 0.7rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.9rem;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 51, 51, 0.8);
+        }
+
+        .warning-icon {
+            font-size: 1.3rem;
+            animation: iconBlink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes iconBlink {
+            0%, 100% {
+                opacity: 1;
+                text-shadow:
+                    0 0 15px rgba(255, 255, 0, 1),
+                    0 0 30px rgba(255, 255, 0, 0.5);
+            }
+            50% {
+                opacity: 0.4;
+                text-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+            }
+        }
+
+        .danger-text {
+            color: #ffff00;
+            letter-spacing: 1px;
+        }
+
+        /* Flèche pointant vers le titre */
+        .pointer-arrow {
+            font-size: 1.5rem;
+            color: #ff3333;
+            animation: bounceDown 1.5s ease-in-out infinite;
+            margin: 0.3rem 0;
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(8px); opacity: 0.5; }
+        }
+
+        /* Titre principal avec effet de charge */
+        .power-charge {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s;
+            color: #ff3333;
+            line-height: 1.3;
+        }
+
+        .interactive-title-wrapper:hover .power-charge {
+            transform: scale(1.02);
+        }
+
+        .power-charge .letter {
+            display: inline-block;
+            position: relative;
+            color: #333;
+            text-shadow: none;
+            animation: chargeUp 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s);
+            transition: all 0.3s;
+        }
+
+        @keyframes chargeUp {
+            0%, 100% {
+                color: #333;
+                text-shadow: none;
+            }
+            25% {
+                color: #666;
+                text-shadow: 0 0 5px rgba(255, 51, 51, 0.3);
+            }
+            50% {
+                color: #ff6666;
+                text-shadow:
+                    0 0 10px rgba(255, 51, 51, 0.6),
+                    0 0 20px rgba(255, 51, 51, 0.4);
+            }
+            75% {
+                color: #ff3333;
+                text-shadow:
+                    0 0 20px rgba(255, 51, 51, 0.8),
+                    0 0 40px rgba(255, 51, 51, 0.6),
+                    0 0 60px rgba(255, 51, 51, 0.4);
+            }
+        }
+
+        /* Barre de charge sous chaque lettre */
+        .power-charge .letter::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: #1a1a1a;
+            border-radius: 2px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .power-charge .letter::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, #ff3333, #ffff00, #fff);
+            border-radius: 2px;
+            z-index: 1;
+            animation: chargeBar 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s);
+            box-shadow: 0 0 10px rgba(255, 51, 51, 0.8);
+        }
+
+        @keyframes chargeBar {
+            0%, 100% { width: 0%; }
+            25% { width: 30%; }
+            50% { width: 65%; }
+            75%, 90% { width: 80%; }
+        }
+
+        /* EFFET COURT-CIRCUIT (activé au clic) */
+        .interactive-title-wrapper.short-circuited .power-charge .letter {
+            animation: shortCircuitGlitch 0.15s steps(1) infinite, chargeUp 5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.05s);
+        }
+
+        @keyframes shortCircuitGlitch {
+            0% {
+                color: #fff;
+                text-shadow:
+                    0 0 30px rgba(255, 255, 255, 1),
+                    2px 0 0 rgba(255, 0, 0, 0.9),
+                    -2px 0 0 rgba(0, 255, 255, 0.9);
+                transform: translate(0, 0);
+            }
+            20% {
+                color: #ff3333;
+                text-shadow:
+                    0 0 40px rgba(255, 51, 51, 1),
+                    -2px 0 0 rgba(255, 0, 0, 0.9),
+                    2px 0 0 rgba(0, 255, 255, 0.9);
+                transform: translate(-2px, 1px);
+            }
+            40% {
+                color: #00ffff;
+                text-shadow:
+                    0 0 40px rgba(0, 255, 255, 1),
+                    2px 2px 0 rgba(255, 0, 0, 0.9);
+                transform: translate(2px, -1px);
+            }
+            60% {
+                color: #ffff00;
+                text-shadow: 0 0 50px rgba(255, 255, 0, 1);
+                transform: translate(-1px, -1px);
+            }
+            80% {
+                color: #fff;
+                text-shadow:
+                    0 0 60px rgba(255, 255, 255, 1),
+                    0 0 80px rgba(255, 51, 51, 1);
+                transform: translate(1px, 1px);
+            }
+        }
+
+        /* Arc électrique au clic */
+        .interactive-title-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border: 3px solid #ff3333;
+            border-radius: 15px;
+            opacity: 0;
+            transition: all 0.3s;
+            box-shadow:
+                0 0 20px rgba(255, 51, 51, 0.6),
+                inset 0 0 20px rgba(255, 51, 51, 0.4);
+            pointer-events: none;
+        }
+
+        .interactive-title-wrapper.short-circuited::before {
+            opacity: 1;
+            animation: arcPulseIntense 0.3s ease-in-out infinite;
+        }
+
+        @keyframes arcPulseIntense {
+            0%, 100% {
+                border-color: #ff3333;
+                box-shadow:
+                    0 0 30px rgba(255, 51, 51, 1),
+                    inset 0 0 30px rgba(255, 51, 51, 0.6);
+            }
+            25% {
+                border-color: #ffff00;
+                box-shadow:
+                    0 0 50px rgba(255, 255, 0, 1),
+                    inset 0 0 50px rgba(255, 255, 0, 0.8);
+            }
+            50% {
+                border-color: #00ffff;
+                box-shadow:
+                    0 0 50px rgba(0, 255, 255, 1),
+                    inset 0 0 50px rgba(0, 255, 255, 0.8);
+            }
+            75% {
+                border-color: #fff;
+                box-shadow:
+                    0 0 60px rgba(255, 255, 255, 1),
+                    inset 0 0 60px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Message d'avertissement pendant le court-circuit */
+        .shock-warning {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.95);
+            color: #fff;
+            padding: 1.2rem 2.5rem;
+            border-radius: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+            border: 3px solid #ffff00;
+            box-shadow: 0 0 40px rgba(255, 255, 0, 1);
+            animation: shockAppear 0.3s ease-in-out infinite;
+        }
+
+        .interactive-title-wrapper.short-circuited .shock-warning {
+            opacity: 1;
+        }
+
+        @keyframes shockAppear {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            min-height: 2.6rem;
+        }
+
+        .hero-subtitle strong {
+            color: #ff9999;
             font-weight: 600;
         }
 
-        .usp-item .icon {
-            font-size: 24px;
+        /* Effet typing - Le texte démarre invisible */
+        #typingSubtitle {
+            opacity: 0;
         }
 
-        /* CTA Buttons */
-        .cta-group {
+        /* Curseur typing */
+        .typing-cursor {
+            border-right: 2px solid #ff3333;
+            animation: blink 0.7s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Hero Badges */
+        .hero-badges {
             display: flex;
-            gap: 20px;
             justify-content: center;
+            gap: 1rem;
             flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.8s backwards;
+            margin: 2rem 0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            border: 1px solid;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .hero-badge.urgent {
+            background: rgba(255, 51, 51, 0.15);
+            border-color: rgba(255, 51, 51, 0.4);
+            color: #ffffff;
+        }
+
+        .hero-badge.prestige {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.4);
+            color: #ffd700;
+        }
+
+        .hero-badge:hover {
+            transform: translateY(-2px);
+            border-color: #ff3333;
+        }
+
+        /* Quick Facts Grid */
+        .hero-quick-facts {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2.5rem 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            flex-wrap: wrap;
+        }
+
+        .quick-fact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Animation en cascade pour les quick facts */
+        .quick-fact:nth-child(1) {
+            animation: fadeInUp 0.5s ease-out 0.8s forwards;
+        }
+
+        .quick-fact:nth-child(2) {
+            animation: fadeInUp 0.5s ease-out 1s forwards;
+        }
+
+        .quick-fact:nth-child(3) {
+            animation: fadeInUp 0.5s ease-out 1.2s forwards;
+        }
+
+        .quick-fact:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .fact-icon {
+            font-size: 2rem;
+            opacity: 0.9;
+            transition: transform 0.3s ease;
+        }
+
+        .quick-fact:hover .fact-icon {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        .fact-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .fact-content strong {
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .fact-content span {
+            font-size: 0.85rem;
+            color: #cccccc;
+            font-weight: 400;
+        }
+
+        /* Hero CTA Group */
+        .hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 1.4s forwards;
         }
 
         .cta-button {
-            padding: 18px 40px;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            gap: 0.8rem;
+            padding: 1rem 1.8rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* CTA Primary (Rouge - Appel) avec GLOW PULSE */
         .cta-primary {
             background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
             color: white;
+            box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3),
+                            0 0 20px rgba(255, 51, 51, 0.2);
+            }
+            50% {
+                box-shadow: 0 6px 25px rgba(255, 51, 51, 0.6),
+                            0 0 40px rgba(255, 51, 51, 0.4),
+                            0 0 60px rgba(255, 51, 51, 0.2);
+            }
         }
 
         .cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255, 51, 51, 0.5);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 40px rgba(255, 51, 51, 0.8),
+                        0 0 60px rgba(255, 51, 51, 0.6) !important;
+            animation: glowPulse 1s ease-in-out infinite;
         }
 
+        /* Effet ripple au clic */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* CTA Secondary (Simple) */
         .cta-secondary {
-            background: rgba(255, 255, 255, 0.1);
+            background: transparent;
             color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .cta-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
             transform: translateY(-3px);
         }
 
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
         .cta-icon {
-            font-size: 24px;
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
 
-        .phone-number {
-            font-size: 24px;
-            font-weight: 900;
+        .cta-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        .cta-text strong {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-text small {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1a1a1a;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
             display: block;
-            margin-top: 5px;
-        }
-
-        /* Responsive pour la hero section */
-        @media (max-width: 768px) {
-            .danger-label {
-                font-size: 11px;
-                padding: 6px 16px;
-                gap: 6px;
-            }
-
-            .pointer-down {
-                font-size: 20px;
-            }
-
-            .usps {
-                flex-direction: column;
-                gap: 20px;
-                align-items: center;
-            }
-
-            .cta-group {
-                flex-direction: column;
-            }
-
-            .cta-button {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .danger-label {
-                font-size: 9px;
-                padding: 5px 12px;
-                gap: 5px;
-            }
-
-            .pointer-down {
-                font-size: 18px;
-            }
+            width: 80px;
+            height: 4px;
+            background: #ff3333;
+            margin: 1rem auto;
+            box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
         }
 
         .why-us {
@@ -1850,6 +2342,36 @@
                     <p>Nous réalisons tous types de travaux électriques : installations complètes (domestiques et tertiaires), rénovations électriques, mise aux normes, installation de tableaux électriques, pose de prises et interrupteurs, éclairages, chauffage électrique, et dépannages urgents.</p>
                 </div>
             </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Combien de temps prend une installation électrique ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>La durée varie selon l'ampleur du projet. Une installation simple peut prendre quelques heures, tandis qu'une installation complète ou une rénovation peut nécessiter plusieurs jours. Lors du devis, nous vous fournirons une estimation précise du délai d'intervention.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Acceptez-vous les paiements échelonnés ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Pour les projets importants, nous pouvons étudier des solutions de paiement adaptées. N'hésitez pas à nous en parler lors de l'établissement du devis. Nous nous efforçons de trouver des arrangements qui conviennent à tous.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Fournissez-vous le matériel électrique ?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, nous pouvons fournir tout le matériel électrique nécessaire pour vos travaux. Nous travaillons avec des marques de qualité reconnues pour garantir la sécurité et la durabilité de vos installations. Le coût du matériel est inclus dans le devis.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2414,55 +2936,5 @@
             });
         });
     </script>
-    <!-- Flash électrique -->
-    <div class="electric-flash" id="electricFlash"></div>
-
-    <script>
-        // Effet de court-circuit au clic sur le titre
-        const mainTitle = document.getElementById('mainTitle');
-        const electricFlash = document.getElementById('electricFlash');
-
-        if (mainTitle && electricFlash) {
-            mainTitle.addEventListener('click', function() {
-                // Ajouter la classe de court-circuit sur le titre
-                mainTitle.classList.add('short-circuit');
-
-                // Flash électrique blanc
-                electricFlash.classList.add('active');
-
-                // Faire trembler toute la section hero
-                const heroSection = document.querySelector('.hero');
-                if (heroSection) {
-                    heroSection.style.animation = 'shake 0.5s ease-in-out';
-                }
-
-                // Vibration du dispositif (si disponible)
-                if (navigator.vibrate) {
-                    navigator.vibrate([100, 50, 100, 50, 100]);
-                }
-
-                // Retirer les effets après l'animation
-                setTimeout(() => {
-                    mainTitle.classList.remove('short-circuit');
-                    electricFlash.classList.remove('active');
-                    if (heroSection) {
-                        heroSection.style.animation = '';
-                    }
-                }, 500);
-            });
-        }
-
-        // Animation de shake pour le fond
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translate(0, 0); }
-                10%, 30%, 50%, 70%, 90% { transform: translate(-3px, 3px); }
-                20%, 40%, 60%, 80% { transform: translate(3px, -3px); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
-
 </body>
 </html>
