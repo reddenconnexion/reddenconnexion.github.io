@@ -1,6 +1,6 @@
 # Dépendances
 node_modules/
-package-lock.json
+# Note: package-lock.json est GARDÉ pour GitHub Actions
 
 # Résultats des tests
 coverage/
