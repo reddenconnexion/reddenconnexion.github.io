@@ -18,6 +18,7 @@ export default {
     collectCoverageFrom: [
         'js/**/*.js',
         '!js/main.js', // Exclure le point d'entrée
+        '!js/formHandler.js', // Exclure le handler UI (testé via E2E)
         '!**/node_modules/**'
     ],
 
