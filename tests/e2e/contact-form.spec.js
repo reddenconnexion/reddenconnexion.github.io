@@ -80,18 +80,26 @@ test.describe('Formulaire de contact', () => {
     });
 
     test('accepte un formulaire valide', async ({ page }) => {
+        // Mocker la réponse de Formspree pour éviter les vraies soumissions
+        await page.route('**/formspree.io/**', async route => {
+            await route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: JSON.stringify({ ok: true })
+            });
+        });
+
         await page.fill('#name', 'Jean Dupont');
         await page.fill('#phone', '06 12 34 56 78');
         await page.fill('#email', 'jean.dupont@example.com');
         await page.fill('#message', 'Bonjour, j\'aurais besoin d\'un devis pour une installation électrique dans ma maison.');
 
-        // Note: Ce test va réellement soumettre le formulaire à Formspree
-        // Pour les tests automatisés, il faudrait mocker l'API ou utiliser un endpoint de test
         await page.click('.submit-btn');
 
-        // Vérifier que le bouton change pendant l'envoi
-        const submitBtn = page.locator('.submit-btn');
-        await expect(submitBtn).toContainText('Envoi en cours...');
+        // Vérifier qu'un message de succès s'affiche
+        const successMessage = page.locator('#formMessage');
+        await expect(successMessage).toBeVisible({ timeout: 5000 });
+        await expect(successMessage).toContainText('succès');
     });
 
     test('affiche tous les champs requis', async ({ page }) => {
@@ -105,6 +113,15 @@ test.describe('Formulaire de contact', () => {
     });
 
     test('le champ email est optionnel', async ({ page }) => {
+        // Mocker la réponse de Formspree pour éviter les vraies soumissions
+        await page.route('**/formspree.io/**', async route => {
+            await route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: JSON.stringify({ ok: true })
+            });
+        });
+
         // Remplir le formulaire sans email
         await page.fill('#name', 'Jean Dupont');
         await page.fill('#phone', '06 12 34 56 78');
@@ -112,9 +129,10 @@ test.describe('Formulaire de contact', () => {
 
         await page.click('.submit-btn');
 
-        // Le bouton devrait changer (indiquant que la validation client a passé)
-        const submitBtn = page.locator('.submit-btn');
-        await expect(submitBtn).toContainText('Envoi en cours...');
+        // Vérifier qu'un message de succès s'affiche
+        const successMessage = page.locator('#formMessage');
+        await expect(successMessage).toBeVisible({ timeout: 5000 });
+        await expect(successMessage).toContainText('succès');
     });
 
     test('détecte les tentatives XSS', async ({ page }) => {
@@ -130,6 +148,15 @@ test.describe('Formulaire de contact', () => {
     });
 
     test('fonctionne sur mobile', async ({ page }) => {
+        // Mocker la réponse de Formspree pour éviter les vraies soumissions
+        await page.route('**/formspree.io/**', async route => {
+            await route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: JSON.stringify({ ok: true })
+            });
+        });
+
         // Simuler un viewport mobile
         await page.setViewportSize({ width: 375, height: 667 });
 
@@ -144,8 +171,10 @@ test.describe('Formulaire de contact', () => {
 
         await page.click('.submit-btn');
 
-        const submitBtn = page.locator('.submit-btn');
-        await expect(submitBtn).toContainText('Envoi en cours...');
+        // Vérifier qu'un message de succès s'affiche
+        const successMessage = page.locator('#formMessage');
+        await expect(successMessage).toBeVisible({ timeout: 5000 });
+        await expect(successMessage).toContainText('succès');
     });
 });
 
