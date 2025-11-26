@@ -59,6 +59,7 @@ export function initContactForm() {
             name: document.getElementById('name')?.value || '',
             phone: document.getElementById('phone')?.value || '',
             email: document.getElementById('email')?.value || '',
+            city: document.getElementById('city')?.value || '',
             message: document.getElementById('message')?.value || '',
             honeypot: form.querySelector('[name="_gotcha"]')?.value || ''
         };

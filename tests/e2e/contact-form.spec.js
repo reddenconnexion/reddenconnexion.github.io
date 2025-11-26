@@ -23,6 +23,7 @@ test.describe('Formulaire de contact', () => {
         await expect(page.locator('#name')).toBeVisible();
         await expect(page.locator('#phone')).toBeVisible();
         await expect(page.locator('#email')).toBeVisible();
+        await expect(page.locator('#city')).toBeVisible();
         await expect(page.locator('#message')).toBeVisible();
         await expect(page.locator('.submit-btn')).toBeVisible();
     });
@@ -31,6 +32,7 @@ test.describe('Formulaire de contact', () => {
         // Remplir le formulaire avec un nom invalide
         await page.fill('#name', 'A');
         await page.fill('#phone', '06 12 34 56 78');
+        await page.fill('#city', 'Libourne');
         await page.fill('#message', 'Message de test valide pour le formulaire');
 
         // Soumettre le formulaire
@@ -45,6 +47,7 @@ test.describe('Formulaire de contact', () => {
     test('refuse un numéro de téléphone invalide', async ({ page }) => {
         await page.fill('#name', 'Jean Dupont');
         await page.fill('#phone', '123');
+        await page.fill('#city', 'Coutras');
         await page.fill('#message', 'Message de test valide pour le formulaire');
 
         await page.click('.submit-btn');
@@ -58,6 +61,7 @@ test.describe('Formulaire de contact', () => {
         await page.fill('#name', 'Jean Dupont');
         await page.fill('#phone', '06 12 34 56 78');
         await page.fill('#email', 'email-invalide');
+        await page.fill('#city', 'Bordeaux');
         await page.fill('#message', 'Message de test valide pour le formulaire');
 
         await page.click('.submit-btn');
@@ -70,6 +74,7 @@ test.describe('Formulaire de contact', () => {
     test('refuse un message trop court', async ({ page }) => {
         await page.fill('#name', 'Jean Dupont');
         await page.fill('#phone', '06 12 34 56 78');
+        await page.fill('#city', 'Paris');
         await page.fill('#message', 'Court');
 
         await page.click('.submit-btn');
@@ -92,6 +97,7 @@ test.describe('Formulaire de contact', () => {
         await page.fill('#name', 'Jean Dupont');
         await page.fill('#phone', '06 12 34 56 78');
         await page.fill('#email', 'jean.dupont@example.com');
+        await page.fill('#city', 'St Médard de Guizières');
         await page.fill('#message', 'Bonjour, j\'aurais besoin d\'un devis pour une installation électrique dans ma maison.');
 
         await page.click('.submit-btn');
@@ -105,10 +111,12 @@ test.describe('Formulaire de contact', () => {
     test('affiche tous les champs requis', async ({ page }) => {
         const nameLabel = page.locator('label[for="name"]');
         const phoneLabel = page.locator('label[for="phone"]');
+        const cityLabel = page.locator('label[for="city"]');
         const messageLabel = page.locator('label[for="message"]');
 
         await expect(nameLabel).toBeVisible();
         await expect(phoneLabel).toBeVisible();
+        await expect(cityLabel).toBeVisible();
         await expect(messageLabel).toBeVisible();
     });
 
@@ -125,6 +133,7 @@ test.describe('Formulaire de contact', () => {
         // Remplir le formulaire sans email
         await page.fill('#name', 'Jean Dupont');
         await page.fill('#phone', '06 12 34 56 78');
+        await page.fill('#city', 'Libourne');
         await page.fill('#message', 'Message de test valide sans email pour vérifier que c\'est bien optionnel.');
 
         await page.click('.submit-btn');
@@ -138,6 +147,7 @@ test.describe('Formulaire de contact', () => {
     test('détecte les tentatives XSS', async ({ page }) => {
         await page.fill('#name', 'Jean Dupont');
         await page.fill('#phone', '06 12 34 56 78');
+        await page.fill('#city', 'Bordeaux');
         await page.fill('#message', '<script>alert("XSS")</script>');
 
         await page.click('.submit-btn');
@@ -167,6 +177,7 @@ test.describe('Formulaire de contact', () => {
         // Remplir et soumettre
         await page.fill('#name', 'Jean Dupont');
         await page.fill('#phone', '06 12 34 56 78');
+        await page.fill('#city', 'Coutras');
         await page.fill('#message', 'Test sur mobile avec un message suffisamment long.');
 
         await page.click('.submit-btn');

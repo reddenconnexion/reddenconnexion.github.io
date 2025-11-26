@@ -122,11 +122,37 @@ export function detectSpam(honeypotValue) {
 }
 
 /**
+ * Valide un nom de ville
+ * @param {string} city - La ville à valider
+ * @returns {{valid: boolean, error: string}} - Résultat de la validation
+ */
+export function validateCity(city) {
+    const trimmedCity = city ? city.trim() : '';
+
+    if (trimmedCity.length < 2) {
+        return {
+            valid: false,
+            error: 'Le nom de la ville doit contenir au moins 2 caractères.'
+        };
+    }
+
+    if (trimmedCity.length > 100) {
+        return {
+            valid: false,
+            error: 'Le nom de la ville ne peut pas dépasser 100 caractères.'
+        };
+    }
+
+    return { valid: true, error: '' };
+}
+
+/**
  * Valide tous les champs du formulaire
  * @param {Object} formData - Les données du formulaire
  * @param {string} formData.name - Le nom
  * @param {string} formData.phone - Le téléphone
  * @param {string} formData.email - L'email
+ * @param {string} formData.city - La ville
  * @param {string} formData.message - Le message
  * @param {string} formData.honeypot - Le champ honeypot
  * @returns {{valid: boolean, errors: string[]}} - Résultat de la validation
@@ -158,6 +184,12 @@ export function validateForm(formData) {
         errors.push(emailValidation.error);
     }
 
+    // Validation de la ville
+    const cityValidation = validateCity(formData.city);
+    if (!cityValidation.valid) {
+        errors.push(cityValidation.error);
+    }
+
     // Validation du message
     const messageValidation = validateMessage(formData.message);
     if (!messageValidation.valid) {
@@ -165,7 +197,7 @@ export function validateForm(formData) {
     }
 
     // Vérification XSS sur tous les champs
-    const allContent = `${formData.name} ${formData.phone} ${formData.email} ${formData.message}`;
+    const allContent = `${formData.name} ${formData.phone} ${formData.email} ${formData.city} ${formData.message}`;
     if (detectXSS(allContent)) {
         errors.push('Caractères non autorisés détectés dans le formulaire.');
     }
