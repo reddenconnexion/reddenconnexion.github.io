@@ -83,49 +83,8 @@ export function initContactForm() {
             submitBtn.style.opacity = '0.6';
         }
 
-        try {
-            // Préparer les données pour Formspree
-            const formDataObj = new FormData();
-            formDataObj.append('name', formData.name);
-            formDataObj.append('phone', formData.phone);
-            formDataObj.append('email', formData.email);
-            formDataObj.append('message', formData.message);
-
-            // Ajouter le champ service s'il existe
-            const serviceField = document.getElementById('service');
-            if (serviceField && serviceField.value) {
-                formDataObj.append('service', serviceField.value);
-            }
-
-            // Envoyer via AJAX à Formspree
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: formDataObj,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                // Succès
-                showFormSuccess('Votre demande a été envoyée avec succès ! Nous vous recontacterons rapidement.');
-                form.reset();
-            } else {
-                // Erreur serveur
-                const data = await response.json();
-                throw new Error(data.error || 'Erreur lors de l\'envoi');
-            }
-        } catch (error) {
-            // Erreur
-            showFormError('Une erreur est survenue. Veuillez nous contacter directement au 06 95 10 08 23.');
-            console.error('Erreur lors de la soumission du formulaire:', error);
-        } finally {
-            // Réactiver le bouton
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalBtnText;
-                submitBtn.style.opacity = '1';
-            }
-        }
+        // La validation a réussi, soumettre le formulaire de façon classique
+        // (Formspree nécessite une soumission non-AJAX ou une clé API)
+        form.submit();
     });
 }
