@@ -84,8 +84,20 @@ export function initContactForm() {
         }
 
         try {
+            // Préparer les données pour Formspree
+            const formDataObj = new FormData();
+            formDataObj.append('name', formData.name);
+            formDataObj.append('phone', formData.phone);
+            formDataObj.append('email', formData.email);
+            formDataObj.append('message', formData.message);
+
+            // Ajouter le champ service s'il existe
+            const serviceField = document.getElementById('service');
+            if (serviceField && serviceField.value) {
+                formDataObj.append('service', serviceField.value);
+            }
+
             // Envoyer via AJAX à Formspree
-            const formDataObj = new FormData(form);
             const response = await fetch(form.action, {
                 method: 'POST',
                 body: formDataObj,
