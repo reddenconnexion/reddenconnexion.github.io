@@ -45,11 +45,35 @@ export function showFormSuccess(message) {
 }
 
 /**
+ * Vérifie si l'utilisateur revient après une soumission réussie
+ * et affiche un message de confirmation
+ */
+function checkForSuccessMessage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+        showFormSuccess('Votre demande a été envoyée avec succès ! Nous vous recontacterons rapidement.');
+
+        // Scroller vers le formulaire
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Nettoyer l'URL sans recharger la page
+        const newUrl = window.location.pathname + window.location.hash.split('?')[0];
+        window.history.replaceState({}, document.title, newUrl);
+    }
+}
+
+/**
  * Initialise le gestionnaire du formulaire de contact
  */
 export function initContactForm() {
     const form = document.getElementById('contactForm');
     if (!form) return;
+
+    // Vérifier si on revient après une soumission réussie
+    checkForSuccessMessage();
 
     form.addEventListener('submit', async function(event) {
         event.preventDefault();
