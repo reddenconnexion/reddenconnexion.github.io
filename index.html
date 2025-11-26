@@ -1606,6 +1606,279 @@
                 height: 45px;
             }
         }
+
+        /* Modal 25 ans d'expérience */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 3% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.4s ease-out;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: sticky;
+            top: 10px;
+            right: 10px;
+            float: right;
+            color: #ff3333;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            background-color: #ff3333;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #ff3333 0%, #ff5555 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-subtitle {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .modal-section h3 {
+            color: #ff3333;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #ff3333;
+        }
+
+        .qualities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .quality-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #ff3333;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .quality-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(255, 51, 51, 0.2);
+        }
+
+        .quality-item strong {
+            display: block;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .quality-item p {
+            color: #666;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .benefit-item:hover {
+            border-color: #ff3333;
+            box-shadow: 0 5px 25px rgba(255, 51, 51, 0.15);
+            transform: translateX(5px);
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            min-width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff3333 0%, #ff5555 100%);
+            border-radius: 50%;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .benefit-item strong {
+            display: block;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .benefit-item p {
+            color: #666;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .modal-footer {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 0 0 20px 20px;
+            text-align: center;
+            border-top: 3px solid #ff3333;
+        }
+
+        .modal-footer p {
+            margin: 0.5rem 0;
+            color: #333;
+        }
+
+        .modal-footer p:first-child {
+            font-size: 1.2rem;
+            color: #ff3333;
+        }
+
+        .clickable-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.3);
+        }
+
+        /* Responsive pour le modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+                max-height: 95vh;
+            }
+
+            .modal-header {
+                padding: 1.5rem;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .modal-icon {
+                font-size: 3rem;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .qualities-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .quality-item,
+            .benefit-item {
+                padding: 1rem;
+            }
+
+            .benefit-icon {
+                font-size: 1.5rem;
+                min-width: 40px;
+                height: 40px;
+            }
+
+            .modal-footer {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1708,10 +1981,11 @@
     <section id="pourquoi" class="why-us">
         <h2 class="animate-on-scroll">Pourquoi Nous Choisir ?</h2>
         <div class="why-grid">
-            <div class="why-item animate-on-scroll">
+            <div class="why-item animate-on-scroll clickable-card" id="experience-card" onclick="openExperienceModal()" style="cursor: pointer;">
                 <div class="why-icon">🏆</div>
                 <h3><span class="counter-years">25 ans d'expérience</span></h3>
                 <p>Un quart de siècle d'expertise au service de votre sécurité électrique</p>
+                <p style="margin-top: 1rem; color: #ff3333; font-weight: bold; font-size: 0.9rem;">Cliquez pour en savoir plus →</p>
             </div>
             <div class="why-item animate-on-scroll">
                 <div class="why-icon">⚡</div>
@@ -2371,9 +2645,41 @@
                     lightbox.classList.remove('active');
                     document.body.style.overflow = '';
                 }
+                // Fermer aussi le modal d'expérience avec Escape
+                const experienceModal = document.getElementById('experienceModal');
+                if (experienceModal && experienceModal.style.display === 'block') {
+                    closeExperienceModal();
+                }
             }
         });
 
+    </script>
+
+    <!-- Fonctions pour le modal 25 ans d'expérience -->
+    <script>
+        function openExperienceModal() {
+            const modal = document.getElementById('experienceModal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Empêche le scroll de la page
+            }
+        }
+
+        function closeExperienceModal() {
+            const modal = document.getElementById('experienceModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = ''; // Restaure le scroll
+            }
+        }
+
+        // Fermer le modal si on clique en dehors du contenu
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('experienceModal');
+            if (event.target === modal) {
+                closeExperienceModal();
+            }
+        });
     </script>
 
     <!-- Module JavaScript pour le formulaire de contact -->
@@ -2542,6 +2848,103 @@
 
     <!-- Flash électrique pour effet court-circuit -->
     <div class="electric-flash" id="electricFlash"></div>
+
+    <!-- Modal 25 ans d'expérience -->
+    <div id="experienceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeExperienceModal()">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon">🏆</div>
+                <h2>25 Ans d'Expérience en Électricité</h2>
+                <p class="modal-subtitle">Un quart de siècle d'expertise à votre service</p>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>💡 Les Qualités Acquises</h3>
+                    <div class="qualities-grid">
+                        <div class="quality-item">
+                            <strong>🔍 Diagnostic Expert</strong>
+                            <p>Capacité à identifier rapidement l'origine de tout problème électrique, même les plus complexes</p>
+                        </div>
+                        <div class="quality-item">
+                            <strong>⚡ Maîtrise Technique</strong>
+                            <p>Connaissance approfondie des normes NF C 15-100 et des évolutions technologiques</p>
+                        </div>
+                        <div class="quality-item">
+                            <strong>🛡️ Sens de la Sécurité</strong>
+                            <p>25 ans sans incident grâce à une vigilance constante et des protocoles éprouvés</p>
+                        </div>
+                        <div class="quality-item">
+                            <strong>🎯 Efficacité Optimale</strong>
+                            <p>Des interventions rapides et précises grâce à une expérience sur des milliers de chantiers</p>
+                        </div>
+                        <div class="quality-item">
+                            <strong>📚 Apprentissage Continu</strong>
+                            <p>Formation permanente aux nouvelles technologies et réglementations</p>
+                        </div>
+                        <div class="quality-item">
+                            <strong>🤝 Relation Client</strong>
+                            <p>Une écoute attentive et des conseils personnalisés basés sur l'expérience</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>✨ Ce Que Cela Vous Apporte</h3>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">✅</span>
+                            <div>
+                                <strong>Intervention Rapide et Efficace</strong>
+                                <p>Pas de tâtonnements : je sais exactement où chercher et comment résoudre votre problème</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">💰</span>
+                            <div>
+                                <strong>Économies Garanties</strong>
+                                <p>Un diagnostic précis évite les réparations inutiles et les dépenses superflues</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🔒</span>
+                            <div>
+                                <strong>Sécurité Maximale</strong>
+                                <p>Installation aux normes et conseils avisés pour protéger votre famille et vos biens</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">⏱️</span>
+                            <div>
+                                <strong>Gain de Temps</strong>
+                                <p>L'expérience permet de réaliser en quelques heures ce qui prendrait des jours à d'autres</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🎓</span>
+                            <div>
+                                <strong>Conseils d'Expert</strong>
+                                <p>Des recommandations adaptées à votre situation basées sur des centaines de cas similaires</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">😌</span>
+                            <div>
+                                <strong>Tranquillité d'Esprit</strong>
+                                <p>La garantie d'un travail de qualité réalisé par un professionnel reconnu depuis 25 ans</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <p><strong>Une expérience qui fait la différence</strong></p>
+                    <p>En choisissant Red Den Connexion, vous bénéficiez de 25 années d'expertise au service de votre confort et de votre sécurité électrique.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
