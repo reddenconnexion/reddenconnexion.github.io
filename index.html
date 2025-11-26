@@ -2109,6 +2109,12 @@
                 <!-- Honeypot field - Protection anti-spam -->
                 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
+                <!-- Redirection après soumission réussie -->
+                <input type="hidden" name="_next" value="https://reddenconnexion.fr/#contact?success=true">
+
+                <!-- Personnalisation du sujet de l'email -->
+                <input type="hidden" name="_subject" value="Nouvelle demande de devis - Red Den Connexion">
+
                 <div class="form-group">
                     <label for="name">Nom complet *</label>
                     <input type="text" id="name" name="name" required maxlength="100" minlength="2">
