@@ -7,6 +7,7 @@ import {
     validateName,
     validatePhone,
     validateEmail,
+    validateCity,
     validateMessage,
     detectXSS,
     detectSpam,
@@ -149,6 +150,52 @@ describe('Validation de l\'email', () => {
     });
 });
 
+describe('Validation de la ville', () => {
+    test('accepte une ville valide', () => {
+        const result = validateCity('St Médard de Guizières');
+        expect(result.valid).toBe(true);
+    });
+
+    test('accepte une ville de 2 caractères', () => {
+        const result = validateCity('Bo');
+        expect(result.valid).toBe(true);
+    });
+
+    test('accepte une ville de 100 caractères', () => {
+        const longCity = 'A'.repeat(100);
+        const result = validateCity(longCity);
+        expect(result.valid).toBe(true);
+    });
+
+    test('refuse une ville trop courte (1 caractère)', () => {
+        const result = validateCity('A');
+        expect(result.valid).toBe(false);
+        expect(result.error).toContain('2');
+    });
+
+    test('refuse une ville vide', () => {
+        const result = validateCity('');
+        expect(result.valid).toBe(false);
+    });
+
+    test('refuse une ville trop longue (101 caractères)', () => {
+        const longCity = 'A'.repeat(101);
+        const result = validateCity(longCity);
+        expect(result.valid).toBe(false);
+        expect(result.error).toContain('100');
+    });
+
+    test('gère les espaces en début et fin', () => {
+        const result = validateCity('  Paris  ');
+        expect(result.valid).toBe(true);
+    });
+
+    test('refuse une ville avec uniquement des espaces', () => {
+        const result = validateCity('   ');
+        expect(result.valid).toBe(false);
+    });
+});
+
 describe('Validation du message', () => {
     test('accepte un message de 10 caractères', () => {
         const result = validateMessage('1234567890');
@@ -255,6 +302,7 @@ describe('Validation complète du formulaire', () => {
             name: 'Jean Dupont',
             phone: '06 12 34 56 78',
             email: 'jean.dupont@example.com',
+            city: 'St Médard de Guizières',
             message: 'Bonjour, j\'aurais besoin d\'un devis pour une installation électrique.',
             honeypot: ''
         };
@@ -268,6 +316,7 @@ describe('Validation complète du formulaire', () => {
             name: 'Jean Dupont',
             phone: '06 12 34 56 78',
             email: '',
+            city: 'Libourne',
             message: 'Bonjour, j\'aurais besoin d\'un devis.',
             honeypot: ''
         };
@@ -280,6 +329,7 @@ describe('Validation complète du formulaire', () => {
             name: 'J',
             phone: '06 12 34 56 78',
             email: 'jean@example.com',
+            city: 'Coutras',
             message: 'Message de test valide',
             honeypot: ''
         };
@@ -293,6 +343,7 @@ describe('Validation complète du formulaire', () => {
             name: 'Jean Dupont',
             phone: '123',
             email: 'jean@example.com',
+            city: 'Bordeaux',
             message: 'Message de test valide',
             honeypot: ''
         };
@@ -305,6 +356,7 @@ describe('Validation complète du formulaire', () => {
             name: 'Jean Dupont',
             phone: '06 12 34 56 78',
             email: 'email-invalide',
+            city: 'Paris',
             message: 'Message de test valide',
             honeypot: ''
         };
@@ -317,6 +369,7 @@ describe('Validation complète du formulaire', () => {
             name: 'Jean Dupont',
             phone: '06 12 34 56 78',
             email: 'jean@example.com',
+            city: 'Lyon',
             message: 'Court',
             honeypot: ''
         };
@@ -329,6 +382,7 @@ describe('Validation complète du formulaire', () => {
             name: 'Jean Dupont',
             phone: '06 12 34 56 78',
             email: 'jean@example.com',
+            city: 'Marseille',
             message: '<script>alert("XSS")</script>',
             honeypot: ''
         };
@@ -342,6 +396,7 @@ describe('Validation complète du formulaire', () => {
             name: 'Jean Dupont',
             phone: '06 12 34 56 78',
             email: 'jean@example.com',
+            city: 'Toulouse',
             message: 'Message de test valide',
             honeypot: 'spam content'
         };
@@ -354,6 +409,7 @@ describe('Validation complète du formulaire', () => {
             name: 'J',
             phone: '123',
             email: 'invalid-email',
+            city: 'A',
             message: 'Court',
             honeypot: ''
         };
