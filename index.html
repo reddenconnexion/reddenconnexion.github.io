@@ -1292,18 +1292,118 @@
 
         #map {
             width: 100%;
-            max-width: 900px;
-            height: 500px;
+            max-width: 1000px;
+            height: 550px;
+            margin: 0;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(255, 51, 51, 0.4);
+            border: none;
+        }
+
+        .map-wrapper {
+            position: relative;
+            max-width: 1000px;
             margin: 3rem auto 0;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(255, 51, 51, 0.3);
-            border: 3px solid #ff3333;
+        }
+
+        .map-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.97);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 1000;
+            font-size: 0.85rem;
+        }
+
+        .map-legend h4 {
+            margin: 0 0 10px 0;
+            color: #ff3333;
+            font-size: 0.95rem;
+        }
+
+        .map-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+            color: #333;
+        }
+
+        .legend-marker-main {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, #ff3333, #ff6666);
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .legend-marker-city {
+            width: 12px;
+            height: 12px;
+            background: #ff9999;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .legend-circle {
+            width: 18px;
+            height: 10px;
+            background: rgba(255,51,51,0.2);
+            border: 2px solid #ff3333;
+            border-radius: 5px;
+        }
+
+        .map-info-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255,51,51,0.4);
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .leaflet-popup-content-wrapper {
+            border-radius: 15px !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+            padding: 0 !important;
+        }
+
+        .leaflet-popup-content {
+            margin: 0 !important;
+            min-width: 280px;
         }
 
         @media (max-width: 768px) {
             #map {
-                height: 400px;
-                margin: 2rem auto 0;
+                height: 420px;
+                border-radius: 15px;
+            }
+            .map-legend {
+                bottom: 10px;
+                left: 10px;
+                padding: 10px 12px;
+                font-size: 0.75rem;
+            }
+            .map-info-badge {
+                top: 10px;
+                right: 10px;
+                padding: 8px 12px;
+                font-size: 0.75rem;
             }
         }
 
@@ -2290,8 +2390,26 @@
                 </p>
             </div>
 
-            <!-- Carte Google Maps -->
-            <div id="map"></div>
+            <!-- Carte interactive -->
+            <div class="map-wrapper">
+                <div class="map-info-badge">⚡ Intervention rapide 24h/24</div>
+                <div id="map"></div>
+                <div class="map-legend">
+                    <h4>🗺️ Légende</h4>
+                    <div class="map-legend-item">
+                        <div class="legend-marker-main"></div>
+                        <span>Red Den Connexion</span>
+                    </div>
+                    <div class="map-legend-item">
+                        <div class="legend-marker-city"></div>
+                        <span>Villes desservies</span>
+                    </div>
+                    <div class="map-legend-item">
+                        <div class="legend-circle"></div>
+                        <span>Zone 50km</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2825,37 +2943,84 @@
                 { name: 'Saint-Denis-de-Pile', coords: [44.9833, -0.2167] }
             ];
 
-            // Créer la carte
-            const map = L.map('map').setView(stMedard, 10);
+            // Créer la carte avec un style plus moderne
+            const map = L.map('map', {
+                scrollWheelZoom: false
+            }).setView(stMedard, 10);
 
-            // Ajouter les tuiles OpenStreetMap
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                maxZoom: 19
+            // Fond de carte CartoDB Voyager (plus moderne et élégant)
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                maxZoom: 19,
+                subdomains: 'abcd'
             }).addTo(map);
 
-            // Icône personnalisée pour le marqueur principal
+            // Icône personnalisée avec éclair pour le marqueur principal
             const mainIcon = L.divIcon({
                 className: 'custom-marker-main',
-                html: '<div style="background-color: #ff3333; width: 24px; height: 24px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>',
-                iconSize: [24, 24],
-                iconAnchor: [12, 12]
+                html: `<div style="
+                    background: linear-gradient(135deg, #ff3333, #cc0000);
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 50%;
+                    border: 4px solid white;
+                    box-shadow: 0 4px 15px rgba(255,51,51,0.5);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 22px;
+                    animation: marker-pulse 2s infinite;
+                ">⚡</div>`,
+                iconSize: [44, 44],
+                iconAnchor: [22, 22]
             });
 
-            // Marqueur principal (13 rue Robert Boulin)
+            // Ajouter le CSS pour l'animation du marqueur
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes marker-pulse {
+                    0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(255,51,51,0.5); }
+                    50% { transform: scale(1.08); box-shadow: 0 6px 25px rgba(255,51,51,0.7); }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Marqueur principal avec popup enrichi
             const mainMarker = L.marker(stMedard, { icon: mainIcon }).addTo(map);
             mainMarker.bindPopup(`
-                <div style="padding: 8px; text-align: center; min-width: 200px;">
-                    <strong style="color: #ff3333; font-size: 15px;">Red Den Connexion</strong><br>
-                    <span style="font-size: 13px;">13 rue Robert Boulin</span><br>
-                    <span style="font-size: 13px;">33230 St Médard de Guizières</span><br><br>
-                    📞 <a href="tel:0695100823" style="color: #ff3333; text-decoration: none; font-weight: bold;">06 95 10 08 23</a><br><br>
-                    <a href="${gmbLink}" target="_blank" rel="noopener" style="display: inline-block; background: #4285f4; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600; margin-top: 5px;">
-                        ⭐ Voir nos avis Google
-                    </a><br>
-                    <small style="color: #666; font-size: 11px; margin-top: 8px; display: block;">Cliquez pour voir notre fiche Google</small>
+                <div style="padding: 0; min-width: 280px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                    <div style="background: linear-gradient(135deg, #ff3333, #cc0000); color: white; padding: 18px; text-align: center; border-radius: 15px 15px 0 0;">
+                        <div style="font-size: 24px; margin-bottom: 5px;">⚡</div>
+                        <strong style="font-size: 18px; display: block;">Red Den Connexion</strong>
+                        <span style="font-size: 12px; opacity: 0.9;">Électricien Professionnel</span>
+                    </div>
+                    <div style="padding: 15px; background: white;">
+                        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
+                            <div style="font-weight: 600; color: #333; margin-bottom: 4px;">📍 Adresse</div>
+                            <div style="color: #666; font-size: 13px;">13 rue Robert Boulin<br>33230 St Médard de Guizières</div>
+                        </div>
+                        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
+                            <div style="font-weight: 600; color: #333; margin-bottom: 4px;">📞 Téléphone</div>
+                            <a href="tel:0695100823" style="color: #ff3333; text-decoration: none; font-weight: bold; font-size: 16px;">06 95 10 08 23</a>
+                        </div>
+                        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
+                            <div style="font-weight: 600; color: #333; margin-bottom: 4px;">🕐 Disponibilité</div>
+                            <div style="color: #28a745; font-size: 13px; font-weight: 600;">24h/24 - 7j/7 • Urgences</div>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <div style="font-weight: 600; color: #333; margin-bottom: 8px;">✅ Certifications</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                                <span style="background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 12px; font-size: 11px;">Qualifelec</span>
+                                <span style="background: #e3f2fd; color: #1565c0; padding: 4px 8px; border-radius: 12px; font-size: 11px;">NF C 15-100</span>
+                                <span style="background: #fff3e0; color: #ef6c00; padding: 4px 8px; border-radius: 12px; font-size: 11px;">25 ans exp.</span>
+                            </div>
+                        </div>
+                        <a href="${gmbLink}" target="_blank" rel="noopener" style="display: block; background: linear-gradient(135deg, #4285f4, #1a73e8); color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: 600; text-align: center;">
+                            ⭐ Voir nos avis Google
+                        </a>
+                    </div>
                 </div>
-            `);
+            `, { maxWidth: 320 });
 
             // Rendre le marqueur cliquable pour ouvrir GMB
             mainMarker.on('click', function() {
