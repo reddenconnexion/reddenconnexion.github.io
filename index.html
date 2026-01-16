@@ -477,11 +477,23 @@
             animation: navCoinFlipBack 1.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards !important;
         }
 
+        .company-info {
+            display: flex;
+            flex-direction: column;
+        }
+
         .company-name {
             font-size: 1.5rem;
             font-weight: bold;
             color: #ff3333;
             text-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+        }
+
+        .company-motto {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 0.1em;
+            margin-top: 2px;
         }
 
         nav ul {
@@ -1693,6 +1705,10 @@
                 font-size: 1.2rem;
             }
 
+            .company-motto {
+                font-size: 0.6rem;
+            }
+
             .lightbox-close {
                 right: 20px;
                 width: 40px;
@@ -1996,7 +2012,10 @@
                         </div>
                     </div>
                 </div>
-                <span class="company-name">Red Den Connexion</span>
+                <div class="company-info">
+                    <span class="company-name">Red Den Connexion</span>
+                    <span class="company-motto">Électricité <span style="color: #ff3333;">●</span> Honnêteté <span style="color: #ff3333;">●</span> Sérénité</span>
+                </div>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
             <ul id="menu">
@@ -2027,10 +2046,6 @@
             </div>
 
             <h1 id="mainTitle">Électricien à St Médard de Guizières</h1>
-
-            <div style="margin: 1rem 0 1.5rem; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.15em; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                Électricité <span style="color: #ff3333; font-size: 1.5rem;">●</span> Honnêteté <span style="color: #ff3333; font-size: 1.5rem;">●</span> Sérénité
-            </div>
 
             <div class="hero-subtitle">
                 Dépannage & Installation <span class="highlight">Expert</span> | <a href="depannage-electrique-libourne.html" style="color: white; text-decoration: underline;">Libourne</a>, <a href="depannage-electrique-coutras.html" style="color: white; text-decoration: underline;">Coutras</a>, <a href="depannage-electrique-montpon-menesterol.html" style="color: white; text-decoration: underline;">Montpon</a>
