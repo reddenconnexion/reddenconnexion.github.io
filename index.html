@@ -477,11 +477,23 @@
             animation: navCoinFlipBack 1.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards !important;
         }
 
+        .company-info {
+            display: flex;
+            flex-direction: column;
+        }
+
         .company-name {
             font-size: 1.5rem;
             font-weight: bold;
             color: #ff3333;
             text-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+        }
+
+        .company-motto {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 0.1em;
+            margin-top: 2px;
         }
 
         nav ul {
@@ -1693,6 +1705,10 @@
                 font-size: 1.2rem;
             }
 
+            .company-motto {
+                font-size: 0.6rem;
+            }
+
             .lightbox-close {
                 right: 20px;
                 width: 40px;
@@ -1996,7 +2012,10 @@
                         </div>
                     </div>
                 </div>
-                <span class="company-name">Red Den Connexion</span>
+                <div class="company-info">
+                    <span class="company-name">Red Den Connexion</span>
+                    <span class="company-motto">Électricité <span style="color: #ff3333;">●</span> Honnêteté <span style="color: #ff3333;">●</span> Sérénité</span>
+                </div>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
             <ul id="menu">
@@ -2027,10 +2046,6 @@
             </div>
 
             <h1 id="mainTitle">Électricien à St Médard de Guizières</h1>
-
-            <div style="margin: 1rem 0 1.5rem; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.15em; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                Électricité <span style="color: #ff3333; font-size: 1.5rem;">●</span> Honnêteté <span style="color: #ff3333; font-size: 1.5rem;">●</span> Sérénité
-            </div>
 
             <div class="hero-subtitle">
                 Dépannage & Installation <span class="highlight">Expert</span> | <a href="depannage-electrique-libourne.html" style="color: white; text-decoration: underline;">Libourne</a>, <a href="depannage-electrique-coutras.html" style="color: white; text-decoration: underline;">Coutras</a>, <a href="depannage-electrique-montpon-menesterol.html" style="color: white; text-decoration: underline;">Montpon</a>
@@ -2071,26 +2086,12 @@
     </section>
 
     <!-- Section d'introduction SEO -->
-    <section style="max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem;">
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
-            <span style="background: linear-gradient(135deg, #ff3333, #cc0000); color: white; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
-                <span style="font-size: 1.1rem;">&#9889;</span> 25 ans d'exp&eacute;rience
-            </span>
-            <span style="background: linear-gradient(135deg, #ff3333, #cc0000); color: white; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
-                <span style="font-size: 1.1rem;">&#128222;</span> Disponible 24h/24
-            </span>
-            <span style="background: linear-gradient(135deg, #ff3333, #cc0000); color: white; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
-                <span style="font-size: 1.1rem;">&#128205;</span> Rayon 50 km
-            </span>
-            <span style="background: linear-gradient(135deg, #ff3333, #cc0000); color: white; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
-                <span style="font-size: 1.1rem;">&#9989;</span> Devis gratuit
-            </span>
-        </div>
-        <p style="font-size: 1rem; line-height: 1.7; color: #555; max-width: 800px; margin: 0 auto; text-align: center;">
-            <strong style="color: #333;">Red Den Connexion</strong>, votre &eacute;lectricien de confiance &agrave;
-            <strong style="color: #cc0000;">St M&eacute;dard de Guizi&egrave;res</strong>,
-            intervient sur Libourne, Coutras, Montpon-M&eacute;nest&eacute;rol et toute la Gironde pour vos
-            d&eacute;pannages urgents, r&eacute;novations &eacute;lectriques et mises aux normes NF C 15-100.
+    <section style="max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center;">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: #555;">
+            <strong style="color: #333;">Red Den Connexion</strong>, votre électricien de confiance à
+            <strong style="color: #cc0000;">St Médard de Guizières</strong>,
+            intervient sur Libourne, Coutras, Montpon-Ménestérol et toute la Gironde pour vos
+            dépannages urgents, rénovations électriques et mises aux normes NF C 15-100.
         </p>
     </section>
 
