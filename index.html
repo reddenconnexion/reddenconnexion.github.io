@@ -2116,10 +2116,11 @@
                 <h3>Travail aux normes</h3>
                 <p>Respect strict de la norme NF C 15-100 et certifications à jour</p>
             </div>
-            <div class="why-item animate-on-scroll">
+            <div class="why-item animate-on-scroll clickable-card" onclick="window.location.href='depannage-urgent.html'" style="cursor: pointer;">
                 <div class="why-icon">🛠️</div>
-                <h3>Plus de 7000 dépannages</h3>
+                <h3>Plus de <span class="counter-depannages">7000</span> dépannages</h3>
                 <p>Des milliers de clients satisfaits nous font confiance depuis 25 ans</p>
+                <p style="margin-top: 1rem; color: #ff3333; font-weight: bold; font-size: 0.9rem;">Découvrir nos services →</p>
             </div>
         </div>
     </section>
@@ -2791,7 +2792,7 @@
             }
 
             // Initialiser les counters
-            document.querySelectorAll('.counter-years, .counter-radius').forEach(el => {
+            document.querySelectorAll('.counter-years, .counter-radius, .counter-depannages').forEach(el => {
                 counterObserver.observe(el);
             });
 
@@ -2938,6 +2939,8 @@
                         animateCounter(entry.target, 25, 2000, ' ans d\'expérience');
                     } else if (entry.target.classList.contains('counter-radius')) {
                         animateCounter(entry.target, 50, 1500, ' km');
+                    } else if (entry.target.classList.contains('counter-depannages')) {
+                        animateCounter(entry.target, 7000, 2500, '');
                     }
                 }
             });
