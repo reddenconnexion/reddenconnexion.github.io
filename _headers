@@ -12,7 +12,7 @@
 
 /*
   # Content Security Policy - Protection contre XSS
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://formspree.io; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://formspree.io https://*.tile.openstreetmap.org; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://formspree.io; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://formspree.io https://*.tile.openstreetmap.org; frame-src https://www.youtube.com; frame-ancestors 'none'
 
   # Empêche le site d'être chargé dans une iframe
   X-Frame-Options: DENY
