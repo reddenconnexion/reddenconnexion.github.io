@@ -83,6 +83,29 @@
     }
     </script>
 
+    <!-- VideoObject Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Changement de tableau électrique en accéléré - Red Den Connexion",
+      "description": "Timelapse du remplacement complet d'un tableau électrique par Red Den Connexion, électricien professionnel à St Médard de Guizières. Installation conforme NF C 15-100.",
+      "thumbnailUrl": "https://img.youtube.com/vi/01IK3nD9v8w/maxresdefault.jpg",
+      "uploadDate": "2025-01-01",
+      "duration": "PT40S",
+      "contentUrl": "https://www.youtube.com/shorts/01IK3nD9v8w",
+      "embedUrl": "https://www.youtube.com/embed/01IK3nD9v8w",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Red Den Connexion",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://reddenconnexion.fr/logoredden.png"
+        }
+      }
+    }
+    </script>
+
     <!-- BreadcrumbList Schema -->
     <script type="application/ld+json">
     {
@@ -295,9 +318,50 @@
             text-decoration: none;
         }
 
+        .video-section {
+            text-align: center;
+            padding: 60px 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .video-section h2 {
+            color: #ffffff;
+        }
+
+        .video-section h2::after {
+            background: #ff3333;
+        }
+
+        .video-description {
+            color: #cccccc;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .video-container {
+            max-width: 350px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 51, 51, 0.3);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            aspect-ratio: 9/16;
+            border: none;
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .hero-service h1 {
                 font-size: 2rem;
+            }
+
+            .video-container {
+                max-width: 280px;
             }
         }
     </style>
@@ -327,6 +391,22 @@
         <p class="intro-text">
             Avec <strong>25 ans d'expérience</strong>, Red Den Connexion installe des tableaux électriques conformes, sécurisés et adaptés à vos besoins en puissance.
         </p>
+    </section>
+
+    <section class="video-section">
+        <h2>Changement de Tableau en Action</h2>
+        <p class="video-description">
+            Découvrez en accéléré le remplacement complet d'un tableau électrique par Red Den Connexion. De la dépose de l'ancien tableau à la mise en service du nouveau, conforme à la norme NF C 15-100.
+        </p>
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/01IK3nD9v8w"
+                title="Changement de tableau électrique en accéléré - Red Den Connexion"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+        </div>
     </section>
 
     <section class="gray-bg">
