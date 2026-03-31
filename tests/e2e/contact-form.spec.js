@@ -6,6 +6,8 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Formulaire de contact', () => {
+    test.describe.configure({ mode: 'parallel' });
+
     test.beforeEach(async ({ page }) => {
         // Naviguer vers la page d'accueil
         await page.goto('/');
@@ -190,6 +192,7 @@ test.describe('Formulaire de contact', () => {
 });
 
 test.describe('Navigation du site', () => {
+    test.describe.configure({ mode: 'parallel' });
     test('la page d\'accueil se charge correctement', async ({ page }) => {
         await page.goto('/');
 
