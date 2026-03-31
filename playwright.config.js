@@ -10,13 +10,13 @@ export default defineConfig({
     testDir: './tests/e2e',
 
     // Timeout par test
-    timeout: 30000,
+    timeout: 10000,
 
     // Nombre de tentatives en cas d'échec
-    retries: 2,
+    retries: process.env.CI ? 2 : 0,
 
     // Exécution en parallèle
-    workers: 1,
+    workers: process.env.CI ? 2 : '50%',
 
     // Reporter
     reporter: [
