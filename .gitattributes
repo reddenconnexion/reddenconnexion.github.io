@@ -1,0 +1,8 @@
+# Images - traitement binaire pour éviter la corruption
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.svg text eol=lf
