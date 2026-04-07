@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Panneaux Photovoltaïques | Red Den Connexion</title>
+
+    <!-- Security Headers managed by Cloudflare Worker -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Installation de panneaux photovoltaïques à St Médard de Guizières et en Gironde. Raccordement électrique, mise en service, devis gratuit. Red Den Connexion, électricien certifié.">
+    <meta name="keywords" content="installation panneaux photovoltaïques, panneaux solaires, électricien photovoltaïque, raccordement solaire, St Médard de Guizières, Libourne, Gironde">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reddenconnexion.fr/installation-panneaux-photovoltaiques.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="logofavicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logofavicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="logofavicon.png">
+    <link rel="shortcut icon" href="logoredden.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Installation Panneaux Photovoltaïques - Red Den Connexion">
+    <meta property="og:description" content="Électricien spécialisé dans le raccordement et l'installation électrique de panneaux solaires photovoltaïques en Gironde.">
+    <meta property="og:url" content="https://reddenconnexion.fr/installation-panneaux-photovoltaiques.html">
+    <meta property="og:image" content="https://reddenconnexion.fr/logoredden.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Installation Panneaux Photovoltaïques - Red Den Connexion">
+    <meta name="twitter:description" content="Électricien spécialisé dans le raccordement et l'installation électrique de panneaux solaires photovoltaïques en Gironde.">
+    <meta name="twitter:image" content="https://reddenconnexion.fr/logoredden.png">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Installation Panneaux Photovoltaïques",
+      "name": "Installation et Raccordement de Panneaux Photovoltaïques",
+      "description": "Installation électrique et raccordement de panneaux photovoltaïques à St Médard de Guizières et en Gironde. Mise en service, onduleur, tableau de protection. Devis gratuit.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Red Den Connexion",
+        "telephone": "+33695100823",
+        "email": "reddenconnexion@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "13 rue Robert Boulin",
+          "addressLocality": "St Médard de Guizières",
+          "postalCode": "33230",
+          "addressCountry": "FR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "45.0134",
+          "longitude": "-0.0611"
+        }
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "45.0134",
+          "longitude": "-0.0611"
+        },
+        "geoRadius": "50000"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceRange": "$$"
+      }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://reddenconnexion.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Installation Panneaux Photovoltaïques",
+          "item": "https://reddenconnexion.fr/installation-panneaux-photovoltaiques.html"
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-section img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .company-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff3333;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff3333;
+        }
+
+        .hero-service {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+        }
+
+        .hero-service h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #ff3333;
+        }
+
+        .hero-service p {
+            font-size: 1.3rem;
+            margin: 1rem 0;
+            color: #cccccc;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff3333;
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff3333;
+            margin: 1rem auto;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .component-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #ff3333;
+        }
+
+        .component-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .component-card h3 {
+            color: #ff3333;
+            margin-bottom: 1rem;
+        }
+
+        .gray-bg {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+        }
+
+        .benefits-list {
+            max-width: 800px;
+            margin: 2rem auto;
+            list-style: none;
+        }
+
+        .benefits-list li {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 1rem;
+            color: #ff3333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            counter-reset: steps;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #ff3333;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .step-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: #ff9999;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-service h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-section">
+                <img src="logoredden.png" alt="Red Den Connexion">
+                <span class="company-name">Red Den Connexion</span>
+            </div>
+            <a href="index.html">← Retour à l'accueil</a>
+        </nav>
+    </header>
+
+    <section class="hero-service">
+        <h1>☀️ Installation Panneaux Photovoltaïques</h1>
+        <p>Raccordement électrique professionnel pour votre installation solaire</p>
+        <a href="tel:0695100823" class="cta-button">📞 Demander un Devis Gratuit</a>
+    </section>
+
+    <section>
+        <h2>Passez à l'Énergie Solaire en Toute Sécurité</h2>
+        <p class="intro-text">
+            L'installation de panneaux photovoltaïques nécessite un raccordement électrique réalisé par un professionnel qualifié. Red Den Connexion prend en charge toute la partie électrique de votre projet solaire : câblage, onduleur, tableau de protection et raccordement au réseau.
+        </p>
+        <p class="intro-text">
+            Avec <strong>25 ans d'expérience en électricité</strong>, nous garantissons une installation conforme aux normes en vigueur, sûre et optimisée pour maximiser la production de votre installation photovoltaïque.
+        </p>
+    </section>
+
+    <section class="gray-bg">
+        <h2>Les Étapes de Notre Intervention</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Étude & Devis</h3>
+                <p>Analyse de votre installation existante, de votre toiture et de vos besoins en énergie. Devis détaillé et gratuit.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Câblage Solaire</h3>
+                <p>Pose des câbles DC entre les panneaux et l'onduleur, dans des chemins de câbles adaptés et protégés.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Installation Onduleur</h3>
+                <p>Fixation et raccordement de l'onduleur (convertit le courant continu en courant alternatif utilisable).</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Tableau de Protection</h3>
+                <p>Installation d'un tableau dédié avec protections AC/DC, parafoudre et disjoncteur de découplage.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">5</div>
+                <h3>Raccordement Réseau</h3>
+                <p>Connexion au réseau électrique domestique pour l'autoconsommation et/ou la revente d'électricité.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">6</div>
+                <h3>Mise en Service</h3>
+                <p>Tests complets, vérification des performances et remise des documents de conformité.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Composants de l'Installation Électrique Solaire</h2>
+        <div class="components-grid">
+            <div class="component-card">
+                <div class="component-icon">🔆</div>
+                <h3>Câbles DC Solaires</h3>
+                <p>Câbles spéciaux résistants aux UV et aux intempéries, adaptés à la haute tension continue des panneaux photovoltaïques.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">⚡</div>
+                <h3>Onduleur</h3>
+                <p>Cœur du système : convertit le courant continu produit par les panneaux en courant alternatif 230V utilisable dans votre logement.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">🛡️</div>
+                <h3>Protections DC & AC</h3>
+                <p>Disjoncteurs et fusibles côté courant continu et alternatif pour protéger l'installation et les personnes.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">⛈️</div>
+                <h3>Parafoudre</h3>
+                <p>Protection indispensable contre les surtensions liées à la foudre, protège l'onduleur et les équipements électroniques.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">📊</div>
+                <h3>Compteur de Production</h3>
+                <p>Suivi en temps réel de votre production solaire. Obligatoire pour les contrats de revente avec Enedis.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">🔌</div>
+                <h3>Tableau Dédié</h3>
+                <p>Coffret électrique spécifique pour l'installation photovoltaïque, séparé du tableau général de votre logement.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-bg">
+        <h2>Pourquoi Choisir Red Den Connexion ?</h2>
+        <ul class="benefits-list">
+            <li><strong>Électricien professionnel qualifié</strong> — Raccordement conforme aux normes NF C 15-100 et UTE C 15-712</li>
+            <li><strong>25 ans d'expérience</strong> — Maîtrise parfaite des installations électriques complexes</li>
+            <li><strong>Installation sécurisée</strong> — Protection optimale de votre installation et de vos proches</li>
+            <li><strong>Travail soigné</strong> — Câblage propre, chemins de câbles adaptés, étiquetage clair</li>
+            <li><strong>Documents de conformité</strong> — Attestation nécessaire pour votre contrat d'injection ou d'autoconsommation</li>
+            <li><strong>Zone d'intervention large</strong> — St Médard de Guizières, Libourne, Coutras, Guitres et environs</li>
+            <li><strong>Devis gratuit</strong> — Estimation claire et sans engagement</li>
+            <li><strong>Garantie décennale</strong> — Intervention professionnelle couverte</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Notre Zone d'Intervention</h2>
+        <p class="intro-text">
+            Red Den Connexion intervient dans un rayon de 50 km autour de St Médard de Guizières pour l'installation de panneaux photovoltaïques.
+            Nous couvrons notamment <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: underline;">Libourne</a>,
+            <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: underline;">Coutras</a>,
+            <a href="depannage-electrique-montpon-menesterol.html" style="color: #ff3333; text-decoration: underline;">Montpon-Ménestérol</a>,
+            Guitres et toute la Gironde nord.
+        </p>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="tel:0695100823" class="cta-button">📞 06 95 10 08 23 — Appelez-nous</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Red Den Connexion - Tous droits r&eacute;serv&eacute;s</p>
+        <p style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid #333; opacity: 0.5; font-size: 0.8rem;">Vous êtes artisan débutant ? <a href="https://artisanfacile.fr" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: none;">ArtisanFacile.fr</a> — l'outil de gestion pour démarrer simplement.</p>
+        <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
+    </footer>
+</body>
+</html>
