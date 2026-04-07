@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Caméras de Sécurité | Red Den Connexion</title>
+
+    <!-- Security Headers managed by Cloudflare Worker -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Installation de caméras de sécurité et vidéosurveillance à St Médard de Guizières et en Gironde. Câblage électrique, alimentation, raccordement. Devis gratuit. Red Den Connexion.">
+    <meta name="keywords" content="installation caméra sécurité, vidéosurveillance, caméra IP, câblage caméra, électricien vidéosurveillance, St Médard de Guizières, Libourne, Gironde">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reddenconnexion.fr/installation-cameras-securite.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="logofavicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logofavicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="logofavicon.png">
+    <link rel="shortcut icon" href="logoredden.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Installation Caméras de Sécurité - Red Den Connexion">
+    <meta property="og:description" content="Électricien professionnel pour l'installation de caméras de vidéosurveillance et le câblage de systèmes de sécurité en Gironde.">
+    <meta property="og:url" content="https://reddenconnexion.fr/installation-cameras-securite.html">
+    <meta property="og:image" content="https://reddenconnexion.fr/logoredden.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Installation Caméras de Sécurité - Red Den Connexion">
+    <meta name="twitter:description" content="Électricien professionnel pour l'installation de caméras de vidéosurveillance et le câblage de systèmes de sécurité en Gironde.">
+    <meta name="twitter:image" content="https://reddenconnexion.fr/logoredden.png">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Installation Caméras de Sécurité",
+      "name": "Installation de Caméras de Sécurité et Vidéosurveillance",
+      "description": "Installation de caméras de sécurité et vidéosurveillance à St Médard de Guizières et en Gironde. Câblage électrique, alimentation, raccordement réseau. Devis gratuit.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Red Den Connexion",
+        "telephone": "+33695100823",
+        "email": "reddenconnexion@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "13 rue Robert Boulin",
+          "addressLocality": "St Médard de Guizières",
+          "postalCode": "33230",
+          "addressCountry": "FR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "45.0134",
+          "longitude": "-0.0611"
+        }
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "45.0134",
+          "longitude": "-0.0611"
+        },
+        "geoRadius": "50000"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceRange": "$$"
+      }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://reddenconnexion.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Installation Caméras de Sécurité",
+          "item": "https://reddenconnexion.fr/installation-cameras-securite.html"
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-section img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .company-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff3333;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff3333;
+        }
+
+        .hero-service {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+        }
+
+        .hero-service h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #ff3333;
+        }
+
+        .hero-service p {
+            font-size: 1.3rem;
+            margin: 1rem 0;
+            color: #cccccc;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff3333;
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff3333;
+            margin: 1rem auto;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .component-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #ff3333;
+        }
+
+        .component-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .component-card h3 {
+            color: #ff3333;
+            margin-bottom: 1rem;
+        }
+
+        .gray-bg {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+        }
+
+        .benefits-list {
+            max-width: 800px;
+            margin: 2rem auto;
+            list-style: none;
+        }
+
+        .benefits-list li {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 1rem;
+            color: #ff3333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #ff3333;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .step-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .use-case-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .use-case-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .use-case-card h3 {
+            color: #ff3333;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: #ff9999;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-service h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-section">
+                <img src="logoredden.png" alt="Red Den Connexion">
+                <span class="company-name">Red Den Connexion</span>
+            </div>
+            <a href="index.html">← Retour à l'accueil</a>
+        </nav>
+    </header>
+
+    <section class="hero-service">
+        <h1>📷 Installation Caméras de Sécurité</h1>
+        <p>Câblage et installation électrique de votre système de vidéosurveillance</p>
+        <a href="tel:0695100823" class="cta-button">📞 Demander un Devis Gratuit</a>
+    </section>
+
+    <section>
+        <h2>Sécurisez Votre Domicile ou Entreprise</h2>
+        <p class="intro-text">
+            Un système de vidéosurveillance bien installé est le meilleur moyen de dissuader les intrusions et de surveiller votre propriété à distance. Red Den Connexion se charge de toute la <strong>partie électrique et câblage</strong> de votre installation de caméras : alimentation, passage de câbles, raccordements et mise en service.
+        </p>
+        <p class="intro-text">
+            Que ce soit pour votre maison, votre commerce ou votre entreprise, nous vous proposons une installation soignée, discrète et durable, adaptée à votre configuration.
+        </p>
+    </section>
+
+    <section class="gray-bg">
+        <h2>Domaines d'Application</h2>
+        <div class="use-case-grid">
+            <div class="use-case-card">
+                <div class="icon">🏠</div>
+                <h3>Maisons & Pavillons</h3>
+                <p>Surveillance de l'entrée, du garage, du jardin et des accès. Caméras extérieures et intérieures avec vision nocturne.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="icon">🏢</div>
+                <h3>Commerces & Bureaux</h3>
+                <p>Protection contre le vol, surveillance des caisses et des stocks. Enregistrement continu ou sur détection de mouvement.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="icon">🏭</div>
+                <h3>Entrepôts & Industries</h3>
+                <p>Couverture de grands espaces, périmètres étendus, zones de chargement et d'accès avec câblage longue distance.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="icon">🌿</div>
+                <h3>Propriétés Agricoles</h3>
+                <p>Surveillance des bâtiments agricoles, hangars, vergers et entrées de propriété dans les zones rurales de Gironde.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Notre Prestation Électrique Complète</h2>
+        <div class="components-grid">
+            <div class="component-card">
+                <div class="component-icon">📋</div>
+                <h3>Étude & Planification</h3>
+                <p>Visite de votre site, analyse des angles de couverture souhaités et planification du parcours de câbles optimal pour minimiser l'impact visuel.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">🔌</div>
+                <h3>Alimentation Électrique</h3>
+                <p>Création de circuits dédiés depuis le tableau, pose de prises pour enregistreur (NVR/DVR) et alimentation des caméras (PoE ou 12V).</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">📡</div>
+                <h3>Passage de Câbles</h3>
+                <p>Tirage de câbles RJ45 (réseau), coaxiaux ou d'alimentation dans des chemins de câbles discrets, moulures ou sous-plâtre selon la configuration.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">📷</div>
+                <h3>Fixation des Caméras</h3>
+                <p>Pose en hauteur aux emplacements stratégiques définis (angles d'entrée, zones sensibles), fixations solides adaptées au support (béton, bois, métal).</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">🖥️</div>
+                <h3>Installation Enregistreur</h3>
+                <p>Raccordement et installation de l'enregistreur (NVR/DVR) dans un local sécurisé, avec alimentation ondulée pour continuité en cas de coupure.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">✅</div>
+                <h3>Mise en Service</h3>
+                <p>Configuration de base des caméras, vérification des images, test de la détection de mouvement et explication du fonctionnement.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-bg">
+        <h2>Types de Caméras Compatibles</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌐</div>
+                <h3>Caméras IP / PoE</h3>
+                <p>Alimentées et connectées via un seul câble réseau RJ45. Qualité HD, accès à distance via smartphone.</p>
+            </div>
+            <div class="step-card">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">📺</div>
+                <h3>Caméras Analogiques HD</h3>
+                <p>Câble coaxial + alimentation séparée. Fiables et économiques, idéales pour les grandes distances.</p>
+            </div>
+            <div class="step-card">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">📶</div>
+                <h3>Caméras WiFi</h3>
+                <p>Nécessitent uniquement une alimentation électrique. Flexibles, idéales dans les zones difficiles à câbler.</p>
+            </div>
+            <div class="step-card">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌙</div>
+                <h3>Vision Nocturne</h3>
+                <p>Infrarouge ou couleur en basse lumière. Nous assurons le positionnement optimal pour une couverture nocturne efficace.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Pourquoi Faire Appel à un Électricien ?</h2>
+        <ul class="benefits-list">
+            <li><strong>Câblage sécurisé et durable</strong> — Câbles correctement protégés, passage propre, aucun risque électrique</li>
+            <li><strong>Installation discrète</strong> — Câbles encastrés ou en moulures pour un rendu esthétique</li>
+            <li><strong>Alimentation fiable</strong> — Circuit dédié avec protection adaptée, pas de surcharge</li>
+            <li><strong>Travail en hauteur sécurisé</strong> — Pose de caméras en toiture, sous auvent ou en hauteur avec équipement adapté</li>
+            <li><strong>Passage de câbles dans les murs</strong> — Saignées, trous et passages propres sans endommager la structure</li>
+            <li><strong>Compatible tous systèmes</strong> — Hikvision, Dahua, Reolink, Axis et toutes marques du marché</li>
+            <li><strong>Garantie du travail électrique</strong> — Garantie décennale sur la partie installation électrique</li>
+            <li><strong>Devis gratuit</strong> — Estimation sur mesure selon le nombre de caméras et la configuration</li>
+        </ul>
+    </section>
+
+    <section class="gray-bg">
+        <h2>Notre Zone d'Intervention</h2>
+        <p class="intro-text">
+            Red Den Connexion intervient dans un rayon de 50 km autour de St Médard de Guizières pour l'installation de caméras de sécurité.
+            Nous couvrons notamment <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: underline;">Libourne</a>,
+            <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: underline;">Coutras</a>,
+            <a href="depannage-electrique-montpon-menesterol.html" style="color: #ff3333; text-decoration: underline;">Montpon-Ménestérol</a>,
+            Guitres et toute la Gironde nord.
+        </p>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="tel:0695100823" class="cta-button">📞 06 95 10 08 23 — Appelez-nous</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Red Den Connexion - Tous droits r&eacute;serv&eacute;s</p>
+        <p style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid #333; opacity: 0.5; font-size: 0.8rem;">Vous êtes artisan débutant ? <a href="https://artisanfacile.fr" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: none;">ArtisanFacile.fr</a> — l'outil de gestion pour démarrer simplement.</p>
+        <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Prise Renforcée Véhicule Électrique | Red Den Connexion</title>
+
+    <!-- Security Headers managed by Cloudflare Worker -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Installation de prise renforcée et borne de recharge pour véhicule électrique à St Médard de Guizières et en Gironde. IRVE certifié, devis gratuit. Red Den Connexion.">
+    <meta name="keywords" content="prise renforcée véhicule électrique, borne recharge voiture électrique, IRVE, wallbox, installation électrique voiture électrique, St Médard de Guizières, Libourne, Gironde">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reddenconnexion.fr/installation-prise-vehicule-electrique.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="logofavicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logofavicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="logofavicon.png">
+    <link rel="shortcut icon" href="logoredden.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Installation Prise Renforcée Véhicule Électrique - Red Den Connexion">
+    <meta property="og:description" content="Électricien IRVE certifié pour l'installation de prises renforcées et bornes de recharge pour véhicule électrique en Gironde.">
+    <meta property="og:url" content="https://reddenconnexion.fr/installation-prise-vehicule-electrique.html">
+    <meta property="og:image" content="https://reddenconnexion.fr/logoredden.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Installation Prise Renforcée Véhicule Électrique - Red Den Connexion">
+    <meta name="twitter:description" content="Électricien IRVE certifié pour l'installation de prises renforcées et bornes de recharge pour véhicule électrique en Gironde.">
+    <meta name="twitter:image" content="https://reddenconnexion.fr/logoredden.png">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Installation Prise Renforcée Véhicule Électrique",
+      "name": "Installation de Prise Renforcée et Borne de Recharge pour Véhicule Électrique",
+      "description": "Installation de prise renforcée et borne de recharge pour véhicule électrique à St Médard de Guizières et en Gironde. IRVE, wallbox, circuit dédié. Devis gratuit.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Red Den Connexion",
+        "telephone": "+33695100823",
+        "email": "reddenconnexion@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "13 rue Robert Boulin",
+          "addressLocality": "St Médard de Guizières",
+          "postalCode": "33230",
+          "addressCountry": "FR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "45.0134",
+          "longitude": "-0.0611"
+        }
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "45.0134",
+          "longitude": "-0.0611"
+        },
+        "geoRadius": "50000"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceRange": "$$"
+      }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://reddenconnexion.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Installation Prise Renforcée Véhicule Électrique",
+          "item": "https://reddenconnexion.fr/installation-prise-vehicule-electrique.html"
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-section img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .company-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff3333;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff3333;
+        }
+
+        .hero-service {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+        }
+
+        .hero-service h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #ff3333;
+        }
+
+        .hero-service p {
+            font-size: 1.3rem;
+            margin: 1rem 0;
+            color: #cccccc;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff3333;
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff3333;
+            margin: 1rem auto;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .component-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #ff3333;
+        }
+
+        .component-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .component-card h3 {
+            color: #ff3333;
+            margin-bottom: 1rem;
+        }
+
+        .gray-bg {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+        }
+
+        .benefits-list {
+            max-width: 800px;
+            margin: 2rem auto;
+            list-style: none;
+        }
+
+        .benefits-list li {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 1rem;
+            color: #ff3333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .comparison-card.recommended {
+            border: 3px solid #ff3333;
+        }
+
+        .comparison-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .badge-recommended {
+            display: inline-block;
+            background: #ff3333;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: #ff9999;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-service h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-section">
+                <img src="logoredden.png" alt="Red Den Connexion">
+                <span class="company-name">Red Den Connexion</span>
+            </div>
+            <a href="index.html">← Retour à l'accueil</a>
+        </nav>
+    </header>
+
+    <section class="hero-service">
+        <h1>🚗 Prise Renforcée pour Véhicule Électrique</h1>
+        <p>Installation sécurisée pour recharger votre voiture électrique à domicile</p>
+        <a href="tel:0695100823" class="cta-button">📞 Demander un Devis Gratuit</a>
+    </section>
+
+    <section>
+        <h2>Rechargez Votre Véhicule en Toute Sécurité</h2>
+        <p class="intro-text">
+            Brancher votre voiture électrique sur une prise domestique standard est dangereux : risque de surchauffe, d'incendie, de détérioration du câblage. Une <strong>prise renforcée dédiée</strong> ou une <strong>borne de recharge (wallbox)</strong> est indispensable pour une recharge sûre et efficace.
+        </p>
+        <p class="intro-text">
+            Red Den Connexion installe votre solution de recharge à domicile selon vos besoins, votre véhicule et votre installation électrique existante. Devis gratuit, intervention rapide.
+        </p>
+    </section>
+
+    <section class="gray-bg">
+        <h2>Prise Renforcée ou Borne Wallbox ?</h2>
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔌</div>
+                <h3>Prise Renforcée (Green'up)</h3>
+                <div class="spec-item"><span>Puissance</span><span>3,7 kW</span></div>
+                <div class="spec-item"><span>Tension</span><span>230V monophasé</span></div>
+                <div class="spec-item"><span>Recharge (60 kWh)</span><span>~16h</span></div>
+                <div class="spec-item"><span>Prix installation</span><span>Économique</span></div>
+                <div class="spec-item"><span>Idéal pour</span><span>Usage quotidien limité</span></div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">Parfaite pour les petits véhicules ou les recharges de nuit avec faible kilométrage journalier.</p>
+            </div>
+            <div class="comparison-card recommended">
+                <span class="badge-recommended">★ RECOMMANDÉ</span>
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
+                <h3>Borne Wallbox 7 kW</h3>
+                <div class="spec-item"><span>Puissance</span><span>7,4 kW</span></div>
+                <div class="spec-item"><span>Tension</span><span>230V monophasé</span></div>
+                <div class="spec-item"><span>Recharge (60 kWh)</span><span>~8h</span></div>
+                <div class="spec-item"><span>Prix installation</span><span>Moyen</span></div>
+                <div class="spec-item"><span>Idéal pour</span><span>Usage quotidien intensif</span></div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">La solution idéale pour la plupart des utilisateurs : recharge complète en une nuit.</p>
+            </div>
+            <div class="comparison-card">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏭</div>
+                <h3>Borne Wallbox 22 kW</h3>
+                <div class="spec-item"><span>Puissance</span><span>22 kW</span></div>
+                <div class="spec-item"><span>Tension</span><span>400V triphasé</span></div>
+                <div class="spec-item"><span>Recharge (60 kWh)</span><span>~3h</span></div>
+                <div class="spec-item"><span>Prix installation</span><span>Premium</span></div>
+                <div class="spec-item"><span>Idéal pour</span><span>Flottes, usage pro</span></div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">Solution professionnelle pour recharge rapide. Nécessite un abonnement triphasé.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Ce Que Comprend Notre Installation</h2>
+        <div class="components-grid">
+            <div class="component-card">
+                <div class="component-icon">📋</div>
+                <h3>Diagnostic de l'Installation</h3>
+                <p>Vérification de votre tableau électrique, de la capacité disponible et du câblage existant pour déterminer la solution adaptée.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">🔧</div>
+                <h3>Circuit Dédié</h3>
+                <p>Création d'un circuit électrique indépendant depuis le tableau, avec câble de section adaptée à la puissance de charge.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">🛡️</div>
+                <h3>Protection Différentielle</h3>
+                <p>Ajout d'un disjoncteur différentiel 30mA type A ou B dédié à la recharge, obligatoire pour votre sécurité.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">🔌</div>
+                <h3>Pose de la Prise ou Borne</h3>
+                <p>Installation fixe en garage, carport ou extérieur avec boîtier IP55 pour une utilisation en toute sécurité.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">📊</div>
+                <h3>Mise en Service & Test</h3>
+                <p>Vérification du fonctionnement avec votre véhicule, test de la puissance de charge et réglages si nécessaire.</p>
+            </div>
+            <div class="component-card">
+                <div class="component-icon">📄</div>
+                <h3>Attestation CONSUEL</h3>
+                <p>Remise de la documentation nécessaire pour votre assurance et pour bénéficier des aides financières disponibles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-bg">
+        <h2>Les Avantages d'une Installation Professionnelle</h2>
+        <ul class="benefits-list">
+            <li><strong>Sécurité garantie</strong> — Circuit dimensionné pour éviter tout risque de surchauffe ou d'incendie</li>
+            <li><strong>Recharge plus rapide</strong> — 2 à 5 fois plus rapide qu'une prise domestique standard</li>
+            <li><strong>Protection de votre batterie</strong> — Charge stable et contrôlée qui préserve la longévité de la batterie</li>
+            <li><strong>Conformité IRVE</strong> — Installation aux normes pour bénéficier des aides (crédit d'impôt, Advenir...)</li>
+            <li><strong>Utilisation simplifiée</strong> — Pas besoin de câble de secours, connexion directe sécurisée</li>
+            <li><strong>Compatible tous véhicules</strong> — Prise Type 2 universelle compatible toutes marques (Renault, Peugeot, Tesla...)</li>
+            <li><strong>Installation intérieure ou extérieure</strong> — Garage, carport ou extérieur avec protection IP adaptée</li>
+            <li><strong>Devis gratuit</strong> — Estimation sur mesure selon votre situation</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Notre Zone d'Intervention</h2>
+        <p class="intro-text">
+            Red Den Connexion intervient dans un rayon de 50 km autour de St Médard de Guizières pour l'installation de prises renforcées et bornes de recharge pour véhicule électrique.
+            Nous couvrons notamment <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: underline;">Libourne</a>,
+            <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: underline;">Coutras</a>,
+            <a href="depannage-electrique-montpon-menesterol.html" style="color: #ff3333; text-decoration: underline;">Montpon-Ménestérol</a>,
+            Guitres et toute la Gironde nord.
+        </p>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="tel:0695100823" class="cta-button">📞 06 95 10 08 23 — Appelez-nous</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Red Den Connexion - Tous droits r&eacute;serv&eacute;s</p>
+        <p style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid #333; opacity: 0.5; font-size: 0.8rem;">Vous êtes artisan débutant ? <a href="https://artisanfacile.fr" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: none;">ArtisanFacile.fr</a> — l'outil de gestion pour démarrer simplement.</p>
+        <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
+    </footer>
+</body>
+</html>
