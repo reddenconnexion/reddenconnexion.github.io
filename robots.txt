@@ -25,27 +25,30 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# Bloquer les scrapers IA (entraînement des modèles)
+# Autoriser les robots IA (référencement dans ChatGPT, Gemini, Perplexity, Claude)
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: ChatGPT-User
-Disallow: /
+Allow: /
 
 User-agent: CCBot
-Disallow: /
+Allow: /
 
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
 
 User-agent: Claude-Web
-Disallow: /
+Allow: /
 
 User-agent: Google-Extended
-Disallow: /
+Allow: /
 
 User-agent: PerplexityBot
-Disallow: /
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
 
 User-agent: Omgilibot
 Disallow: /
