@@ -4,7 +4,7 @@
   <!-- Page d'accueil -->
   <url>
     <loc>https://reddenconnexion.fr/</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,42 +12,42 @@
   <!-- Pages de services -->
   <url>
     <loc>https://reddenconnexion.fr/depannage-urgent.html</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://reddenconnexion.fr/renovation-electrique.html</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://reddenconnexion.fr/installation-tableau.html</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://reddenconnexion.fr/installation-panneaux-photovoltaiques.html</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://reddenconnexion.fr/installation-prise-vehicule-electrique.html</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://reddenconnexion.fr/installation-cameras-securite.html</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -55,28 +55,28 @@
   <!-- Pages locales optimisées SEO -->
   <url>
     <loc>https://reddenconnexion.fr/depannage-electrique-coutras.html</loc>
-    <lastmod>2025-12-09</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://reddenconnexion.fr/depannage-electrique-libourne.html</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://reddenconnexion.fr/depannage-electrique-montpon-menesterol.html</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://reddenconnexion.fr/depannage-interrupteur-differentiel.html</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -105,7 +105,7 @@
   <!-- Mentions légales -->
   <url>
     <loc>https://reddenconnexion.fr/mentions-legales.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -113,7 +113,7 @@
   <!-- Politique de confidentialité -->
   <url>
     <loc>https://reddenconnexion.fr/confidentialite.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -121,7 +121,7 @@
   <!-- Fichier LLMs (référencement dans les IA) -->
   <url>
     <loc>https://reddenconnexion.fr/llms.txt</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
