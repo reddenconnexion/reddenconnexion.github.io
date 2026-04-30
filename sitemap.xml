@@ -81,6 +81,27 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://reddenconnexion.fr/depannage-electrique-guitres.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://reddenconnexion.fr/depannage-electrique-castillon-la-bataille.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://reddenconnexion.fr/depannage-electrique-sainte-foy-la-grande.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Mentions légales -->
   <url>
     <loc>https://reddenconnexion.fr/mentions-legales.html</loc>
