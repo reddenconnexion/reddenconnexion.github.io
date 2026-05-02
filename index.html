@@ -37,17 +37,14 @@
     <meta property="twitter:description" content="Électricien professionnel avec 25 ans d'expérience. Intervention rapide 24h/24 et 7j/7.">
     <meta property="twitter:image" content="https://reddenconnexion.fr/logofavicon.png">
 
-    <!-- Preload Critical Images -->
-    <link rel="preload" as="image" href="logofavicon.png" type="image/png">
-    <link rel="preload" as="image" href="deniselec.png" type="image/png">
+    <!-- Preload LCP image (hero) -->
+    <link rel="preload" as="image" href="camion.webp" type="image/webp">
 
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-
-    <!-- Google Fonts - Orbitron pour le titre -->
+    <!-- Google Fonts - Orbitron pour le titre (non-bloquant) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap"></noscript>
 
     <!-- Schema.org markup for Google -->
     <script type="application/ld+json">
@@ -2162,10 +2159,10 @@
                 <div class="nav-logo" id="navLogo">
                     <div class="nav-logo-inner">
                         <div class="nav-logo-face front">
-                            <img src="logofavicon.png" alt="Red Den Connexion - Électricien professionnel St Médard de Guizières">
+                            <picture><source srcset="logofavicon.webp" type="image/webp"><img src="logofavicon.png" alt="Red Den Connexion - Électricien professionnel St Médard de Guizières" width="60" height="60"></picture>
                         </div>
                         <div class="nav-logo-face back">
-                            <img src="deniselec.png" alt="Denis MERIOT - Électricien professionnel avec 25 ans d'expérience" style="object-position: center 30%; transform: scale(1.3);">
+                            <picture><source srcset="deniselec.webp" type="image/webp"><img src="deniselec.png" alt="Denis MERIOT - Électricien professionnel avec 25 ans d'expérience" style="object-position: center 30%; transform: scale(1.3);" width="60" height="60"></picture>
                         </div>
                     </div>
                 </div>
@@ -2191,7 +2188,7 @@
     <section id="accueil" class="hero">
         <div class="hero-content">
             <div class="hero-logo">
-                <img src="camion+moi" alt="Électricien Red Den Connexion avec camion d'intervention">
+                <picture><source srcset="camion.webp" type="image/webp"><img src="camion+moi" alt="Électricien Red Den Connexion avec camion d'intervention" width="900" height="491" fetchpriority="high"></picture>
             </div>
 
             <div class="danger-label-wrapper">
@@ -2365,7 +2362,7 @@
                     <div class="gallery-card-front">
                         <div class="gallery-item" style="text-decoration: none; color: inherit; cursor: pointer;">
                             <div class="gallery-image-wrapper">
-                                <img src="comparatif-chantier-remplacement-tableau-elec.jpg" alt="Avant/Après : Rénovation complète de tableau électrique aux normes NF C 15-100 par Red Den Connexion" loading="lazy">
+                                <picture><source srcset="comparatif-chantier-remplacement-tableau-elec.webp" type="image/webp"><img src="comparatif-chantier-remplacement-tableau-elec.jpg" alt="Avant/Après : Rénovation complète de tableau électrique aux normes NF C 15-100 par Red Den Connexion" loading="lazy" width="800" height="533"></picture>
                                 <div class="play-overlay">▶</div>
                             </div>
                             <div class="gallery-content">
@@ -2398,7 +2395,7 @@
                     <div class="gallery-card-front">
                         <div class="gallery-item" style="text-decoration: none; color: inherit; cursor: pointer;">
                             <div class="gallery-image-wrapper">
-                                <img src="https://img.youtube.com/vi/f6dyusaRxjw/hqdefault.jpg" alt="Dépannage électrique suite à l'ajout d'interrupteurs différentiels - Red Den Connexion" loading="lazy">
+                                <img src="https://img.youtube.com/vi/f6dyusaRxjw/hqdefault.jpg" alt="Dépannage électrique suite à l'ajout d'interrupteurs différentiels - Red Den Connexion" loading="lazy" width="480" height="360">
                                 <div class="play-overlay">▶</div>
                             </div>
                             <div class="gallery-content">
@@ -2428,7 +2425,7 @@
             <!-- Réalisation 3 : Installation professionnelle -->
             <div class="gallery-item">
                 <div class="gallery-image-wrapper" data-lightbox="installationpro.jpg">
-                    <img src="installationpro.jpg" alt="Installation électrique professionnelle complète - Red Den Connexion électricien" loading="lazy">
+                    <picture><source srcset="installationpro.webp" type="image/webp"><img src="installationpro.jpg" alt="Installation électrique professionnelle complète - Red Den Connexion électricien" loading="lazy" width="800" height="1789"></picture>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">✓ INSTALLATION NEUVE</span>
@@ -2450,7 +2447,7 @@
             <!-- Réalisation 3 : Expertise électricien -->
             <div class="gallery-item">
                 <div class="gallery-image-wrapper" data-lightbox="deniselec.png">
-                    <img src="deniselec.png" alt="Électricien professionnel Red Den Connexion avec 25 ans d'expérience" loading="lazy">
+                    <picture><source srcset="deniselec.webp" type="image/webp"><img src="deniselec.png" alt="Électricien professionnel Red Den Connexion avec 25 ans d'expérience" loading="lazy" width="671" height="377"></picture>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">🏆 25 ANS D'EXPÉRIENCE</span>
@@ -2472,7 +2469,7 @@
             <!-- Réalisation 4 : Mise aux normes -->
             <div class="gallery-item">
                 <div class="gallery-image-wrapper" data-lightbox="filspriseancienne.jpg">
-                    <img src="filspriseancienne.jpg" alt="Rénovation électrique et mise aux normes d'installation ancienne" loading="lazy">
+                    <picture><source srcset="filspriseancienne.webp" type="image/webp"><img src="filspriseancienne.jpg" alt="Rénovation électrique et mise aux normes d'installation ancienne" loading="lazy" width="800" height="800"></picture>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">⚡ MISE AUX NORMES</span>
@@ -2494,7 +2491,7 @@
             <!-- Réalisation 6 : Avant/Après remplacement porte-fusibles -->
             <div class="gallery-item">
                 <div class="gallery-image-wrapper" data-lightbox="remplacement-portes-fusibles.jpg">
-                    <img src="remplacement-portes-fusibles.jpg" alt="Avant après remplacement porte-fusibles par disjoncteurs à Montpon-Ménestérol" loading="lazy">
+                    <picture><source srcset="remplacement-portes-fusibles.webp" type="image/webp"><img src="remplacement-portes-fusibles.jpg" alt="Avant après remplacement porte-fusibles par disjoncteurs à Montpon-Ménestérol" loading="lazy" width="800" height="533"></picture>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">🔧 MISE AUX NORMES</span>
@@ -2516,7 +2513,7 @@
             <!-- Réalisation 7 : Installation photovoltaïque 18 kWc - Laruscade -->
             <div class="gallery-item">
                 <div class="gallery-image-wrapper" data-lightbox="panneauxphotovoltaiques.jpg">
-                    <img src="panneauxphotovoltaiques.jpg" alt="Installation photovoltaïque 18 kWc avec onduleur hybride et rack batteries 50 kWh à Laruscade" loading="lazy">
+                    <picture><source srcset="panneauxphotovoltaiques.webp" type="image/webp"><img src="panneauxphotovoltaiques.jpg" alt="Installation photovoltaïque 18 kWc avec onduleur hybride et rack batteries 50 kWh à Laruscade" loading="lazy" width="900" height="403"></picture>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">☀️ PHOTOVOLTAÏQUE</span>
@@ -2871,8 +2868,41 @@
 
     <button class="back-to-top" id="backToTop">↑</button>
 
-    <!-- Leaflet JavaScript - Chargé AVANT notre code -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Leaflet CSS + JS chargés de façon différée via IntersectionObserver -->
+    <script>
+    (function() {
+        var leafletLoaded = false;
+        function loadLeaflet(callback) {
+            if (leafletLoaded) { if (callback) callback(); return; }
+            leafletLoaded = true;
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+            link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+            link.crossOrigin = '';
+            document.head.appendChild(link);
+            var script = document.createElement('script');
+            script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+            script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+            script.crossOrigin = '';
+            script.onload = function() { if (callback) callback(); };
+            document.head.appendChild(script);
+        }
+        var mapEl = document.getElementById('map');
+        if (mapEl && 'IntersectionObserver' in window) {
+            var obs = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting) {
+                    obs.disconnect();
+                    loadLeaflet(function() { initLeafletMap(); });
+                }
+            }, { rootMargin: '200px' });
+            obs.observe(mapEl);
+        } else {
+            // Fallback : charger immédiatement (DOM déjà parsé ici)
+            loadLeaflet(function() { initLeafletMap(); });
+        }
+    })();
+    </script>
 
     <script>
         // ===== EVENT LISTENERS =====
@@ -3243,10 +3273,8 @@
             });
         }, { threshold: 0.5 });
 
-        // Initialisation de la carte Leaflet après chargement du DOM
-        document.addEventListener('DOMContentLoaded', function() {
-            // Coordonnées GPS exactes de 13 rue Robert Boulin, St Médard de Guizières
-            // Source : 45°00'48.2"N 0°03'39.9"W
+        // Initialisation de la carte Leaflet (appelée par le lazy-loader)
+        function initLeafletMap() {
             const stMedard = [45.0134, -0.0611];
 
             // Lien vers la fiche Google My Business
@@ -3371,7 +3399,7 @@
                     .addTo(map)
                     .bindPopup(`<div style="text-align: center; padding: 3px;"><strong>${city.name}</strong></div>`);
             });
-        });
+        }
     </script>
 
     <!-- Flash électrique pour effet court-circuit -->
