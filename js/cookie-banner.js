@@ -86,7 +86,8 @@
         var text = document.createElement('div');
         text.className = 'rdc-cb-text';
         text.innerHTML = '<strong>Respect de votre vie privée.</strong> '
-            + 'Ce site utilise des cookies techniques nécessaires à son fonctionnement et charge des polices Google Fonts (transfert de votre adresse IP à Google). '
+            + 'Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement. '
+            + 'La miniature de notre vidéo YouTube et la carte interactive (OpenStreetMap/CARTO) chargent du contenu depuis des serveurs tiers. '
             + 'Aucun cookie publicitaire ni traceur analytique n’est utilisé. '
             + '<a href="/confidentialite.html">En savoir plus</a>.';
 
