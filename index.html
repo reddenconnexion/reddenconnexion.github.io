@@ -1993,7 +1993,7 @@
             }
 
             .back-to-top {
-                bottom: 20px;
+                bottom: 90px;
                 right: 20px;
                 width: 45px;
                 height: 45px;
@@ -2270,6 +2270,63 @@
 
             .modal-footer {
                 padding: 1.5rem;
+            }
+        }
+
+        .mobile-call-bar {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-call-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 998;
+                background: linear-gradient(135deg, #cc0000 0%, #ff3333 100%);
+                box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.25);
+                padding: 0.6rem 0.8rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+                gap: 0.5rem;
+                align-items: stretch;
+            }
+
+            .mobile-call-bar a {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                color: #fff;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 1rem;
+                padding: 0.85rem 0.5rem;
+                border-radius: 8px;
+                background: rgba(0, 0, 0, 0.18);
+                transition: background 0.2s, transform 0.1s;
+            }
+
+            .mobile-call-bar a:active {
+                transform: scale(0.97);
+                background: rgba(0, 0, 0, 0.32);
+            }
+
+            .mobile-call-bar .mcb-icon {
+                font-size: 1.2rem;
+            }
+
+            .mobile-call-bar .mcb-label-sub {
+                display: block;
+                font-size: 0.7rem;
+                font-weight: 500;
+                opacity: 0.85;
+                line-height: 1.1;
+            }
+
+            body {
+                padding-bottom: 80px;
             }
         }
     </style>
@@ -3012,6 +3069,23 @@
         <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.8rem;">Vous êtes artisan débutant ? <a href="https://artisanfacile.fr" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: none;">ArtisanFacile.fr</a> — l'outil de gestion pour démarrer simplement.</p>
         <p style="margin-top: 0.5rem; opacity: 0.5; font-size: 0.8rem;"><a href="mentions-legales.html" style="color: #ff9999; text-decoration: none;">Mentions légales</a> | <a href="confidentialite.html" style="color: #ff9999; text-decoration: none;">Politique de confidentialité</a></p>
     </footer>
+
+    <nav class="mobile-call-bar" aria-label="Contact rapide">
+        <a href="tel:0695100823" aria-label="Appeler Red Den Connexion au 06 95 10 08 23">
+            <span class="mcb-icon" aria-hidden="true">📞</span>
+            <span>
+                Appeler
+                <span class="mcb-label-sub">06 95 10 08 23</span>
+            </span>
+        </a>
+        <a href="#contact" aria-label="Aller au formulaire de devis">
+            <span class="mcb-icon" aria-hidden="true">✉️</span>
+            <span>
+                Devis
+                <span class="mcb-label-sub">Réponse rapide</span>
+            </span>
+        </a>
+    </nav>
 
     <button class="back-to-top" id="backToTop">↑</button>
 
