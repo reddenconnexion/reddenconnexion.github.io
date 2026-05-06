@@ -102,6 +102,27 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://reddenconnexion.fr/depannage-electrique-saint-andre-de-cubzac.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://reddenconnexion.fr/depannage-electrique-blaye.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://reddenconnexion.fr/depannage-electrique-lussac.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Page tarifs et devis -->
   <url>
     <loc>https://reddenconnexion.fr/tarifs-devis.html</loc>
