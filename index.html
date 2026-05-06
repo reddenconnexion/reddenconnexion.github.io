@@ -104,7 +104,45 @@
         "@type": "AggregateRating",
         "ratingValue": "5",
         "reviewCount": "23"
-      }
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Mireille Flechard"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Professionnel très sérieux et compétent. Nous le recommandons."
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Happyfrenchbuddha 21stsanctuary"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Très réactifs compte tenu de la nature du problème, ils ne pouvaient pas attendre jusqu'à lundi. Prix correct pour la situation."
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "David Maugue"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Intervention très rapide à Fronsac pour le remplacement d'un radiateur dans mon logement locatif. Artisan sérieux et efficace, il m'a proposé plusieurs modèles en tenant compte de la fourchette de prix que je lui ai indiquée."
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Sylvia Randria"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Électricien à Montpon très réactif et pro. Travail propre, rapide et avec le sourire ! Le courant est bien passé du début à la fin, top prestation ! Très satisfaite sur la qualité des travaux réalisés, la compétence et le professionnalisme."
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Florent Rodriguez"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Tout simplement excellent."
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Aurélie Léglise"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Très bonne expérience avec Denis. Très rapide dans la prise de rendez-vous. Très professionnel, m'a envoyé un message à la fin de son intervention."
+        }
+      ]
     }
     </script>
 
@@ -1426,6 +1464,84 @@
             background: linear-gradient(135deg, #3367d6 0%, #2d8e47 100%);
         }
 
+        .leave-review-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
+        }
+
+        .leave-review-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 51, 51, 0.6);
+            background: linear-gradient(135deg, #cc0000 0%, #8b0000 100%);
+        }
+
+        .reviews-cta-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 1.5rem auto 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 51, 51, 0.2);
+            border-radius: 16px;
+            padding: 1.2rem 2rem;
+            max-width: 420px;
+            flex-wrap: wrap;
+        }
+
+        .rating-score-big {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ff3333;
+            line-height: 1;
+        }
+
+        .rating-summary-right {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .rating-stars-gold {
+            color: #fbbf24;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .rating-count-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: white;
+        }
+
+        .google-logo-inline {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            color: white;
+        }
+
         .zone {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
@@ -2549,6 +2665,20 @@
 
     <section id="avis" class="testimonials">
         <h2 class="animate-on-scroll">Ils Nous Font Confiance</h2>
+
+        <!-- Récapitulatif de note agrégée -->
+        <div class="rating-summary animate-on-scroll">
+            <div class="rating-score-big">5.0</div>
+            <div class="rating-summary-right">
+                <div class="rating-stars-gold">★★★★★</div>
+                <div class="rating-count-label">23 avis vérifiés</div>
+                <div class="google-logo-inline">
+                    <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    sur Google
+                </div>
+            </div>
+        </div>
+
         <div class="testimonials-grid">
             <a href="https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières" target="_blank" rel="noopener noreferrer" class="testimonial-link">
                 <div class="testimonial-card animate-on-scroll">
@@ -2599,9 +2729,13 @@
                 </div>
             </a>
         </div>
-        <div class="animate-on-scroll" style="text-align: center; margin-top: 3rem;">
+        <div class="reviews-cta-row animate-on-scroll">
             <a href="https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières" target="_blank" rel="noopener noreferrer" class="google-reviews-btn">
-                📝 Voir tous nos avis Google
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                Voir tous les avis
+            </a>
+            <a href="https://g.page/r/Cd-M3iSxzhgcEBM/review" target="_blank" rel="noopener noreferrer" class="leave-review-btn">
+                ⭐ Laisser mon avis
             </a>
         </div>
     </section>
@@ -2868,7 +3002,14 @@
                 <span>LinkedIn</span>
             </a>
         </div>
-        <p style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid #333; opacity: 0.5; font-size: 0.8rem;">Vous êtes artisan débutant ? <a href="https://artisanfacile.fr" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: none;">ArtisanFacile.fr</a> — l'outil de gestion pour démarrer simplement.</p>
+        <!-- Lien Google Reviews footer -->
+        <div style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid #333;">
+            <a href="https://g.page/r/Cd-M3iSxzhgcEBM/review" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #fbbf24; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                ⭐ Laisser un avis Google
+            </a>
+        </div>
+        <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.8rem;">Vous êtes artisan débutant ? <a href="https://artisanfacile.fr" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: none;">ArtisanFacile.fr</a> — l'outil de gestion pour démarrer simplement.</p>
         <p style="margin-top: 0.5rem; opacity: 0.5; font-size: 0.8rem;"><a href="mentions-legales.html" style="color: #ff9999; text-decoration: none;">Mentions légales</a> | <a href="confidentialite.html" style="color: #ff9999; text-decoration: none;">Politique de confidentialité</a></p>
     </footer>
 
