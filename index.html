@@ -2329,6 +2329,107 @@
                 padding-bottom: 80px;
             }
         }
+
+        .trust-badges {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 0.5rem;
+        }
+
+        .trust-badges-inner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.8rem;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 1.2rem 1rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.4rem 0.5rem;
+            border-radius: 10px;
+            transition: background 0.2s;
+        }
+
+        .trust-badge:hover {
+            background: #fafafa;
+        }
+
+        .trust-badge-icon {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            color: #cc0000;
+        }
+
+        .trust-badge-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .trust-badge-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            min-width: 0;
+        }
+
+        .trust-badge-title {
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: #1a1a1a;
+        }
+
+        .trust-badge-sub {
+            font-size: 0.74rem;
+            color: #777;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 600px) {
+            .trust-badges {
+                padding: 1rem 1rem 0;
+            }
+
+            .trust-badges-inner {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0.9rem 0.7rem;
+                gap: 0.5rem;
+            }
+
+            .trust-badge {
+                padding: 0.3rem 0.2rem;
+                gap: 0.5rem;
+            }
+
+            .trust-badge-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .trust-badge-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .trust-badge-title {
+                font-size: 0.78rem;
+            }
+
+            .trust-badge-sub {
+                font-size: 0.68rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2429,6 +2530,65 @@
             <strong>Dépannage urgent</strong>, <strong>rénovation électrique</strong> ou <strong>mise aux normes NF C 15-100</strong>,
             je prends le temps de vous écouter et de vous conseiller. Pas de mauvaises surprises, juste du travail bien fait.
         </p>
+    </section>
+
+    <section class="trust-badges" aria-label="Garanties et qualifications">
+        <div class="trust-badges-inner">
+            <div class="trust-badge">
+                <div class="trust-badge-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <div class="trust-badge-text">
+                    <span class="trust-badge-title">Norme NF C 15-100</span>
+                    <span class="trust-badge-sub">Conformité électrique</span>
+                </div>
+            </div>
+            <div class="trust-badge">
+                <div class="trust-badge-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6"/><path d="M12 9v6"/><circle cx="12" cy="12" r="9"/></svg>
+                </div>
+                <div class="trust-badge-text">
+                    <span class="trust-badge-title">RC Pro &amp; Décennale</span>
+                    <span class="trust-badge-sub">Travaux assurés 10 ans</span>
+                </div>
+            </div>
+            <div class="trust-badge">
+                <div class="trust-badge-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h2l3-9 4 18 3-9h2"/></svg>
+                </div>
+                <div class="trust-badge-text">
+                    <span class="trust-badge-title">Habilitation IRVE</span>
+                    <span class="trust-badge-sub">Bornes de recharge VE</span>
+                </div>
+            </div>
+            <div class="trust-badge">
+                <div class="trust-badge-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                </div>
+                <div class="trust-badge-text">
+                    <span class="trust-badge-title">Disponible 24h/24</span>
+                    <span class="trust-badge-sub">7j/7, urgences incluses</span>
+                </div>
+            </div>
+            <div class="trust-badge">
+                <div class="trust-badge-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V4h12v5"/><path d="M6 18a3 3 0 0 1-3-3v-3h18v3a3 3 0 0 1-3 3"/><path d="M9 22v-4h6v4z"/></svg>
+                </div>
+                <div class="trust-badge-text">
+                    <span class="trust-badge-title">25 ans d'expérience</span>
+                    <span class="trust-badge-sub">+7000 dépannages</span>
+                </div>
+            </div>
+            <div class="trust-badge">
+                <div class="trust-badge-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <div class="trust-badge-text">
+                    <span class="trust-badge-title">Devis gratuit</span>
+                    <span class="trust-badge-sub">Sans engagement</span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="pourquoi" class="why-us">
