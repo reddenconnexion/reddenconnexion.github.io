@@ -123,6 +123,28 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Section Conseils (blog) -->
+  <url>
+    <loc>https://reddenconnexion.fr/conseils/</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://reddenconnexion.fr/conseils/aides-panneaux-solaires-gironde-2026.html</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://reddenconnexion.fr/conseils/wallbox-installation-domicile.html</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Page tarifs et devis -->
   <url>
     <loc>https://reddenconnexion.fr/tarifs-devis.html</loc>
