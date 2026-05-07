@@ -1676,6 +1676,87 @@
             min-width: 280px;
         }
 
+        /* Vérificateur de zone d'intervention */
+        .zone-checker {
+            max-width: 1000px;
+            margin: 2.5rem auto 0;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 18px;
+            padding: 1.5rem 1.8rem;
+            backdrop-filter: blur(8px);
+        }
+        .zone-checker h3 {
+            margin: 0 0 0.4rem 0;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .zone-checker p.zone-checker-sub {
+            font-size: 0.95rem;
+            margin: 0 0 1rem 0;
+            opacity: 0.85;
+        }
+        .zone-checker-form {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .zone-checker-form input {
+            flex: 1 1 220px;
+            min-width: 0;
+            padding: 0.85rem 1rem;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            font-size: 1rem;
+            color: #222;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .zone-checker-form input:focus {
+            border-color: #ff3333;
+            box-shadow: 0 0 0 3px rgba(255,51,51,0.25);
+        }
+        .zone-checker-form button {
+            padding: 0.85rem 1.6rem;
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 14px rgba(255,51,51,0.4);
+        }
+        .zone-checker-form button:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,51,51,0.55); }
+        .zone-checker-form button:disabled { opacity: 0.6; cursor: wait; transform: none; }
+        .zone-result {
+            margin-top: 1rem;
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            display: none;
+            line-height: 1.5;
+        }
+        .zone-result.visible { display: block; }
+        .zone-result.zone-ok { background: rgba(40,167,69,0.18); border: 1px solid rgba(40,167,69,0.6); color: #fff; }
+        .zone-result.zone-far { background: rgba(255,193,7,0.18); border: 1px solid rgba(255,193,7,0.6); color: #fff; }
+        .zone-result.zone-out { background: rgba(220,53,69,0.18); border: 1px solid rgba(220,53,69,0.6); color: #fff; }
+        .zone-result.zone-error { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: #fff; }
+        .zone-result strong { font-size: 1.05rem; display: block; margin-bottom: 0.3rem; }
+        .zone-result a.zone-cta {
+            display: inline-block;
+            margin-top: 0.6rem;
+            padding: 0.55rem 1.1rem;
+            background: #fff;
+            color: #cc0000;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             #map {
                 height: 420px;
@@ -1693,6 +1774,8 @@
                 padding: 8px 12px;
                 font-size: 0.75rem;
             }
+            .zone-checker { padding: 1.2rem; }
+            .zone-checker-form button { width: 100%; }
         }
 
         .contact-grid {
@@ -2771,6 +2854,17 @@
                 </p>
             </div>
 
+            <!-- Vérificateur de zone d'intervention -->
+            <div class="zone-checker" aria-labelledby="zone-checker-title">
+                <h3 id="zone-checker-title">📍 Êtes-vous dans notre zone d'intervention ?</h3>
+                <p class="zone-checker-sub">Saisissez votre code postal ou votre ville et obtenez une réponse immédiate.</p>
+                <form class="zone-checker-form" id="zoneCheckerForm" autocomplete="off">
+                    <input type="text" id="zoneCheckerInput" name="zone" placeholder="Ex : 33500 ou Libourne" aria-label="Code postal ou ville" required>
+                    <button type="submit" id="zoneCheckerBtn">Vérifier</button>
+                </form>
+                <div class="zone-result" id="zoneResult" role="status" aria-live="polite"></div>
+            </div>
+
             <!-- Carte interactive -->
             <div class="map-wrapper">
                 <div class="map-info-badge">⚡ Intervention rapide 24h/24</div>
@@ -3420,26 +3514,155 @@
             });
         }, { threshold: 0.5 });
 
+        // Données partagées entre la carte et le vérificateur de zone
+        const RDC_BASE = [45.0134, -0.0611]; // St Médard de Guizières
+        // drive ≈ minutes de trajet estimées · page = page locale dédiée (optionnelle)
+        const RDC_CITIES = [
+            { name: 'Libourne',              coords: [44.9167, -0.2333], drive: 20, page: 'depannage-electrique-libourne.html' },
+            { name: 'Coutras',               coords: [45.0406, -0.1314], drive: 8,  page: 'depannage-electrique-coutras.html' },
+            { name: 'Montpon-Ménestérol',    coords: [45.0025, 0.1583],  drive: 18, page: 'depannage-electrique-montpon-menesterol.html' },
+            { name: 'Guîtres',               coords: [45.0406, -0.1833], drive: 12, page: 'depannage-electrique-guitres.html' },
+            { name: 'Castillon-la-Bataille', coords: [44.8553, -0.0364], drive: 22, page: 'depannage-electrique-castillon-la-bataille.html' },
+            { name: 'Sainte-Foy-la-Grande',  coords: [44.8328, 0.2189],  drive: 30, page: 'depannage-electrique-sainte-foy-la-grande.html' },
+            { name: 'Saint-Denis-de-Pile',   coords: [44.9442, -0.2569], drive: 18 },
+            { name: 'Saint-Seurin-sur-l\'Isle', coords: [45.0119, 0.0011], drive: 6 },
+            { name: 'Abzac',                 coords: [45.0231, -0.1433], drive: 7 },
+            { name: 'Les Églisottes',        coords: [45.0886, -0.0964], drive: 10 },
+            { name: 'Laruscade',             coords: [45.0808, -0.3592], drive: 22 }
+        ];
+        let RDC_MAP_INSTANCE = null; // défini quand Leaflet a chargé
+
+        // Distance Haversine en km
+        function rdcHaversine(a, b) {
+            const R = 6371;
+            const toRad = d => d * Math.PI / 180;
+            const dLat = toRad(b[0] - a[0]);
+            const dLon = toRad(b[1] - a[1]);
+            const lat1 = toRad(a[0]);
+            const lat2 = toRad(b[0]);
+            const h = Math.sin(dLat/2)**2 + Math.sin(dLon/2)**2 * Math.cos(lat1) * Math.cos(lat2);
+            return 2 * R * Math.asin(Math.sqrt(h));
+        }
+
+        // Vérificateur de zone — fonctionne indépendamment du chargement de Leaflet
+        (function bindZoneChecker() {
+            const form = document.getElementById('zoneCheckerForm');
+            if (!form || form.dataset.bound) return;
+            form.dataset.bound = '1';
+            const input = document.getElementById('zoneCheckerInput');
+            const btn = document.getElementById('zoneCheckerBtn');
+            const resultEl = document.getElementById('zoneResult');
+
+            // Pré-charger Leaflet dès que l'utilisateur engage le formulaire
+            const triggerMapLoad = () => {
+                if (typeof loadLeaflet === 'function' && !leafletLoaded) {
+                    loadLeaflet(function() { initLeafletMap(); });
+                }
+            };
+            input.addEventListener('focus', triggerMapLoad, { once: true });
+
+            const showResult = (cls, html) => {
+                resultEl.className = 'zone-result visible ' + cls;
+                resultEl.innerHTML = html;
+            };
+
+            const renderZone = (label, distKm, lat, lon) => {
+                const minutes = Math.max(5, Math.round(distKm / 50 * 60));
+                let cls, title, body;
+                if (distKm <= 30) {
+                    cls = 'zone-ok';
+                    title = `✅ Oui, ${label} est dans notre zone d'intervention`;
+                    body = `Distance : <strong>~${Math.round(distKm)} km</strong> · Trajet estimé : <strong>~${minutes} min</strong>.<br>Intervention 24h/24 — 7j/7.`;
+                } else if (distKm <= 50) {
+                    cls = 'zone-far';
+                    title = `🟡 ${label} est en limite de zone (~${Math.round(distKm)} km)`;
+                    body = `Trajet estimé : <strong>~${minutes} min</strong>. Intervention possible — appelez-nous pour confirmer la disponibilité.`;
+                } else {
+                    cls = 'zone-out';
+                    title = `❌ ${label} est hors de notre zone habituelle (~${Math.round(distKm)} km)`;
+                    body = `Nous restons joignables : selon le type d'intervention, un déplacement peut être étudié.`;
+                }
+                const cta = `<a class="zone-cta" href="tel:0695100823">📞 06 95 10 08 23</a>`;
+                showResult(cls, `<strong>${title}</strong>${body}<br>${cta}`);
+                // Recentrer la carte si Leaflet est déjà initialisé
+                if (RDC_MAP_INSTANCE && lat && lon) {
+                    RDC_MAP_INSTANCE.flyTo([lat, lon], distKm > 40 ? 9 : 10, { duration: 0.8 });
+                    L.popup({ closeOnClick: true, autoClose: true })
+                        .setLatLng([lat, lon])
+                        .setContent(`<div style="text-align:center;padding:4px 6px;"><strong>${label}</strong><br><span style="font-size:12px;color:#666;">~${Math.round(distKm)} km · ~${minutes} min</span></div>`)
+                        .openOn(RDC_MAP_INSTANCE);
+                }
+            };
+
+            const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const q = (input.value || '').trim();
+                if (!q) return;
+                triggerMapLoad();
+                btn.disabled = true;
+                const oldLabel = btn.textContent;
+                btn.textContent = 'Recherche…';
+                showResult('zone-error', '⏳ Recherche en cours…');
+
+                // 1) Match local sur les villes connues (rapide, sans réseau)
+                const qn = norm(q);
+                const local = RDC_CITIES.find(c => {
+                    const cn = norm(c.name);
+                    return cn === qn || (qn.length >= 4 && cn.startsWith(qn));
+                });
+                if (local) {
+                    const d = rdcHaversine(RDC_BASE, local.coords);
+                    renderZone(local.name, d, local.coords[0], local.coords[1]);
+                    btn.disabled = false; btn.textContent = oldLabel;
+                    return;
+                }
+
+                // 2) Sinon Nominatim (OSM) — limité à la France
+                try {
+                    const isPostal = /^\d{5}$/.test(q);
+                    const params = new URLSearchParams({
+                        q: isPostal ? q : (q + ', France'),
+                        format: 'json',
+                        limit: '1',
+                        countrycodes: 'fr',
+                        'accept-language': 'fr'
+                    });
+                    const res = await fetch('https://nominatim.openstreetmap.org/search?' + params.toString(), {
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    const data = await res.json();
+                    if (!data || !data.length) {
+                        showResult('zone-error', `<strong>❓ Lieu introuvable</strong>Vérifiez l'orthographe ou saisissez un code postal à 5 chiffres.<br><a class="zone-cta" href="tel:0695100823">📞 Nous appeler</a>`);
+                    } else {
+                        const r = data[0];
+                        const lat = parseFloat(r.lat), lon = parseFloat(r.lon);
+                        const d = rdcHaversine(RDC_BASE, [lat, lon]);
+                        const label = (r.display_name || q).split(',').slice(0, 2).join(',').trim();
+                        renderZone(label, d, lat, lon);
+                    }
+                } catch (err) {
+                    showResult('zone-error', `<strong>⚠️ Service indisponible</strong>Impossible d'interroger la base de localisation. Contactez-nous directement :<br><a class="zone-cta" href="tel:0695100823">📞 06 95 10 08 23</a>`);
+                } finally {
+                    btn.disabled = false; btn.textContent = oldLabel;
+                }
+            });
+        })();
+
         // Initialisation de la carte Leaflet (appelée par le lazy-loader)
         function initLeafletMap() {
-            const stMedard = [45.0134, -0.0611];
+            const stMedard = RDC_BASE;
+            const cities = RDC_CITIES;
 
             // Lien vers la fiche Google My Business
             const gmbLink = 'https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières';
-
-            // Villes principales dans la zone
-            const cities = [
-                { name: 'Libourne', coords: [44.9167, -0.2333] },
-                { name: 'Coutras', coords: [45.0406, -0.1314] },
-                { name: 'Montpon-Ménestérol', coords: [45.0025, 0.1583] },
-                { name: 'Guitres', coords: [45.0406, -0.1833] },
-                { name: 'Saint-Denis-de-Pile', coords: [44.9833, -0.2167] }
-            ];
 
             // Créer la carte avec un style plus moderne
             const map = L.map('map', {
                 scrollWheelZoom: false
             }).setView(stMedard, 10);
+            RDC_MAP_INSTANCE = map;
 
             // Fond de carte CartoDB Voyager (plus moderne et élégant)
             L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -3540,11 +3763,25 @@
                 iconAnchor: [6, 6]
             });
 
-            // Marqueurs pour les villes principales
+            // Marqueurs pour les villes desservies — popup enrichi
             cities.forEach(city => {
+                const driveTxt = city.drive ? `${city.drive} min` : '—';
+                const pageBtn = city.page
+                    ? `<a href="${city.page}" style="display:block;background:#ff3333;color:#fff;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;text-align:center;margin-top:8px;">📄 Page dépannage ${city.name}</a>`
+                    : '';
+                const popupHtml = `
+                    <div style="padding:14px 16px;min-width:230px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+                        <div style="font-weight:700;color:#cc0000;font-size:15px;margin-bottom:6px;">📍 ${city.name}</div>
+                        <div style="color:#555;font-size:13px;margin-bottom:10px;">
+                            🚗 Trajet estimé : <strong style="color:#222;">~${driveTxt}</strong><br>
+                            ⚡ Intervention 24h/24 — 7j/7
+                        </div>
+                        <a href="tel:0695100823" style="display:block;background:#28a745;color:#fff;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;text-align:center;">📞 Appeler 06 95 10 08 23</a>
+                        ${pageBtn}
+                    </div>`;
                 L.marker(city.coords, { icon: cityIcon })
                     .addTo(map)
-                    .bindPopup(`<div style="text-align: center; padding: 3px;"><strong>${city.name}</strong></div>`);
+                    .bindPopup(popupHtml, { maxWidth: 280 });
             });
         }
     </script>
