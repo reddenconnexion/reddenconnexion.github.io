@@ -1697,95 +1697,6 @@
             min-width: 280px;
         }
 
-        /* Vérificateur de zone d'intervention */
-        .zone-checker {
-            max-width: 1000px;
-            margin: 2.5rem auto 0;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 18px;
-            padding: 1.5rem 1.8rem;
-            backdrop-filter: blur(8px);
-        }
-        .zone-checker h3 {
-            margin: 0 0 0.4rem 0;
-            font-size: 1.2rem;
-            color: #fff;
-        }
-        .zone-checker p.zone-checker-sub {
-            font-size: 0.95rem;
-            margin: 0 0 1rem 0;
-            opacity: 0.85;
-        }
-        .zone-checker-form {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
-        .zone-checker-form input {
-            flex: 1 1 220px;
-            min-width: 0;
-            padding: 0.85rem 1rem;
-            border: 2px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.95);
-            border-radius: 12px;
-            font-size: 1rem;
-            color: #222;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .zone-checker-form input:focus {
-            border-color: #ff3333;
-            box-shadow: 0 0 0 3px rgba(255,51,51,0.25);
-        }
-        .zone-checker-form button {
-            padding: 0.85rem 1.6rem;
-            background: linear-gradient(135deg, #ff3333, #cc0000);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.15s, box-shadow 0.15s;
-            box-shadow: 0 4px 14px rgba(255,51,51,0.4);
-        }
-        .zone-checker-form button:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,51,51,0.55); }
-        .zone-checker-form button:disabled { opacity: 0.6; cursor: wait; transform: none; }
-        .zone-geo-btn {
-            background: rgba(255,255,255,0.92) !important;
-            color: #cc0000 !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
-            font-weight: 600 !important;
-            flex: 0 0 auto;
-        }
-        .zone-geo-btn:hover { background: #fff !important; color: #ff3333 !important; }
-        .zone-result {
-            margin-top: 1rem;
-            padding: 1rem 1.2rem;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            display: none;
-            line-height: 1.5;
-        }
-        .zone-result.visible { display: block; }
-        .zone-result.zone-ok { background: rgba(40,167,69,0.18); border: 1px solid rgba(40,167,69,0.6); color: #fff; }
-        .zone-result.zone-far { background: rgba(255,193,7,0.18); border: 1px solid rgba(255,193,7,0.6); color: #fff; }
-        .zone-result.zone-out { background: rgba(220,53,69,0.18); border: 1px solid rgba(220,53,69,0.6); color: #fff; }
-        .zone-result.zone-error { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: #fff; }
-        .zone-result strong { font-size: 1.05rem; display: block; margin-bottom: 0.3rem; }
-        .zone-result a.zone-cta {
-            display: inline-block;
-            margin-top: 0.6rem;
-            padding: 0.55rem 1.1rem;
-            background: #fff;
-            color: #cc0000;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
         @media (max-width: 768px) {
             #map {
                 height: 420px;
@@ -1803,8 +1714,6 @@
                 padding: 8px 12px;
                 font-size: 0.75rem;
             }
-            .zone-checker { padding: 1.2rem; }
-            .zone-checker-form button { width: 100%; }
         }
 
         .contact-grid {
@@ -3104,18 +3013,6 @@
                 </p>
             </div>
 
-            <!-- Vérificateur de zone d'intervention -->
-            <div class="zone-checker" aria-labelledby="zone-checker-title">
-                <h3 id="zone-checker-title">📍 Êtes-vous dans notre zone d'intervention ?</h3>
-                <p class="zone-checker-sub">Saisissez votre code postal ou votre ville et obtenez une réponse immédiate.</p>
-                <form class="zone-checker-form" id="zoneCheckerForm" autocomplete="off">
-                    <input type="text" id="zoneCheckerInput" name="zone" placeholder="Ex : 33500 ou Libourne" aria-label="Code postal ou ville" required>
-                    <button type="submit" id="zoneCheckerBtn">Vérifier</button>
-                    <button type="button" id="zoneGeoBtn" class="zone-geo-btn" aria-label="Utiliser ma position actuelle" title="Utiliser ma position">📍 Ma position</button>
-                </form>
-                <div class="zone-result" id="zoneResult" role="status" aria-live="polite"></div>
-            </div>
-
             <!-- Carte interactive -->
             <div class="map-wrapper">
                 <div class="map-info-badge">⚡ Intervention rapide 24h/24</div>
@@ -3806,206 +3703,6 @@
             { name: 'Saint-André-de-Cubzac',  coords: [45.0089, -0.4453], drive: 35, interventions: 8,  page: 'depannage-electrique-saint-andre-de-cubzac.html' },
             { name: 'Blaye',                  coords: [45.1268, -0.6627], drive: 45, interventions: 6,  page: 'depannage-electrique-blaye.html' }
         ];
-        let RDC_MAP_INSTANCE = null; // défini quand Leaflet a chargé
-
-        // Cache localStorage pour Nominatim (TTL 30 jours, max ~80 entrées)
-        const RDC_CACHE_KEY = 'rdc_geo_cache_v1';
-        const RDC_CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
-        function rdcCacheGet(key) {
-            try {
-                const raw = localStorage.getItem(RDC_CACHE_KEY);
-                if (!raw) return null;
-                const all = JSON.parse(raw);
-                const entry = all[key];
-                if (!entry) return null;
-                if (Date.now() - entry.t > RDC_CACHE_TTL_MS) return null;
-                return entry.v;
-            } catch (e) { return null; }
-        }
-        function rdcCacheSet(key, value) {
-            try {
-                const raw = localStorage.getItem(RDC_CACHE_KEY);
-                const all = raw ? JSON.parse(raw) : {};
-                // Limite : si > 80 entrées, on purge les plus anciennes
-                const keys = Object.keys(all);
-                if (keys.length > 80) {
-                    keys.sort((a, b) => all[a].t - all[b].t).slice(0, keys.length - 60).forEach(k => delete all[k]);
-                }
-                all[key] = { t: Date.now(), v: value };
-                localStorage.setItem(RDC_CACHE_KEY, JSON.stringify(all));
-            } catch (e) { /* localStorage indisponible : ignore */ }
-        }
-
-        // Distance Haversine en km
-        function rdcHaversine(a, b) {
-            const R = 6371;
-            const toRad = d => d * Math.PI / 180;
-            const dLat = toRad(b[0] - a[0]);
-            const dLon = toRad(b[1] - a[1]);
-            const lat1 = toRad(a[0]);
-            const lat2 = toRad(b[0]);
-            const h = Math.sin(dLat/2)**2 + Math.sin(dLon/2)**2 * Math.cos(lat1) * Math.cos(lat2);
-            return 2 * R * Math.asin(Math.sqrt(h));
-        }
-
-        // Vérificateur de zone — fonctionne indépendamment du chargement de Leaflet
-        (function bindZoneChecker() {
-            const form = document.getElementById('zoneCheckerForm');
-            if (!form || form.dataset.bound) return;
-            form.dataset.bound = '1';
-            const input = document.getElementById('zoneCheckerInput');
-            const btn = document.getElementById('zoneCheckerBtn');
-            const resultEl = document.getElementById('zoneResult');
-
-            // Pré-charger Leaflet dès que l'utilisateur engage le formulaire
-            const triggerMapLoad = () => {
-                if (typeof loadLeaflet === 'function' && !leafletLoaded) {
-                    loadLeaflet(function() { initLeafletMap(); });
-                }
-            };
-            input.addEventListener('focus', triggerMapLoad, { once: true });
-
-            const showResult = (cls, html) => {
-                resultEl.className = 'zone-result visible ' + cls;
-                resultEl.innerHTML = html;
-            };
-
-            const renderZone = (label, distKm, lat, lon) => {
-                const minutes = Math.max(5, Math.round(distKm / 50 * 60));
-                let cls, title, body;
-                if (distKm <= 30) {
-                    cls = 'zone-ok';
-                    title = `✅ Oui, ${label} est dans notre zone d'intervention`;
-                    body = `Distance : <strong>~${Math.round(distKm)} km</strong> · Trajet estimé : <strong>~${minutes} min</strong>.<br>Intervention 24h/24 — 7j/7.`;
-                } else if (distKm <= 50) {
-                    cls = 'zone-far';
-                    title = `🟡 ${label} est en limite de zone (~${Math.round(distKm)} km)`;
-                    body = `Trajet estimé : <strong>~${minutes} min</strong>. Intervention possible — appelez-nous pour confirmer la disponibilité.`;
-                } else {
-                    cls = 'zone-out';
-                    title = `❌ ${label} est hors de notre zone habituelle (~${Math.round(distKm)} km)`;
-                    body = `Nous restons joignables : selon le type d'intervention, un déplacement peut être étudié.`;
-                }
-                const cta = `<a class="zone-cta" href="tel:0695100823">📞 06 95 10 08 23</a>`;
-                showResult(cls, `<strong>${title}</strong>${body}<br>${cta}`);
-                // Recentrer la carte si Leaflet est déjà initialisé
-                if (RDC_MAP_INSTANCE && lat && lon) {
-                    RDC_MAP_INSTANCE.flyTo([lat, lon], distKm > 40 ? 9 : 10, { duration: 0.8 });
-                    L.popup({ closeOnClick: true, autoClose: true })
-                        .setLatLng([lat, lon])
-                        .setContent(`<div style="text-align:center;padding:4px 6px;"><strong>${label}</strong><br><span style="font-size:12px;color:#666;">~${Math.round(distKm)} km · ~${minutes} min</span></div>`)
-                        .openOn(RDC_MAP_INSTANCE);
-                }
-            };
-
-            const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');
-
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const q = (input.value || '').trim();
-                if (!q) return;
-                triggerMapLoad();
-                btn.disabled = true;
-                const oldLabel = btn.textContent;
-                btn.textContent = 'Recherche…';
-                showResult('zone-error', '⏳ Recherche en cours…');
-
-                // 1) Match local sur les villes connues (rapide, sans réseau)
-                const qn = norm(q);
-                const local = RDC_CITIES.find(c => {
-                    const cn = norm(c.name);
-                    return cn === qn || (qn.length >= 4 && cn.startsWith(qn));
-                });
-                if (local) {
-                    const d = rdcHaversine(RDC_BASE, local.coords);
-                    renderZone(local.name, d, local.coords[0], local.coords[1]);
-                    btn.disabled = false; btn.textContent = oldLabel;
-                    return;
-                }
-
-                // 2) Cache localStorage (évite les requêtes Nominatim répétées)
-                const cacheKey = 'q:' + qn;
-                const cached = rdcCacheGet(cacheKey);
-                if (cached) {
-                    if (cached.notFound) {
-                        showResult('zone-error', `<strong>❓ Lieu introuvable</strong>Vérifiez l'orthographe ou saisissez un code postal à 5 chiffres.<br><a class="zone-cta" href="tel:0695100823">📞 Nous appeler</a>`);
-                    } else {
-                        const d = rdcHaversine(RDC_BASE, [cached.lat, cached.lon]);
-                        renderZone(cached.label, d, cached.lat, cached.lon);
-                    }
-                    btn.disabled = false; btn.textContent = oldLabel;
-                    return;
-                }
-
-                // 3) Sinon Nominatim (OSM) — limité à la France
-                try {
-                    const isPostal = /^\d{5}$/.test(q);
-                    const params = new URLSearchParams({
-                        q: isPostal ? q : (q + ', France'),
-                        format: 'json',
-                        limit: '1',
-                        countrycodes: 'fr',
-                        'accept-language': 'fr'
-                    });
-                    const res = await fetch('https://nominatim.openstreetmap.org/search?' + params.toString(), {
-                        headers: { 'Accept': 'application/json' }
-                    });
-                    const data = await res.json();
-                    if (!data || !data.length) {
-                        rdcCacheSet(cacheKey, { notFound: true });
-                        showResult('zone-error', `<strong>❓ Lieu introuvable</strong>Vérifiez l'orthographe ou saisissez un code postal à 5 chiffres.<br><a class="zone-cta" href="tel:0695100823">📞 Nous appeler</a>`);
-                    } else {
-                        const r = data[0];
-                        const lat = parseFloat(r.lat), lon = parseFloat(r.lon);
-                        const d = rdcHaversine(RDC_BASE, [lat, lon]);
-                        const label = (r.display_name || q).split(',').slice(0, 2).join(',').trim();
-                        rdcCacheSet(cacheKey, { lat, lon, label });
-                        renderZone(label, d, lat, lon);
-                    }
-                } catch (err) {
-                    showResult('zone-error', `<strong>⚠️ Service indisponible</strong>Impossible d'interroger la base de localisation. Contactez-nous directement :<br><a class="zone-cta" href="tel:0695100823">📞 06 95 10 08 23</a>`);
-                } finally {
-                    btn.disabled = false; btn.textContent = oldLabel;
-                }
-            });
-
-            // Bouton « Ma position »
-            const geoBtn = document.getElementById('zoneGeoBtn');
-            if (geoBtn) {
-                if (!('geolocation' in navigator)) {
-                    geoBtn.style.display = 'none';
-                } else {
-                    geoBtn.addEventListener('click', () => {
-                        triggerMapLoad();
-                        const oldLabel = geoBtn.textContent;
-                        geoBtn.disabled = true;
-                        geoBtn.textContent = '📡 Localisation…';
-                        showResult('zone-error', '⏳ Récupération de votre position…');
-                        navigator.geolocation.getCurrentPosition(
-                            (pos) => {
-                                const lat = pos.coords.latitude, lon = pos.coords.longitude;
-                                const d = rdcHaversine(RDC_BASE, [lat, lon]);
-                                renderZone('Votre position', d, lat, lon);
-                                geoBtn.disabled = false; geoBtn.textContent = oldLabel;
-                            },
-                            (err) => {
-                                let msg;
-                                if (err.code === err.PERMISSION_DENIED) {
-                                    msg = `<strong>🔒 Géolocalisation refusée</strong>Autorisez l'accès à votre position dans le navigateur, ou saisissez votre ville / code postal.`;
-                                } else if (err.code === err.POSITION_UNAVAILABLE) {
-                                    msg = `<strong>📡 Position indisponible</strong>Saisissez votre code postal ou votre ville pour vérifier la zone.`;
-                                } else {
-                                    msg = `<strong>⏱️ Délai dépassé</strong>Réessayez ou saisissez votre code postal.`;
-                                }
-                                showResult('zone-error', msg + `<br><a class="zone-cta" href="tel:0695100823">📞 Nous appeler</a>`);
-                                geoBtn.disabled = false; geoBtn.textContent = oldLabel;
-                            },
-                            { enableHighAccuracy: false, timeout: 8000, maximumAge: 5 * 60 * 1000 }
-                        );
-                    });
-                }
-            }
-        })();
 
         // Initialisation de la carte Leaflet (appelée par le lazy-loader)
         function initLeafletMap() {
@@ -4019,7 +3716,6 @@
             const map = L.map('map', {
                 scrollWheelZoom: false
             }).setView(stMedard, 10);
-            RDC_MAP_INSTANCE = map;
 
             // Fond de carte CartoDB Voyager (plus moderne et élégant)
             L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
