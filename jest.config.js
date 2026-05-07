@@ -19,6 +19,7 @@ export default {
         'js/**/*.js',
         '!js/main.js', // Exclure le point d'entrée
         '!js/formHandler.js', // Exclure le handler UI (testé via E2E)
+        '!js/cookie-banner.js', // Exclure le bandeau cookies (DOM/localStorage, testé via E2E)
         '!**/node_modules/**'
     ],
 
