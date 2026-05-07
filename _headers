@@ -12,7 +12,7 @@
 
 /*
   # Content Security Policy - Protection contre XSS
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://formspree.io; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://formspree.io https://*.tile.openstreetmap.org; frame-src https://www.youtube.com; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://formspree.io; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https: https://*.basemaps.cartocdn.com; font-src 'self'; connect-src 'self' https://formspree.io https://*.tile.openstreetmap.org https://nominatim.openstreetmap.org https://*.basemaps.cartocdn.com; frame-src https://www.youtube.com; frame-ancestors 'none'
 
   # Empêche le site d'être chargé dans une iframe
   X-Frame-Options: DENY
@@ -27,7 +27,8 @@
   Referrer-Policy: strict-origin-when-cross-origin
 
   # Permissions restreintes pour les APIs sensibles
-  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=()
+  # geolocation=(self) : autorisée uniquement sur reddenconnexion.fr (vérificateur de zone)
+  Permissions-Policy: geolocation=(self), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=()
 
   # Force HTTPS (HSTS) - 1 an
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
