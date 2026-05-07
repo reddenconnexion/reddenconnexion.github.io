@@ -3280,6 +3280,15 @@
 
     <!-- Leaflet CSS + JS chargés de façon différée via IntersectionObserver -->
     <script>
+    // Compteurs réels rafraîchis chaque nuit par .github/workflows/refresh-interventions.yml
+    // (source : RPC Supabase get_intervention_counts_by_city, géocodés via geo.api.gouv.fr)
+    var RDC_INTERVENTIONS = null;
+    function rdcLoadInterventions() {
+        return fetch('/js/interventions.json', { cache: 'no-cache' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (d) { RDC_INTERVENTIONS = d; })
+            .catch(function () { /* fichier absent ou réseau coupé : fallback sur les valeurs statiques */ });
+    }
     (function() {
         var leafletLoaded = false;
         function loadLeaflet(callback) {
@@ -3298,18 +3307,24 @@
             script.onload = function() { if (callback) callback(); };
             document.head.appendChild(script);
         }
+        function bootMap() {
+            // Charger Leaflet et les compteurs en parallèle, init quand les deux sont prêts
+            Promise.all([
+                new Promise(function (resolve) { loadLeaflet(resolve); }),
+                rdcLoadInterventions()
+            ]).then(function () { initLeafletMap(); });
+        }
         var mapEl = document.getElementById('map');
         if (mapEl && 'IntersectionObserver' in window) {
             var obs = new IntersectionObserver(function(entries) {
                 if (entries[0].isIntersecting) {
                     obs.disconnect();
-                    loadLeaflet(function() { initLeafletMap(); });
+                    bootMap();
                 }
             }, { rootMargin: '200px' });
             obs.observe(mapEl);
         } else {
-            // Fallback : charger immédiatement (DOM déjà parsé ici)
-            loadLeaflet(function() { initLeafletMap(); });
+            bootMap();
         }
     })();
     </script>
@@ -3685,8 +3700,10 @@
 
         // Données partagées entre la carte et le vérificateur de zone
         const RDC_BASE = [45.0134, -0.0611]; // St Médard de Guizières
-        // drive ≈ minutes de trajet estimées · interventions ≈ chantiers réalisés en 2025
-        // (À METTRE À JOUR par Denis avec les vrais chiffres comptables)
+        // drive ≈ minutes de trajet estimées
+        // interventions = fallback affiché tant que /js/interventions.json (généré par
+        // .github/workflows/refresh-interventions.yml) n'est pas disponible. Les chiffres
+        // réels viennent de la base artisan-facile via la RPC Supabase.
         const RDC_CITIES = [
             { name: 'Coutras',                coords: [45.0406, -0.1314], drive: 8,  interventions: 47, page: 'depannage-electrique-coutras.html' },
             { name: 'Saint-Seurin-sur-l\'Isle', coords: [45.0119, 0.0011], drive: 6, interventions: 35, page: 'depannage-electrique-saint-seurin-sur-lisle.html' },
@@ -3829,11 +3846,37 @@
                 iconAnchor: [6, 6]
             });
 
+            // Index des compteurs réels (RPC Supabase, rafraîchi chaque nuit).
+            // Si /js/interventions.json est absent, on retombe sur les valeurs statiques de RDC_CITIES.
+            const norm = s => (s || '').toLowerCase().normalize('NFD')
+                .replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+            const liveCounts = new Map();
+            const hasLiveData = !!(RDC_INTERVENTIONS && Array.isArray(RDC_INTERVENTIONS.cities));
+            if (hasLiveData) {
+                for (const c of RDC_INTERVENTIONS.cities) {
+                    if (c.city && typeof c.count === 'number') liveCounts.set(norm(c.city), c.count);
+                }
+            }
+            // Tolère une commune dont le nom officiel diffère légèrement (ex. « Les Églisottes »
+            // vs « Les Églisottes-et-Chalaures ») via un fallback prefix-match.
+            const lookupCount = (cityName) => {
+                const k = norm(cityName);
+                if (liveCounts.has(k)) return liveCounts.get(k);
+                for (const [key, val] of liveCounts) {
+                    if (key.startsWith(k) || k.startsWith(key)) return val;
+                }
+                return undefined;
+            };
+
             // Marqueurs pour les villes desservies — popup enrichi
             cities.forEach(city => {
                 const driveTxt = city.drive ? `${city.drive} min` : '—';
-                const intLine = city.interventions
-                    ? `<div style="background:#fff3e0;color:#cc4b00;padding:6px 10px;border-radius:8px;font-size:12px;margin-bottom:10px;font-weight:600;">🔧 ${city.interventions} interventions réalisées en 2025</div>`
+                // Préférer la donnée réelle si dispo ; sinon fallback statique tant que l'Action n'a pas tourné.
+                const liveCount = hasLiveData ? lookupCount(city.name) : undefined;
+                const displayCount = liveCount !== undefined ? liveCount : (hasLiveData ? null : city.interventions);
+                const intLabel = hasLiveData ? 'interventions réalisées' : 'interventions';
+                const intLine = displayCount
+                    ? `<div style="background:#fff3e0;color:#cc4b00;padding:6px 10px;border-radius:8px;font-size:12px;margin-bottom:10px;font-weight:600;">🔧 ${displayCount} ${intLabel}</div>`
                     : '';
                 const pageBtn = city.page
                     ? `<a href="${city.page}" style="display:block;background:#ff3333;color:#fff;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;text-align:center;margin-top:8px;">📄 Page dépannage ${city.name}</a>`
