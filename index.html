@@ -1752,14 +1752,6 @@
         }
         .zone-checker-form button:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,51,51,0.55); }
         .zone-checker-form button:disabled { opacity: 0.6; cursor: wait; transform: none; }
-        .zone-geo-btn {
-            background: rgba(255,255,255,0.92) !important;
-            color: #cc0000 !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
-            font-weight: 600 !important;
-            flex: 0 0 auto;
-        }
-        .zone-geo-btn:hover { background: #fff !important; color: #ff3333 !important; }
         .zone-result {
             margin-top: 1rem;
             padding: 1rem 1.2rem;
@@ -3111,7 +3103,6 @@
                 <form class="zone-checker-form" id="zoneCheckerForm" autocomplete="off">
                     <input type="text" id="zoneCheckerInput" name="zone" placeholder="Ex : 33500 ou Libourne" aria-label="Code postal ou ville" required>
                     <button type="submit" id="zoneCheckerBtn">Vérifier</button>
-                    <button type="button" id="zoneGeoBtn" class="zone-geo-btn" aria-label="Utiliser ma position actuelle" title="Utiliser ma position">📍 Ma position</button>
                 </form>
                 <div class="zone-result" id="zoneResult" role="status" aria-live="polite"></div>
             </div>
@@ -3968,43 +3959,6 @@
                     btn.disabled = false; btn.textContent = oldLabel;
                 }
             });
-
-            // Bouton « Ma position »
-            const geoBtn = document.getElementById('zoneGeoBtn');
-            if (geoBtn) {
-                if (!('geolocation' in navigator)) {
-                    geoBtn.style.display = 'none';
-                } else {
-                    geoBtn.addEventListener('click', () => {
-                        triggerMapLoad();
-                        const oldLabel = geoBtn.textContent;
-                        geoBtn.disabled = true;
-                        geoBtn.textContent = '📡 Localisation…';
-                        showResult('zone-error', '⏳ Récupération de votre position…');
-                        navigator.geolocation.getCurrentPosition(
-                            (pos) => {
-                                const lat = pos.coords.latitude, lon = pos.coords.longitude;
-                                const d = rdcHaversine(RDC_BASE, [lat, lon]);
-                                renderZone('Votre position', d, lat, lon);
-                                geoBtn.disabled = false; geoBtn.textContent = oldLabel;
-                            },
-                            (err) => {
-                                let msg;
-                                if (err.code === err.PERMISSION_DENIED) {
-                                    msg = `<strong>🔒 Géolocalisation refusée</strong>Autorisez l'accès à votre position dans le navigateur, ou saisissez votre ville / code postal.`;
-                                } else if (err.code === err.POSITION_UNAVAILABLE) {
-                                    msg = `<strong>📡 Position indisponible</strong>Saisissez votre code postal ou votre ville pour vérifier la zone.`;
-                                } else {
-                                    msg = `<strong>⏱️ Délai dépassé</strong>Réessayez ou saisissez votre code postal.`;
-                                }
-                                showResult('zone-error', msg + `<br><a class="zone-cta" href="tel:0695100823">📞 Nous appeler</a>`);
-                                geoBtn.disabled = false; geoBtn.textContent = oldLabel;
-                            },
-                            { enableHighAccuracy: false, timeout: 8000, maximumAge: 5 * 60 * 1000 }
-                        );
-                    });
-                }
-            }
         })();
 
         // Initialisation de la carte Leaflet (appelée par le lazy-loader)
