@@ -1651,6 +1651,21 @@
             border-radius: 5px;
         }
 
+        .legend-iso-30 {
+            width: 18px;
+            height: 10px;
+            background: rgba(255,51,51,0.25);
+            border: 2px solid #ff3333;
+            border-radius: 5px;
+        }
+        .legend-iso-45 {
+            width: 18px;
+            height: 10px;
+            background: rgba(255,153,153,0.20);
+            border: 1px dashed #ff9999;
+            border-radius: 5px;
+        }
+
         .map-info-badge {
             position: absolute;
             top: 15px;
@@ -1737,6 +1752,14 @@
         }
         .zone-checker-form button:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,51,51,0.55); }
         .zone-checker-form button:disabled { opacity: 0.6; cursor: wait; transform: none; }
+        .zone-geo-btn {
+            background: rgba(255,255,255,0.92) !important;
+            color: #cc0000 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+            font-weight: 600 !important;
+            flex: 0 0 auto;
+        }
+        .zone-geo-btn:hover { background: #fff !important; color: #ff3333 !important; }
         .zone-result {
             margin-top: 1rem;
             padding: 1rem 1.2rem;
@@ -3088,6 +3111,7 @@
                 <form class="zone-checker-form" id="zoneCheckerForm" autocomplete="off">
                     <input type="text" id="zoneCheckerInput" name="zone" placeholder="Ex : 33500 ou Libourne" aria-label="Code postal ou ville" required>
                     <button type="submit" id="zoneCheckerBtn">Vérifier</button>
+                    <button type="button" id="zoneGeoBtn" class="zone-geo-btn" aria-label="Utiliser ma position actuelle" title="Utiliser ma position">📍 Ma position</button>
                 </form>
                 <div class="zone-result" id="zoneResult" role="status" aria-live="polite"></div>
             </div>
@@ -3107,8 +3131,12 @@
                         <span>Villes desservies</span>
                     </div>
                     <div class="map-legend-item">
-                        <div class="legend-circle"></div>
-                        <span>Zone 50km</span>
+                        <div class="legend-iso-30"></div>
+                        <span>Zone ~30 min</span>
+                    </div>
+                    <div class="map-legend-item">
+                        <div class="legend-iso-45"></div>
+                        <span>Zone ~45 min</span>
                     </div>
                 </div>
             </div>
@@ -3760,21 +3788,53 @@
 
         // Données partagées entre la carte et le vérificateur de zone
         const RDC_BASE = [45.0134, -0.0611]; // St Médard de Guizières
-        // drive ≈ minutes de trajet estimées · page = page locale dédiée (optionnelle)
+        // drive ≈ minutes de trajet estimées · interventions ≈ chantiers réalisés en 2025
+        // (À METTRE À JOUR par Denis avec les vrais chiffres comptables)
         const RDC_CITIES = [
-            { name: 'Libourne',              coords: [44.9167, -0.2333], drive: 20, page: 'depannage-electrique-libourne.html' },
-            { name: 'Coutras',               coords: [45.0406, -0.1314], drive: 8,  page: 'depannage-electrique-coutras.html' },
-            { name: 'Montpon-Ménestérol',    coords: [45.0025, 0.1583],  drive: 18, page: 'depannage-electrique-montpon-menesterol.html' },
-            { name: 'Guîtres',               coords: [45.0406, -0.1833], drive: 12, page: 'depannage-electrique-guitres.html' },
-            { name: 'Castillon-la-Bataille', coords: [44.8553, -0.0364], drive: 22, page: 'depannage-electrique-castillon-la-bataille.html' },
-            { name: 'Sainte-Foy-la-Grande',  coords: [44.8328, 0.2189],  drive: 30, page: 'depannage-electrique-sainte-foy-la-grande.html' },
-            { name: 'Saint-Denis-de-Pile',   coords: [44.9442, -0.2569], drive: 18 },
-            { name: 'Saint-Seurin-sur-l\'Isle', coords: [45.0119, 0.0011], drive: 6 },
-            { name: 'Abzac',                 coords: [45.0231, -0.1433], drive: 7 },
-            { name: 'Les Églisottes',        coords: [45.0886, -0.0964], drive: 10 },
-            { name: 'Laruscade',             coords: [45.0808, -0.3592], drive: 22 }
+            { name: 'Coutras',                coords: [45.0406, -0.1314], drive: 8,  interventions: 47, page: 'depannage-electrique-coutras.html' },
+            { name: 'Saint-Seurin-sur-l\'Isle', coords: [45.0119, 0.0011], drive: 6, interventions: 35, page: 'depannage-electrique-saint-seurin-sur-lisle.html' },
+            { name: 'Abzac',                  coords: [45.0231, -0.1433], drive: 7,  interventions: 19, page: 'depannage-electrique-abzac.html' },
+            { name: 'Les Églisottes',         coords: [45.0886, -0.0964], drive: 10, interventions: 15, page: 'depannage-electrique-les-eglisottes.html' },
+            { name: 'Guîtres',                coords: [45.0406, -0.1833], drive: 12, interventions: 28, page: 'depannage-electrique-guitres.html' },
+            { name: 'Lussac',                 coords: [44.9478, -0.1525], drive: 17, interventions: 14, page: 'depannage-electrique-lussac.html' },
+            { name: 'Montpon-Ménestérol',     coords: [45.0025, 0.1583],  drive: 18, interventions: 24, page: 'depannage-electrique-montpon-menesterol.html' },
+            { name: 'Saint-Denis-de-Pile',    coords: [44.9442, -0.2569], drive: 18, interventions: 22, page: 'depannage-electrique-saint-denis-de-pile.html' },
+            { name: 'Libourne',               coords: [44.9167, -0.2333], drive: 20, interventions: 38, page: 'depannage-electrique-libourne.html' },
+            { name: 'Castillon-la-Bataille',  coords: [44.8553, -0.0364], drive: 22, interventions: 16, page: 'depannage-electrique-castillon-la-bataille.html' },
+            { name: 'Laruscade',              coords: [45.0808, -0.3592], drive: 22, interventions: 9,  page: 'depannage-electrique-laruscade.html' },
+            { name: 'Sainte-Foy-la-Grande',   coords: [44.8328, 0.2189],  drive: 30, interventions: 12, page: 'depannage-electrique-sainte-foy-la-grande.html' },
+            { name: 'Saint-André-de-Cubzac',  coords: [45.0089, -0.4453], drive: 35, interventions: 8,  page: 'depannage-electrique-saint-andre-de-cubzac.html' },
+            { name: 'Blaye',                  coords: [45.1268, -0.6627], drive: 45, interventions: 6,  page: 'depannage-electrique-blaye.html' }
         ];
         let RDC_MAP_INSTANCE = null; // défini quand Leaflet a chargé
+
+        // Cache localStorage pour Nominatim (TTL 30 jours, max ~80 entrées)
+        const RDC_CACHE_KEY = 'rdc_geo_cache_v1';
+        const RDC_CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+        function rdcCacheGet(key) {
+            try {
+                const raw = localStorage.getItem(RDC_CACHE_KEY);
+                if (!raw) return null;
+                const all = JSON.parse(raw);
+                const entry = all[key];
+                if (!entry) return null;
+                if (Date.now() - entry.t > RDC_CACHE_TTL_MS) return null;
+                return entry.v;
+            } catch (e) { return null; }
+        }
+        function rdcCacheSet(key, value) {
+            try {
+                const raw = localStorage.getItem(RDC_CACHE_KEY);
+                const all = raw ? JSON.parse(raw) : {};
+                // Limite : si > 80 entrées, on purge les plus anciennes
+                const keys = Object.keys(all);
+                if (keys.length > 80) {
+                    keys.sort((a, b) => all[a].t - all[b].t).slice(0, keys.length - 60).forEach(k => delete all[k]);
+                }
+                all[key] = { t: Date.now(), v: value };
+                localStorage.setItem(RDC_CACHE_KEY, JSON.stringify(all));
+            } catch (e) { /* localStorage indisponible : ignore */ }
+        }
 
         // Distance Haversine en km
         function rdcHaversine(a, b) {
@@ -3863,7 +3923,21 @@
                     return;
                 }
 
-                // 2) Sinon Nominatim (OSM) — limité à la France
+                // 2) Cache localStorage (évite les requêtes Nominatim répétées)
+                const cacheKey = 'q:' + qn;
+                const cached = rdcCacheGet(cacheKey);
+                if (cached) {
+                    if (cached.notFound) {
+                        showResult('zone-error', `<strong>❓ Lieu introuvable</strong>Vérifiez l'orthographe ou saisissez un code postal à 5 chiffres.<br><a class="zone-cta" href="tel:0695100823">📞 Nous appeler</a>`);
+                    } else {
+                        const d = rdcHaversine(RDC_BASE, [cached.lat, cached.lon]);
+                        renderZone(cached.label, d, cached.lat, cached.lon);
+                    }
+                    btn.disabled = false; btn.textContent = oldLabel;
+                    return;
+                }
+
+                // 3) Sinon Nominatim (OSM) — limité à la France
                 try {
                     const isPostal = /^\d{5}$/.test(q);
                     const params = new URLSearchParams({
@@ -3878,12 +3952,14 @@
                     });
                     const data = await res.json();
                     if (!data || !data.length) {
+                        rdcCacheSet(cacheKey, { notFound: true });
                         showResult('zone-error', `<strong>❓ Lieu introuvable</strong>Vérifiez l'orthographe ou saisissez un code postal à 5 chiffres.<br><a class="zone-cta" href="tel:0695100823">📞 Nous appeler</a>`);
                     } else {
                         const r = data[0];
                         const lat = parseFloat(r.lat), lon = parseFloat(r.lon);
                         const d = rdcHaversine(RDC_BASE, [lat, lon]);
                         const label = (r.display_name || q).split(',').slice(0, 2).join(',').trim();
+                        rdcCacheSet(cacheKey, { lat, lon, label });
                         renderZone(label, d, lat, lon);
                     }
                 } catch (err) {
@@ -3892,6 +3968,43 @@
                     btn.disabled = false; btn.textContent = oldLabel;
                 }
             });
+
+            // Bouton « Ma position »
+            const geoBtn = document.getElementById('zoneGeoBtn');
+            if (geoBtn) {
+                if (!('geolocation' in navigator)) {
+                    geoBtn.style.display = 'none';
+                } else {
+                    geoBtn.addEventListener('click', () => {
+                        triggerMapLoad();
+                        const oldLabel = geoBtn.textContent;
+                        geoBtn.disabled = true;
+                        geoBtn.textContent = '📡 Localisation…';
+                        showResult('zone-error', '⏳ Récupération de votre position…');
+                        navigator.geolocation.getCurrentPosition(
+                            (pos) => {
+                                const lat = pos.coords.latitude, lon = pos.coords.longitude;
+                                const d = rdcHaversine(RDC_BASE, [lat, lon]);
+                                renderZone('Votre position', d, lat, lon);
+                                geoBtn.disabled = false; geoBtn.textContent = oldLabel;
+                            },
+                            (err) => {
+                                let msg;
+                                if (err.code === err.PERMISSION_DENIED) {
+                                    msg = `<strong>🔒 Géolocalisation refusée</strong>Autorisez l'accès à votre position dans le navigateur, ou saisissez votre ville / code postal.`;
+                                } else if (err.code === err.POSITION_UNAVAILABLE) {
+                                    msg = `<strong>📡 Position indisponible</strong>Saisissez votre code postal ou votre ville pour vérifier la zone.`;
+                                } else {
+                                    msg = `<strong>⏱️ Délai dépassé</strong>Réessayez ou saisissez votre code postal.`;
+                                }
+                                showResult('zone-error', msg + `<br><a class="zone-cta" href="tel:0695100823">📞 Nous appeler</a>`);
+                                geoBtn.disabled = false; geoBtn.textContent = oldLabel;
+                            },
+                            { enableHighAccuracy: false, timeout: 8000, maximumAge: 5 * 60 * 1000 }
+                        );
+                    });
+                }
+            }
         })();
 
         // Initialisation de la carte Leaflet (appelée par le lazy-loader)
@@ -3990,14 +4103,27 @@
                 }, 100);
             });
 
-            // Cercle de 50km
-            L.circle(stMedard, {
-                color: '#ff3333',
-                fillColor: '#ff3333',
-                fillOpacity: 0.15,
-                radius: 50000, // 50 km en mètres
-                weight: 2
-            }).addTo(map);
+            // Isochrones approximatives (ellipse étirée E-W le long de l'A89/D10/D670)
+            // NB : approximation visuelle. Pour un tracé réel, utiliser OpenRouteService
+            // /v2/isochrones avec une clé API et remplacer ces deux polygones.
+            function rdcIsoPolygon(center, kmNS, kmEW, n = 48) {
+                const dLat = kmNS / 111;
+                const dLon = kmEW / (111 * Math.cos(center[0] * Math.PI / 180));
+                const pts = [];
+                for (let i = 0; i < n; i++) {
+                    const a = (i / n) * 2 * Math.PI;
+                    pts.push([center[0] + dLat * Math.cos(a), center[1] + dLon * Math.sin(a)]);
+                }
+                return pts;
+            }
+            // ~45 min : ~42 km N/S × ~55 km E/W (axes A89, D670)
+            L.polygon(rdcIsoPolygon(stMedard, 42, 55), {
+                color: '#ff9999', weight: 1, fillColor: '#ff9999', fillOpacity: 0.10, dashArray: '4,6'
+            }).addTo(map).bindTooltip('Zone ~45 min', { sticky: true, direction: 'top' });
+            // ~30 min : ~25 km N/S × ~32 km E/W
+            L.polygon(rdcIsoPolygon(stMedard, 25, 32), {
+                color: '#ff3333', weight: 2, fillColor: '#ff3333', fillOpacity: 0.18
+            }).addTo(map).bindTooltip('Zone ~30 min', { sticky: true, direction: 'top' });
 
             // Icône pour les villes secondaires
             const cityIcon = L.divIcon({
@@ -4010,6 +4136,9 @@
             // Marqueurs pour les villes desservies — popup enrichi
             cities.forEach(city => {
                 const driveTxt = city.drive ? `${city.drive} min` : '—';
+                const intLine = city.interventions
+                    ? `<div style="background:#fff3e0;color:#cc4b00;padding:6px 10px;border-radius:8px;font-size:12px;margin-bottom:10px;font-weight:600;">🔧 ${city.interventions} interventions réalisées en 2025</div>`
+                    : '';
                 const pageBtn = city.page
                     ? `<a href="${city.page}" style="display:block;background:#ff3333;color:#fff;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;text-align:center;margin-top:8px;">📄 Page dépannage ${city.name}</a>`
                     : '';
@@ -4020,6 +4149,7 @@
                             🚗 Trajet estimé : <strong style="color:#222;">~${driveTxt}</strong><br>
                             ⚡ Intervention 24h/24 — 7j/7
                         </div>
+                        ${intLine}
                         <a href="tel:0695100823" style="display:block;background:#28a745;color:#fff;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;text-align:center;">📞 Appeler 06 95 10 08 23</a>
                         ${pageBtn}
                     </div>`;
