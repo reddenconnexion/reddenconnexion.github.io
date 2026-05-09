@@ -3729,6 +3729,37 @@
             // Lien vers la fiche Google My Business
             const gmbLink = 'https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières';
 
+            // Index des compteurs réels (RPC Supabase, rafraîchi chaque nuit).
+            // Si /js/interventions.json est absent, on retombe sur les valeurs statiques de RDC_CITIES.
+            const norm = s => (s || '').toLowerCase().normalize('NFD')
+                .replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+            const liveCounts = new Map();
+            const hasLiveData = !!(RDC_INTERVENTIONS && Array.isArray(RDC_INTERVENTIONS.cities));
+            if (hasLiveData) {
+                for (const c of RDC_INTERVENTIONS.cities) {
+                    if (c.city && typeof c.count === 'number') liveCounts.set(norm(c.city), c.count);
+                }
+            }
+            // Tolère un nom officiel un peu différent (ex. « Les Églisottes » vs
+            // « Les Églisottes-et-Chalaures ») via prefix-match normalisé.
+            const lookupCount = (cityName) => {
+                const k = norm(cityName);
+                if (liveCounts.has(k)) return liveCounts.get(k);
+                for (const [key, val] of liveCounts) {
+                    if (key.startsWith(k) || k.startsWith(key)) return val;
+                }
+                return undefined;
+            };
+
+            // Compteur pour la base (St Médard de Guizières) — utilisé dans le popup principal
+            const baseCount = hasLiveData ? lookupCount('Saint-Médard-de-Guizières') : undefined;
+            const baseCountLine = baseCount
+                ? `<div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
+                       <div style="font-weight: 600; color: #333; margin-bottom: 4px;">🔧 Activité locale</div>
+                       <div style="color: #cc4b00; font-size: 13px; font-weight: 600;">${baseCount} intervention${baseCount > 1 ? 's' : ''} réalisée${baseCount > 1 ? 's' : ''} à St Médard</div>
+                   </div>`
+                : '';
+
             // Créer la carte avec un style plus moderne
             const map = L.map('map', {
                 scrollWheelZoom: false
@@ -3793,6 +3824,7 @@
                             <div style="font-weight: 600; color: #333; margin-bottom: 4px;">🕐 Disponibilité</div>
                             <div style="color: #28a745; font-size: 13px; font-weight: 600;">24h/24 - 7j/7 • Urgences</div>
                         </div>
+                        ${baseCountLine}
                         <div style="margin-bottom: 15px;">
                             <div style="font-weight: 600; color: #333; margin-bottom: 8px;">✅ Certifications</div>
                             <div style="display: flex; flex-wrap: wrap; gap: 5px;">
@@ -3845,28 +3877,6 @@
                 iconSize: [12, 12],
                 iconAnchor: [6, 6]
             });
-
-            // Index des compteurs réels (RPC Supabase, rafraîchi chaque nuit).
-            // Si /js/interventions.json est absent, on retombe sur les valeurs statiques de RDC_CITIES.
-            const norm = s => (s || '').toLowerCase().normalize('NFD')
-                .replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
-            const liveCounts = new Map();
-            const hasLiveData = !!(RDC_INTERVENTIONS && Array.isArray(RDC_INTERVENTIONS.cities));
-            if (hasLiveData) {
-                for (const c of RDC_INTERVENTIONS.cities) {
-                    if (c.city && typeof c.count === 'number') liveCounts.set(norm(c.city), c.count);
-                }
-            }
-            // Tolère une commune dont le nom officiel diffère légèrement (ex. « Les Églisottes »
-            // vs « Les Églisottes-et-Chalaures ») via un fallback prefix-match.
-            const lookupCount = (cityName) => {
-                const k = norm(cityName);
-                if (liveCounts.has(k)) return liveCounts.get(k);
-                for (const [key, val] of liveCounts) {
-                    if (key.startsWith(k) || k.startsWith(key)) return val;
-                }
-                return undefined;
-            };
 
             // Marqueurs pour les villes desservies — popup enrichi
             cities.forEach(city => {
