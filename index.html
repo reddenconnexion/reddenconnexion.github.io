@@ -3280,15 +3280,6 @@
 
     <!-- Leaflet CSS + JS chargés de façon différée via IntersectionObserver -->
     <script>
-    // Compteurs réels rafraîchis chaque nuit par .github/workflows/refresh-interventions.yml
-    // (source : RPC Supabase get_intervention_counts_by_city, géocodés via geo.api.gouv.fr)
-    var RDC_INTERVENTIONS = null;
-    function rdcLoadInterventions() {
-        return fetch('/js/interventions.json', { cache: 'no-cache' })
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (d) { RDC_INTERVENTIONS = d; })
-            .catch(function () { /* fichier absent ou réseau coupé : fallback sur les valeurs statiques */ });
-    }
     (function() {
         var leafletLoaded = false;
         function loadLeaflet(callback) {
@@ -3307,24 +3298,18 @@
             script.onload = function() { if (callback) callback(); };
             document.head.appendChild(script);
         }
-        function bootMap() {
-            // Charger Leaflet et les compteurs en parallèle, init quand les deux sont prêts
-            Promise.all([
-                new Promise(function (resolve) { loadLeaflet(resolve); }),
-                rdcLoadInterventions()
-            ]).then(function () { initLeafletMap(); });
-        }
         var mapEl = document.getElementById('map');
         if (mapEl && 'IntersectionObserver' in window) {
             var obs = new IntersectionObserver(function(entries) {
                 if (entries[0].isIntersecting) {
                     obs.disconnect();
-                    bootMap();
+                    loadLeaflet(function() { initLeafletMap(); });
                 }
             }, { rootMargin: '200px' });
             obs.observe(mapEl);
         } else {
-            bootMap();
+            // Fallback : charger immédiatement (DOM déjà parsé ici)
+            loadLeaflet(function() { initLeafletMap(); });
         }
     })();
     </script>
@@ -3698,27 +3683,24 @@
             });
         }, { threshold: 0.5 });
 
-        // Données partagées entre la carte et le vérificateur de zone
+        // Données de la carte
         const RDC_BASE = [45.0134, -0.0611]; // St Médard de Guizières
         // drive ≈ minutes de trajet estimées
-        // interventions = fallback affiché tant que /js/interventions.json (généré par
-        // .github/workflows/refresh-interventions.yml) n'est pas disponible. Les chiffres
-        // réels viennent de la base artisan-facile via la RPC Supabase.
         const RDC_CITIES = [
-            { name: 'Coutras',                coords: [45.0406, -0.1314], drive: 8,  interventions: 47, page: 'depannage-electrique-coutras.html' },
-            { name: 'Saint-Seurin-sur-l\'Isle', coords: [45.0119, 0.0011], drive: 6, interventions: 35, page: 'depannage-electrique-saint-seurin-sur-lisle.html' },
-            { name: 'Abzac',                  coords: [45.0231, -0.1433], drive: 7,  interventions: 19, page: 'depannage-electrique-abzac.html' },
-            { name: 'Les Églisottes',         coords: [45.0886, -0.0964], drive: 10, interventions: 15, page: 'depannage-electrique-les-eglisottes.html' },
-            { name: 'Guîtres',                coords: [45.0406, -0.1833], drive: 12, interventions: 28, page: 'depannage-electrique-guitres.html' },
-            { name: 'Lussac',                 coords: [44.9478, -0.1525], drive: 17, interventions: 14, page: 'depannage-electrique-lussac.html' },
-            { name: 'Montpon-Ménestérol',     coords: [45.0025, 0.1583],  drive: 18, interventions: 24, page: 'depannage-electrique-montpon-menesterol.html' },
-            { name: 'Saint-Denis-de-Pile',    coords: [44.9442, -0.2569], drive: 18, interventions: 22, page: 'depannage-electrique-saint-denis-de-pile.html' },
-            { name: 'Libourne',               coords: [44.9167, -0.2333], drive: 20, interventions: 38, page: 'depannage-electrique-libourne.html' },
-            { name: 'Castillon-la-Bataille',  coords: [44.8553, -0.0364], drive: 22, interventions: 16, page: 'depannage-electrique-castillon-la-bataille.html' },
-            { name: 'Laruscade',              coords: [45.0808, -0.3592], drive: 22, interventions: 9,  page: 'depannage-electrique-laruscade.html' },
-            { name: 'Sainte-Foy-la-Grande',   coords: [44.8328, 0.2189],  drive: 30, interventions: 12, page: 'depannage-electrique-sainte-foy-la-grande.html' },
-            { name: 'Saint-André-de-Cubzac',  coords: [45.0089, -0.4453], drive: 35, interventions: 8,  page: 'depannage-electrique-saint-andre-de-cubzac.html' },
-            { name: 'Blaye',                  coords: [45.1268, -0.6627], drive: 45, interventions: 6,  page: 'depannage-electrique-blaye.html' }
+            { name: 'Coutras',                coords: [45.0406, -0.1314], drive: 8,  page: 'depannage-electrique-coutras.html' },
+            { name: 'Saint-Seurin-sur-l\'Isle', coords: [45.0119, 0.0011], drive: 6, page: 'depannage-electrique-saint-seurin-sur-lisle.html' },
+            { name: 'Abzac',                  coords: [45.0231, -0.1433], drive: 7,  page: 'depannage-electrique-abzac.html' },
+            { name: 'Les Églisottes',         coords: [45.0886, -0.0964], drive: 10, page: 'depannage-electrique-les-eglisottes.html' },
+            { name: 'Guîtres',                coords: [45.0406, -0.1833], drive: 12, page: 'depannage-electrique-guitres.html' },
+            { name: 'Lussac',                 coords: [44.9478, -0.1525], drive: 17, page: 'depannage-electrique-lussac.html' },
+            { name: 'Montpon-Ménestérol',     coords: [45.0025, 0.1583],  drive: 18, page: 'depannage-electrique-montpon-menesterol.html' },
+            { name: 'Saint-Denis-de-Pile',    coords: [44.9442, -0.2569], drive: 18, page: 'depannage-electrique-saint-denis-de-pile.html' },
+            { name: 'Libourne',               coords: [44.9167, -0.2333], drive: 20, page: 'depannage-electrique-libourne.html' },
+            { name: 'Castillon-la-Bataille',  coords: [44.8553, -0.0364], drive: 22, page: 'depannage-electrique-castillon-la-bataille.html' },
+            { name: 'Laruscade',              coords: [45.0808, -0.3592], drive: 22, page: 'depannage-electrique-laruscade.html' },
+            { name: 'Sainte-Foy-la-Grande',   coords: [44.8328, 0.2189],  drive: 30, page: 'depannage-electrique-sainte-foy-la-grande.html' },
+            { name: 'Saint-André-de-Cubzac',  coords: [45.0089, -0.4453], drive: 35, page: 'depannage-electrique-saint-andre-de-cubzac.html' },
+            { name: 'Blaye',                  coords: [45.1268, -0.6627], drive: 45, page: 'depannage-electrique-blaye.html' }
         ];
 
         // Initialisation de la carte Leaflet (appelée par le lazy-loader)
@@ -3728,37 +3710,6 @@
 
             // Lien vers la fiche Google My Business
             const gmbLink = 'https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières';
-
-            // Index des compteurs réels (RPC Supabase, rafraîchi chaque nuit).
-            // Si /js/interventions.json est absent, on retombe sur les valeurs statiques de RDC_CITIES.
-            const norm = s => (s || '').toLowerCase().normalize('NFD')
-                .replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
-            const liveCounts = new Map();
-            const hasLiveData = !!(RDC_INTERVENTIONS && Array.isArray(RDC_INTERVENTIONS.cities));
-            if (hasLiveData) {
-                for (const c of RDC_INTERVENTIONS.cities) {
-                    if (c.city && typeof c.count === 'number') liveCounts.set(norm(c.city), c.count);
-                }
-            }
-            // Tolère un nom officiel un peu différent (ex. « Les Églisottes » vs
-            // « Les Églisottes-et-Chalaures ») via prefix-match normalisé.
-            const lookupCount = (cityName) => {
-                const k = norm(cityName);
-                if (liveCounts.has(k)) return liveCounts.get(k);
-                for (const [key, val] of liveCounts) {
-                    if (key.startsWith(k) || k.startsWith(key)) return val;
-                }
-                return undefined;
-            };
-
-            // Compteur pour la base (St Médard de Guizières) — utilisé dans le popup principal
-            const baseCount = hasLiveData ? lookupCount('Saint-Médard-de-Guizières') : undefined;
-            const baseCountLine = baseCount
-                ? `<div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
-                       <div style="font-weight: 600; color: #333; margin-bottom: 4px;">🔧 Activité locale</div>
-                       <div style="color: #cc4b00; font-size: 13px; font-weight: 600;">${baseCount} intervention${baseCount > 1 ? 's' : ''} réalisée${baseCount > 1 ? 's' : ''} à St Médard</div>
-                   </div>`
-                : '';
 
             // Créer la carte avec un style plus moderne
             const map = L.map('map', {
@@ -3824,7 +3775,6 @@
                             <div style="font-weight: 600; color: #333; margin-bottom: 4px;">🕐 Disponibilité</div>
                             <div style="color: #28a745; font-size: 13px; font-weight: 600;">24h/24 - 7j/7 • Urgences</div>
                         </div>
-                        ${baseCountLine}
                         <div style="margin-bottom: 15px;">
                             <div style="font-weight: 600; color: #333; margin-bottom: 8px;">✅ Certifications</div>
                             <div style="display: flex; flex-wrap: wrap; gap: 5px;">
@@ -3881,13 +3831,6 @@
             // Marqueurs pour les villes desservies — popup enrichi
             cities.forEach(city => {
                 const driveTxt = city.drive ? `${city.drive} min` : '—';
-                // Préférer la donnée réelle si dispo ; sinon fallback statique tant que l'Action n'a pas tourné.
-                const liveCount = hasLiveData ? lookupCount(city.name) : undefined;
-                const displayCount = liveCount !== undefined ? liveCount : (hasLiveData ? null : city.interventions);
-                const intLabel = hasLiveData ? 'interventions réalisées' : 'interventions';
-                const intLine = displayCount
-                    ? `<div style="background:#fff3e0;color:#cc4b00;padding:6px 10px;border-radius:8px;font-size:12px;margin-bottom:10px;font-weight:600;">🔧 ${displayCount} ${intLabel}</div>`
-                    : '';
                 const pageBtn = city.page
                     ? `<a href="${city.page}" style="display:block;background:#ff3333;color:#fff;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;text-align:center;margin-top:8px;">📄 Page dépannage ${city.name}</a>`
                     : '';
@@ -3898,7 +3841,6 @@
                             🚗 Trajet estimé : <strong style="color:#222;">~${driveTxt}</strong><br>
                             ⚡ Intervention 24h/24 — 7j/7
                         </div>
-                        ${intLine}
                         <a href="tel:0695100823" style="display:block;background:#28a745;color:#fff;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;text-align:center;">📞 Appeler 06 95 10 08 23</a>
                         ${pageBtn}
                     </div>`;
