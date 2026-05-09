@@ -1716,6 +1716,148 @@
             }
         }
 
+        /* Grille « Je suis à... » — remplace la carte interactive */
+        .zone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
+        }
+        .zone-tile {
+            position: relative;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+            display: flex;
+            flex-direction: column;
+        }
+        .zone-tile:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(255, 51, 51, 0.28);
+            border-color: rgba(255, 51, 51, 0.55);
+        }
+        .zone-tile-base {
+            background: linear-gradient(135deg, rgba(255, 51, 51, 0.18), rgba(204, 0, 0, 0.10));
+            border-color: rgba(255, 51, 51, 0.4);
+        }
+        .zone-tile-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 2;
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: #fff;
+            padding: 4px 11px;
+            border-radius: 14px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            box-shadow: 0 3px 10px rgba(255, 51, 51, 0.45);
+        }
+        .zone-tile-badge-time {
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        .zone-tile-photo {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+        .zone-tile-photo img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .zone-tile:hover .zone-tile-photo img {
+            transform: scale(1.06);
+        }
+        .zone-tile-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.78) 100%);
+            pointer-events: none;
+        }
+        .zone-tile-overlay {
+            position: absolute;
+            inset: 0;
+            padding: 1rem 1.1rem;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            pointer-events: none;
+        }
+        .zone-tile-city {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+        }
+        .zone-tile-drive {
+            margin-top: 4px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 500;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+        }
+        .zone-tile-actions {
+            display: flex;
+            gap: 0.55rem;
+            padding: 0.85rem;
+        }
+        .zone-tile-link,
+        .zone-tile-call {
+            flex: 1;
+            text-align: center;
+            padding: 0.7rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+        .zone-tile-link {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+        }
+        .zone-tile-link:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+        .zone-tile-call {
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: #fff;
+        }
+        .zone-tile-call:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(255, 51, 51, 0.55);
+        }
+        .zone-tile-call-full {
+            font-size: 1rem;
+            padding: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .zone-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 1rem;
+            }
+            .zone-tile-actions {
+                flex-direction: column;
+            }
+        }
+
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -2982,61 +3124,255 @@
     <section id="zone" class="zone">
         <div class="zone-content">
             <h2 class="animate-on-scroll">Zone d'Intervention de Votre Électricien</h2>
-            <p class="animate-on-scroll">📍 Basés à St Médard de Guizières</p>
-            <p class="animate-on-scroll" style="font-size: 1.5rem; margin-top: 1rem;">Nous intervenons dans un rayon de <strong style="color: #ff3333;"><span class="counter-radius">50 km</span></strong></p>
+            <p class="animate-on-scroll">📍 Basés à St Médard de Guizières · 14 communes desservies en moins de 45 min</p>
 
-            <div class="animate-on-scroll" style="max-width: 800px; margin: 2rem auto; text-align: left; background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
-                <h3 style="color: #ff3333; margin-bottom: 1rem; font-size: 1.3rem; text-align: center;">Villes et communes desservies en Gironde :</h3>
-                <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; list-style: none; padding: 0;">
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <strong>St Médard de Guizières</strong></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Libourne</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Coutras</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-montpon-menesterol.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Montpon-Ménestérol</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-guitres.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Guitres</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-castillon-la-bataille.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Castillon-la-Bataille</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-sainte-foy-la-grande.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Sainte-Foy-la-Grande</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-saint-andre-de-cubzac.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Saint-André-de-Cubzac</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-blaye.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Blaye</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-lussac.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Lussac</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-saint-denis-de-pile.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Saint-Denis-de-Pile</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-abzac.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Abzac</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-les-eglisottes.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Les Églisottes</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-laruscade.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Laruscade</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ <a href="depannage-electrique-saint-seurin-sur-lisle.html" style="color: #ff3333; text-decoration: none; font-weight: bold;">Saint-Seurin-sur-l'Isle</a></li>
-                    <li style="padding: 0.5rem; background: rgba(255,51,51,0.1); border-radius: 8px; border-left: 3px solid #ff3333;">⚡ Toutes communes environnantes</li>
-                </ul>
-                <p style="margin-top: 1.5rem; text-align: center; font-style: italic; opacity: 0.9;">
-                    Votre électricien professionnel intervient rapidement pour tous travaux électriques : dépannage urgent, installation, rénovation, mise aux normes NF C 15-100. Service 24h/24 et 7j/7.
-                </p>
-                <p style="margin-top: 1rem; text-align: center;">
-                    <a href="tarifs-devis.html" style="display: inline-block; background: #ff3333; color: white; padding: 0.7rem 1.8rem; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: background 0.3s;" onmouseover="this.style.background='#cc0000';" onmouseout="this.style.background='#ff3333';">💶 Voir les Tarifs &amp; Demander un Devis Gratuit</a>
-                </p>
-            </div>
+            <div class="zone-grid animate-on-scroll">
+                <!-- Tuile base -->
+                <div class="zone-tile zone-tile-base">
+                    <span class="zone-tile-badge">🏠 Notre base</span>
+                    <div class="zone-tile-photo">
+                        <img src="camion.webp" alt="Red Den Connexion à St Médard de Guizières" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">St Médard de Guizières</div>
+                            <div class="zone-tile-drive">13 rue Robert Boulin · 33230</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="tel:0695100823" class="zone-tile-call zone-tile-call-full">📞 06 95 10 08 23</a>
+                    </div>
+                </div>
 
-            <!-- Carte interactive -->
-            <div class="map-wrapper">
-                <div class="map-info-badge">⚡ Intervention rapide 24h/24</div>
-                <div id="map"></div>
-                <div class="map-legend">
-                    <h4>🗺️ Légende</h4>
-                    <div class="map-legend-item">
-                        <div class="legend-marker-main"></div>
-                        <span>Red Den Connexion</span>
+                <!-- Coutras -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~8 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="tableauhallescoutras.webp" alt="Tableau électrique aux Halles de Coutras" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Coutras</div>
+                            <div class="zone-tile-drive">Tableau Halles · réf.</div>
+                        </div>
                     </div>
-                    <div class="map-legend-item">
-                        <div class="legend-marker-city"></div>
-                        <span>Villes desservies</span>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-coutras.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
                     </div>
-                    <div class="map-legend-item">
-                        <div class="legend-iso-30"></div>
-                        <span>Zone ~30 min</span>
+                </div>
+
+                <!-- Saint-Seurin-sur-l'Isle -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~6 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="installationpro.webp" alt="Installation électrique professionnelle" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Saint-Seurin-sur-l'Isle</div>
+                            <div class="zone-tile-drive">Voisin direct</div>
+                        </div>
                     </div>
-                    <div class="map-legend-item">
-                        <div class="legend-iso-45"></div>
-                        <span>Zone ~45 min</span>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-saint-seurin-sur-lisle.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Abzac -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~7 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="boitier4prises.webp" alt="Installation prises électriques" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Abzac</div>
+                            <div class="zone-tile-drive">Bâtiments agricoles · pavillons</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-abzac.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Les Églisottes -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~10 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="camionurgence.webp" alt="Intervention urgence en zone forestière" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Les Églisottes</div>
+                            <div class="zone-tile-drive">La Double · habitat dispersé</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-les-eglisottes.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Guîtres -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~12 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="remplacement-portes-fusibles.webp" alt="Remplacement portes fusibles" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Guîtres</div>
+                            <div class="zone-tile-drive">Mises aux normes</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-guitres.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Lussac -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~17 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="mutiprises.webp" alt="Installation multiprises sécurisées" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Lussac</div>
+                            <div class="zone-tile-drive">Pavillons · viticulture</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-lussac.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Montpon-Ménestérol -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~18 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="tableauvetuste.webp" alt="Tableau électrique vétuste à remplacer" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Montpon-Ménestérol</div>
+                            <div class="zone-tile-drive">Bâti ancien · rénovation</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-montpon-menesterol.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Saint-Denis-de-Pile -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~18 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="filspriseancienne.webp" alt="Câblage prise ancienne à reprendre" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Saint-Denis-de-Pile</div>
+                            <div class="zone-tile-drive">Pavillons · agglo libournaise</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-saint-denis-de-pile.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Libourne -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~20 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="comparatif-chantier-remplacement-tableau-elec.webp" alt="Remplacement tableau électrique" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Libourne</div>
+                            <div class="zone-tile-drive">Centre-ville · copropriétés</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-libourne.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Castillon-la-Bataille -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~22 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="dangervssecurite.webp" alt="Sécurité électrique" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Castillon-la-Bataille</div>
+                            <div class="zone-tile-drive">Patrimoine viticole</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-castillon-la-bataille.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Laruscade -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~22 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="panneauxphotovoltaiques.webp" alt="Installation photovoltaïque 18 kWc à Laruscade" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Laruscade</div>
+                            <div class="zone-tile-drive">Photovoltaïque 18 kWc · réf.</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-laruscade.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Sainte-Foy-la-Grande -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~30 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="deniselec.webp" alt="Denis électricien en intervention" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Sainte-Foy-la-Grande</div>
+                            <div class="zone-tile-drive">Bastide · maisons en pierre</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-sainte-foy-la-grande.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Saint-André-de-Cubzac -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~35 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="installationpro.webp" alt="Installation électrique professionnelle" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Saint-André-de-Cubzac</div>
+                            <div class="zone-tile-drive">Carrefour A10/A89</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-saint-andre-de-cubzac.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Blaye -->
+                <div class="zone-tile">
+                    <span class="zone-tile-badge zone-tile-badge-time">🚗 ~45 min</span>
+                    <div class="zone-tile-photo">
+                        <img src="comparatif-chantier-remplacement-tableau-elec.webp" alt="Rénovation électrique bâti ancien" loading="lazy" width="400" height="225">
+                        <div class="zone-tile-overlay">
+                            <div class="zone-tile-city">Blaye</div>
+                            <div class="zone-tile-drive">Citadelle · vignobles</div>
+                        </div>
+                    </div>
+                    <div class="zone-tile-actions">
+                        <a href="depannage-electrique-blaye.html" class="zone-tile-link">📄 Voir la page</a>
+                        <a href="tel:0695100823" class="zone-tile-call">📞 Appeler</a>
                     </div>
                 </div>
             </div>
+
+            <p style="margin-top: 2rem; text-align: center; font-style: italic; opacity: 0.85;">
+                Et toutes les communes environnantes en Gironde et Dordogne · Service 24h/24, 7j/7
+            </p>
+            <p style="margin-top: 1.2rem; text-align: center;">
+                <a href="tarifs-devis.html" style="display: inline-block; background: #ff3333; color: white; padding: 0.85rem 2rem; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.05rem; transition: background 0.3s;" onmouseover="this.style.background='#cc0000';" onmouseout="this.style.background='#ff3333';">💶 Voir les Tarifs &amp; Demander un Devis Gratuit</a>
+            </p>
         </div>
     </section>
 
