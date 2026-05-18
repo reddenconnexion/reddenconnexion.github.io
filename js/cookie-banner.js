@@ -3,6 +3,23 @@
 
     var STORAGE_KEY = 'rdc_cookie_consent_v1';
     var EXPIRY_MS = 365 * 24 * 60 * 60 * 1000;
+    var METRICOOL_HASH = 'affa10a962c067911ee9714e88faa737';
+    var metricoolLoaded = false;
+
+    function loadMetricool() {
+        if (metricoolLoaded) return;
+        metricoolLoaded = true;
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://tracker.metricool.com/resources/be.js';
+        s.onload = function () {
+            if (window.beTracker && typeof window.beTracker.t === 'function') {
+                window.beTracker.t({ hash: METRICOOL_HASH });
+            }
+        };
+        (document.head || document.getElementsByTagName('head')[0]).appendChild(s);
+    }
 
     function readConsent() {
         try {
@@ -86,9 +103,10 @@
         var text = document.createElement('div');
         text.className = 'rdc-cb-text';
         text.innerHTML = '<strong>Respect de votre vie privée.</strong> '
-            + 'Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement. '
+            + 'Ce site utilise des cookies techniques nécessaires à son fonctionnement. '
             + 'La miniature de ma vidéo YouTube et la carte interactive (OpenStreetMap/CARTO) chargent du contenu depuis des serveurs tiers. '
-            + 'Aucun cookie publicitaire ni traceur analytique n’est utilisé. '
+            + 'Avec votre accord, j’utilise aussi <strong>Metricool</strong> pour mesurer l’audience du site (statistiques anonymisées). '
+            + 'Aucun cookie publicitaire n’est utilisé. '
             + '<a href="/confidentialite.html">En savoir plus</a>.';
 
         var actions = document.createElement('div');
@@ -125,7 +143,12 @@
     }
 
     function init() {
-        if (readConsent() !== null) return;
+        var existing = readConsent();
+        if (existing === 'accept') {
+            loadMetricool();
+            return;
+        }
+        if (existing === 'refuse') return;
 
         injectStyles();
         var built = buildBanner();
@@ -133,6 +156,7 @@
 
         built.accept.addEventListener('click', function () {
             writeConsent('accept');
+            loadMetricool();
             dismiss(built.banner);
         });
 
