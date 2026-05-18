@@ -243,19 +243,8 @@
             .intro-text { font-size: 1rem; }
         }
     </style>
-    <!-- Metricool : balise inline (visible pour la vérification d'installation) ; le tracker ne s'exécute qu'après consentement explicite (RGPD). -->
-    <script>
-    (function(){
-      try {
-        var raw = localStorage.getItem('rdc_cookie_consent_v1');
-        if (!raw) return;
-        var data = JSON.parse(raw);
-        if (!data || data.choice !== 'accept' || !data.expires || Date.now() > data.expires) return;
-      } catch(e) { return; }
-      function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}
-      loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
-    })();
-    </script>
+    <!-- Metricool : balise officielle (chargement direct, sans garde de consentement) -->
+    <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});</script>
 </head>
 <body>
     <header>
