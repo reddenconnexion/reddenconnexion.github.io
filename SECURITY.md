@@ -36,7 +36,7 @@
 
 ## Signalement de Vulnérabilités
 
-Si vous découvrez une vulnérabilité de sécurité, merci de nous contacter :
+Si vous découvrez une vulnérabilité de sécurité, merci de me contacter :
 - **Email** : reddenconnexion@gmail.com
 - **Objet** : [SÉCURITÉ] Vulnérabilité détectée
 
@@ -46,7 +46,7 @@ Veuillez inclure :
 3. Impact potentiel
 4. Suggestions de correction (si disponibles)
 
-Nous nous engageons à répondre dans les 48 heures.
+Je m'engage à répondre dans les 48 heures.
 
 ## Mises à Jour de Sécurité
 

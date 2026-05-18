@@ -51,7 +51,7 @@ export function showFormSuccess(message) {
 function checkForSuccessMessage() {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('success') === 'true') {
-        showFormSuccess('Votre demande a été envoyée avec succès ! Nous vous recontacterons rapidement.');
+        showFormSuccess('Votre demande a été envoyée avec succès ! Je vous recontacterai rapidement.');
 
         // Scroller vers le formulaire
         const form = document.getElementById('contactForm');
