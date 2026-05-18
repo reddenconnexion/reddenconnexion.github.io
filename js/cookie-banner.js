@@ -87,7 +87,7 @@
         text.className = 'rdc-cb-text';
         text.innerHTML = '<strong>Respect de votre vie privée.</strong> '
             + 'Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement. '
-            + 'La miniature de notre vidéo YouTube et la carte interactive (OpenStreetMap/CARTO) chargent du contenu depuis des serveurs tiers. '
+            + 'La miniature de ma vidéo YouTube et la carte interactive (OpenStreetMap/CARTO) chargent du contenu depuis des serveurs tiers. '
             + 'Aucun cookie publicitaire ni traceur analytique n’est utilisé. '
             + '<a href="/confidentialite.html">En savoir plus</a>.';
 
