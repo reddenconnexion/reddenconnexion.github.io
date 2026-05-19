@@ -803,16 +803,68 @@
 
         /* Sous-titre */
         .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            font-weight: 600;
-            color: #fff;
+            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+            font-weight: 500;
+            color: #ddd;
             margin-bottom: 15px;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+            animation: fadeInUp 0.8s ease-out 0.25s backwards;
         }
 
         .hero-subtitle .highlight {
             color: #ff3333;
             font-weight: 800;
+        }
+
+        /* Pastilles services cliquables */
+        .hero-services {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0 1rem;
+            animation: fadeInUp 0.8s ease-out 0.15s backwards;
+        }
+
+        .hero-service-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.97);
+            color: #1a1a1a;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+            border: 2px solid transparent;
+            transition: all 0.25s ease;
+            min-height: 44px;
+        }
+
+        .hero-service-pill:hover,
+        .hero-service-pill:focus-visible {
+            background: #ff3333;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 51, 51, 0.5);
+            border-color: white;
+            outline: none;
+        }
+
+        .hero-service-pill .pill-icon {
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        @media (max-width: 480px) {
+            .hero-services {
+                gap: 0.5rem;
+            }
+            .hero-service-pill {
+                padding: 0.7rem 1.1rem;
+                font-size: 0.95rem;
+            }
         }
 
         /* Expérience */
@@ -2581,8 +2633,23 @@
 
             <h1 id="mainTitle">Électricien à St Médard de Guizières</h1>
 
+            <nav class="hero-services" aria-label="Services principaux">
+                <a href="renovation-electrique.html" class="hero-service-pill">
+                    <span class="pill-icon" aria-hidden="true">🔧</span>
+                    <span class="pill-label">Rénovation</span>
+                </a>
+                <a href="#services" class="hero-service-pill">
+                    <span class="pill-icon" aria-hidden="true">⚡</span>
+                    <span class="pill-label">Installation</span>
+                </a>
+                <a href="depannage-urgent.html" class="hero-service-pill">
+                    <span class="pill-icon" aria-hidden="true">🚨</span>
+                    <span class="pill-label">Dépannage</span>
+                </a>
+            </nav>
+
             <div class="hero-subtitle">
-                Rénovation, installation & dépannage <span class="highlight">électrique</span> | <a href="depannage-electrique-libourne.html" style="color: white; text-decoration: underline;">Libourne</a>, <a href="depannage-electrique-coutras.html" style="color: white; text-decoration: underline;">Coutras</a>, <a href="depannage-electrique-montpon-menesterol.html" style="color: white; text-decoration: underline;">Montpon</a>
+                Pages locales : <a href="depannage-electrique-libourne.html" style="color: #fff; text-decoration: underline;">Libourne</a>, <a href="depannage-electrique-coutras.html" style="color: #fff; text-decoration: underline;">Coutras</a>, <a href="depannage-electrique-montpon-menesterol.html" style="color: #fff; text-decoration: underline;">Montpon</a>
             </div>
 
             <div class="experience">
