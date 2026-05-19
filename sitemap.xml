@@ -201,6 +201,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Réalisations / études de cas -->
+  <url>
+    <loc>https://reddenconnexion.fr/realisations/renovation-tableau-electrique-coutras.html</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
   <!-- Section Conseils (blog) -->
   <url>
     <loc>https://reddenconnexion.fr/conseils/</loc>
