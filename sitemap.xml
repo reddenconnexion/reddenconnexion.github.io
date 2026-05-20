@@ -252,6 +252,13 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://reddenconnexion.fr/conseils/diagnostic-electrique-avant-vente.html</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Page tarifs et devis -->
   <url>
     <loc>https://reddenconnexion.fr/tarifs-devis.html</loc>
