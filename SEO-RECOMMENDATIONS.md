@@ -17,27 +17,34 @@
 
 ---
 
+## ✅ Améliorations Techniques Appliquées (Mai 2026)
+
+Site déjà excellent techniquement ; cette passe a ciblé les derniers leviers « on-page » et la visibilité IA :
+
+- ✅ **Suppression du balisage d'avis auto-hébergé** sur `index.html` (`aggregateRating` + `review`). Google interdit depuis 2019 les avis « auto-attribués » sur son propre site : ils sont inéligibles aux rich results et peuvent déclencher une action manuelle. Les vraies étoiles proviennent de la fiche Google Business. Les témoignages restent affichés en HTML (utiles pour la conversion).
+- ✅ **Schema `FAQPage` + FAQ visible ajoutés** sur les 5 pages services qui en manquaient (tableau, photovoltaïque, borne VE, caméras, interrupteur différentiel). Réponses concises et factuelles, idéales pour les rich snippets ET pour être citées par les IA.
+- ✅ **Date « Dernière mise à jour » visible** ajoutée sur les pages services (signal de fraîcheur).
+- ✅ **`llms.txt` complété** : ajout des 6 pages rénovation par ville, des pages dépannage manquantes, des 4 réalisations et des articles conseils manquants (meilleure couverture par les crawlers IA).
+- ✅ **Nettoyage** : suppression de ~9 Mo d'images non référencées dans le dépôt.
+
+**À faire (besoin d'une information de votre part) :** renseigner le champ `"sameAs"` du schéma de `index.html` avec l'URL de votre fiche Google Business Profile (+ Facebook/réseaux si existants) — signal d'entité utile à Google et aux IA.
+
+---
+
 ## 🎯 Actions Prioritaires à Réaliser (Hors code)
 
-### 1. Google Business Profile (CRITIQUE - Impact immédiat)
-**C'est LA priorité #1 pour le référencement local !**
+### 1. Google Business Profile (fiche vérifiée ✅ — passer en mode entretien)
+**Votre fiche est créée, vérifiée et reçoit des avis. L'enjeu est maintenant de l'animer dans la durée**, car c'est le facteur #1 du « Local Pack » (les 3 résultats avec carte).
 
-#### Configuration complète requise:
-- [ ] **Créer/Revendiquer votre fiche Google Business** à: https://business.google.com
-- [ ] Vérifier l'adresse: **13 rue Robert Boulin, 33230 St Médard de Guizières**
-- [ ] Catégorie principale: **Électricien**
-- [ ] Catégories secondaires: **Service de dépannage électrique**, **Service de rénovation électrique**
-- [ ] Numéro de téléphone: **06 95 10 08 23**
-- [ ] Site web: **https://reddenconnexion.fr**
-- [ ] Horaires: **24h/24, 7j/7**
-- [ ] Description complète avec mots-clés: "Électricien professionnel à St Médard de Guizières avec 25 ans d'expérience..."
-- [ ] Ajouter des photos professionnelles (logo, réalisations, équipe)
-- [ ] **Activer les avis clients** (critiques 5 étoiles)
-- [ ] Publier régulièrement des posts/actualités
-- [ ] Répondre à TOUS les avis (positifs et négatifs)
+#### Entretien régulier (cadence mensuelle):
+- [ ] **Générer des avis en continu** : demander systématiquement un avis après chaque intervention réussie (SMS/email avec lien direct). Viser une progression régulière du nombre d'avis.
+- [ ] **Répondre à 100 % des avis sous 24-48 h** (positifs comme négatifs) — signal d'engagement fort.
+- [ ] **Publier 1 post Google par semaine** : photos avant/après de chantiers, conseils, promotions saisonnières.
+- [ ] **Tenir les infos à jour** : horaires, zone, services, photos récentes.
+- [ ] **Vérifier la cohérence** entre le nombre d'avis affiché sur la fiche et la réalité (ne jamais gonfler artificiellement).
 
 **Pourquoi c'est critique?**
-Google Business Profile est le facteur #1 pour le référencement local. Sans fiche optimisée, impossible d'apparaître dans le "Local Pack" (les 3 premiers résultats avec carte).
+Une fiche active (avis récents + posts réguliers) est privilégiée par Google dans le Local Pack par rapport à une fiche statique.
 
 ---
 
@@ -74,7 +81,7 @@ Google Business Profile est le facteur #1 pour le référencement local. Sans fi
 
 ### 3. Avis Clients (Trust Signals)
 
-**Actuellement: 3 avis / 5 étoiles (bon mais insuffisant)**
+**Fiche Google Business vérifiée avec avis 5 étoiles ✅ — objectif : augmenter le volume en continu**
 
 #### Plan d'action:
 - [ ] **Objectif: 20+ avis dans les 3 mois**
@@ -142,6 +149,30 @@ Site: https://reddenconnexion.fr
 - [ ] Yelp
 - [ ] Facebook Business
 - [ ] LinkedIn Company
+
+---
+
+### 6. Visibilité dans les IA (GEO – Generative Engine Optimization)
+
+**De plus en plus de clients posent leurs questions à ChatGPT, Perplexity, Gemini ou via les "AI Overviews" de Google. Être cité par ces IA est un nouveau canal d'acquisition.**
+
+#### Ce qui est déjà en place sur le site:
+- ✅ `llms.txt` (carte du site pour les crawlers IA) + `robots.txt` autorisant GPTBot, Claude, Perplexity, Google-Extended
+- ✅ Données structurées riches (Service, FAQPage, Breadcrumb, Speakable) sur l'ensemble des pages
+- ✅ Contenu « réponse d'abord » et FAQ factuelles (ce que les IA extraient le plus facilement)
+
+#### Bonnes pratiques à poursuivre:
+- [ ] **Rédiger en "réponse directe"** : commencer chaque page/section par une réponse claire et concise à une question concrète, avant le détail.
+- [ ] **Titres = vraies questions** : utiliser des H2/H3 reprenant les requêtes des clients ("Combien coûte…", "Quand changer…", "Quel type choisir…").
+- [ ] **Faits citables** : prix indicatifs, durées, normes (NF C 15-100), puissances (kW), délais — les chiffres précis sont privilégiés par les IA.
+- [ ] **Tableaux comparatifs** (ex. prise renforcée vs Wallbox) : très bien extraits par les modèles.
+- [ ] **Dates de mise à jour visibles** : la fraîcheur augmente la probabilité de citation.
+- [ ] **Signaux E-E-A-T** : nom de l'auteur (Denis MERIOT), 25 ans d'expérience, mentions d'assurances/garanties, études de cas réelles (réalisations).
+- [ ] **Maintenir `llms.txt` à jour** à chaque nouvelle page importante.
+
+#### Mesure de la visibilité IA:
+- [ ] Tester régulièrement des requêtes type ("électricien dépannage Libourne", "prix rénovation électrique Gironde") dans ChatGPT (recherche), Perplexity et Google AI Overviews, et noter si le site est cité.
+- [ ] Surveiller dans les statistiques d'audience les visites en provenance de `chatgpt.com`, `perplexity.ai`, etc.
 
 ---
 
@@ -309,7 +340,8 @@ Ces 3 actions seules peuvent vous faire passer de la page 17 à la page 1-2 en q
 ---
 
 **Date de création:** Novembre 2025
-**Prochaine révision recommandée:** Février 2026
+**Dernière mise à jour:** Mai 2026
+**Prochaine révision recommandée:** Août 2026
 
 **Contact technique:** Si besoin d'aide pour implémenter ces recommandations, n'hésitez pas à faire appel à un consultant SEO local spécialisé en référencement local.
 

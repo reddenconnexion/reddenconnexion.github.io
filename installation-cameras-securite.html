@@ -100,6 +100,21 @@
     }
     </script>
 
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Faut-il une autorisation pour installer des caméras de surveillance chez soi ?", "acceptedAnswer": {"@type": "Answer", "text": "Pour un domicile privé, filmer l'intérieur de votre propriété est libre. En revanche, vos caméras ne doivent pas filmer la voie publique ni la propriété de vos voisins. Pour un commerce ou une entreprise filmant un espace ouvert au public, une déclaration en préfecture et l'information des personnes sont obligatoires."}},
+        {"@type": "Question", "name": "Quel est le prix d'installation d'un système de vidéosurveillance ?", "acceptedAnswer": {"@type": "Answer", "text": "Le prix dépend du nombre de caméras, du type (IP/PoE, analogique, WiFi) et de la longueur de câblage. Pour une maison, un système de 4 caméras avec enregistreur se situe souvent entre 800 et 2 500 € posé. Je réalise un devis gratuit après visite du site."}},
+        {"@type": "Question", "name": "Caméras IP (PoE) ou WiFi : que choisir ?", "acceptedAnswer": {"@type": "Answer", "text": "Les caméras IP/PoE, alimentées et connectées par un seul câble réseau, offrent la meilleure fiabilité et qualité d'image, idéales en installation fixe. Les caméras WiFi sont plus simples à poser dans les zones difficiles à câbler mais dépendent de la qualité du réseau sans fil."}},
+        {"@type": "Question", "name": "Peut-on consulter ses caméras de sécurité à distance ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. La plupart des systèmes modernes permettent de visionner les images en direct et les enregistrements depuis un smartphone ou un ordinateur, où que vous soyez. Je configure l'accès distant lors de la mise en service."}},
+        {"@type": "Question", "name": "Réalisez-vous uniquement le câblage ou aussi la mise en service ?", "acceptedAnswer": {"@type": "Answer", "text": "Je prends en charge l'ensemble : étude des angles, alimentation et câblage électrique, fixation des caméras, raccordement de l'enregistreur et configuration de base avec vérification des images et de la détection de mouvement."}}
+      ]
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -344,6 +359,46 @@
             margin-bottom: 1rem;
         }
 
+        .faq-item {
+            background: white;
+            margin: 0 auto 1rem;
+            max-width: 850px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover { background: #f8f8f8; }
+        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
+        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+            background: #f8f8f8;
+        }
+
+        .faq-item.active .faq-answer { max-height: 600px; padding: 1.5rem; }
+
+        .updated-date {
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 2.5rem;
+        }
+
         footer {
             background: #1a1a1a;
             color: white;
@@ -539,12 +594,70 @@
         </div>
     </section>
 
+    <section>
+        <h2>Questions Fréquentes</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Faut-il une autorisation pour installer des caméras de surveillance chez soi ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Pour un domicile privé, filmer l'intérieur de votre propriété est libre. En revanche, vos caméras ne doivent pas filmer la voie publique ni la propriété de vos voisins. Pour un commerce ou une entreprise filmant un espace ouvert au public, une déclaration en préfecture et l'information des personnes sont obligatoires.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Quel est le prix d'installation d'un système de vidéosurveillance ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Le prix dépend du nombre de caméras, du type (IP/PoE, analogique, WiFi) et de la longueur de câblage. Pour une maison, un système de 4 caméras avec enregistreur se situe souvent entre 800 et 2 500 € posé. Je réalise un <a href="tarifs-devis.html" style="color:#ff3333; text-decoration:underline;">devis gratuit</a> après visite du site.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Caméras IP (PoE) ou WiFi : que choisir ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Les caméras IP/PoE, alimentées et connectées par un seul câble réseau, offrent la meilleure fiabilité et qualité d'image, idéales en installation fixe. Les caméras WiFi sont plus simples à poser dans les zones difficiles à câbler mais dépendent de la qualité du réseau sans fil.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Peut-on consulter ses caméras de sécurité à distance ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Oui. La plupart des systèmes modernes permettent de visionner les images en direct et les enregistrements depuis un smartphone ou un ordinateur, où que vous soyez. Je configure l'accès distant lors de la mise en service.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Réalisez-vous uniquement le câblage ou aussi la mise en service ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Je prends en charge l'ensemble : étude des angles, alimentation et câblage électrique, fixation des caméras, raccordement de l'enregistreur et configuration de base avec vérification des images et de la détection de mouvement.</p>
+            </div>
+        </div>
+        <p class="updated-date">Dernière mise à jour : mai 2026</p>
+    </section>
+
     <footer>
         <p style="margin-bottom: 0.6rem; opacity: 0.85; font-size: 0.95rem;"><a href="tel:0695100823" style="color: #ff9999;">06 95 10 08 23</a> | <a href="mailto:reddenconnexion@gmail.com" style="color: #ff9999;">reddenconnexion@gmail.com</a></p>
     <p>&copy; 2026 Red Den Connexion - Tous droits r&eacute;serv&eacute;s</p>
         <p style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid #333; opacity: 0.5; font-size: 0.8rem;">Vous êtes artisan débutant ? <a href="https://artisanfacile.fr" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: none;">ArtisanFacile.fr</a> — l'outil de gestion pour démarrer simplement.</p>
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            if (!isActive) faqItem.classList.add('active');
+        }
+    </script>
     <script src="/js/cookie-banner.js" defer></script>
 </body>
 </html>
