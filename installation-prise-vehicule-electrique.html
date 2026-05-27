@@ -100,6 +100,21 @@
     }
     </script>
 
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Quel est le prix d'installation d'une borne de recharge à domicile ?", "acceptedAnswer": {"@type": "Answer", "text": "Comptez environ 500 à 1 200 € pour une prise renforcée Green'up et 1 200 à 2 000 € pour une borne Wallbox 7,4 kW, pose et circuit dédié compris. Le prix dépend de la distance au tableau et de la puissance. Je fournis un devis gratuit après diagnostic."}},
+        {"@type": "Question", "name": "Peut-on recharger sa voiture électrique sur une prise domestique normale ?", "acceptedAnswer": {"@type": "Answer", "text": "C'est déconseillé : une prise standard n'est pas dimensionnée pour la charge prolongée d'un véhicule et présente un risque de surchauffe et d'incendie. Une prise renforcée ou une Wallbox sur circuit dédié avec protection différentielle est la solution sûre."}},
+        {"@type": "Question", "name": "Faut-il un installateur IRVE certifié pour une borne de recharge ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Au-delà de 3,7 kW, l'installation d'une borne de recharge doit être réalisée par un électricien qualifié IRVE. C'est aussi une condition pour bénéficier des aides (crédit d'impôt, prime ADVENIR). Je suis habilité IRVE."}},
+        {"@type": "Question", "name": "Quelles aides pour installer une borne de recharge à domicile ?", "acceptedAnswer": {"@type": "Answer", "text": "Les particuliers peuvent bénéficier d'un crédit d'impôt pour l'installation d'une borne de recharge et d'une TVA réduite, sous conditions. Le détail figure dans mon guide complet sur la Wallbox à domicile."}},
+        {"@type": "Question", "name": "Borne 7 kW ou 22 kW : laquelle choisir ?", "acceptedAnswer": {"@type": "Answer", "text": "Pour un usage résidentiel, la borne 7,4 kW en monophasé recharge une batterie de 60 kWh en une nuit et convient à la grande majorité des foyers. La borne 22 kW (triphasé) est réservée aux usages intensifs ou professionnels et nécessite un abonnement triphasé."}}
+      ]
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -334,6 +349,46 @@
             border-bottom: none;
         }
 
+        .faq-item {
+            background: white;
+            margin: 0 auto 1rem;
+            max-width: 850px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover { background: #f8f8f8; }
+        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
+        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+            background: #f8f8f8;
+        }
+
+        .faq-item.active .faq-answer { max-height: 600px; padding: 1.5rem; }
+
+        .updated-date {
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 2.5rem;
+        }
+
         footer {
             background: #1a1a1a;
             color: white;
@@ -532,12 +587,70 @@
         </div>
     </section>
 
+    <section class="gray-bg">
+        <h2>Questions Fréquentes</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Quel est le prix d'installation d'une borne de recharge à domicile ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Comptez environ 500 à 1 200 € pour une prise renforcée Green'up et 1 200 à 2 000 € pour une borne Wallbox 7,4 kW, pose et circuit dédié compris. Le prix dépend de la distance au tableau et de la puissance. Je fournis un <a href="tarifs-devis.html" style="color:#ff3333; text-decoration:underline;">devis gratuit</a> après diagnostic.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Peut-on recharger sa voiture électrique sur une prise domestique normale ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>C'est déconseillé : une prise standard n'est pas dimensionnée pour la charge prolongée d'un véhicule et présente un risque de surchauffe et d'incendie. Une prise renforcée ou une Wallbox sur circuit dédié avec protection différentielle est la solution sûre.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Faut-il un installateur IRVE certifié pour une borne de recharge ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Oui. Au-delà de 3,7 kW, l'installation d'une borne de recharge doit être réalisée par un électricien qualifié IRVE. C'est aussi une condition pour bénéficier des aides (crédit d'impôt, prime ADVENIR). Je suis habilité IRVE.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Quelles aides pour installer une borne de recharge à domicile ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Les particuliers peuvent bénéficier d'un crédit d'impôt pour l'installation d'une borne de recharge et d'une TVA réduite, sous conditions. Le détail figure dans mon <a href="conseils/wallbox-installation-domicile.html" style="color:#ff3333; text-decoration:underline;">guide complet sur la Wallbox à domicile</a>.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Borne 7 kW ou 22 kW : laquelle choisir ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Pour un usage résidentiel, la borne 7,4 kW en monophasé recharge une batterie de 60 kWh en une nuit et convient à la grande majorité des foyers. La borne 22 kW (triphasé) est réservée aux usages intensifs ou professionnels et nécessite un abonnement triphasé.</p>
+            </div>
+        </div>
+        <p class="updated-date">Dernière mise à jour : mai 2026</p>
+    </section>
+
     <footer>
         <p style="margin-bottom: 0.6rem; opacity: 0.85; font-size: 0.95rem;"><a href="tel:0695100823" style="color: #ff9999;">06 95 10 08 23</a> | <a href="mailto:reddenconnexion@gmail.com" style="color: #ff9999;">reddenconnexion@gmail.com</a></p>
     <p>&copy; 2026 Red Den Connexion - Tous droits r&eacute;serv&eacute;s</p>
         <p style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid #333; opacity: 0.5; font-size: 0.8rem;">Vous êtes artisan débutant ? <a href="https://artisanfacile.fr" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: none;">ArtisanFacile.fr</a> — l'outil de gestion pour démarrer simplement.</p>
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            if (!isActive) faqItem.classList.add('active');
+        }
+    </script>
     <script src="/js/cookie-banner.js" defer></script>
 </body>
 </html>

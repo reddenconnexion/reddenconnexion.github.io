@@ -100,6 +100,21 @@
     }
     </script>
 
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Quel est le prix d'une installation de panneaux photovoltaïques ?", "acceptedAnswer": {"@type": "Answer", "text": "Le prix dépend de la puissance installée. Pour une maison, comptez en moyenne 8 000 à 12 000 € pour une installation de 3 kWc en autoconsommation, hors aides. Je réalise un devis gratuit après étude de votre toiture et de vos besoins en énergie."}},
+        {"@type": "Question", "name": "Faut-il un électricien qualifié pour installer des panneaux solaires ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Le raccordement électrique d'une installation photovoltaïque doit respecter les normes NF C 15-100 et UTE C 15-712 et faire l'objet d'une attestation de conformité. Pour bénéficier de la prime à l'autoconsommation et du tarif de rachat, l'installation doit être réalisée par un professionnel qualifié."}},
+        {"@type": "Question", "name": "Quelles aides pour le photovoltaïque en Gironde en 2026 ?", "acceptedAnswer": {"@type": "Answer", "text": "Vous pouvez bénéficier de la prime à l'autoconsommation, du tarif d'achat du surplus et d'une TVA réduite selon la puissance. Le détail figure sur mon guide des aides panneaux solaires Gironde 2026."}},
+        {"@type": "Question", "name": "Vaut-il mieux choisir l'autoconsommation ou la revente totale ?", "acceptedAnswer": {"@type": "Answer", "text": "L'autoconsommation avec revente du surplus est aujourd'hui la solution la plus rentable pour la plupart des foyers : vous consommez votre production en priorité et revendez l'excédent. La revente totale reste pertinente pour certaines grandes toitures. Je vous conseille selon votre profil de consommation."}},
+        {"@type": "Question", "name": "Combien de temps dure une installation photovoltaïque ?", "acceptedAnswer": {"@type": "Answer", "text": "La pose et le raccordement électrique d'une installation résidentielle prennent généralement 1 à 3 jours selon la puissance. La mise en service effective dépend ensuite du délai de raccordement Enedis."}}
+      ]
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -321,6 +336,46 @@
             margin-bottom: 0.5rem;
         }
 
+        .faq-item {
+            background: white;
+            margin: 0 auto 1rem;
+            max-width: 850px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover { background: #f8f8f8; }
+        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
+        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+            background: #f8f8f8;
+        }
+
+        .faq-item.active .faq-answer { max-height: 600px; padding: 1.5rem; }
+
+        .updated-date {
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 2.5rem;
+        }
+
         footer {
             background: #1a1a1a;
             color: white;
@@ -521,12 +576,70 @@
         </div>
     </section>
 
+    <section class="gray-bg">
+        <h2>Questions Fréquentes</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Quel est le prix d'une installation de panneaux photovoltaïques ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Le prix dépend de la puissance installée. Pour une maison, comptez en moyenne 8 000 à 12 000 € pour une installation de 3 kWc en autoconsommation, hors aides. Je réalise un <a href="tarifs-devis.html" style="color:#ff3333; text-decoration:underline;">devis gratuit</a> après étude de votre toiture et de vos besoins en énergie.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Faut-il un électricien qualifié pour installer des panneaux solaires ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Oui. Le raccordement électrique d'une installation photovoltaïque doit respecter les normes NF C 15-100 et UTE C 15-712 et faire l'objet d'une attestation de conformité. Pour bénéficier de la prime à l'autoconsommation et du tarif de rachat, l'installation doit être réalisée par un professionnel qualifié.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Quelles aides pour le photovoltaïque en Gironde en 2026 ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Vous pouvez bénéficier de la prime à l'autoconsommation, du tarif d'achat du surplus et d'une TVA réduite selon la puissance. Le détail figure sur mon guide des <a href="conseils/aides-panneaux-solaires-gironde-2026.html" style="color:#ff3333; text-decoration:underline;">aides panneaux solaires Gironde 2026</a>.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Vaut-il mieux choisir l'autoconsommation ou la revente totale ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>L'autoconsommation avec revente du surplus est aujourd'hui la solution la plus rentable pour la plupart des foyers : vous consommez votre production en priorité et revendez l'excédent. La revente totale reste pertinente pour certaines grandes toitures. Je vous conseille selon votre profil de consommation.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h3>Combien de temps dure une installation photovoltaïque ?</h3>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>La pose et le raccordement électrique d'une installation résidentielle prennent généralement 1 à 3 jours selon la puissance. La mise en service effective dépend ensuite du délai de raccordement Enedis.</p>
+            </div>
+        </div>
+        <p class="updated-date">Dernière mise à jour : mai 2026</p>
+    </section>
+
     <footer>
         <p style="margin-bottom: 0.6rem; opacity: 0.85; font-size: 0.95rem;"><a href="tel:0695100823" style="color: #ff9999;">06 95 10 08 23</a> | <a href="mailto:reddenconnexion@gmail.com" style="color: #ff9999;">reddenconnexion@gmail.com</a></p>
     <p>&copy; 2026 Red Den Connexion - Tous droits r&eacute;serv&eacute;s</p>
         <p style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid #333; opacity: 0.5; font-size: 0.8rem;">Vous êtes artisan débutant ? <a href="https://artisanfacile.fr" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: none;">ArtisanFacile.fr</a> — l'outil de gestion pour démarrer simplement.</p>
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            if (!isActive) faqItem.classList.add('active');
+        }
+    </script>
     <script src="/js/cookie-banner.js" defer></script>
 </body>
 </html>
