@@ -2535,6 +2535,130 @@
                 font-size: 0.68rem;
             }
         }
+
+        /* === Showcase marquee (3 rangées, sens alternés) === */
+        .showcase {
+            padding: 2.5rem 0 2rem;
+            background: linear-gradient(180deg, #f6f7f9 0%, #ffffff 100%);
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+                    mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+        }
+
+        .showcase-heading {
+            max-width: 1100px;
+            margin: 0 auto 1.5rem;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+
+        .showcase-heading h2 {
+            font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+            color: #1a1a1a;
+            margin: 0 0 0.4rem;
+        }
+
+        .showcase-heading p {
+            color: #666;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .showcase-track {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .showcase-row {
+            display: flex;
+            gap: 0.9rem;
+            width: max-content;
+            animation: showcase-scroll-left 70s linear infinite;
+            will-change: transform;
+        }
+
+        .showcase-row.reverse {
+            animation-name: showcase-scroll-right;
+            animation-duration: 80s;
+        }
+
+        .showcase-row.slow {
+            animation-duration: 95s;
+        }
+
+        .showcase:hover .showcase-row {
+            animation-play-state: paused;
+        }
+
+        @keyframes showcase-scroll-left {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        @keyframes showcase-scroll-right {
+            from { transform: translateX(-50%); }
+            to   { transform: translateX(0); }
+        }
+
+        .showcase-tile {
+            position: relative;
+            flex: 0 0 auto;
+            width: 280px;
+            height: 160px;
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.1rem 1.2rem;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        }
+
+        .showcase-tile img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .showcase-tile.text .tile-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-bottom: auto;
+        }
+
+        .showcase-tile.text .tile-label {
+            font-weight: 700;
+            font-size: 1.05rem;
+            line-height: 1.3;
+        }
+
+        .showcase-tile.tile-red    { background: #ff3333; color: #fff; }
+        .showcase-tile.tile-dark   { background: #1a1a1a; color: #fff; }
+        .showcase-tile.tile-light  { background: #eaf1f8; color: #142033; }
+        .showcase-tile.tile-white  { background: #ffffff; color: #1a1a1a; border: 1px solid #ececec; }
+
+        @media (max-width: 640px) {
+            .showcase-tile {
+                width: 200px;
+                height: 130px;
+                padding: 0.9rem 1rem;
+                border-radius: 14px;
+            }
+            .showcase-tile.text .tile-icon { font-size: 1.3rem; }
+            .showcase-tile.text .tile-label { font-size: 0.9rem; }
+            .showcase-row { gap: 0.7rem; animation-duration: 55s; }
+            .showcase-row.reverse { animation-duration: 65s; }
+            .showcase-row.slow { animation-duration: 80s; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .showcase-row { animation: none; }
+            .showcase { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+        }
     </style>
     <!-- Metricool : balise inline (visible pour la vérification d'installation) ; le tracker ne s'exécute qu'après consentement explicite (RGPD). -->
     <script>
@@ -2647,6 +2771,149 @@
                     <span>Projet de travaux ?<br>Devis gratuit</span>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- Showcase défilant : services, chantiers et engagements -->
+    <section class="showcase" aria-label="Aperçu des services et chantiers">
+        <div class="showcase-heading">
+            <h2>Ce que je fais pour vous, en images</h2>
+            <p>Dépannage, rénovation, mise aux normes, bornes de recharge, photovoltaïque…</p>
+        </div>
+        <div class="showcase-track">
+
+            <!-- Rangée 1 : gauche -->
+            <div class="showcase-row" role="list">
+                <div class="showcase-tile text tile-red" role="listitem">
+                    <span class="tile-icon" aria-hidden="true">🚨</span>
+                    <span class="tile-label">Dépannage urgent 7j/7</span>
+                </div>
+                <div class="showcase-tile" role="listitem">
+                    <img src="installationpro.webp" alt="Installation électrique pro" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-light" role="listitem">
+                    <span class="tile-icon" aria-hidden="true">💰</span>
+                    <span class="tile-label">Devis gratuit sous 24 h</span>
+                </div>
+                <div class="showcase-tile" role="listitem">
+                    <img src="tableauhallescoutras.webp" alt="Tableau électrique installé à Coutras" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-dark" role="listitem">
+                    <span class="tile-icon" aria-hidden="true">⭐</span>
+                    <span class="tile-label">25 ans d'expérience à votre service</span>
+                </div>
+                <div class="showcase-tile" role="listitem">
+                    <img src="panneauxphotovoltaiques.webp" alt="Panneaux photovoltaïques" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <!-- duplicata pour boucle sans couture -->
+                <div class="showcase-tile text tile-red" aria-hidden="true">
+                    <span class="tile-icon">🚨</span><span class="tile-label">Dépannage urgent 7j/7</span>
+                </div>
+                <div class="showcase-tile" aria-hidden="true">
+                    <img src="installationpro.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-light" aria-hidden="true">
+                    <span class="tile-icon">💰</span><span class="tile-label">Devis gratuit sous 24 h</span>
+                </div>
+                <div class="showcase-tile" aria-hidden="true">
+                    <img src="tableauhallescoutras.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-dark" aria-hidden="true">
+                    <span class="tile-icon">⭐</span><span class="tile-label">25 ans d'expérience à votre service</span>
+                </div>
+                <div class="showcase-tile" aria-hidden="true">
+                    <img src="panneauxphotovoltaiques.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+            </div>
+
+            <!-- Rangée 2 : droite (sens inversé) -->
+            <div class="showcase-row reverse" role="list">
+                <div class="showcase-tile text tile-dark" role="listitem">
+                    <span class="tile-icon" aria-hidden="true">🔧</span>
+                    <span class="tile-label">Rénovation électrique complète</span>
+                </div>
+                <div class="showcase-tile" role="listitem">
+                    <img src="comparatif-chantier-remplacement-tableau-elec.webp" alt="Avant/après remplacement de tableau électrique" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-red" role="listitem">
+                    <span class="tile-icon" aria-hidden="true">🔌</span>
+                    <span class="tile-label">Borne de recharge véhicule électrique</span>
+                </div>
+                <div class="showcase-tile" role="listitem">
+                    <img src="remplacement-portes-fusibles.webp" alt="Remplacement de portes-fusibles" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-light" role="listitem">
+                    <span class="tile-icon" aria-hidden="true">✅</span>
+                    <span class="tile-label">Normes NF C 15-100 respectées</span>
+                </div>
+                <div class="showcase-tile" role="listitem">
+                    <img src="deniselec.webp" alt="Denis Mériot électricien" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <!-- duplicata -->
+                <div class="showcase-tile text tile-dark" aria-hidden="true">
+                    <span class="tile-icon">🔧</span><span class="tile-label">Rénovation électrique complète</span>
+                </div>
+                <div class="showcase-tile" aria-hidden="true">
+                    <img src="comparatif-chantier-remplacement-tableau-elec.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-red" aria-hidden="true">
+                    <span class="tile-icon">🔌</span><span class="tile-label">Borne de recharge véhicule électrique</span>
+                </div>
+                <div class="showcase-tile" aria-hidden="true">
+                    <img src="remplacement-portes-fusibles.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-light" aria-hidden="true">
+                    <span class="tile-icon">✅</span><span class="tile-label">Normes NF C 15-100 respectées</span>
+                </div>
+                <div class="showcase-tile" aria-hidden="true">
+                    <img src="deniselec.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+            </div>
+
+            <!-- Rangée 3 : gauche (plus lent) -->
+            <div class="showcase-row slow" role="list">
+                <div class="showcase-tile" role="listitem">
+                    <img src="camion.webp" alt="Camion d'intervention Red Den Connexion" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-red" role="listitem">
+                    <span class="tile-icon" aria-hidden="true">⚡</span>
+                    <span class="tile-label">Intervention rapide en Gironde</span>
+                </div>
+                <div class="showcase-tile" role="listitem">
+                    <img src="tableauvetuste.webp" alt="Ancien tableau électrique vétuste" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-white" role="listitem">
+                    <span class="tile-icon" aria-hidden="true">📋</span>
+                    <span class="tile-label">Tarifs clairs, pas de surprise</span>
+                </div>
+                <div class="showcase-tile" role="listitem">
+                    <img src="mutiprises.webp" alt="Installation prises électriques" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-dark" role="listitem">
+                    <span class="tile-icon" aria-hidden="true">🛡️</span>
+                    <span class="tile-label">Mise aux normes & sécurité</span>
+                </div>
+                <!-- duplicata -->
+                <div class="showcase-tile" aria-hidden="true">
+                    <img src="camion.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-red" aria-hidden="true">
+                    <span class="tile-icon">⚡</span><span class="tile-label">Intervention rapide en Gironde</span>
+                </div>
+                <div class="showcase-tile" aria-hidden="true">
+                    <img src="tableauvetuste.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-white" aria-hidden="true">
+                    <span class="tile-icon">📋</span><span class="tile-label">Tarifs clairs, pas de surprise</span>
+                </div>
+                <div class="showcase-tile" aria-hidden="true">
+                    <img src="mutiprises.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
+                </div>
+                <div class="showcase-tile text tile-dark" aria-hidden="true">
+                    <span class="tile-icon">🛡️</span><span class="tile-label">Mise aux normes & sécurité</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
