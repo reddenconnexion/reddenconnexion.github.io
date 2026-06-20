@@ -49,7 +49,12 @@ export function showFormSuccess(message) {
  * et affiche un message de confirmation
  */
 function checkForSuccessMessage() {
-    const urlParams = new URLSearchParams(window.location.search);
+    // Le paramètre `success` peut arriver soit dans la query string
+    // (?success=true) soit dans le fragment (#contact?success=true) selon la
+    // redirection Formspree configurée via le champ caché `_next`.
+    const hash = window.location.hash;
+    const hashQuery = hash.includes('?') ? hash.slice(hash.indexOf('?') + 1) : '';
+    const urlParams = new URLSearchParams(window.location.search || hashQuery);
     if (urlParams.get('success') === 'true') {
         showFormSuccess('Votre demande a été envoyée avec succès ! Je vous recontacterai rapidement.');
 
