@@ -1,6 +1,19 @@
 /**
  * Tests E2E du formulaire de contact
  * Red Den Connexion - Électricien St Médard de Guizières
+ *
+ * Note : la logique de validation (nom, téléphone, email, message, XSS,
+ * honeypot) est couverte exhaustivement par les tests unitaires
+ * (tests/formValidation.test.js). On ne la re-teste donc PAS ici règle par
+ * règle. Ces tests E2E se concentrent sur ce que les tests unitaires ne
+ * peuvent pas voir : le rendu réel du formulaire dans le HTML, la validation
+ * HTML5 native, et la soumission effective vers Formspree.
+ *
+ * Comportement réel du formulaire (cf. js/formHandler.js + index.html) :
+ *  - Les champs portent les contraintes HTML5 (required / minlength / pattern).
+ *    Une saisie invalide est donc bloquée par le navigateur AVANT le JS.
+ *  - En cas de saisie valide, le JS exécute validateForm() puis fait un
+ *    form.submit() classique (POST) vers Formspree (pas d'AJAX).
  */
 
 import { test, expect } from '@playwright/test';
@@ -9,19 +22,19 @@ test.describe('Formulaire de contact', () => {
     test.describe.configure({ mode: 'parallel' });
 
     test.beforeEach(async ({ page }) => {
-        // Naviguer vers la page d'accueil
         await page.goto('/');
-
-        // Attendre que le formulaire soit visible
+        // Fermer le bandeau cookies (comme un vrai visiteur) sinon il
+        // recouvre le bouton d'envoi sur petit écran et intercepte les clics
+        const acceptCookies = page.locator('.rdc-cb-accept');
+        if (await acceptCookies.isVisible().catch(() => false)) {
+            await acceptCookies.click();
+        }
         await page.waitForSelector('#contactForm', { state: 'visible' });
     });
 
-    test('affiche le formulaire de contact', async ({ page }) => {
-        // Vérifier que le formulaire est présent
-        const form = page.locator('#contactForm');
-        await expect(form).toBeVisible();
-
-        // Vérifier que tous les champs sont présents
+    test('affiche le formulaire de contact avec tous ses champs', async ({ page }) => {
+        // Détecte un id renommé ou un champ supprimé, invisible pour l'unitaire
+        await expect(page.locator('#contactForm')).toBeVisible();
         await expect(page.locator('#name')).toBeVisible();
         await expect(page.locator('#phone')).toBeVisible();
         await expect(page.locator('#email')).toBeVisible();
@@ -30,70 +43,38 @@ test.describe('Formulaire de contact', () => {
         await expect(page.locator('.submit-btn')).toBeVisible();
     });
 
-    test('refuse un nom trop court', async ({ page }) => {
-        // Remplir le formulaire avec un nom invalide
-        await page.fill('#name', 'A');
+    test('la validation HTML5 native bloque une soumission invalide', async ({ page }) => {
+        // Si une requête partait vers Formspree malgré une saisie invalide,
+        // c'est que les contraintes HTML5 ont sauté : on le détecte.
+        let formspreeCalled = false;
+        await page.route('**/formspree.io/**', async route => {
+            formspreeCalled = true;
+            await route.fulfill({ status: 200, contentType: 'text/html', body: 'OK' });
+        });
+
+        await page.fill('#name', 'A'); // minlength=2 -> invalide
         await page.fill('#phone', '06 12 34 56 78');
         await page.fill('#city', 'Libourne');
         await page.fill('#message', 'Message de test valide pour le formulaire');
 
-        // Soumettre le formulaire
         await page.click('.submit-btn');
 
-        // Vérifier qu'un message d'erreur s'affiche
-        const errorMessage = page.locator('#formMessage');
-        await expect(errorMessage).toBeVisible();
-        await expect(errorMessage).toContainText('2');
+        // Le champ nom doit être marqué invalide par le navigateur
+        const nameValid = await page.locator('#name').evaluate(el => el.validity.valid);
+        expect(nameValid).toBe(false);
+
+        // Et aucune requête ne doit être partie vers Formspree
+        await page.waitForTimeout(300);
+        expect(formspreeCalled).toBe(false);
     });
 
-    test('refuse un numéro de téléphone invalide', async ({ page }) => {
-        await page.fill('#name', 'Jean Dupont');
-        await page.fill('#phone', '123');
-        await page.fill('#city', 'Coutras');
-        await page.fill('#message', 'Message de test valide pour le formulaire');
-
-        await page.click('.submit-btn');
-
-        const errorMessage = page.locator('#formMessage');
-        await expect(errorMessage).toBeVisible();
-        await expect(errorMessage).toContainText('téléphone');
-    });
-
-    test('refuse un email invalide', async ({ page }) => {
-        await page.fill('#name', 'Jean Dupont');
-        await page.fill('#phone', '06 12 34 56 78');
-        await page.fill('#email', 'email-invalide');
-        await page.fill('#city', 'Bordeaux');
-        await page.fill('#message', 'Message de test valide pour le formulaire');
-
-        await page.click('.submit-btn');
-
-        const errorMessage = page.locator('#formMessage');
-        await expect(errorMessage).toBeVisible();
-        await expect(errorMessage).toContainText('email');
-    });
-
-    test('refuse un message trop court', async ({ page }) => {
-        await page.fill('#name', 'Jean Dupont');
-        await page.fill('#phone', '06 12 34 56 78');
-        await page.fill('#city', 'Paris');
-        await page.fill('#message', 'Court');
-
-        await page.click('.submit-btn');
-
-        const errorMessage = page.locator('#formMessage');
-        await expect(errorMessage).toBeVisible();
-        await expect(errorMessage).toContainText('10');
-    });
-
-    test('accepte un formulaire valide', async ({ page }) => {
-        // Mocker la réponse de Formspree pour éviter les vraies soumissions
+    test('soumet les données à Formspree quand le formulaire est valide', async ({ page }) => {
+        let postData = null;
+        let method = null;
         await page.route('**/formspree.io/**', async route => {
-            await route.fulfill({
-                status: 200,
-                contentType: 'application/json',
-                body: JSON.stringify({ ok: true })
-            });
+            method = route.request().method();
+            postData = route.request().postData();
+            await route.fulfill({ status: 200, contentType: 'text/html', body: 'OK' });
         });
 
         await page.fill('#name', 'Jean Dupont');
@@ -104,79 +85,24 @@ test.describe('Formulaire de contact', () => {
 
         await page.click('.submit-btn');
 
-        // Vérifier qu'un message de succès s'affiche
-        const successMessage = page.locator('#formMessage');
-        await expect(successMessage).toBeVisible({ timeout: 5000 });
-        await expect(successMessage).toContainText('succès');
-    });
-
-    test('affiche tous les champs requis', async ({ page }) => {
-        const nameLabel = page.locator('label[for="name"]');
-        const phoneLabel = page.locator('label[for="phone"]');
-        const cityLabel = page.locator('label[for="city"]');
-        const messageLabel = page.locator('label[for="message"]');
-
-        await expect(nameLabel).toBeVisible();
-        await expect(phoneLabel).toBeVisible();
-        await expect(cityLabel).toBeVisible();
-        await expect(messageLabel).toBeVisible();
-    });
-
-    test('le champ email est optionnel', async ({ page }) => {
-        // Mocker la réponse de Formspree pour éviter les vraies soumissions
-        await page.route('**/formspree.io/**', async route => {
-            await route.fulfill({
-                status: 200,
-                contentType: 'application/json',
-                body: JSON.stringify({ ok: true })
-            });
-        });
-
-        // Remplir le formulaire sans email
-        await page.fill('#name', 'Jean Dupont');
-        await page.fill('#phone', '06 12 34 56 78');
-        await page.fill('#city', 'Libourne');
-        await page.fill('#message', 'Message de test valide sans email pour vérifier que c\'est bien optionnel.');
-
-        await page.click('.submit-btn');
-
-        // Vérifier qu'un message de succès s'affiche
-        const successMessage = page.locator('#formMessage');
-        await expect(successMessage).toBeVisible({ timeout: 5000 });
-        await expect(successMessage).toContainText('succès');
-    });
-
-    test('détecte les tentatives XSS', async ({ page }) => {
-        await page.fill('#name', 'Jean Dupont');
-        await page.fill('#phone', '06 12 34 56 78');
-        await page.fill('#city', 'Bordeaux');
-        await page.fill('#message', '<script>alert("XSS")</script>');
-
-        await page.click('.submit-btn');
-
-        const errorMessage = page.locator('#formMessage');
-        await expect(errorMessage).toBeVisible();
-        await expect(errorMessage).toContainText('non autorisés');
+        // La soumission réelle (POST Formspree) doit partir avec les bonnes données
+        await expect.poll(() => postData, { timeout: 5000 }).not.toBeNull();
+        expect(method).toBe('POST');
+        expect(postData).toContain('Jean');
+        expect(postData).toContain('jean.dupont');
     });
 
     test('fonctionne sur mobile', async ({ page }) => {
-        // Mocker la réponse de Formspree pour éviter les vraies soumissions
+        let formspreeCalled = false;
         await page.route('**/formspree.io/**', async route => {
-            await route.fulfill({
-                status: 200,
-                contentType: 'application/json',
-                body: JSON.stringify({ ok: true })
-            });
+            formspreeCalled = true;
+            await route.fulfill({ status: 200, contentType: 'text/html', body: 'OK' });
         });
 
-        // Simuler un viewport mobile
         await page.setViewportSize({ width: 375, height: 667 });
 
-        // Vérifier que le formulaire est toujours visible et utilisable
-        const form = page.locator('#contactForm');
-        await expect(form).toBeVisible();
+        await expect(page.locator('#contactForm')).toBeVisible();
 
-        // Remplir et soumettre
         await page.fill('#name', 'Jean Dupont');
         await page.fill('#phone', '06 12 34 56 78');
         await page.fill('#city', 'Coutras');
@@ -184,45 +110,32 @@ test.describe('Formulaire de contact', () => {
 
         await page.click('.submit-btn');
 
-        // Vérifier qu'un message de succès s'affiche
-        const successMessage = page.locator('#formMessage');
-        await expect(successMessage).toBeVisible({ timeout: 5000 });
-        await expect(successMessage).toContainText('succès');
+        await expect.poll(() => formspreeCalled, { timeout: 5000 }).toBe(true);
     });
 });
 
 test.describe('Navigation du site', () => {
     test.describe.configure({ mode: 'parallel' });
+
     test('la page d\'accueil se charge correctement', async ({ page }) => {
         await page.goto('/');
-
-        // Vérifier le titre
         await expect(page).toHaveTitle(/Red Den Connexion/);
-
-        // Vérifier que le header est présent
-        const header = page.locator('header');
-        await expect(header).toBeVisible();
+        await expect(page.locator('header')).toBeVisible();
     });
 
-    test('le menu mobile fonctionne', async ({ page }) => {
+    test('le menu mobile s\'ouvre', async ({ page }) => {
         await page.setViewportSize({ width: 375, height: 667 });
         await page.goto('/');
 
-        // Cliquer sur le bouton du menu mobile
-        const menuToggle = page.locator('.mobile-menu-toggle');
-        if (await menuToggle.isVisible()) {
-            await menuToggle.click();
+        const menuToggle = page.locator('#mobileMenuBtn');
+        await expect(menuToggle).toBeVisible();
 
-            // Vérifier que le menu s'ouvre
-            const mobileMenu = page.locator('.mobile-menu');
-            await expect(mobileMenu).toHaveClass(/active/);
-        }
+        await menuToggle.click();
+        await expect(page.locator('#menu')).toHaveClass(/active/);
     });
 
-    test('les liens de navigation fonctionnent', async ({ page }) => {
+    test('les liens de navigation sont présents', async ({ page }) => {
         await page.goto('/');
-
-        // Vérifier que les liens principaux sont présents
         const servicesLink = page.locator('a[href*="service"]').first();
         await expect(servicesLink).toBeVisible();
     });

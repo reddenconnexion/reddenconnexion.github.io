@@ -71,12 +71,11 @@ export default defineConfig({
         // },
     ],
 
-    // Serveur web local pour les tests (optionnel)
-    // Décommentez si vous voulez lancer automatiquement un serveur
-    // webServer: {
-    //     command: 'python3 -m http.server 8000',
-    //     port: 8000,
-    //     timeout: 120000,
-    //     reuseExistingServer: !process.env.CI,
-    // },
+    // Serveur web local lancé automatiquement pour les tests
+    webServer: {
+        command: 'python3 -m http.server 8000',
+        port: 8000,
+        timeout: 120000,
+        reuseExistingServer: !process.env.CI,
+    },
 });
