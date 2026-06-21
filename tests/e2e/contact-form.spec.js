@@ -114,6 +114,36 @@ test.describe('Formulaire de contact', () => {
     });
 });
 
+test.describe('Message de confirmation après envoi', () => {
+    test.describe.configure({ mode: 'parallel' });
+
+    // Formspree redirige (via _next) vers une URL contenant success=true.
+    // On vérifie que le message de confirmation s'affiche bien, quel que soit
+    // l'emplacement du paramètre (fragment ou query string).
+    test('affiche le message de succès quand success=true est dans le fragment', async ({ page }) => {
+        await page.goto('/#contact?success=true');
+
+        const successMessage = page.locator('#formMessage');
+        await expect(successMessage).toBeVisible();
+        await expect(successMessage).toContainText('succès');
+    });
+
+    test('affiche le message de succès quand success=true est dans la query string', async ({ page }) => {
+        await page.goto('/?success=true');
+
+        const successMessage = page.locator('#formMessage');
+        await expect(successMessage).toBeVisible();
+        await expect(successMessage).toContainText('succès');
+    });
+
+    test('n\'affiche pas de message de succès sans le paramètre', async ({ page }) => {
+        await page.goto('/');
+        await page.waitForSelector('#contactForm', { state: 'visible' });
+
+        await expect(page.locator('#formMessage')).toBeHidden();
+    });
+});
+
 test.describe('Navigation du site', () => {
     test.describe.configure({ mode: 'parallel' });
 
