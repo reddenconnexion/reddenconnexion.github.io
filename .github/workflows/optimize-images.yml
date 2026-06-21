@@ -1,0 +1,58 @@
+name: Optimisation des Images
+
+# Se déclenche quand des images sont ajoutées/modifiées.
+# Le workflow optimise les images (redimensionnement + WebP) puis recommitte
+# le résultat sur la branche, sans intervention manuelle.
+on:
+  push:
+    branches:
+      - main
+      - master
+      - 'claude/**'
+    paths:
+      - '**.jpg'
+      - '**.jpeg'
+      - '**.png'
+
+# Nécessaire pour que le workflow puisse repousser les images optimisées
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    name: Optimiser et committer les images
+    runs-on: ubuntu-latest
+    # Sécurité anti-boucle : on n'agit pas sur les commits faits par le bot
+    if: github.actor != 'github-actions[bot]'
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Optimiser les images
+        run: npm run optimize:images
+
+      - name: Committer les images optimisées
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            # [skip ci] évite que ce commit redéclenche les workflows
+            git commit -m "chore(images): optimisation automatique des images [skip ci]"
+            git push
+            echo "✅ Images optimisées et committées."
+          else
+            echo "✅ Aucune image à optimiser."
+          fi
