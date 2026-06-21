@@ -9,7 +9,9 @@
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:all": "npm test && npm run test:e2e"
+    "test:all": "npm test && npm run test:e2e",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "check:images": "node scripts/optimize-images.mjs --check"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "jest": "^30.2.0",
-    "jsdom": "^27.2.0"
+    "jsdom": "^27.2.0",
+    "sharp": "^0.34.5"
   }
 }
