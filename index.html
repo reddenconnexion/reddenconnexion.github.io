@@ -2655,6 +2655,12 @@
             .showcase-row { animation: none; }
             .showcase { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
         }
+
+        /* Les photos du carrousel s'ouvrent en grand au clic (lightbox existante #lightbox) */
+        .showcase-tile img { cursor: zoom-in; }
+
+        /* Pause au survol : permet de cliquer confortablement sur une photo */
+        .showcase-row:hover { animation-play-state: paused; }
     </style>
     <!-- Metricool : balise inline (visible pour la vérification d'installation) ; le tracker ne s'exécute qu'après consentement explicite (RGPD). -->
     <script>
