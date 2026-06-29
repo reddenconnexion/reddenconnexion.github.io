@@ -2777,6 +2777,24 @@
             <p>Dépannage, rénovation, mise aux normes, bornes de recharge, photovoltaïque…</p>
         </div>
         <div class="showcase-track">
+            <!--
+              ───────────────────────────────────────────────────────────────
+              COMMENT AJOUTER UNE PHOTO DE CHANTIER ICI
+              ───────────────────────────────────────────────────────────────
+              1. Déposez votre image dans le dossier du site (idéalement en .webp,
+                 sinon .jpg/.png), par ex. : chantier-renovation-libourne.webp
+              2. Copiez-collez UNE ligne ci-dessous dans la rangée de votre choix
+                 (Rangée 1, 2 ou 3), entre deux tuiles existantes :
+
+                 <div class="showcase-tile" role="listitem"><img src="VOTRE-IMAGE.webp" alt="Description du chantier" loading="lazy" decoding="async" width="280" height="160"></div>
+
+              3. Remplacez VOTRE-IMAGE.webp par le nom de votre fichier
+                 et adaptez le texte du alt (utile pour Google).
+
+              C'EST TOUT : le défilement en boucle se duplique automatiquement,
+              vous n'avez plus rien d'autre à faire (voir js/showcase.js).
+              ───────────────────────────────────────────────────────────────
+            -->
 
             <!-- Rangée 1 : gauche -->
             <div class="showcase-row" role="list">
@@ -2800,25 +2818,6 @@
                 </div>
                 <div class="showcase-tile" role="listitem">
                     <img src="panneauxphotovoltaiques.webp" alt="Panneaux photovoltaïques" loading="lazy" decoding="async" width="280" height="160">
-                </div>
-                <!-- duplicata pour boucle sans couture -->
-                <div class="showcase-tile text tile-red" aria-hidden="true">
-                    <span class="tile-icon">🚨</span><span class="tile-label">Dépannage urgent 7j/7</span>
-                </div>
-                <div class="showcase-tile" aria-hidden="true">
-                    <img src="installationpro.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
-                </div>
-                <div class="showcase-tile text tile-light" aria-hidden="true">
-                    <span class="tile-icon">💰</span><span class="tile-label">Devis gratuit sous 24 h</span>
-                </div>
-                <div class="showcase-tile" aria-hidden="true">
-                    <img src="tableauhallescoutras.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
-                </div>
-                <div class="showcase-tile text tile-dark" aria-hidden="true">
-                    <span class="tile-icon">⭐</span><span class="tile-label">25 ans d'expérience à votre service</span>
-                </div>
-                <div class="showcase-tile" aria-hidden="true">
-                    <img src="panneauxphotovoltaiques.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
                 </div>
             </div>
 
@@ -2845,25 +2844,6 @@
                 <div class="showcase-tile" role="listitem">
                     <img src="deniselec.webp" alt="Denis Mériot électricien" loading="lazy" decoding="async" width="280" height="160">
                 </div>
-                <!-- duplicata -->
-                <div class="showcase-tile text tile-dark" aria-hidden="true">
-                    <span class="tile-icon">🔧</span><span class="tile-label">Rénovation électrique complète</span>
-                </div>
-                <div class="showcase-tile" aria-hidden="true">
-                    <img src="comparatif-chantier-remplacement-tableau-elec.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
-                </div>
-                <div class="showcase-tile text tile-red" aria-hidden="true">
-                    <span class="tile-icon">🔌</span><span class="tile-label">Borne de recharge véhicule électrique</span>
-                </div>
-                <div class="showcase-tile" aria-hidden="true">
-                    <img src="remplacement-portes-fusibles.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
-                </div>
-                <div class="showcase-tile text tile-light" aria-hidden="true">
-                    <span class="tile-icon">✅</span><span class="tile-label">Normes NF C 15-100 respectées</span>
-                </div>
-                <div class="showcase-tile" aria-hidden="true">
-                    <img src="deniselec.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
-                </div>
             </div>
 
             <!-- Rangée 3 : gauche (plus lent) -->
@@ -2888,25 +2868,6 @@
                 <div class="showcase-tile text tile-dark" role="listitem">
                     <span class="tile-icon" aria-hidden="true">🛡️</span>
                     <span class="tile-label">Mise aux normes & sécurité</span>
-                </div>
-                <!-- duplicata -->
-                <div class="showcase-tile" aria-hidden="true">
-                    <img src="moietmonfrerepanneauxphotov.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
-                </div>
-                <div class="showcase-tile text tile-red" aria-hidden="true">
-                    <span class="tile-icon">⚡</span><span class="tile-label">Intervention rapide en Gironde</span>
-                </div>
-                <div class="showcase-tile" aria-hidden="true">
-                    <img src="tableauvetuste.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
-                </div>
-                <div class="showcase-tile text tile-white" aria-hidden="true">
-                    <span class="tile-icon">📋</span><span class="tile-label">Tarifs clairs, pas de surprise</span>
-                </div>
-                <div class="showcase-tile" aria-hidden="true">
-                    <img src="mutiprises.webp" alt="" loading="lazy" decoding="async" width="280" height="160">
-                </div>
-                <div class="showcase-tile text tile-dark" aria-hidden="true">
-                    <span class="tile-icon">🛡️</span><span class="tile-label">Mise aux normes & sécurité</span>
                 </div>
             </div>
 
@@ -4353,5 +4314,6 @@
     </div>
 
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/showcase.js" defer></script>
 </body>
 </html>
