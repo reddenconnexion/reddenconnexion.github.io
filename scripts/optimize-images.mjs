@@ -93,7 +93,11 @@ for (const file of files) {
     let webpExists = true;
     try { statSync(webpPath); } catch { webpExists = false; }
 
-    if (!webpExists && (needResize || oversize || buf.length > 150 * 1024)) {
+    // On génère systématiquement le jumeau .webp s'il manque, quelle que soit
+    // la taille de la photo déposée : c'est le format référencé par le site
+    // (carrousel, balises <picture>…). Ainsi toute photo .jpg/.png ajoutée est
+    // automatiquement convertie en .webp.
+    if (!webpExists) {
         const source = readFileSync(file); // version éventuellement déjà optimisée
         const webp = await sharp(source).resize({ width: Math.min(meta.width, MAX_WIDTH) }).webp({ quality: 80 }).toBuffer();
         if (checkMode) {

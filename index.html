@@ -2781,15 +2781,19 @@
               ───────────────────────────────────────────────────────────────
               COMMENT AJOUTER UNE PHOTO DE CHANTIER ICI
               ───────────────────────────────────────────────────────────────
-              1. Déposez votre image dans le dossier du site (idéalement en .webp,
-                 sinon .jpg/.png), par ex. : chantier-renovation-libourne.webp
+              1. Déposez votre photo dans le dossier du site. Vous pouvez la
+                 déposer directement en .jpg ou .png : elle sera automatiquement
+                 convertie (et allégée) en .webp lors de l'envoi sur GitHub.
+                 Ex. : chantier-renovation-libourne.jpg -> chantier-renovation-libourne.webp
               2. Copiez-collez UNE ligne ci-dessous dans la rangée de votre choix
-                 (Rangée 1, 2 ou 3), entre deux tuiles existantes :
+                 (Rangée 1, 2 ou 3), entre deux tuiles existantes, en pointant
+                 vers le fichier .webp :
 
                  <div class="showcase-tile" role="listitem"><img src="VOTRE-IMAGE.webp" alt="Description du chantier" loading="lazy" decoding="async" width="280" height="160"></div>
 
-              3. Remplacez VOTRE-IMAGE.webp par le nom de votre fichier
-                 et adaptez le texte du alt (utile pour Google).
+              3. Remplacez VOTRE-IMAGE.webp par le nom de votre fichier (même nom
+                 que la photo déposée, mais avec l'extension .webp) et adaptez le
+                 texte du alt (utile pour Google).
 
               C'EST TOUT : le défilement en boucle se duplique automatiquement,
               vous n'avez plus rien d'autre à faire (voir js/showcase.js).
