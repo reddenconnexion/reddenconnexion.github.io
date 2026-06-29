@@ -72,3 +72,49 @@ test.describe('Carrousel d\'images (showcase)', () => {
         expect(visibleImgsWithAlt).toBeGreaterThan(0);
     });
 });
+
+test.describe('Carrousel — affichage d\'une photo en grand (lightbox)', () => {
+    test.describe.configure({ mode: 'parallel' });
+
+    test.beforeEach(async ({ page }) => {
+        await page.goto('/');
+        await page.waitForFunction(() => {
+            const rows = document.querySelectorAll('.showcase-row');
+            return rows.length && [...rows].every(r => r.dataset.looped === 'true');
+        });
+    });
+
+    test('réutilise la lightbox existante (pas de doublon)', async ({ page }) => {
+        // Une seule lightbox dans la page : on ne recrée pas un second composant
+        await expect(page.locator('.lightbox')).toHaveCount(1);
+    });
+
+    test('un clic sur une photo l\'ouvre en grand', async ({ page }) => {
+        const tileImg = page.locator('.showcase-tile[role="listitem"] img').first();
+        const src = await tileImg.getAttribute('src');
+        // La rangée défile en continu : un vrai clic force l'action (le survol met
+        // la rangée en pause pour l'utilisateur réel ; Playwright a besoin de force).
+        await tileImg.click({ force: true });
+        await expect(page.locator('#lightbox.active')).toBeVisible();
+        await expect(page.locator('#lightbox-img')).toHaveAttribute('src', src);
+        const loaded = await page.locator('#lightbox-img').evaluate(i => i.complete && i.naturalWidth > 0);
+        expect(loaded).toBe(true);
+    });
+
+    test('se ferme via le bouton ✕ puis via la touche Échap', async ({ page }) => {
+        const tileImg = page.locator('.showcase-tile[role="listitem"] img').first();
+        await tileImg.click({ force: true });
+        await page.locator('#lightboxClose').click();
+        await expect(page.locator('#lightbox')).not.toHaveClass(/active/);
+
+        await tileImg.click({ force: true });
+        await expect(page.locator('#lightbox.active')).toBeVisible();
+        await page.keyboard.press('Escape');
+        await expect(page.locator('#lightbox')).not.toHaveClass(/active/);
+    });
+
+    test('ne s\'ouvre pas au clic sur une tuile texte', async ({ page }) => {
+        await page.locator('.showcase-tile.text[role="listitem"]').first().click({ force: true });
+        await expect(page.locator('#lightbox.active')).toHaveCount(0);
+    });
+});
