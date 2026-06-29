@@ -35,9 +35,11 @@ test.describe('Carrousel d\'images (showcase)', () => {
         const rows = await page.$$('.showcase-row');
         for (const row of rows) {
             const counts = await row.evaluate(el => {
+                // On ne compte que les tuiles directes (pas les <span> internes
+                // qui portent aussi aria-hidden sur les icônes)
                 const total = el.children.length;
-                const visible = el.querySelectorAll('[role="listitem"]').length;
-                const clones = el.querySelectorAll('[aria-hidden="true"]').length;
+                const visible = el.querySelectorAll(':scope > [role="listitem"]').length;
+                const clones = el.querySelectorAll(':scope > [aria-hidden="true"]').length;
                 return { total, visible, clones };
             });
             // Chaque tuile d'origine doit avoir exactement une copie
