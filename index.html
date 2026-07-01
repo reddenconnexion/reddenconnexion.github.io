@@ -1398,6 +1398,30 @@
             transform: rotate(90deg);
         }
 
+        /* Texte de contexte affiché sous la photo agrandie */
+        .lightbox-caption {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: min(90vw, 800px);
+            margin: 0;
+            padding: 10px 18px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            font-size: 1rem;
+            line-height: 1.4;
+            text-align: center;
+            z-index: 10002;
+        }
+        .lightbox-caption:empty {
+            display: none;
+        }
+        @media (max-width: 640px) {
+            .lightbox-caption { font-size: 0.9rem; bottom: 16px; padding: 8px 14px; }
+        }
+
         .testimonials {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
@@ -2870,6 +2894,7 @@
 
             <!-- Rangée 3 : gauche (plus lent) -->
             <div class="showcase-row slow" role="list">
+                <div class="showcase-tile" role="listitem"><img src="avant-apres-remplacement-lustre-ventilateur-plafond.webp" alt="Avant/après : remplacement d'un ancien lustre par un ventilateur de plafond" loading="lazy" decoding="async" width="280" height="160"></div>
                 <div class="showcase-tile" role="listitem"><img src="installation-interrupteur-double-design.webp" alt="Installation d'un interrupteur double design en finition aluminium" loading="lazy" decoding="async" width="280" height="160"></div>
                 <div class="showcase-tile" role="listitem">
                     <img src="moietmonfrerepanneauxphotov.webp" alt="Denis et son frère installant des panneaux photovoltaïques" loading="lazy" decoding="async" width="280" height="160">
@@ -2877,9 +2902,6 @@
                 <div class="showcase-tile text tile-red" role="listitem">
                     <span class="tile-icon" aria-hidden="true">⚡</span>
                     <span class="tile-label">Intervention rapide en Gironde</span>
-                </div>
-                <div class="showcase-tile" role="listitem">
-                    <img src="tableauvetuste.webp" alt="Ancien tableau électrique vétuste" loading="lazy" decoding="async" width="280" height="160">
                 </div>
                 <div class="showcase-tile text tile-white" role="listitem">
                     <span class="tile-icon" aria-hidden="true">📋</span>
@@ -3292,6 +3314,7 @@
         <div class="lightbox-content" id="lightboxContent">
             <img id="lightbox-img" src="" alt="Image agrandie">
         </div>
+        <p id="lightbox-caption" class="lightbox-caption" aria-live="polite"></p>
     </div>
 
     <section id="avis" class="testimonials">
