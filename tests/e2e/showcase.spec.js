@@ -120,12 +120,14 @@ test.describe('Carrousel — affichage d\'une photo en grand (lightbox)', () => 
 
     test('affiche un texte de contexte (légende) sous la photo agrandie', async ({ page }) => {
         const tileImg = page.locator('.showcase-tile[role="listitem"] img').first();
-        const alt = await tileImg.getAttribute('alt');
-        expect((alt || '').trim().length).toBeGreaterThan(0);
+        // La légende privilégie data-legende (texte personnalisé), sinon le alt
+        const expected = (await tileImg.getAttribute('data-legende'))
+            || (await tileImg.getAttribute('alt'));
+        expect((expected || '').trim().length).toBeGreaterThan(0);
         await tileImg.click({ force: true });
         const caption = page.locator('#lightbox-caption');
         await expect(caption).toBeVisible();
-        await expect(caption).toHaveText(alt);
+        await expect(caption).toHaveText(expected);
     });
 
     test('la galerie existante n\'hérite pas d\'une légende du carrousel', async ({ page }) => {

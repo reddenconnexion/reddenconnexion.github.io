@@ -58,10 +58,14 @@
 
       var img = e.target.closest('.showcase-tile img');
       if (img) {
-        var text = img.getAttribute('alt') || img.getAttribute('data-alt') || '';
+        // Texte alternatif (pour l'accessibilité de l'image agrandie)
+        var altText = img.getAttribute('alt') || img.getAttribute('data-alt') || '';
+        // Légende affichée sous la photo : on privilégie data-legende (texte de
+        // contexte personnalisé), sinon on retombe sur le alt descriptif.
+        var legende = img.getAttribute('data-legende') || altText;
         lightboxImg.src = img.getAttribute('src');
-        lightboxImg.alt = text || 'Photo de chantier';
-        setCaption(text); // texte de contexte affiché sous la photo
+        lightboxImg.alt = altText || 'Photo de chantier';
+        setCaption(legende); // texte de contexte affiché sous la photo
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
         return;
