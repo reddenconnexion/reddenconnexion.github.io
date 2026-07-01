@@ -117,4 +117,27 @@ test.describe('Carrousel — affichage d\'une photo en grand (lightbox)', () => 
         await page.locator('.showcase-tile.text[role="listitem"]').first().click({ force: true });
         await expect(page.locator('#lightbox.active')).toHaveCount(0);
     });
+
+    test('affiche un texte de contexte (légende) sous la photo agrandie', async ({ page }) => {
+        const tileImg = page.locator('.showcase-tile[role="listitem"] img').first();
+        const alt = await tileImg.getAttribute('alt');
+        expect((alt || '').trim().length).toBeGreaterThan(0);
+        await tileImg.click({ force: true });
+        const caption = page.locator('#lightbox-caption');
+        await expect(caption).toBeVisible();
+        await expect(caption).toHaveText(alt);
+    });
+
+    test('la galerie existante n\'hérite pas d\'une légende du carrousel', async ({ page }) => {
+        // Ouvre une photo du carrousel (légende renseignée), puis ferme
+        await page.locator('.showcase-tile[role="listitem"] img').first().click({ force: true });
+        await expect(page.locator('#lightbox-caption')).not.toHaveText('');
+        await page.locator('#lightboxClose').click();
+        // Ouvre une image de la galerie : la légende doit être vidée
+        const wrapper = page.locator('.gallery-image-wrapper[data-lightbox]').first();
+        await wrapper.scrollIntoViewIfNeeded();
+        await wrapper.click();
+        await expect(page.locator('#lightbox.active')).toBeVisible();
+        await expect(page.locator('#lightbox-caption')).toHaveText('');
+    });
 });

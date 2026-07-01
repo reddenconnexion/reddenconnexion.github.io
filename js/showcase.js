@@ -43,17 +43,36 @@
   function setupLightbox() {
     var lightbox = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightbox-img');
+    var caption = document.getElementById('lightbox-caption');
     // Si la lightbox de la page n'existe pas, on n'active pas le clic-pour-agrandir.
     if (!lightbox || !lightboxImg) return;
 
+    function setCaption(text) {
+      // La légende est masquée automatiquement en CSS quand elle est vide (:empty)
+      if (caption) caption.textContent = text || '';
+    }
+
     // Délégation : un seul écouteur couvre toutes les photos (originaux + clones)
     document.addEventListener('click', function (e) {
-      var img = e.target && e.target.closest ? e.target.closest('.showcase-tile img') : null;
-      if (!img) return;
-      lightboxImg.src = img.getAttribute('src');
-      lightboxImg.alt = img.getAttribute('alt') || img.getAttribute('data-alt') || 'Photo de chantier';
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      if (!e.target || !e.target.closest) return;
+
+      var img = e.target.closest('.showcase-tile img');
+      if (img) {
+        var text = img.getAttribute('alt') || img.getAttribute('data-alt') || '';
+        lightboxImg.src = img.getAttribute('src');
+        lightboxImg.alt = text || 'Photo de chantier';
+        setCaption(text); // texte de contexte affiché sous la photo
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        return;
+      }
+
+      // La galerie existante (plus bas dans la page) réutilise la même lightbox
+      // mais n'a pas de texte de contexte : on vide la légende pour éviter
+      // qu'une légende du carrousel n'y reste affichée par erreur.
+      if (e.target.closest('.gallery-image-wrapper')) {
+        setCaption('');
+      }
     });
   }
 
