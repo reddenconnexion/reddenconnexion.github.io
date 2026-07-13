@@ -31,6 +31,33 @@ Site déjà excellent techniquement ; cette passe a ciblé les derniers leviers 
 
 ---
 
+## ✅ Améliorations Techniques Appliquées (Juillet 2026)
+
+Passe déclenchée par le suivi Search Console (12/04 → 11/07/2026). **Constat clé : la visibilité explose (×3,7 en impressions, 5 083 ; position moyenne 11,8 → 10,3) mais le CTR chute (~3 % → 0,8 %)** — on est vu, on ne clique pas assez. Cette passe cible les 2 leviers « on-page » de ce problème (titres/descriptions + contenu local), les autres relevant de la fiche Google Business.
+
+**Diagnostic honnête à garder en tête :** les requêtes Coutras classées **n°1 mais à 0 clic** (« dépannage et installation électrique coutras », « mise aux normes électrique coutras ») sont quasi certainement captées par le **Local Pack / la fiche Google Business** affichés au-dessus du résultat organique. Aucune réécriture de balise ne corrige cela — c'est l'**Action Prioritaire n°1 ci-dessous (fiche GBP)**. Les gains « on-page » attendus portent sur les requêtes en position 5–12 et sur la page Libourne (proche du top 10).
+
+- ✅ **Balises Title + meta description réécrites** (Libourne + Coutras) pour un meilleur CTR : Libourne attaque désormais par « Électricien Libourne » (la requête « electricien libourne » était bloquée en position 18–31) ; Coutras remplace l'accroche contre-productive « en moins de 2h » (qui sonne lent pour une urgence). OG/Twitter alignés.
+- ✅ **Nouvelle section « Électricien à Libourne : bien plus que le dépannage »** sur la page Libourne : cadrage plein-service (rénovation, mise aux normes, tableau, bornes, photovoltaïque) + contenu local factuel (bâti libournais, confluent Dordogne/Isle, quais, RN89) + **3 liens internes** (rénovation Libourne, installation tableau, tarifs) — pour capter « électricien Libourne » sans diluer le classement « dépannage » qui progresse (16,4 → 11,2).
+- ✅ **Parité de contenu Coutras** : ajout du bloc « Coupure de courant à Coutras : panne Enedis ou défaut chez vous ? » (déjà présent sur Libourne) — cible « coupure electricite coutras » sur le modèle de « coupure electricite libourne » (370 impr, en hausse).
+- ✅ **Correctifs rédactionnels** : uniformisation de la voix « je » (bugs « je diagnostique et réparons » / « corrigeons » / « préparons » / « effectuons ») sur les pages Libourne et Coutras. *(Le même patron existe sur les ~17 autres pages villes clones — à corriger en suivi.)*
+- ✅ **Entretien** : `sitemap.xml` (`lastmod` Libourne/Coutras → 2026-07-13) et `llms.txt` (descriptions Libourne/Coutras enrichies) mis à jour.
+
+### 📌 Nouvelle baseline — 13/07/2026 (référence pour le point ~13/08/2026)
+
+| Indicateur | Valeur |
+|---|---|
+| Position moyenne globale | ≈ 10,3 |
+| Impressions (3 mois) | 5 083 |
+| Clics | 41 |
+| CTR global | 0,8 % |
+
+**Pages prioritaires :** Libourne 2 742 impr / pos 11,2 · Coutras 626 impr / pos 12,4 · Rénovation 510 impr / pos 9,3 · Accueil 1 396 impr / pos 6,2.
+
+**Requêtes à surveiller :** « coupure electricite libourne » 370 impr / pos 11,6 (en hausse) · « depannage electricite libourne » 175 impr / pos 12,5 (stagne) · « electricien libourne » pos 18–31 (bloquée) · « electricien coutras » 81 impr / pos 5 (3 clics) · Coutras top-position (« dépannage et installation électrique coutras », « mise aux normes électrique coutras ») → **toujours 0 clic : surveiller si la fiche Google Business améliore le CTR.**
+
+---
+
 ## 🎯 Actions Prioritaires à Réaliser (Hors code)
 
 ### 1. Google Business Profile (fiche vérifiée ✅ — passer en mode entretien)
@@ -340,7 +367,7 @@ Ces 3 actions seules peuvent vous faire passer de la page 17 à la page 1-2 en q
 ---
 
 **Date de création:** Novembre 2025
-**Dernière mise à jour:** Mai 2026
+**Dernière mise à jour:** Juillet 2026
 **Prochaine révision recommandée:** Août 2026
 
 **Contact technique:** Si besoin d'aide pour implémenter ces recommandations, n'hésitez pas à faire appel à un consultant SEO local spécialisé en référencement local.
