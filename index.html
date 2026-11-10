@@ -4139,11 +4139,11 @@
                 scrollWheelZoom: false
             }).setView(stMedard, 10);
 
-            // Fond de carte CartoDB Voyager (plus moderne et élégant)
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                maxZoom: 19,
-                subdomains: 'abcd'
+            // Fond de carte OpenStreetMap (gratuit, sans clé d'API).
+            // CARTO exige désormais une clé : ses tuiles affichaient « API key required ».
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                maxZoom: 19
             }).addTo(map);
 
             // Icône personnalisée avec éclair pour le marqueur principal
