@@ -22,7 +22,7 @@
 - [Installation panneaux photovoltaïques](https://reddenconnexion.fr/installation-panneaux-photovoltaiques.html) : Installation de panneaux solaires pour particuliers et professionnels, autoconsommation, injection réseau.
 - [Borne de recharge véhicule électrique](https://reddenconnexion.fr/installation-prise-vehicule-electrique.html) : Installation de bornes IRVE (Wallbox) pour voitures et véhicules électriques, selon normes en vigueur.
 - [Caméras de sécurité](https://reddenconnexion.fr/installation-cameras-securite.html) : Installation de systèmes de vidéosurveillance (IP, analogique) pour maisons et locaux professionnels.
-- [Installation électrique climatisation](https://reddenconnexion.fr/installation-electrique-climatisation.html) : Ligne dédiée, protection au tableau et raccordement électrique de climatisations monosplit et multisplit, en coordination avec un frigoriste certifié pour la partie fluide.
+- [Installation de climatisation](https://reddenconnexion.fr/installation-climatisation.html) : Ligne dédiée, protection au tableau et raccordement électrique de climatisations monosplit et multisplit, en coordination avec un frigoriste certifié pour la partie fluide.
 
 ## Zones d'intervention
 
