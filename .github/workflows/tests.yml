@@ -43,7 +43,9 @@ jobs:
   # Tests E2E avec Playwright
   e2e-tests:
     name: Tests E2E (Playwright)
-    runs-on: ubuntu-latest
+    # Image fixée : Playwright 1.56.1 ne prend pas en charge Ubuntu 26.04 (ubuntu-latest).
+    # À repasser sur ubuntu-latest après une mise à jour de @playwright/test.
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Récupérer le code
