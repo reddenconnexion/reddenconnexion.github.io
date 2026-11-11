@@ -2688,6 +2688,92 @@
             .showcase { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
         }
 
+        /* ===== Allègement mobile : page d'accueil plus courte et plus lisible ===== */
+        .gallery-more { display: none; }
+
+        @media (max-width: 768px) {
+            section { padding: 48px 1.1rem; }
+            h2 { font-size: 1.6rem; margin-bottom: 1.75rem; }
+
+            /* Atouts de l'en-tête sur une ligne au lieu de trois */
+            .usps {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            /* Pourquoi me choisir : 2 colonnes compactes */
+            .why-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1.5rem; }
+            .why-item { padding: 1rem 0.75rem; }
+            .why-icon { font-size: 2rem; margin-bottom: 0.4rem; }
+            .why-item h3 { font-size: 1rem; }
+            .why-item p { font-size: 0.85rem; line-height: 1.45; }
+
+            /* Services : icône et titre sur la même ligne */
+            .services-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+            .service-card {
+                padding: 1.1rem 1.2rem;
+                display: grid;
+                grid-template-columns: auto 1fr;
+                column-gap: 0.8rem;
+                align-items: center;
+            }
+            .service-card .service-icon { font-size: 1.8rem; margin: 0; }
+            .service-card h3 { font-size: 1.1rem; margin: 0; }
+            .service-card > p,
+            .service-card > a,
+            .service-card > div:not(.service-icon) { grid-column: 1 / -1; }
+            .service-card > p { margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.5; }
+            .service-card > a { margin-top: 0.5rem !important; }
+
+            /* Réalisations : 4 visibles, le reste sur demande */
+            .gallery-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .gallery-grid:not(.expanded) > .gallery-item:nth-child(n+5) { display: none; }
+            .gallery-more {
+                display: block;
+                width: 100%;
+                margin-top: 1.25rem;
+                padding: 0.9rem 1rem;
+                background: #fff;
+                color: #ff3333;
+                border: 2px solid #ff3333;
+                border-radius: 50px;
+                font: inherit;
+                font-weight: 700;
+                cursor: pointer;
+            }
+            .gallery-more[hidden] { display: none; }
+
+            /* Avis : défilement horizontal au doigt */
+            .testimonials-grid {
+                display: flex;
+                gap: 0.9rem;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                margin: 1.5rem -1.1rem 0;
+                padding: 0 1.1rem 0.75rem;
+                scrollbar-width: none;
+            }
+            .testimonials-grid::-webkit-scrollbar { display: none; }
+            .testimonial-link { flex: 0 0 84%; scroll-snap-align: center; display: flex; }
+            .testimonial-card {
+                padding: 1.25rem;
+                width: 100%;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .testimonial-stars { font-size: 1.1rem; margin-bottom: 0.6rem; }
+            .testimonial-text { line-height: 1.6; }
+
+            /* Contact : cartes compactes */
+            .contact-grid { gap: 0.8rem; margin-bottom: 2rem; }
+            .contact-item { padding: 1rem; }
+            .contact-icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
+        }
+
         /* Les photos du carrousel s'ouvrent en grand au clic (lightbox existante #lightbox) */
         .showcase-tile img { cursor: zoom-in; }
 
@@ -2736,7 +2822,7 @@
                 <li><a href="#galerie">Réalisations</a></li>
                 <li><a href="conseils/">Conseils</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="tarifs-devis.html" style="background:#ff3333; color:white; padding:0.3rem 0.9rem; border-radius:20px; font-size:0.85rem; font-weight:bold;">💶 Tarifs</a></li>
+                <li><a href="tarifs-devis.html" style="background:#ff3333; color:white; padding:0.3rem 0.9rem; border-radius:20px; font-size:0.85rem; font-weight:bold; white-space:nowrap; display:inline-block;">💶 Tarifs</a></li>
             </ul>
         </nav>
     </header>
@@ -3036,6 +3122,13 @@
                 <h3>Dépannage Urgent 24h/24</h3>
                 <p>Intervention rapide pour tous vos problèmes électriques : pannes, disjoncteurs, courts-circuits. Disponible 24h/24 et 7j/7.</p>
                 <a href="depannage-urgent.html" style="display: inline-block; margin-top: 1rem; color: #ff3333; text-decoration: none; font-weight: bold;">En savoir plus →</a>
+                <div style="margin-top: 0.6rem; font-size: 0.9rem; line-height: 1.8;">
+                    <span style="color: #666;">Pages locales :</span>
+                    <a href="depannage-electrique-saint-medard-de-guizieres.html" style="color: #ff3333; text-decoration: none; border-bottom: 1px dotted #ff3333;">St Médard</a>,
+                    <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: none; border-bottom: 1px dotted #ff3333;">Libourne</a>,
+                    <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: none; border-bottom: 1px dotted #ff3333;">Coutras</a>,
+                    <a href="depannage-electrique-montpon-menesterol.html" style="color: #ff3333; text-decoration: none; border-bottom: 1px dotted #ff3333;">Montpon</a>
+                </div>
             </div>
             <div class="service-card animate-on-scroll">
                 <div class="service-icon">🔧</div>
@@ -3085,40 +3178,9 @@
         </div>
     </section>
 
-    <!-- Section SEO locale supplémentaire -->
-    <section style="max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; background: linear-gradient(135deg, rgba(255,51,51,0.05) 0%, rgba(0,0,0,0.02) 100%); border-radius: 20px;">
-        <h2 style="text-align: center; color: #ff3333; margin-bottom: 2rem; font-size: 2rem;">Votre Électricien de Confiance à St Médard de Guizières</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
-            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                <h3 style="color: #ff3333; margin-bottom: 1rem; font-size: 1.4rem;">🏠 Disponible 7j/7, jours fériés inclus</h3>
-                <p style="line-height: 1.8; color: #333;">
-                    Installé depuis plus de 25 ans à St Médard de Guizières, Red Den Connexion est votre électricien local de référence.
-                    Je connais parfaitement les spécificités du secteur et j'interviens rapidement sur toute la commune pour
-                    tous vos besoins en électricité : dépannage, installation, rénovation.
-                </p>
-            </div>
-            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                <h3 style="color: #ff3333; margin-bottom: 1rem; font-size: 1.4rem;">⚡ Services d'Électricité Complets</h3>
-                <p style="line-height: 1.8; color: #333;">
-                    Que vous soyez particulier ou professionnel à St Médard de Guizières, <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: none; border-bottom: 2px solid #ff3333;">Libourne</a> ou <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: none; border-bottom: 2px solid #ff3333;">Coutras</a>,
-                    je propose tous les services électriques : mise aux normes NF C 15-100, installation de tableaux électriques,
-                    dépannage urgent 24h/24, rénovation complète d'installation vétuste.
-                </p>
-            </div>
-            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                <h3 style="color: #ff3333; margin-bottom: 1rem; font-size: 1.4rem;">🚨 Intervention Rapide en Gironde</h3>
-                <p style="line-height: 1.8; color: #333;">
-                    Panne de courant à <a href="depannage-electrique-montpon-menesterol.html" style="color: #ff3333; text-decoration: none; border-bottom: 2px solid #ff3333;">Montpon-Ménestérol</a> ? Disjoncteur qui saute à <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: none; border-bottom: 2px solid #ff3333;">Libourne</a> ? Installation dangereuse à <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: none; border-bottom: 2px solid #ff3333;">Coutras</a> ?
-                    J'interviens en urgence 24h/24 et 7j/7 dans toute la Gironde, avec un délai d'intervention optimal
-                    depuis ma base à St Médard de Guizières. Besoin d'un <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: none; border-bottom: 2px solid #ff3333;">dépannage électrique à Libourne</a> ? Je suis sur place en 20 à 25 minutes.
-                </p>
-            </div>
-        </div>
-    </section>
-
     <section id="galerie" class="gallery">
         <h2 class="animate-on-scroll">Mes Réalisations à St Médard de Guizières et Environs</h2>
-        <div class="gallery-grid">
+        <div class="gallery-grid" id="galleryGrid">
             <!-- Dernière réalisation : Avant/Après remplacement tableau à porte-fusibles porcelaine -->
             <div class="gallery-item">
                 <div class="gallery-image-wrapper" data-lightbox="avant-apres-remplacement-tableau-porte-fusibles-porcelaine.jpg">
@@ -3231,28 +3293,6 @@
                 </div>
             </div>
 
-            <!-- Réalisation 3 : Expertise électricien -->
-            <div class="gallery-item">
-                <div class="gallery-image-wrapper" data-lightbox="deniselec.png">
-                    <picture><source srcset="deniselec.webp" type="image/webp"><img src="deniselec.png" alt="Électricien professionnel Red Den Connexion avec 25 ans d'expérience" loading="lazy" width="671" height="377"></picture>
-                </div>
-                <div class="gallery-content">
-                    <span class="gallery-badge">🏆 25 ANS D'EXPÉRIENCE</span>
-                    <h3 class="gallery-title">Votre électricien de confiance</h3>
-                    <p class="gallery-description">Un quart de siècle d'expertise au service de votre sécurité électrique. Professionnel qualifié et certifié.</p>
-                    <ul class="gallery-benefits">
-                        <li>Expertise reconnue en Gironde</li>
-                        <li>Formation continue aux normes</li>
-                        <li>Intervention soignée et propre</li>
-                        <li>Conseils personnalisés gratuits</li>
-                    </ul>
-                    <div class="gallery-footer">
-                        <span class="gallery-location">📍 St Médard de Guizières</span>
-                        <span class="gallery-duration">📞 06 95 10 08 23</span>
-                    </div>
-                </div>
-            </div>
-
             <!-- Réalisation 4 : Mise aux normes -->
             <div class="gallery-item">
                 <div class="gallery-image-wrapper" data-lightbox="filspriseancienne.jpg">
@@ -3343,6 +3383,7 @@
                 </div>
             </div>
         </div>
+        <button type="button" class="gallery-more" id="galleryMore" aria-controls="galleryGrid" aria-expanded="false">Voir les autres réalisations ↓</button>
         <div style="text-align: center; margin-top: 2.5rem;">
             <a href="realisations/" style="display: inline-block; background: #1a1a1a; color: white; padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: all 0.25s;" onmouseover="this.style.background='#ff3333';" onmouseout="this.style.background='#1a1a1a';">📋 Voir toutes mes études de cas →</a>
         </div>
@@ -3697,7 +3738,6 @@
                 ⭐ Laisser un avis Google
             </a>
         </div>
-        <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.8rem;">Vous êtes artisan débutant ? <a href="https://artisanfacile.fr" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: none;">ArtisanFacile.fr</a> — l'outil de gestion pour démarrer simplement.</p>
         <p style="margin-top: 0.5rem; opacity: 0.5; font-size: 0.8rem;"><a href="mentions-legales.html" style="color: #ff9999; text-decoration: none;">Mentions légales</a> | <a href="confidentialite.html" style="color: #ff9999; text-decoration: none;">Politique de confidentialité</a></p>
     </footer>
 
@@ -4408,6 +4448,19 @@
         </div>
     </div>
 
+    <script>
+    // Galerie mobile : n'afficher que les premières réalisations, le reste à la demande
+    (function () {
+        var btn = document.getElementById('galleryMore');
+        var grid = document.getElementById('galleryGrid');
+        if (!btn || !grid) return;
+        btn.addEventListener('click', function () {
+            grid.classList.add('expanded');
+            btn.setAttribute('aria-expanded', 'true');
+            btn.hidden = true;
+        });
+    })();
+    </script>
     <script src="/js/cookie-banner.js" defer></script>
     <script src="/js/showcase.js" defer></script>
 </body>
