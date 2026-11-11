@@ -78,11 +78,15 @@
             + '#rdc-cookie-banner .rdc-cb-accept:hover{opacity:.92}'
             + '#rdc-cookie-banner .rdc-cb-refuse{background:transparent;color:#ddd;border:1px solid #555}'
             + '#rdc-cookie-banner .rdc-cb-refuse:hover{background:#2d2d2d;color:#fff}'
+            + '#rdc-cookie-banner .rdc-cb-short{display:none}'
             + '@media (max-width:640px){'
-            +   '#rdc-cookie-banner{padding:.85rem .9rem calc(.85rem + env(safe-area-inset-bottom,0px))}'
-            +   '#rdc-cookie-banner .rdc-cb-inner{flex-direction:column;align-items:stretch;gap:.7rem}'
-            +   '#rdc-cookie-banner .rdc-cb-actions{justify-content:stretch}'
-            +   '#rdc-cookie-banner .rdc-cb-actions button{flex:1}'
+            +   '#rdc-cookie-banner{padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom,0px));font-size:.8rem;line-height:1.4;border-top-width:2px}'
+            +   '#rdc-cookie-banner .rdc-cb-inner{flex-direction:column;align-items:stretch;gap:.5rem}'
+            +   '#rdc-cookie-banner .rdc-cb-text{flex:0 0 auto}'
+            +   '#rdc-cookie-banner .rdc-cb-long{display:none}'
+            +   '#rdc-cookie-banner .rdc-cb-short{display:inline}'
+            +   '#rdc-cookie-banner .rdc-cb-actions{justify-content:stretch;flex-wrap:nowrap}'
+            +   '#rdc-cookie-banner .rdc-cb-actions button{flex:1;padding:.5rem .8rem;font-size:.85rem}'
             + '}';
         var style = document.createElement('style');
         style.id = 'rdc-cookie-styles';
@@ -103,10 +107,16 @@
         var text = document.createElement('div');
         text.className = 'rdc-cb-text';
         text.innerHTML = '<strong>Respect de votre vie privée.</strong> '
+            + '<span class="rdc-cb-long">'
             + 'Ce site utilise des cookies techniques nécessaires à son fonctionnement. '
             + 'La miniature de ma vidéo YouTube et la carte interactive (OpenStreetMap) chargent du contenu depuis des serveurs tiers. '
             + 'Avec votre accord, j’utilise aussi <strong>Metricool</strong> pour mesurer l’audience du site (statistiques anonymisées). '
             + 'Aucun cookie publicitaire n’est utilisé. '
+            + '</span>'
+            // Version courte affichée sur mobile : le bandeau ne doit pas masquer le bouton d'appel
+            + '<span class="rdc-cb-short">'
+            + 'Mesure d’audience (Metricool) avec votre accord. Vidéo et carte chargées depuis des serveurs tiers. Aucune publicité. '
+            + '</span>'
             + '<a href="/confidentialite.html">En savoir plus</a>.';
 
         var actions = document.createElement('div');
