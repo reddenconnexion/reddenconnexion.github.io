@@ -8,7 +8,8 @@
  * Le script part des cartes .service-card déjà présentes dans le HTML : leur
  * contenu (texte, liens, pages locales) n'est pas modifié, seulement présenté
  * une fiche à la fois. Pour ajouter un service, il suffit d'ajouter une carte ;
- * l'attribut data-court donne le nom court écrit sous le disjoncteur.
+ * l'attribut data-court donne le nom court écrit sous le disjoncteur et
+ * data-calibre le calibre gravé dessus (C16 par défaut).
  *
  * Les styles sont dans css/services-board.css. Sans JavaScript, la section
  * reste la grille de cartes habituelle.
@@ -50,17 +51,26 @@
       tab.setAttribute('role', 'tab');
       tab.setAttribute('aria-controls', 'service-panel-' + (i + 1));
 
+      // Étiquette de repérage au-dessus du disjoncteur
       var codeEl = element('span', 'board-breaker-code', code);
       codeEl.setAttribute('aria-hidden', 'true');
+
+      // Disjoncteur modulaire vu de face : borne, partie avant (calibre,
+      // manette, voyant de position), borne. Purement décoratif.
+      var module = element('span', 'board-breaker-module');
+      module.setAttribute('aria-hidden', 'true');
+      var nose = element('span', 'board-breaker-nose');
       var toggle = element('span', 'board-breaker-toggle');
-      toggle.setAttribute('aria-hidden', 'true');
       toggle.appendChild(element('span', 'board-breaker-lever'));
-      var state = element('span', 'board-breaker-state', 'OFF');
-      state.setAttribute('aria-hidden', 'true');
+      nose.appendChild(element('span', 'board-breaker-rating', card.getAttribute('data-calibre') || 'C16'));
+      nose.appendChild(toggle);
+      nose.appendChild(element('span', 'board-breaker-state', 'OFF'));
+      module.appendChild(element('span', 'board-breaker-terminal'));
+      module.appendChild(nose);
+      module.appendChild(element('span', 'board-breaker-terminal'));
 
       tab.appendChild(codeEl);
-      tab.appendChild(toggle);
-      tab.appendChild(state);
+      tab.appendChild(module);
       tab.appendChild(element('span', 'board-breaker-label', label));
       rail.appendChild(tab);
 

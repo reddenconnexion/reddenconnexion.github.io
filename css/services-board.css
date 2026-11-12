@@ -74,41 +74,121 @@
     letter-spacing: 0.04em;
 }
 
-/* Manette : en bas et grise (OFF), en haut et rouge (ON) */
+/* Disjoncteur modulaire vu de face, comme sur un tableau français :
+   deux zones de bornes à vis, et au centre la partie avant avec le calibre,
+   la manette (en haut = enclenché) et le voyant de position des contacts
+   (rouge = sous tension, vert = coupé). Aucune marque n'est reproduite. */
+.services-board.is-ready .board-breaker-module {
+    display: flex;
+    flex-direction: column;
+    width: 56px;
+    height: 150px;
+    border: 1px solid #c9c8c2;
+    border-radius: 4px;
+    background: #f3f2ee;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+}
+
+/* Bornes : logement en retrait avec sa vis */
+.services-board.is-ready .board-breaker-terminal {
+    display: flex;
+    flex: 0 0 24px;
+    align-items: center;
+    justify-content: center;
+    background: #e2e1db;
+}
+
+.services-board.is-ready .board-breaker-terminal::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border: 1px solid #85857f;
+    border-radius: 50%;
+    background: linear-gradient(35deg, #b4b4ae 0, #b4b4ae 44%, #63635e 44%, #63635e 56%, #b4b4ae 56%, #b4b4ae 100%);
+}
+
+/* Partie avant, légèrement en relief */
+.services-board.is-ready .board-breaker-nose {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 -1px;
+    padding: 6px 3px;
+    border: 1px solid #c2c1bb;
+    border-radius: 3px;
+    background: #fbfbf8;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.services-board.is-ready .board-breaker-rating {
+    color: #2b2b2b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+}
+
+/* Fenêtre de la manette */
 .services-board.is-ready .board-breaker-toggle {
     position: relative;
-    width: 36px;
-    height: 80px;
-    border-radius: 8px;
-    background: #1a1a1a;
+    width: 24px;
+    height: 46px;
+    border-radius: 4px;
+    background: #1b1b1b;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .services-board.is-ready .board-breaker-lever {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 26px;
-    height: 34px;
-    border-radius: 5px;
-    background: #9aa1ab;
-    transform: translateY(36px);
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 22px;
+    border-radius: 3px;
+    background: linear-gradient(#6a6a6a 0, #3a3a3a 45%, #262626 100%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    transform: translateY(20px);
+    transition: transform 0.2s ease;
+}
+
+/* Strie de préhension */
+.services-board.is-ready .board-breaker-lever::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 3px;
+    left: 3px;
+    height: 2px;
+    margin-top: -1px;
+    border-radius: 1px;
+    background: #8c8c8c;
 }
 
 .services-board.is-ready .board-breaker[aria-selected="true"] .board-breaker-lever {
-    background: #ff3333;
     transform: translateY(0);
 }
 
+/* Voyant de position des contacts */
 .services-board.is-ready .board-breaker-state {
-    color: #666;
-    font-size: 0.7rem;
+    min-width: 26px;
+    padding: 1px 3px;
+    border-radius: 2px;
+    background: #2a8a47;
+    color: #fff;
+    font-size: 0.5rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    text-align: center;
+    transition: background-color 0.2s ease;
 }
 
 .services-board.is-ready .board-breaker[aria-selected="true"] .board-breaker-state {
-    color: #c40000;
+    background: #d11a1a;
 }
 
 .services-board.is-ready .board-breaker-label {
@@ -212,22 +292,42 @@
         padding: 8px 2px 10px;
     }
 
+    .services-board.is-ready .board-breaker-module {
+        width: 42px;
+        height: 112px;
+    }
+
+    .services-board.is-ready .board-breaker-terminal {
+        flex-basis: 16px;
+    }
+
+    .services-board.is-ready .board-breaker-terminal::before {
+        width: 9px;
+        height: 9px;
+    }
+
+    .services-board.is-ready .board-breaker-nose {
+        padding: 4px 2px;
+    }
+
+    .services-board.is-ready .board-breaker-rating {
+        font-size: 0.6rem;
+    }
+
     .services-board.is-ready .board-breaker-toggle {
-        width: 30px;
-        height: 62px;
-        border-radius: 6px;
+        width: 20px;
+        height: 36px;
     }
 
     .services-board.is-ready .board-breaker-lever {
-        top: 4px;
-        left: 4px;
-        width: 22px;
-        height: 26px;
-        transform: translateY(28px);
+        width: 16px;
+        height: 17px;
+        transform: translateY(15px);
     }
 
     .services-board.is-ready .board-breaker-state {
-        display: none;
+        min-width: 22px;
+        font-size: 0.44rem;
     }
 
     /* Sur une seule ligne, quitte à réduire un peu sur les petits écrans */
@@ -257,6 +357,7 @@
 
 @media (prefers-reduced-motion: reduce) {
     .services-board.is-ready .board-breaker-lever,
+    .services-board.is-ready .board-breaker-state,
     .services-board.is-ready .services-grid .service-card {
         transition: none;
     }
