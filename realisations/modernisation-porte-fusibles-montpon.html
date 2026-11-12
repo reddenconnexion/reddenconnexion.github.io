@@ -136,6 +136,7 @@
             section.case-section { padding: 1.5rem 1.2rem; }
         }
     </style>
+    <link rel="stylesheet" href="../css/before-after.css">
 </head>
 <body>
     <header>
@@ -196,12 +197,12 @@
         <section class="case-section">
             <h2>Avant / Après</h2>
             <div class="before-after">
-                <picture>
-                    <source srcset="../remplacement-portes-fusibles.webp" type="image/webp">
-                    <img src="../remplacement-portes-fusibles.jpg" alt="Comparatif avant/après : porte-fusibles à cartouche remplacés par disjoncteurs divisionnaires à Montpon-Ménestérol" loading="lazy" width="800" height="533">
-                </picture>
+                <div class="ba-slider" data-ba-slider>
+                    <picture class="ba-pane ba-after"><source srcset="../remplacement-portes-fusibles.webp" type="image/webp"><img src="../remplacement-portes-fusibles.jpg" alt="Comparatif avant/après : porte-fusibles à cartouche remplacés par disjoncteurs divisionnaires à Montpon-Ménestérol" loading="lazy" width="800" height="533"></picture>
+                    <picture class="ba-pane ba-before" aria-hidden="true"><source srcset="../remplacement-portes-fusibles.webp" type="image/webp"><img src="../remplacement-portes-fusibles.jpg" alt="" loading="lazy" width="800" height="533"></picture>
+                </div>
             </div>
-            <p class="image-caption">À gauche : porte-fusibles à cartouche d'origine. À droite : disjoncteurs divisionnaires modulaires, calibrés selon usage.</p>
+            <p class="image-caption">Faites glisser le curseur pour comparer. Avant : porte-fusibles à cartouche d'origine. Après : disjoncteurs divisionnaires modulaires, calibrés selon usage.</p>
         </section>
 
         <section class="case-section">
@@ -310,5 +311,6 @@
     </footer>
 
     <script src="../js/cookie-banner.js" defer></script>
+    <script src="../js/before-after.js" defer></script>
 </body>
 </html>

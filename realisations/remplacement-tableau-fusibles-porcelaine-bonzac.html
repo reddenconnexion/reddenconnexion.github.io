@@ -136,6 +136,7 @@
             section.case-section { padding: 1.5rem 1.2rem; }
         }
     </style>
+    <link rel="stylesheet" href="../css/before-after.css">
 </head>
 <body>
     <header>
@@ -197,12 +198,12 @@
         <section class="case-section">
             <h2>Avant / Après</h2>
             <div class="before-after">
-                <picture>
-                    <source srcset="../avant-apres-remplacement-tableau-porte-fusibles-porcelaine.webp" type="image/webp">
-                    <img src="../avant-apres-remplacement-tableau-porte-fusibles-porcelaine.jpg" alt="Comparatif avant/après : ancien tableau à porte-fusibles en porcelaine remplacé par un tableau électrique neuf de 4 rangées à Bonzac" loading="lazy" width="1200" height="800">
-                </picture>
+                <div class="ba-slider" data-ba-slider>
+                    <picture class="ba-pane ba-after"><source srcset="../avant-apres-remplacement-tableau-porte-fusibles-porcelaine.webp" type="image/webp"><img src="../avant-apres-remplacement-tableau-porte-fusibles-porcelaine.jpg" alt="Comparatif avant/après : ancien tableau à porte-fusibles en porcelaine remplacé par un tableau électrique neuf de 4 rangées à Bonzac" loading="lazy" width="1200" height="800"></picture>
+                    <picture class="ba-pane ba-before" aria-hidden="true"><source srcset="../avant-apres-remplacement-tableau-porte-fusibles-porcelaine.webp" type="image/webp"><img src="../avant-apres-remplacement-tableau-porte-fusibles-porcelaine.jpg" alt="" loading="lazy" width="1200" height="800"></picture>
+                </div>
             </div>
-            <p class="image-caption">À gauche : les trois panneaux de porte-fusibles en porcelaine d'origine. À droite : le tableau triphasé neuf de 4 rangées, 32 circuits repérés.</p>
+            <p class="image-caption">Faites glisser le curseur pour comparer. Avant : les trois panneaux de porte-fusibles en porcelaine d'origine. Après : le tableau triphasé neuf de 4 rangées, 32 circuits repérés.</p>
         </section>
 
         <section class="case-section">
@@ -324,5 +325,6 @@
     </footer>
 
     <script src="../js/cookie-banner.js" defer></script>
+    <script src="../js/before-after.js" defer></script>
 </body>
 </html>
