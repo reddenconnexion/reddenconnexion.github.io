@@ -104,6 +104,14 @@ test.describe('Curseur avant/après — page d\'accueil', () => {
         await expect(sliders).toHaveCount(2);
     });
 
+    test('les cartes avant/après ont la même hauteur de vignette que les autres', async ({ page }) => {
+        await page.goto('/');
+        const heights = await page.$$eval('#galleryGrid .gallery-image-wrapper', els =>
+            els.map(el => Math.round(el.getBoundingClientRect().height)));
+        expect(heights.length).toBeGreaterThan(2);
+        expect(new Set(heights).size).toBe(1);
+    });
+
     test('glisser sur une carte n\'ouvre pas la photo en grand', async ({ page }) => {
         await page.goto('/');
         const slider = page.locator('#galleryGrid .ba-slider').first();
