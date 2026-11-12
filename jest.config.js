@@ -22,6 +22,7 @@ export default {
         '!js/cookie-banner.js', // Exclure le bandeau cookies (DOM/localStorage, testé via E2E)
         '!js/showcase.js', // Exclure le carrousel d'images (manipulation du DOM, testé via E2E)
         '!js/before-after.js', // Exclure le curseur avant/après (manipulation du DOM, testé via E2E)
+        '!js/power-switch.js', // Exclure l'interrupteur de l'accueil (manipulation du DOM, testé via E2E)
         '!**/node_modules/**'
     ],
 

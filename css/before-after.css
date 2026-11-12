@@ -173,15 +173,15 @@ div.ba-slider .ba-after img {
     box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
 }
 
-/* Cartes de la galerie (page d'accueil) : format carré, plus haut que les
-   autres vignettes pour que les deux photos restent lisibles */
+/* Cartes de la galerie (page d'accueil) : même hauteur de vignette que les
+   autres cartes ; les deux photos sont recadrées sur leur partie centrale */
 .gallery-image-wrapper.ba-wrapper {
-    height: auto;
     cursor: default;
 }
 
 .gallery-image-wrapper.ba-wrapper > .ba-slider {
-    aspect-ratio: 1 / 1;
+    height: 100%;
+    aspect-ratio: auto;
 }
 
 /* Photo agrandie (lightbox de la page d'accueil) */

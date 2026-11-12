@@ -969,6 +969,226 @@
                 font-size: 18px;
             }
         }
+        /* ===== Interrupteur « Coupez le courant » (js/power-switch.js) =====
+           Posé sur la photo d'accueil. Éteint, il assombrit le bloc et remplace
+           le texte par le message de dépannage ; le bouton d'appel se met à pulser. */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: #000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .hero.is-off::after {
+            opacity: 0.88;
+        }
+
+        .hero-logo img {
+            transition: filter 0.5s ease;
+        }
+
+        .hero.is-off .hero-logo img {
+            filter: brightness(0.2) saturate(0.5);
+        }
+
+        .power-switch-wrap {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            z-index: 2;
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .power-switch-wrap[hidden] {
+            display: none;
+        }
+
+        .power-switch-hint {
+            margin-bottom: 6px;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.82);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            pointer-events: none;
+        }
+
+        .power-switch {
+            display: flex;
+            flex-direction: column;
+            width: 60px;
+            height: 90px;
+            padding: 8px;
+            border: 1px solid #b9c0cb;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .power-switch:focus-visible {
+            outline: 3px solid #ffcc00;
+            outline-offset: 3px;
+        }
+
+        .power-switch span {
+            display: block;
+            flex: 1 1 0;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Allumé : moitié haute enfoncée, voyant vert */
+        .power-switch-top {
+            position: relative;
+            border-radius: 6px 6px 2px 2px;
+            background: #d3d8df;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28);
+        }
+
+        .power-switch-top::after {
+            content: '';
+            position: absolute;
+            top: 7px;
+            left: 50%;
+            width: 7px;
+            height: 7px;
+            margin-left: -3.5px;
+            border-radius: 50%;
+            background: #2ecc71;
+            box-shadow: 0 0 6px #2ecc71;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .power-switch-bottom {
+            border-radius: 2px 2px 6px 6px;
+            background: #f6f7f9;
+        }
+
+        /* Éteint : moitié basse enfoncée, voyant rouge */
+        .power-switch[aria-checked="false"] .power-switch-top {
+            background: #f6f7f9;
+            box-shadow: none;
+        }
+
+        .power-switch[aria-checked="false"] .power-switch-top::after {
+            background: #ff3333;
+            box-shadow: 0 0 8px #ff3333;
+        }
+
+        .power-switch[aria-checked="false"] .power-switch-bottom {
+            background: #d3d8df;
+            box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.28);
+        }
+
+        /* Zone de texte : contenu habituel / message de panne superposés,
+           pour que la hauteur du bloc ne change pas quand on bascule */
+        .hero-main {
+            position: relative;
+        }
+
+        .hero-main-lit {
+            transition: opacity 0.35s ease, visibility 0s linear 0s;
+        }
+
+        .hero.is-off .hero-main-lit {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+        }
+
+        .hero-panne {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* En haut de la zone : le message reste visible sans faire défiler,
+               même sur téléphone où cette zone est haute */
+            justify-content: flex-start;
+            gap: 18px;
+            padding-top: clamp(20px, 6vw, 80px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+        }
+
+        .hero.is-off .hero-panne {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease 0.25s, visibility 0s linear 0s;
+        }
+
+        .hero-panne-title {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.05;
+        }
+
+        .hero-panne-title span {
+            color: #ff4a52;
+        }
+
+        .hero-panne-text {
+            max-width: 560px;
+            margin: 0;
+            color: #c9cdd4;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+        }
+
+        .hero.is-off .cta-primary {
+            animation: panneGlow 1.8s ease-out infinite;
+        }
+
+        .hero.is-off .cta-secondary {
+            opacity: 0.35;
+        }
+
+        @keyframes panneGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.65); }
+            50% { box-shadow: 0 0 0 18px rgba(255, 51, 51, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .power-switch-wrap {
+                right: 8px;
+                bottom: 8px;
+                gap: 8px;
+            }
+
+            .power-switch-hint {
+                font-size: 10px;
+                padding: 5px 8px;
+            }
+
+            .power-switch {
+                width: 50px;
+                height: 76px;
+                padding: 7px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero.is-off .cta-primary { animation: none; }
+        }
     </style>
 
     <!-- Styles pour le reste de la page -->
@@ -2833,8 +3053,19 @@
         <div class="hero-content">
             <div class="hero-logo">
                 <picture><source srcset="electricien-red-den-connexion-utilitaire.webp" type="image/webp"><img src="electricien-red-den-connexion-utilitaire.jpg" alt="Denis Meriot, électricien Red Den Connexion, devant son utilitaire d'intervention" width="1600" height="893" fetchpriority="high"></picture>
+                <!-- Interrupteur « Coupez le courant » : bascule l'accueil en mode panne (js/power-switch.js).
+                     Affiché seulement si JavaScript est actif. -->
+                <div class="power-switch-wrap" id="powerSwitchWrap" hidden>
+                    <span class="power-switch-hint" id="powerSwitchHint" aria-hidden="true">Coupez le courant</span>
+                    <button type="button" class="power-switch" id="powerSwitch" role="switch" aria-checked="true" aria-label="Courant de la page d'accueil (animation)">
+                        <span class="power-switch-top"></span>
+                        <span class="power-switch-bottom"></span>
+                    </button>
+                </div>
             </div>
 
+            <div class="hero-main">
+            <div class="hero-main-lit">
             <div class="danger-label-wrapper">
                 <div class="danger-label">
                     <span>⚠️</span>
@@ -2880,6 +3111,14 @@
                     <span>Devis gratuit</span>
                 </div>
             </div>
+            </div><!-- /.hero-main-lit -->
+
+                <!-- Message affiché quand le visiteur coupe le courant avec l'interrupteur -->
+                <div class="hero-panne">
+                    <p class="hero-panne-title">Plus de <span>courant ?</span></p>
+                    <p class="hero-panne-text">Je rallume. Dépannage 24h/24 et 7j/7 autour de Libourne, Coutras et Montpon-Ménestérol.</p>
+                </div>
+            </div><!-- /.hero-main -->
 
             <div class="cta-group">
                 <a href="tel:0695100823" class="cta-button cta-primary">
@@ -4477,6 +4716,7 @@
     })();
     </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/power-switch.js" defer></script>
     <script src="/js/before-after.js" defer></script>
     <script src="/js/showcase.js" defer></script>
 </body>
