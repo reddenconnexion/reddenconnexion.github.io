@@ -2793,6 +2793,8 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Curseur de comparaison Avant / Après -->
+    <link rel="stylesheet" href="/css/before-after.css">
 </head>
 <body>
     <header>
@@ -2919,6 +2921,13 @@
                  que la photo déposée, mais avec l'extension .webp) et adaptez le
                  texte du alt (utile pour Google).
 
+              PHOTO « AVANT / APRÈS » (montage Artisan Facile : titre en haut,
+              avant à gauche, après à droite) : ajoutez data-avant-apres dans la
+              balise <img>. Au clic, la photo s'ouvre alors avec le curseur de
+              comparaison à faire glisser (voir js/before-after.js) :
+
+                 <img src="VOTRE-IMAGE.webp" data-avant-apres alt="Avant/après : …" …>
+
               C'EST TOUT : le défilement en boucle se duplique automatiquement,
               vous n'avez plus rien d'autre à faire (voir js/showcase.js).
               ───────────────────────────────────────────────────────────────
@@ -2931,7 +2940,7 @@
                 <!-- Modèle à copier (remplacez le nom du fichier et le texte alt) :
                 <div class="showcase-tile" role="listitem"><img src="VOTRE-IMAGE.webp" alt="Description du chantier" loading="lazy" decoding="async" width="280" height="160"></div>
                 -->
-                <div class="showcase-tile" role="listitem"><img src="avant-apres-remplacement-tableau-porte-fusibles-porcelaine.webp" alt="Avant/après : remplacement d'un ancien tableau à porte-fusibles en porcelaine par un tableau électrique neuf" data-legende="Avant / après : anciens porte-fusibles en porcelaine remplacés par un tableau neuf aux normes NF C 15-100" loading="lazy" decoding="async" width="280" height="160"></div>
+                <div class="showcase-tile" role="listitem"><img src="avant-apres-remplacement-tableau-porte-fusibles-porcelaine.webp" data-avant-apres alt="Avant/après : remplacement d'un ancien tableau à porte-fusibles en porcelaine par un tableau électrique neuf" data-legende="Avant / après : anciens porte-fusibles en porcelaine remplacés par un tableau neuf aux normes NF C 15-100" loading="lazy" decoding="async" width="280" height="160"></div>
                 <!-- ▲▲▲ COLLEZ VOTRE NOUVELLE PHOTO DE CHANTIER JUSTE AU-DESSUS DE CETTE LIGNE ▲▲▲ -->
 
                 <div class="showcase-tile" role="listitem"><img src="motorisation-portail-fer-forge.webp" alt="Motorisation d'un portail en fer forgé avec bras Nice et feu clignotant" data-legende="Motorisation de portail en fer forgé — automatisation et confort au quotidien" loading="lazy" decoding="async" width="280" height="160"></div>
@@ -2969,17 +2978,17 @@
                     <span class="tile-label">Rénovation électrique complète</span>
                 </div>
                 <div class="showcase-tile" role="listitem">
-                    <img src="comparatif-chantier-remplacement-tableau-elec.webp" alt="Avant/après remplacement de tableau électrique" data-legende="Avant / après : remplacement d'un tableau électrique vétuste" loading="lazy" decoding="async" width="280" height="160">
+                    <img src="comparatif-chantier-remplacement-tableau-elec.webp" data-avant-apres alt="Avant/après remplacement de tableau électrique" data-legende="Avant / après : remplacement d'un tableau électrique vétuste" loading="lazy" decoding="async" width="280" height="160">
                 </div>
                 <div class="showcase-tile text tile-red" role="listitem">
                     <span class="tile-icon" aria-hidden="true">🔌</span>
                     <span class="tile-label">Borne de recharge véhicule électrique</span>
                 </div>
                 <div class="showcase-tile" role="listitem">
-                    <img src="comparatif-chantier-installation-borne-recharge.webp" alt="Avant/après installation d'une borne de recharge (wallbox) pour véhicule électrique" data-legende="Avant / après : pose d'une borne de recharge (wallbox) pour véhicule électrique" loading="lazy" decoding="async" width="280" height="160">
+                    <img src="comparatif-chantier-installation-borne-recharge.webp" data-avant-apres alt="Avant/après installation d'une borne de recharge (wallbox) pour véhicule électrique" data-legende="Avant / après : pose d'une borne de recharge (wallbox) pour véhicule électrique" loading="lazy" decoding="async" width="280" height="160">
                 </div>
                 <div class="showcase-tile" role="listitem">
-                    <img src="remplacement-portes-fusibles.webp" alt="Remplacement de portes-fusibles" data-legende="Remplacement des anciennes portes-fusibles pour plus de sécurité" loading="lazy" decoding="async" width="280" height="160">
+                    <img src="remplacement-portes-fusibles.webp" data-avant-apres alt="Remplacement de portes-fusibles" data-legende="Remplacement des anciennes portes-fusibles pour plus de sécurité" loading="lazy" decoding="async" width="280" height="160">
                 </div>
                 <div class="showcase-tile text tile-light" role="listitem">
                     <span class="tile-icon" aria-hidden="true">✅</span>
@@ -2992,8 +3001,8 @@
 
             <!-- Rangée 3 : gauche (plus lent) -->
             <div class="showcase-row slow" role="list">
-                <div class="showcase-tile" role="listitem"><img src="avant-apres-installation-camera-surveillance-solaire.webp" alt="Avant/après : installation d'une caméra de surveillance solaire sur une maison" data-legende="Avant / après : caméra de surveillance solaire installée, sans travaux de câblage" loading="lazy" decoding="async" width="280" height="160"></div>
-                <div class="showcase-tile" role="listitem"><img src="avant-apres-remplacement-lustre-ventilateur-plafond.webp" alt="Avant/après : remplacement d'un ancien lustre par un ventilateur de plafond" data-legende="Avant / après : ancien lustre remplacé par un ventilateur de plafond" loading="lazy" decoding="async" width="280" height="160"></div>
+                <div class="showcase-tile" role="listitem"><img src="avant-apres-installation-camera-surveillance-solaire.webp" data-avant-apres alt="Avant/après : installation d'une caméra de surveillance solaire sur une maison" data-legende="Avant / après : caméra de surveillance solaire installée, sans travaux de câblage" loading="lazy" decoding="async" width="280" height="160"></div>
+                <div class="showcase-tile" role="listitem"><img src="avant-apres-remplacement-lustre-ventilateur-plafond.webp" data-avant-apres alt="Avant/après : remplacement d'un ancien lustre par un ventilateur de plafond" data-legende="Avant / après : ancien lustre remplacé par un ventilateur de plafond" loading="lazy" decoding="async" width="280" height="160"></div>
                 <div class="showcase-tile" role="listitem"><img src="installation-interrupteur-double-design.webp" alt="Installation d'un interrupteur double design en finition aluminium" data-legende="Interrupteur double design, finition aluminium soignée" loading="lazy" decoding="async" width="280" height="160"></div>
                 <div class="showcase-tile" role="listitem">
                     <img src="moietmonfrerepanneauxphotov.webp" alt="Denis et son frère installant des panneaux photovoltaïques" data-legende="Installation de panneaux photovoltaïques en équipe" loading="lazy" decoding="async" width="280" height="160">
@@ -3183,8 +3192,11 @@
         <div class="gallery-grid" id="galleryGrid">
             <!-- Dernière réalisation : Avant/Après remplacement tableau à porte-fusibles porcelaine -->
             <div class="gallery-item">
-                <div class="gallery-image-wrapper" data-lightbox="avant-apres-remplacement-tableau-porte-fusibles-porcelaine.jpg">
-                    <picture><source srcset="avant-apres-remplacement-tableau-porte-fusibles-porcelaine.webp" type="image/webp"><img src="avant-apres-remplacement-tableau-porte-fusibles-porcelaine.jpg" alt="Avant/après : remplacement d'un ancien tableau à porte-fusibles en porcelaine par un tableau électrique neuf aux normes NF C 15-100" loading="lazy" width="1200" height="800"></picture>
+                <div class="gallery-image-wrapper ba-wrapper">
+                    <div class="ba-slider" data-ba-slider>
+                        <picture class="ba-pane ba-after"><source srcset="avant-apres-remplacement-tableau-porte-fusibles-porcelaine.webp" type="image/webp"><img src="avant-apres-remplacement-tableau-porte-fusibles-porcelaine.jpg" alt="Avant/après : remplacement d'un ancien tableau à porte-fusibles en porcelaine par un tableau électrique neuf aux normes NF C 15-100" loading="lazy" width="1200" height="800"></picture>
+                        <picture class="ba-pane ba-before" aria-hidden="true"><source srcset="avant-apres-remplacement-tableau-porte-fusibles-porcelaine.webp" type="image/webp"><img src="avant-apres-remplacement-tableau-porte-fusibles-porcelaine.jpg" alt="" loading="lazy" width="1200" height="800"></picture>
+                    </div>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">🆕 DERNIER CHANTIER</span>
@@ -3317,8 +3329,11 @@
 
             <!-- Réalisation 6 : Avant/Après remplacement porte-fusibles -->
             <div class="gallery-item">
-                <div class="gallery-image-wrapper" data-lightbox="remplacement-portes-fusibles.jpg">
-                    <picture><source srcset="remplacement-portes-fusibles.webp" type="image/webp"><img src="remplacement-portes-fusibles.jpg" alt="Avant après remplacement porte-fusibles par disjoncteurs à Montpon-Ménestérol" loading="lazy" width="800" height="533"></picture>
+                <div class="gallery-image-wrapper ba-wrapper">
+                    <div class="ba-slider" data-ba-slider>
+                        <picture class="ba-pane ba-after"><source srcset="remplacement-portes-fusibles.webp" type="image/webp"><img src="remplacement-portes-fusibles.jpg" alt="Avant après remplacement porte-fusibles par disjoncteurs à Montpon-Ménestérol" loading="lazy" width="800" height="533"></picture>
+                        <picture class="ba-pane ba-before" aria-hidden="true"><source srcset="remplacement-portes-fusibles.webp" type="image/webp"><img src="remplacement-portes-fusibles.jpg" alt="" loading="lazy" width="800" height="533"></picture>
+                    </div>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">🔧 MISE AUX NORMES</span>
@@ -4462,6 +4477,7 @@
     })();
     </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/before-after.js" defer></script>
     <script src="/js/showcase.js" defer></script>
 </body>
 </html>

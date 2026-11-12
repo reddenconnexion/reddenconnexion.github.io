@@ -21,6 +21,7 @@ export default {
         '!js/formHandler.js', // Exclure le handler UI (testé via E2E)
         '!js/cookie-banner.js', // Exclure le bandeau cookies (DOM/localStorage, testé via E2E)
         '!js/showcase.js', // Exclure le carrousel d'images (manipulation du DOM, testé via E2E)
+        '!js/before-after.js', // Exclure le curseur avant/après (manipulation du DOM, testé via E2E)
         '!**/node_modules/**'
     ],
 

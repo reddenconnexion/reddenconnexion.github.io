@@ -139,6 +139,7 @@
             section.case-section { padding: 1.5rem 1.2rem; }
         }
     </style>
+    <link rel="stylesheet" href="../css/before-after.css">
 </head>
 <body>
     <header>
@@ -200,12 +201,12 @@
         <section class="case-section">
             <h2>Avant / Après</h2>
             <div class="before-after">
-                <picture>
-                    <source srcset="../comparatif-chantier-remplacement-tableau-elec.webp" type="image/webp">
-                    <img src="../comparatif-chantier-remplacement-tableau-elec.jpg" alt="Comparatif avant/après : ancien tableau à fusibles remplacé par un tableau moderne conforme NF C 15-100" loading="lazy" width="800" height="533">
-                </picture>
+                <div class="ba-slider" data-ba-slider>
+                    <picture class="ba-pane ba-after"><source srcset="../comparatif-chantier-remplacement-tableau-elec.webp" type="image/webp"><img src="../comparatif-chantier-remplacement-tableau-elec.jpg" alt="Comparatif avant/après : ancien tableau à fusibles remplacé par un tableau moderne conforme NF C 15-100" loading="lazy" width="800" height="533"></picture>
+                    <picture class="ba-pane ba-before" aria-hidden="true"><source srcset="../comparatif-chantier-remplacement-tableau-elec.webp" type="image/webp"><img src="../comparatif-chantier-remplacement-tableau-elec.jpg" alt="" loading="lazy" width="800" height="533"></picture>
+                </div>
             </div>
-            <p class="image-caption">À gauche : tableau d'origine à fusibles, sans différentiel. À droite : tableau modulaire 3 rangées, protections AC/A, parafoudre intégré.</p>
+            <p class="image-caption">Faites glisser le curseur pour comparer. Avant : tableau d'origine à fusibles, sans différentiel. Après : tableau modulaire 3 rangées, protections AC/A, parafoudre intégré.</p>
         </section>
 
         <section class="case-section">
@@ -324,5 +325,6 @@
     </footer>
 
     <script src="../js/cookie-banner.js" defer></script>
+    <script src="../js/before-after.js" defer></script>
 </body>
 </html>
