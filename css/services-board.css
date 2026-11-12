@@ -1,0 +1,263 @@
+/*
+ * Tableau des services
+ * --------------------
+ * Présente la section « Mes Services » comme un tableau électrique : une
+ * rangée de disjoncteurs (un par service) et, dessous, la fiche du service
+ * dont le disjoncteur est enclenché. Le comportement est dans
+ * js/services-board.js.
+ *
+ * Tout est préfixé par .services-board.is-ready, classe posée par le script :
+ * sans JavaScript, la section garde ses sept cartes habituelles.
+ */
+
+.services-board.is-ready .board-intro {
+    max-width: 640px;
+    margin: -1.5rem auto 2.5rem;
+    color: #555;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.services-board.is-ready .board-panel {
+    padding: 1.5rem;
+    border: 1px solid #e3e3e3;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ----- Rangée de disjoncteurs (le trait gris évoque le rail du tableau) ----- */
+.services-board.is-ready .board-rail {
+    display: flex;
+    gap: 8px;
+    padding: 14px;
+    border-radius: 14px;
+    background: linear-gradient(#eceef1 0, #eceef1 44%, #d3d7dd 44%, #d3d7dd 56%, #eceef1 56%, #eceef1 100%);
+}
+
+.services-board.is-ready .board-breaker {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    padding: 12px 4px 14px;
+    border: 2px solid #d9dce1;
+    border-radius: 10px;
+    background: #fff;
+    color: #1a1a1a;
+    font: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.services-board.is-ready .board-breaker:hover {
+    border-color: #ff3333;
+}
+
+.services-board.is-ready .board-breaker:focus-visible {
+    outline: 3px solid #ff3333;
+    outline-offset: 3px;
+}
+
+.services-board.is-ready .board-breaker[aria-selected="true"] {
+    border-color: #ff3333;
+    box-shadow: 0 6px 18px rgba(255, 51, 51, 0.22);
+}
+
+.services-board.is-ready .board-breaker-code {
+    color: #666;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+/* Manette : en bas et grise (OFF), en haut et rouge (ON) */
+.services-board.is-ready .board-breaker-toggle {
+    position: relative;
+    width: 36px;
+    height: 80px;
+    border-radius: 8px;
+    background: #1a1a1a;
+}
+
+.services-board.is-ready .board-breaker-lever {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 26px;
+    height: 34px;
+    border-radius: 5px;
+    background: #9aa1ab;
+    transform: translateY(36px);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.services-board.is-ready .board-breaker[aria-selected="true"] .board-breaker-lever {
+    background: #ff3333;
+    transform: translateY(0);
+}
+
+.services-board.is-ready .board-breaker-state {
+    color: #666;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.services-board.is-ready .board-breaker[aria-selected="true"] .board-breaker-state {
+    color: #c40000;
+}
+
+.services-board.is-ready .board-breaker-label {
+    max-width: 100%;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* ----- Fiche du service enclenché -----
+   Les sept fiches occupent la même case de grille : la zone garde la hauteur
+   de la plus longue et la page ne saute pas quand on change de service. */
+.services-board.is-ready .services-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    margin-top: 1.5rem;
+}
+
+.services-board.is-ready .services-grid .service-card {
+    grid-area: 1 / 1;
+    max-width: 760px;
+    padding: 0.5rem 0.75rem 0.75rem;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+    opacity: 0;
+    visibility: hidden;
+    transform: none;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+    transition-delay: 0s, 0.25s;
+}
+
+.services-board.is-ready .services-grid .service-card.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.25s ease, visibility 0s linear 0s;
+    transition-delay: 0s;
+}
+
+.services-board.is-ready .services-grid .service-card::before {
+    display: none;
+}
+
+.services-board.is-ready .services-grid .service-card:hover {
+    border-color: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.services-board.is-ready .service-card:focus-visible {
+    outline: 3px solid #ff3333;
+    outline-offset: 6px;
+    border-radius: 6px;
+}
+
+.services-board.is-ready .service-card .board-circuit {
+    margin: 0 0 0.8rem;
+    color: #c40000;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.services-board.is-ready .service-card h3 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+.services-board.is-ready .service-card > p:not(.board-circuit) {
+    font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+    .services-board.is-ready .board-intro {
+        margin: -0.75rem auto 1.5rem;
+        font-size: 1rem;
+    }
+
+    .services-board.is-ready .board-panel {
+        padding: 0.75rem;
+        border-radius: 16px;
+    }
+
+    /* 7 disjoncteurs sur deux rangées : 4 + 3 */
+    .services-board.is-ready .board-rail {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+        padding: 8px;
+        background: #eceef1;
+    }
+
+    .services-board.is-ready .board-breaker {
+        gap: 6px;
+        padding: 8px 2px 10px;
+    }
+
+    .services-board.is-ready .board-breaker-toggle {
+        width: 30px;
+        height: 62px;
+        border-radius: 6px;
+    }
+
+    .services-board.is-ready .board-breaker-lever {
+        top: 4px;
+        left: 4px;
+        width: 22px;
+        height: 26px;
+        transform: translateY(28px);
+    }
+
+    .services-board.is-ready .board-breaker-state {
+        display: none;
+    }
+
+    /* Sur une seule ligne, quitte à réduire un peu sur les petits écrans */
+    .services-board.is-ready .board-breaker-label {
+        font-size: clamp(0.56rem, 2.75vw, 0.75rem);
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+        overflow-wrap: normal;
+    }
+
+    .services-board.is-ready .services-grid {
+        margin-top: 1rem;
+    }
+
+    .services-board.is-ready .services-grid .service-card {
+        padding: 0.4rem 0.5rem 0.6rem;
+    }
+
+    .services-board.is-ready .service-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .services-board.is-ready .service-card .board-circuit {
+        margin: 0 0 0.6rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .services-board.is-ready .board-breaker-lever,
+    .services-board.is-ready .services-grid .service-card {
+        transition: none;
+    }
+}

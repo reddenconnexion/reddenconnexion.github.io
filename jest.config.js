@@ -24,6 +24,7 @@ export default {
         '!js/before-after.js', // Exclure le curseur avant/après (manipulation du DOM, testé via E2E)
         '!js/power-switch.js', // Exclure l'interrupteur de l'accueil (manipulation du DOM, testé via E2E)
         '!js/diagnostic.js', // Exclure le diagnostic express (manipulation du DOM, testé via E2E)
+        '!js/services-board.js', // Exclure le tableau des services (manipulation du DOM, testé via E2E)
         '!**/node_modules/**'
     ],
 
