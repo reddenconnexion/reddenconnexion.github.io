@@ -1154,6 +1154,18 @@
             font-size: clamp(1rem, 2.2vw, 1.3rem);
         }
 
+        .hero-panne-link {
+            padding: 10px 4px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .hero-panne-link:hover {
+            color: #ff8a8a;
+        }
+
         .hero.is-off .cta-primary {
             animation: panneGlow 1.8s ease-out infinite;
         }
@@ -3015,6 +3027,8 @@
     </script>
     <!-- Curseur de comparaison Avant / Après -->
     <link rel="stylesheet" href="/css/before-after.css">
+    <!-- Diagnostic express « Une panne ? » -->
+    <link rel="stylesheet" href="/css/diagnostic.css">
 </head>
 <body>
     <header>
@@ -3117,6 +3131,7 @@
                 <div class="hero-panne">
                     <p class="hero-panne-title">Plus de <span>courant ?</span></p>
                     <p class="hero-panne-text">Je rallume. Dépannage 24h/24 et 7j/7 autour de Libourne, Coutras et Montpon-Ménestérol.</p>
+                    <a href="#diagnostic" class="hero-panne-link">Que vérifier avant d'appeler ? ↓</a>
                 </div>
             </div><!-- /.hero-main -->
 
@@ -3330,6 +3345,86 @@
                     <span class="trust-badge-title">Devis gratuit</span>
                     <span class="trust-badge-sub">Sans engagement</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnostic express : le visiteur choisit sa situation et lit quoi vérifier avant d'appeler.
+         Pour modifier un conseil, changez simplement le texte ci-dessous (voir js/diagnostic.js). -->
+    <section id="diagnostic" class="diagnostic">
+        <h2 class="animate-on-scroll">Une panne ? Que vérifier avant d'appeler</h2>
+        <p class="diagnostic-intro">Choisissez votre situation : je vous indique les vérifications simples à faire avant de m'appeler.</p>
+
+        <div class="diagnostic-layout" data-diagnostic>
+            <div class="diagnostic-choices" role="tablist" aria-label="Votre situation" aria-orientation="vertical">
+                <button type="button" class="diagnostic-choice" role="tab" id="diag-tab-coupure" aria-controls="diag-panel-coupure" aria-selected="true">
+                    <span class="diagnostic-choice-icon" aria-hidden="true">🔌</span>
+                    <span class="diagnostic-choice-label">Plus de courant dans toute la maison</span>
+                    <span class="diagnostic-choice-arrow" aria-hidden="true">→</span>
+                </button>
+                <button type="button" class="diagnostic-choice" role="tab" id="diag-tab-disjoncteur" aria-controls="diag-panel-disjoncteur" aria-selected="false">
+                    <span class="diagnostic-choice-icon" aria-hidden="true">⚡</span>
+                    <span class="diagnostic-choice-label">Le disjoncteur saute sans arrêt</span>
+                    <span class="diagnostic-choice-arrow" aria-hidden="true">→</span>
+                </button>
+                <button type="button" class="diagnostic-choice" role="tab" id="diag-tab-prise" aria-controls="diag-panel-prise" aria-selected="false">
+                    <span class="diagnostic-choice-icon" aria-hidden="true">💡</span>
+                    <span class="diagnostic-choice-label">Une prise ou une lumière ne marche plus</span>
+                    <span class="diagnostic-choice-arrow" aria-hidden="true">→</span>
+                </button>
+                <button type="button" class="diagnostic-choice" role="tab" id="diag-tab-brule" aria-controls="diag-panel-brule" aria-selected="false">
+                    <span class="diagnostic-choice-icon" aria-hidden="true">🔥</span>
+                    <span class="diagnostic-choice-label">Odeur de brûlé ou prise qui chauffe</span>
+                    <span class="diagnostic-choice-arrow" aria-hidden="true">→</span>
+                </button>
+            </div>
+
+            <div class="diagnostic-card">
+                <div class="diagnostic-panel" role="tabpanel" id="diag-panel-coupure" aria-labelledby="diag-tab-coupure" tabindex="0">
+                    <p class="diagnostic-tag">À vérifier avant de m'appeler</p>
+                    <h3>Plus de courant dans toute la maison</h3>
+                    <ol class="diagnostic-steps">
+                        <li>Regardez si vos voisins ont du courant. Si eux non plus, c'est une coupure du réseau : contactez Enedis.</li>
+                        <li>Au tableau, regardez le disjoncteur général. S'il est baissé, relevez-le une seule fois.</li>
+                        <li>S'il retombe aussitôt, n'insistez pas et appelez-moi.</li>
+                    </ol>
+                </div>
+
+                <div class="diagnostic-panel" role="tabpanel" id="diag-panel-disjoncteur" aria-labelledby="diag-tab-disjoncteur" tabindex="0">
+                    <p class="diagnostic-tag">À vérifier avant de m'appeler</p>
+                    <h3>Le disjoncteur saute sans arrêt</h3>
+                    <ol class="diagnostic-steps">
+                        <li>Débranchez tous les appareils du circuit concerné, puis réarmez le disjoncteur.</li>
+                        <li>S'il tient, rebranchez les appareils un par un : celui qui le fait sauter est le fautif.</li>
+                        <li>S'il saute même sans rien de branché, le défaut vient de l'installation : appelez-moi.</li>
+                    </ol>
+                </div>
+
+                <div class="diagnostic-panel" role="tabpanel" id="diag-panel-prise" aria-labelledby="diag-tab-prise" tabindex="0">
+                    <p class="diagnostic-tag">À vérifier avant de m'appeler</p>
+                    <h3>Une prise ou une lumière ne marche plus</h3>
+                    <ol class="diagnostic-steps">
+                        <li>Vérifiez au tableau qu'aucun disjoncteur n'est baissé.</li>
+                        <li>Essayez un autre appareil sur la prise, ou une autre ampoule.</li>
+                        <li>Toujours rien ? Ne démontez rien : une connexion est sans doute en cause, à faire contrôler.</li>
+                    </ol>
+                </div>
+
+                <div class="diagnostic-panel" role="tabpanel" id="diag-panel-brule" aria-labelledby="diag-tab-brule" tabindex="0" data-urgent>
+                    <p class="diagnostic-tag">Urgence : ne tardez pas</p>
+                    <h3>Odeur de brûlé ou prise qui chauffe</h3>
+                    <ol class="diagnostic-steps">
+                        <li>Coupez tout de suite le disjoncteur général.</li>
+                        <li>Ne touchez plus à la prise ni à l'appareil, et ne remettez pas le courant.</li>
+                        <li>Appelez-moi immédiatement. En cas de fumée ou de flammes, appelez d'abord les pompiers (18 ou 112).</li>
+                    </ol>
+                </div>
+
+                <a href="tel:0695100823" class="diagnostic-call">
+                    <span class="diagnostic-call-icon" aria-hidden="true">📞</span>
+                    <span>Dépannage 24h/24 – 7j/7<span class="diagnostic-call-number">06 95 10 08 23</span></span>
+                </a>
+                <p class="diagnostic-note">Ces vérifications simples ne remplacent pas un diagnostic. Au moindre doute, ne démontez rien et appelez-moi.</p>
             </div>
         </div>
     </section>
@@ -4717,6 +4812,7 @@
     </script>
     <script src="/js/cookie-banner.js" defer></script>
     <script src="/js/power-switch.js" defer></script>
+    <script src="/js/diagnostic.js" defer></script>
     <script src="/js/before-after.js" defer></script>
     <script src="/js/showcase.js" defer></script>
 </body>
