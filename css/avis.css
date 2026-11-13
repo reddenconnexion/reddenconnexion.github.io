@@ -1,0 +1,421 @@
+/*
+ * Section « Ils Me Font Confiance » (avis clients)
+ * ------------------------------------------------
+ * Une photo de chantier à gauche ; à droite la note Google, puis les avis
+ * affichés un par un. On passe de l'un à l'autre avec les boutons poussoirs,
+ * les voyants, les flèches du clavier ou en balayant du doigt
+ * (comportement dans js/avis.js).
+ *
+ * Esprit « tableau électrique » : note sur un afficheur, voyants rouges,
+ * boutons poussoirs, et un filet de courant qui parcourt le haut de la carte.
+ *
+ * Sans JavaScript, les avis sont affichés en grille, tous visibles.
+ */
+
+.avis-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: stretch;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+/* ----- Photo ----- */
+.avis-photo {
+    position: relative;
+    min-height: 460px;
+    margin: 0;
+    border: 1px solid rgba(255, 51, 51, 0.35);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 51, 51, 0.18);
+    overflow: hidden;
+}
+
+.avis-photo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+}
+
+.avis-photo figcaption {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.78);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Petit voyant vert « en service » */
+.avis-photo figcaption::before {
+    content: "";
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2ecc71;
+    box-shadow: 0 0 8px #2ecc71;
+}
+
+.avis-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 0;
+}
+
+/* ----- Note : afficheur façon compteur ----- */
+.avis-meter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem 1.2rem;
+    margin: 0;
+}
+
+.avis-meter-score {
+    padding: 0.45rem 0.9rem 0.35rem;
+    border: 1px solid #3d3d3d;
+    border-radius: 12px;
+    background: #0c0c0c;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+    color: #ff3333;
+    font-family: 'Orbitron', 'Segoe UI', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 0 0 16px rgba(255, 51, 51, 0.6);
+}
+
+.avis-meter-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.avis-stars {
+    color: #fbbf24;
+    font-size: 1.5rem;
+    line-height: 1;
+    letter-spacing: 3px;
+}
+
+.avis-meter-count {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    color: #d6d6d6;
+    font-size: 0.95rem;
+}
+
+/* ----- Carte des avis ----- */
+.avis-carousel {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 2rem;
+    border: 1px solid rgba(255, 51, 51, 0.3);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 3px 0 rgba(255, 51, 51, 0.22);
+    overflow: hidden;
+}
+
+/* Filet de courant qui parcourt le haut de la carte */
+.avis-carousel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255, 51, 51, 0) 0, #ff3333 40%, #ffe1e1 50%, #ff3333 60%, rgba(255, 51, 51, 0) 100%) no-repeat;
+    background-size: 35% 100%;
+    animation: avisCourant 3.2s linear infinite;
+}
+
+@keyframes avisCourant {
+    0% { background-position: -60% 0; }
+    100% { background-position: 160% 0; }
+}
+
+.avis-slides {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.avis-slide blockquote {
+    margin: 0;
+    color: #fff;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.avis-author {
+    margin: 0.9rem 0 0;
+    color: #ff9c9c;
+    font-weight: 700;
+}
+
+.avis-author span {
+    color: #c9c9c9;
+    font-weight: 400;
+}
+
+/* Avec JavaScript : un avis à la fois. Tous occupent la même case de grille,
+   donc la carte garde la hauteur du plus long et la page ne saute pas. */
+.avis-carousel.is-ready .avis-slides {
+    flex: 1 1 auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    align-items: center;
+    touch-action: pan-y;
+}
+
+.avis-carousel.is-ready .avis-slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.avis-carousel.is-ready .avis-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    animation: avisAllumage 0.45s ease-out;
+}
+
+/* L'avis s'allume comme un tube néon */
+@keyframes avisAllumage {
+    0% { opacity: 0; }
+    20% { opacity: 0.85; }
+    35% { opacity: 0.25; }
+    55% { opacity: 0.9; }
+    70% { opacity: 0.55; }
+    100% { opacity: 1; }
+}
+
+.avis-carousel.is-ready .avis-slide blockquote {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.avis-carousel.is-ready .avis-author {
+    margin-top: 1.2rem;
+}
+
+/* ----- Commandes : voyants, compteur, boutons poussoirs ----- */
+.avis-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.avis-leds {
+    display: flex;
+    margin-left: -9px;
+}
+
+.avis-led {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.avis-led::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border: 1px solid #6a6a6a;
+    border-radius: 50%;
+    background: #333;
+    transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.avis-led:hover::before {
+    border-color: #ff3333;
+}
+
+.avis-led[aria-current="true"]::before {
+    border-color: #ff8a8a;
+    background: #ff3333;
+    box-shadow: 0 0 10px #ff3333, 0 0 3px #fff;
+}
+
+.avis-led:focus-visible,
+.avis-btn:focus-visible {
+    outline: 3px solid #ffcc00;
+    outline-offset: 2px;
+}
+
+.avis-count {
+    margin-left: auto;
+    color: #c9c9c9;
+    font-family: 'Orbitron', 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.avis-buttons {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.avis-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 2px solid #ff3333;
+    border-radius: 50%;
+    background: #1a1a1a;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06), 0 4px 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Survol réservé à la souris : au doigt, le bouton resterait rouge après l'appui */
+@media (hover: hover) {
+    .avis-btn:hover {
+        background: #ff3333;
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06), 0 0 20px rgba(255, 51, 51, 0.6);
+    }
+}
+
+.avis-btn:active {
+    background: #ff3333;
+    transform: scale(0.93);
+}
+
+/* ----- Liens vers Google ----- */
+.avis-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.avis-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 48px;
+    padding: 0.7rem 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.avis-cta:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.avis-cta-primary {
+    border-color: #ff3333;
+    background: #e60000;
+}
+
+.avis-cta-primary:hover {
+    border-color: #ff3333;
+    background: #ff3333;
+    box-shadow: 0 0 22px rgba(255, 51, 51, 0.5);
+}
+
+@media (max-width: 860px) {
+    .avis-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.25rem;
+        margin-top: 1.25rem;
+    }
+
+    /* Photo en bandeau pour ne pas rallonger la page sur téléphone */
+    .avis-photo {
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+        border-radius: 16px;
+    }
+
+    .avis-meter-score {
+        font-size: 2.2rem;
+    }
+
+    .avis-carousel {
+        padding: 1.4rem 1.2rem 1.1rem;
+        border-radius: 16px;
+    }
+
+    .avis-carousel.is-ready .avis-slide blockquote {
+        font-size: 1.12rem;
+    }
+
+    .avis-nav {
+        margin-top: 1.1rem;
+        padding-top: 0.9rem;
+    }
+
+    .avis-count {
+        display: none;
+    }
+
+    .avis-buttons {
+        margin-left: auto;
+    }
+
+    .avis-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .avis-cta {
+        flex: 1 1 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .avis-carousel::before,
+    .avis-carousel.is-ready .avis-slide.is-active {
+        animation: none;
+    }
+
+    .avis-carousel::before {
+        display: none;
+    }
+}

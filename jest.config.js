@@ -25,6 +25,7 @@ export default {
         '!js/power-switch.js', // Exclure l'interrupteur de l'accueil (manipulation du DOM, testé via E2E)
         '!js/diagnostic.js', // Exclure le diagnostic express (manipulation du DOM, testé via E2E)
         '!js/services-board.js', // Exclure le tableau des services (manipulation du DOM, testé via E2E)
+        '!js/avis.js', // Exclure le défilement des avis (manipulation du DOM, testé via E2E)
         '!**/node_modules/**'
     ],
 
