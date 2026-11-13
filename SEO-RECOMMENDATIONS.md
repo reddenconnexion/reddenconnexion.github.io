@@ -58,6 +58,23 @@ Passe déclenchée par le suivi Search Console (12/04 → 11/07/2026). **Constat
 
 ---
 
+## ✅ Améliorations Techniques Appliquées (Novembre 2026) — visibilité dans les IA
+
+Passe déclenchée par un test de citation : le site est bien cité sur les requêtes locales, mais l'IA relevait une contradiction sur l'ancienneté (« depuis 25 ans » sur le site, « 2 ans d'activité » dans les annuaires) et jugeait les délais annoncés peu fiables.
+
+- ✅ **Ancienneté clarifiée partout** : « électricien depuis 25 ans » (le métier) et « entreprise créée en septembre 2025 » (Red Den Connexion). Plus aucune phrase ne laisse entendre que l'entreprise a 25 ans.
+- ✅ **Délais reformulés en temps de route** (« à 15 min de route ») au lieu de promesses d'intervention (« sur place en 15 min »).
+- ✅ **Nouvelle page `a-propos.html`** : fiche d'identité, parcours, qualifications, assurances, avis. Liée depuis l'accueil, le sitemap et `llms.txt`.
+- ✅ **Données structurées de l'accueil complétées** : date de création, SIRET, qualification IRVE P1, fondateur, profils (fiche Google, PagesJaunes, TikTok). Commune écrite « Saint-Médard-de-Guizières » dans les adresses structurées.
+- ✅ **`robots.txt`** : tous les robots IA autorisés, y compris ceux d'entraînement (GPTBot, ClaudeBot, Google-Extended, CCBot), auparavant bloqués.
+- ✅ **`llms.txt`** : création, SIRET, IRVE P1, assurances, statut RGE, avis, prix indicatifs.
+- ✅ **Crédit d'impôt borne de recharge** : terminé au 31/12/2025, article Wallbox et pages liées corrigés.
+- ✅ **Fraîcheur** : `dateModified` et `lastmod` du sitemap à jour sur les pages modifiées.
+
+**À faire hors code :** compléter les fiches annuaires (PagesJaunes, annuaire-pro-electricien, meilleurs-electriciens, Alentoor, Villepratique, Obat) avec la même adresse et la même date de création ; créer les fiches Bing Places et Apple Business Connect ; vérifier dans Cloudflare que le blocage des robots IA est désactivé ; vérifier les temps de route annoncés par commune.
+
+---
+
 ## 🎯 Actions Prioritaires à Réaliser (Hors code)
 
 ### 1. Google Business Profile (fiche vérifiée ✅ — passer en mode entretien)

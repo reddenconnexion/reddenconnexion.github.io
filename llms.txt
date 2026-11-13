@@ -1,17 +1,25 @@
 # Red Den Connexion
 
-> Électricien professionnel basé à St Médard de Guizières (Gironde, 33230), intervenant 24h/24 et 7j/7 dans un rayon de 50 km. Denis MERIOT, fort de 25 ans d'expérience, réalise tous types de travaux électriques pour particuliers et professionnels. Devis gratuit. Téléphone : 06 95 10 08 23.
+> Entreprise d'électricité créée en septembre 2025 à Saint-Médard-de-Guizières (Gironde, 33230) par Denis MERIOT, électricien depuis 25 ans. Dépannage 24h/24 et 7j/7, rénovation, tableaux, bornes de recharge (qualifié IRVE P1) et photovoltaïque, dans un rayon de 50 km, pour particuliers et professionnels. Devis gratuit. Téléphone : 06 95 10 08 23.
 
 ## Informations essentielles
 
 - **Nom** : Red Den Connexion
-- **Responsable** : Denis MERIOT
+- **Responsable** : Denis MERIOT, entrepreneur individuel (micro-entreprise)
+- **Création de l'entreprise** : septembre 2025
+- **SIRET** : 925 082 885 00029
 - **Téléphone** : 06 95 10 08 23
 - **Email** : reddenconnexion@gmail.com
-- **Adresse** : 13 rue Robert Boulin, 33230 St Médard de Guizières, France
+- **Adresse** : 13 rue Robert Boulin, 33230 Saint-Médard-de-Guizières (aussi écrit « St Médard de Guizières »), France
 - **Disponibilité** : 24h/24, 7j/7 (urgences incluses)
-- **Expérience** : 25 ans
-- **Certifications** : Travaux conformes à la norme NF C 15-100
+- **Expérience du dirigeant** : 25 ans de métier comme électricien, dont 7 ans consacrés exclusivement au dépannage (plus de 7 000 dépannages)
+- **Qualification** : IRVE niveau P1 (bornes de recharge jusqu'à 22 kW), certification FIEEC n° 001561, RS6612, délivrée le 24/09/2026
+- **Assurances** : décennale (April Construction) et responsabilité civile professionnelle
+- **Norme appliquée** : NF C 15-100
+- **Label RGE** : non (les installations photovoltaïques n'ouvrent pas droit à la prime à l'autoconsommation ni au tarif d'achat)
+- **Avis** : 5,0/5 sur Google pour 51 avis (novembre 2026)
+- **TVA** : franchise en base, devis sans TVA
+- **Prix indicatifs** : dépannage à partir de 80 € ; tableau électrique à partir de 800 € posé ; rénovation complète 3 000 à 8 000 € pour 100 m² ; prise renforcée ou borne à partir de 500 € posée
 - **Tarifs** : Devis gratuit et sans engagement
 
 ## Services proposés
@@ -20,7 +28,7 @@
 - [Rénovation électrique](https://reddenconnexion.fr/renovation-electrique.html) : Mise aux normes NF C 15-100, rénovation complète des installations électriques, remplacement de câblages anciens.
 - [Installation tableau électrique](https://reddenconnexion.fr/installation-tableau.html) : Remplacement et installation de tableaux électriques, disjoncteurs, protection différentielle.
 - [Installation panneaux photovoltaïques](https://reddenconnexion.fr/installation-panneaux-photovoltaiques.html) : Installation de panneaux solaires pour particuliers et professionnels, autoconsommation, injection réseau.
-- [Borne de recharge véhicule électrique](https://reddenconnexion.fr/installation-prise-vehicule-electrique.html) : Installation de bornes IRVE (Wallbox) pour voitures et véhicules électriques, selon normes en vigueur.
+- [Borne de recharge véhicule électrique](https://reddenconnexion.fr/installation-prise-vehicule-electrique.html) : Installation de bornes IRVE (Wallbox) pour voitures et véhicules électriques, par un électricien qualifié IRVE P1.
 - [Caméras de sécurité](https://reddenconnexion.fr/installation-cameras-securite.html) : Installation de systèmes de vidéosurveillance (IP, analogique) pour maisons et locaux professionnels.
 - [Installation de climatisation](https://reddenconnexion.fr/installation-climatisation.html) : Ligne dédiée, protection au tableau et raccordement électrique de climatisations monosplit et multisplit, en coordination avec un frigoriste certifié pour la partie fluide.
 
@@ -34,6 +42,7 @@ Basé à **St Médard de Guizières (33230)**, Red Den Connexion intervient dans
 ## Pages principales
 
 - [Accueil](https://reddenconnexion.fr/) : Présentation complète des services et contact
+- [À propos](https://reddenconnexion.fr/a-propos.html) : Fiche d'identité de l'entreprise, parcours de Denis MERIOT, qualifications et assurances
 - [Électricien à St Médard de Guizières](https://reddenconnexion.fr/depannage-electrique-saint-medard-de-guizieres.html) : Électricien installé dans la commune (33230), dépannage 24h/24, rénovation, installation
 - [Électricien aux Peintures](https://reddenconnexion.fr/depannage-electrique-les-peintures.html) : Dépannage et installations électriques aux Peintures (33230), bourg, lotissements et écarts ruraux
 - [Électricien à Lapouyade](https://reddenconnexion.fr/depannage-electrique-lapouyade.html) : Dépannage et rénovation à Lapouyade (33620), spécialiste du bâti rural, parafoudre et photovoltaïque
@@ -42,13 +51,13 @@ Basé à **St Médard de Guizières (33230)**, Red Den Connexion intervient dans
 - [Électricien à Libourne](https://reddenconnexion.fr/depannage-electrique-libourne.html) : Électricien à Libourne (33500) — dépannage d'urgence 24h/24, rénovation et mise aux normes NF C 15-100
 - [Électricien à Coutras](https://reddenconnexion.fr/depannage-electrique-coutras.html) : Électricien à Coutras (33230) — dépannage d'urgence 24h/24, rénovation et mise aux normes NF C 15-100
 - [Électricien à Montpon-Ménestérol](https://reddenconnexion.fr/depannage-electrique-montpon-menesterol.html) : Dépannage et installations électriques à Montpon-Ménestérol
-- [Électricien à Guitres](https://reddenconnexion.fr/depannage-electrique-guitres.html) : Dépannage et installations électriques à Guitres (33230), intervention en moins de 10 minutes
+- [Électricien à Guitres](https://reddenconnexion.fr/depannage-electrique-guitres.html) : Dépannage et installations électriques à Guitres (33230), à moins de 10 minutes de route
 - [Électricien à Castillon-la-Bataille](https://reddenconnexion.fr/depannage-electrique-castillon-la-bataille.html) : Dépannage et installations électriques à Castillon-la-Bataille (33350)
 - [Électricien à Sainte-Foy-la-Grande](https://reddenconnexion.fr/depannage-electrique-sainte-foy-la-grande.html) : Dépannage et installations électriques à Sainte-Foy-la-Grande (33220)
 - [Électricien à Saint-André-de-Cubzac](https://reddenconnexion.fr/depannage-electrique-saint-andre-de-cubzac.html) : Dépannage et installations électriques à Saint-André-de-Cubzac (33240) et dans le Cubzaguais
 - [Électricien à Blaye](https://reddenconnexion.fr/depannage-electrique-blaye.html) : Dépannage et rénovation électrique à Blaye (33390), spécialiste bâti ancien et exploitations viticoles
 - [Électricien à Lussac](https://reddenconnexion.fr/depannage-electrique-lussac.html) : Dépannage et installations électriques à Lussac (33570), au cœur de l'AOC Lussac-Saint-Émilion
-- [Électricien à Abzac](https://reddenconnexion.fr/depannage-electrique-abzac.html) : Dépannage et rénovation à Abzac (33230), bâti rural de la vallée de l'Isle, intervention en 10 minutes
+- [Électricien à Abzac](https://reddenconnexion.fr/depannage-electrique-abzac.html) : Dépannage et rénovation à Abzac (33230), bâti rural de la vallée de l'Isle, à 10 minutes de route
 - [Électricien à Saint-Denis-de-Pile](https://reddenconnexion.fr/depannage-electrique-saint-denis-de-pile.html) : Dépannage et installations électriques à Saint-Denis-de-Pile (33910)
 - [Électricien à Laruscade](https://reddenconnexion.fr/depannage-electrique-laruscade.html) : Dépannage et rénovation à Laruscade (33620), bâti rural et photovoltaïque
 - [Électricien aux Églisottes](https://reddenconnexion.fr/depannage-electrique-les-eglisottes.html) : Dépannage et installations électriques aux Églisottes-et-Chalaures (33230)
@@ -79,14 +88,14 @@ Basé à **St Médard de Guizières (33230)**, Red Den Connexion intervient dans
 - [Prix d'une rénovation électrique](https://reddenconnexion.fr/conseils/prix-renovation-electrique.html) : Prix au m², facteurs de coût, exemples chiffrés de rénovation électrique
 - [Diagnostic électrique avant vente](https://reddenconnexion.fr/conseils/diagnostic-electrique-avant-vente.html) : Obligation, contenu et déroulement du diagnostic électrique immobilier
 - [Aides panneaux solaires Gironde 2026](https://reddenconnexion.fr/conseils/aides-panneaux-solaires-gironde-2026.html) : Prime à l'autoconsommation, tarif d'achat, TVA réduite, aides régionales
-- [Wallbox à domicile : guide complet](https://reddenconnexion.fr/conseils/wallbox-installation-domicile.html) : Borne de recharge, puissance, IRVE, crédit d'impôt 75 %
+- [Wallbox à domicile : guide complet](https://reddenconnexion.fr/conseils/wallbox-installation-domicile.html) : Borne de recharge, puissance, IRVE, aides 2026 (le crédit d'impôt a pris fin le 31/12/2025)
 - [Mentions légales](https://reddenconnexion.fr/mentions-legales.html)
 - [Politique de confidentialité](https://reddenconnexion.fr/confidentialite.html)
 
 ## Questions fréquentes
 
 **Qui est Red Den Connexion ?**
-Red Den Connexion est une entreprise d'électricité générale basée à St Médard de Guizières (Gironde). Avec 25 ans d'expérience, elle intervient chez les particuliers et les professionnels pour tous types de travaux électriques.
+Red Den Connexion est l'entreprise d'électricité générale de Denis MERIOT, créée en septembre 2025 à Saint-Médard-de-Guizières (Gironde). Denis MERIOT est électricien depuis 25 ans. L'entreprise intervient chez les particuliers et les professionnels pour tous types de travaux électriques.
 
 **Quel électricien appeler en urgence près de Libourne ou Coutras ?**
 Red Den Connexion intervient 24h/24 et 7j/7 à Libourne, Coutras, St Médard de Guizières et dans tout le nord-Gironde. Numéro d'urgence : 06 95 10 08 23.
@@ -98,4 +107,4 @@ Par téléphone au 06 95 10 08 23 ou par email à reddenconnexion@gmail.com. Dev
 Oui, Red Den Connexion installe des panneaux photovoltaïques pour particuliers et professionnels en Gironde et Dordogne.
 
 **Red Den Connexion installe-t-il des bornes de recharge pour voitures électriques ?**
-Oui, l'entreprise est habilitée à installer des bornes IRVE (Wallbox) pour véhicules électriques, conformément aux normes en vigueur.
+Oui. Denis MERIOT est qualifié IRVE niveau P1 depuis le 24/09/2026, ce qui l'autorise à installer des bornes de recharge jusqu'à 22 kW.
