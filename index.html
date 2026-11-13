@@ -375,10 +375,6 @@
         .services-grid .service-card:nth-child(2) { transition-delay: 0.2s; }
         .services-grid .service-card:nth-child(3) { transition-delay: 0.3s; }
 
-        .testimonials-grid .testimonial-link:nth-child(1) .testimonial-card { transition-delay: 0.1s; }
-        .testimonials-grid .testimonial-link:nth-child(2) .testimonial-card { transition-delay: 0.2s; }
-        .testimonials-grid .testimonial-link:nth-child(3) .testimonial-card { transition-delay: 0.3s; }
-        .testimonials-grid .testimonial-link:nth-child(4) .testimonial-card { transition-delay: 0.4s; }
 
         .contact-grid .contact-item:nth-child(1) { transition-delay: 0.1s; }
         .contact-grid .contact-item:nth-child(2) { transition-delay: 0.2s; }
@@ -1671,167 +1667,6 @@
             color: white;
         }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 51, 51, 0.3);
-            transition: all 0.3s;
-        }
-
-        .testimonial-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #ff3333;
-            transform: translateY(-5px);
-        }
-
-        .testimonial-stars {
-            color: #ff3333;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: #ff9999;
-        }
-
-        .testimonial-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            cursor: pointer;
-        }
-
-        .testimonial-link:hover .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #ff3333;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.3);
-        }
-
-        .google-badge {
-            display: inline-block;
-            background: #4285f4;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 1rem;
-            font-style: normal;
-        }
-
-        .google-reviews-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(66, 133, 244, 0.4);
-        }
-
-        .google-reviews-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(66, 133, 244, 0.6);
-            background: linear-gradient(135deg, #3367d6 0%, #2d8e47 100%);
-        }
-
-        .leave-review-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
-        }
-
-        .leave-review-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255, 51, 51, 0.6);
-            background: linear-gradient(135deg, #cc0000 0%, #8b0000 100%);
-        }
-
-        .reviews-cta-row {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-
-        .rating-summary {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.2rem;
-            margin: 1.5rem auto 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 51, 51, 0.2);
-            border-radius: 16px;
-            padding: 1.2rem 2rem;
-            max-width: 420px;
-            flex-wrap: wrap;
-        }
-
-        .rating-score-big {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #ff3333;
-            line-height: 1;
-        }
-
-        .rating-summary-right {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .rating-stars-gold {
-            color: #fbbf24;
-            font-size: 1.6rem;
-            letter-spacing: 2px;
-            line-height: 1;
-        }
-
-        .rating-count-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            color: white;
-        }
-
-        .google-logo-inline {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.85rem;
-            opacity: 0.7;
-            color: white;
-        }
-
         .zone {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
@@ -2978,28 +2813,6 @@
             }
             .gallery-more[hidden] { display: none; }
 
-            /* Avis : défilement horizontal au doigt */
-            .testimonials-grid {
-                display: flex;
-                gap: 0.9rem;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                margin: 1.5rem -1.1rem 0;
-                padding: 0 1.1rem 0.75rem;
-                scrollbar-width: none;
-            }
-            .testimonials-grid::-webkit-scrollbar { display: none; }
-            .testimonial-link { flex: 0 0 84%; scroll-snap-align: center; display: flex; }
-            .testimonial-card {
-                padding: 1.25rem;
-                width: 100%;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-            .testimonial-stars { font-size: 1.1rem; margin-bottom: 0.6rem; }
-            .testimonial-text { line-height: 1.6; }
-
             /* Contact : cartes compactes */
             .contact-grid { gap: 0.8rem; margin-bottom: 2rem; }
             .contact-item { padding: 1rem; }
@@ -3031,6 +2844,8 @@
     <link rel="stylesheet" href="/css/diagnostic.css">
     <!-- Tableau des services -->
     <link rel="stylesheet" href="/css/services-board.css">
+    <!-- Avis clients -->
+    <link rel="stylesheet" href="/css/avis.css">
 </head>
 <body>
     <header>
@@ -3754,77 +3569,66 @@
     <section id="avis" class="testimonials">
         <h2 class="animate-on-scroll">Ils Me Font Confiance</h2>
 
-        <!-- Récapitulatif de note agrégée -->
-        <div class="rating-summary animate-on-scroll">
-            <div class="rating-score-big">5.0</div>
-            <div class="rating-summary-right">
-                <div class="rating-stars-gold">★★★★★</div>
-                <div class="rating-count-label">51 avis vérifiés</div>
-                <div class="google-logo-inline">
-                    <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                    sur Google
+        <!-- Photo à gauche ; à droite la note, puis les avis affichés un par un.
+             Pour ajouter un avis : copiez un bloc <li class="avis-slide"> ci-dessous
+             (voir js/avis.js). -->
+        <div class="avis-layout">
+            <figure class="avis-photo animate-on-scroll">
+                <img src="cablage-tableau-electrique-renovation.webp" alt="Denis Meriot, électricien Red Den Connexion, câblant un tableau électrique en rénovation" loading="lazy" decoding="async" width="722" height="1282">
+                <figcaption>Denis Meriot · 25 ans de métier</figcaption>
+            </figure>
+
+            <div class="avis-main">
+                <!-- Note Google -->
+                <div class="avis-meter animate-on-scroll">
+                    <span class="avis-meter-score">5,0</span>
+                    <div class="avis-meter-detail">
+                        <span class="avis-stars" aria-hidden="true">★★★★★</span>
+                        <span class="avis-meter-count">51 avis vérifiés sur
+                            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                            Google</span>
+                    </div>
+                </div>
+
+                <div class="avis-carousel animate-on-scroll" data-avis role="group" aria-label="Avis clients">
+                    <ul class="avis-slides">
+                        <li class="avis-slide">
+                            <blockquote>« Électricien à Montpon très réactif et pro. Travail propre, rapide et avec le sourire ! Le courant est bien passé du début à la fin, top prestation ! Très satisfaite sur la qualité des travaux réalisés, la compétence et le professionnalisme. »</blockquote>
+                            <p class="avis-author">Sylvia Randria <span>· Avis Google</span></p>
+                        </li>
+                        <li class="avis-slide">
+                            <blockquote>« Professionnel très sérieux et compétent. Nous le recommandons. »</blockquote>
+                            <p class="avis-author">Mireille Flechard <span>· Avis Google</span></p>
+                        </li>
+                        <li class="avis-slide">
+                            <blockquote>« Très réactifs compte tenu de la nature du problème, ils ne pouvaient pas attendre jusqu'à lundi. Prix correct pour la situation. »</blockquote>
+                            <p class="avis-author">Happyfrenchbuddha 21stsanctuary <span>· Avis Google</span></p>
+                        </li>
+                        <li class="avis-slide">
+                            <blockquote>« Intervention très rapide à Fronsac pour le remplacement d'un radiateur dans mon logement locatif. Artisan sérieux et efficace, il m'a proposé plusieurs modèles en tenant compte de la fourchette de prix que je lui ai indiquée. »</blockquote>
+                            <p class="avis-author">David Maugue <span>· Avis Google</span></p>
+                        </li>
+                        <li class="avis-slide">
+                            <blockquote>« Tout simplement excellent 👍 »</blockquote>
+                            <p class="avis-author">Florent Rodriguez <span>· Avis Google</span></p>
+                        </li>
+                        <li class="avis-slide">
+                            <blockquote>« Très bonne expérience avec Denis. Très rapide dans la prise de rendez-vous. Très professionnel, m'a envoyé un message à la fin de son intervention. »</blockquote>
+                            <p class="avis-author">Aurélie Léglise <span>· Avis Google</span></p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="avis-cta-row animate-on-scroll">
+                    <a href="https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières" target="_blank" rel="noopener noreferrer" class="avis-cta">
+                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                        Voir tous les avis
+                    </a>
+                    <a href="https://g.page/r/Cd-M3iSxzhgcEBM/review" target="_blank" rel="noopener noreferrer" class="avis-cta avis-cta-primary">
+                        <span aria-hidden="true">★</span> Laisser mon avis
+                    </a>
                 </div>
             </div>
-        </div>
-
-        <div class="testimonials-grid">
-            <a href="https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières" target="_blank" rel="noopener noreferrer" class="testimonial-link">
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Professionnel très sérieux et compétent. Nous le recommandons."</p>
-                    <p class="testimonial-author">- Mireille Flechard</p>
-                    <span class="google-badge">Avis Google</span>
-                </div>
-            </a>
-            <a href="https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières" target="_blank" rel="noopener noreferrer" class="testimonial-link">
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Très réactifs compte tenu de la nature du problème, ils ne pouvaient pas attendre jusqu'à lundi. Prix correct pour la situation."</p>
-                    <p class="testimonial-author">- Happyfrenchbuddha 21stsanctuary</p>
-                    <span class="google-badge">Avis Google</span>
-                </div>
-            </a>
-            <a href="https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières" target="_blank" rel="noopener noreferrer" class="testimonial-link">
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Intervention très rapide à Fronsac pour le remplacement d'un radiateur dans mon logement locatif. Artisan sérieux et efficace, il m'a proposé plusieurs modèles en tenant compte de la fourchette de prix que je lui ai indiquée."</p>
-                    <p class="testimonial-author">- David Maugue</p>
-                    <span class="google-badge">Avis Google</span>
-                </div>
-            </a>
-            <a href="https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières" target="_blank" rel="noopener noreferrer" class="testimonial-link">
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Électricien à Montpon très réactif et pro. Travail propre, rapide et avec le sourire ! Le courant est bien passé du début à la fin, top prestation ! Très satisfaite sur la qualité des travaux réalisés, la compétence et le professionnalisme."</p>
-                    <p class="testimonial-author">- Sylvia Randria</p>
-                    <span class="google-badge">Avis Google</span>
-                </div>
-            </a>
-            <a href="https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières" target="_blank" rel="noopener noreferrer" class="testimonial-link">
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Tout simplement excellent 👍"</p>
-                    <p class="testimonial-author">- Florent Rodriguez</p>
-                    <span class="google-badge">Avis Google</span>
-                </div>
-            </a>
-            <a href="https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières" target="_blank" rel="noopener noreferrer" class="testimonial-link">
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Très bonne expérience avec Denis. Très rapide dans la prise de rendez-vous. Très professionnel, m'a envoyé un message à la fin de son intervention."</p>
-                    <p class="testimonial-author">- Aurélie Léglise</p>
-                    <span class="google-badge">Avis Google</span>
-                </div>
-            </a>
-        </div>
-        <div class="reviews-cta-row animate-on-scroll">
-            <a href="https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières" target="_blank" rel="noopener noreferrer" class="google-reviews-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                Voir tous les avis
-            </a>
-            <a href="https://g.page/r/Cd-M3iSxzhgcEBM/review" target="_blank" rel="noopener noreferrer" class="leave-review-btn">
-                ⭐ Laisser mon avis
-            </a>
         </div>
     </section>
 
@@ -4819,6 +4623,7 @@
     <script src="/js/power-switch.js" defer></script>
     <script src="/js/diagnostic.js" defer></script>
     <script src="/js/services-board.js" defer></script>
+    <script src="/js/avis.js" defer></script>
     <script src="/js/before-after.js" defer></script>
     <script src="/js/showcase.js" defer></script>
 </body>
