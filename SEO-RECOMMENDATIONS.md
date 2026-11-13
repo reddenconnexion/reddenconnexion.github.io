@@ -75,6 +75,46 @@ Passe déclenchée par un test de citation : le site est bien cité sur les requ
 
 ---
 
+## ✅ Corrections Appliquées (13 novembre 2026) — retour arrière sur la passe de septembre
+
+Passe déclenchée par l'export Search Console du 11/08 au 10/11/2026. **Constat : les trois pages modifiées le 19 septembre (PR #215) ont toutes reculé, alors que l'accueil, non modifié ce jour-là, a progressé.**
+
+| Page | Juillet (avant) | Novembre (après) | Ce qui avait changé le 19/09 |
+|---|---|---|---|
+| Dépannage Libourne | pos 11,2 | pos 27,1 | H1 « Dépannage Électrique à Libourne » remplacé par « Électricien à Libourne — Dépannage, Tableau et Rénovation » ; bloc « coupure de courant » descendu en bas de page |
+| Dépannage Coutras | pos 12,4 | pos 23,1 | « Électricien » retiré du titre et du H1 |
+| Rénovation électrique | pos 9,3 | pos 39,7 | Page de service transformée en « guide complet » (titre, description, H1) |
+| Accueil | pos 6,2 | pos 4,3 | Rien |
+
+La cause n'est pas prouvée (l'export ne donne pas le détail jour par jour), mais la coïncidence est nette : seules les pages touchées ce jour-là ont chuté. Les pages n'ont aucun blocage technique dans le code (pas de `noindex`, canoniques correctes, présentes dans le sitemap).
+
+- ✅ **Rénovation** : titre, description et H1 remis en version « service local » (ceux en place quand la page était en position 8-9). Le tableau de prix ajouté en septembre est conservé. La mention « aides 2026 » disparaît du titre : elle promettait des aides alors que l'entreprise n'est pas RGE.
+- ✅ **Libourne** : titre et H1 commencent de nouveau par « Dépannage Électrique Libourne », avec « Électricien » en second. Le bloc « Coupure de courant à Libourne : Enedis ou défaut chez vous ? » remonte à sa place d'origine. Le bloc d'introduction parle de panne et de coupure, plus de tableau ni de rénovation (la page `renovation-electrique-libourne.html` s'en charge).
+- ✅ **Coutras** : « Électricien » revient dans le titre et le H1, derrière « Dépannage Électrique Coutras ». Description réécrite : « dépannage et installation électrique », « intervention rapide », prix de départ et téléphone.
+- ✅ **Prix de départ affiché** (« à partir de 80 € en journée », déjà publié sur `tarifs-devis.html`) dans les descriptions et les FAQ de Libourne et Coutras.
+- ✅ **Accueil** : les liens vers les pages locales s'appellent maintenant « dépannage électrique Libourne » et « dépannage électrique Coutras » au lieu de « Libourne » et « Coutras ».
+- ✅ `sitemap.xml` et `llms.txt` mis à jour.
+
+**Règle pour la suite : ne plus changer le titre et le H1 d'une page qui est en position 8 à 12.** Ajouter du contenu, oui ; changer l'intention de la page, non. Et une seule page modifiée à la fois, pour savoir ce qui a marché.
+
+**À faire hors code :**
+- Dans Search Console, « Inspecter l'URL » sur les trois pages puis « Demander une indexation » une fois la mise en ligne faite.
+- Vérifier dans le même écran l'« URL canonique sélectionnée par Google » pour la page rénovation.
+- **Prix à harmoniser** : `tarifs-devis.html` annonce 3 000 à 8 000 € pour rénover 100 m², alors que `renovation-electrique.html` et `conseils/prix-renovation-electrique.html` annoncent 8 000 à 12 000 €. Choisir la bonne fourchette et l'écrire partout.
+- Ajouter sur la page Libourne deux ou trois interventions réelles (quartier, type de panne, durée).
+
+### 📌 Baseline — 13/11/2026 (référence pour le point du 13/12/2026)
+
+Période 11/08 → 10/11/2026 : 3 263 impressions · 47 clics · position moyenne 19,6 (mobile 8,1 · ordinateur 28,4).
+
+**Pages :** Accueil 1 469 impr / pos 4,3 / 43 clics · Libourne 627 / pos 27,1 / 1 clic · Coutras 542 / pos 23,1 / 0 clic · Rénovation 398 / pos 39,7 / 0 clic.
+
+**Requêtes :** « coupure electricite libourne » 102 impr / pos 34 · « depannage electricite libourne » 5 impr / pos 12,2 · « électricien libourne » pos 30-31 · « dépannage et installation électrique coutras » pos 2,9 / 0 clic · « mise aux normes électrique coutras » pos 12,4 · « electricien coutras » pos 4,3 / 6 clics · « electricien autour de moi » pos 2,9 / 3 clics.
+
+Les corrections mettent trois à six semaines à se voir dans Google : le point du 13 décembre montrera un début, celui de janvier sera plus parlant.
+
+---
+
 ## 🎯 Actions Prioritaires à Réaliser (Hors code)
 
 ### 1. Google Business Profile (fiche vérifiée ✅ — passer en mode entretien)
