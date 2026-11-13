@@ -1,0 +1,348 @@
+/*
+ * Section « Questions Fréquentes »
+ * --------------------------------
+ * Chaque question est une ligne de circuit : un numéro, la question, et un
+ * petit interrupteur à bascule. On l'actionne et la réponse s'allume.
+ * À gauche, un fil relie toutes les questions ; le point de connexion d'une
+ * question ouverte passe au rouge. Un bouton « général » ouvre ou ferme tout.
+ * Le comportement est dans js/faq.js.
+ *
+ * Sans JavaScript, toutes les réponses restent affichées.
+ */
+
+.faq-container {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+/* ----- Commande générale ----- */
+.faq-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.faq-master {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 44px;
+    padding: 0.5rem 1.1rem;
+    border: 2px solid #1a1a1a;
+    border-radius: 999px;
+    background: #fff;
+    color: #1a1a1a;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Masqué tant que le script ne l'a pas activé (sans JavaScript il ne sert à rien) */
+.faq-master[hidden] {
+    display: none;
+}
+
+.faq-master::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #9aa1ab;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.faq-master[aria-pressed="true"] {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.faq-master[aria-pressed="true"]::before {
+    background: #ff3333;
+    box-shadow: 0 0 8px #ff3333;
+}
+
+.faq-master:focus-visible,
+.faq-question:focus-visible {
+    outline: 3px solid #ff3333;
+    outline-offset: 3px;
+}
+
+/* ----- Liste et fil conducteur ----- */
+.faq-list {
+    position: relative;
+    padding-left: 38px;
+}
+
+/* Le fil qui relie les questions */
+.faq-list::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    left: 9px;
+    width: 3px;
+    border-radius: 2px;
+    background: #d3d7dd;
+}
+
+.faq-item {
+    position: relative;
+    margin-bottom: 0.9rem;
+    border: 1px solid #e3e5e8;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Dérivation entre le fil et la carte */
+.faq-item::after {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: -27px;
+    width: 27px;
+    height: 3px;
+    background: #d3d7dd;
+    transition: background-color 0.25s;
+}
+
+/* Point de connexion sur le fil */
+.faq-item::before {
+    content: "";
+    position: absolute;
+    top: 23px;
+    left: -37px;
+    z-index: 1;
+    width: 17px;
+    height: 17px;
+    box-sizing: border-box;
+    border: 3px solid #b9bfc7;
+    border-radius: 50%;
+    background: #fff;
+    transition: background-color 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.faq-item.is-open {
+    border-color: rgba(255, 51, 51, 0.5);
+    box-shadow: 0 8px 24px rgba(255, 51, 51, 0.14);
+}
+
+.faq-item.is-open::after {
+    background: #ff3333;
+}
+
+.faq-item.is-open::before {
+    border-color: #ff3333;
+    background: #ff3333;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.8);
+}
+
+/* ----- Question ----- */
+.faq-heading {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    min-height: 62px;
+    padding: 0.75rem 1.1rem 0.75rem 1.25rem;
+    border: 0;
+    border-radius: 14px;
+    background: none;
+    color: #1a1a1a;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.faq-num {
+    flex-shrink: 0;
+    min-width: 2ch;
+    color: #c40000;
+    font-family: 'Orbitron', 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.faq-label {
+    flex: 1 1 auto;
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+/* Interrupteur à bascule : moitié basse enfoncée = éteint,
+   moitié haute enfoncée et voyant rouge = allumé */
+.faq-switch {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 30px;
+    height: 44px;
+    box-sizing: border-box;
+    padding: 4px;
+    border: 1px solid #b9c0cb;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+.faq-switch span {
+    display: block;
+    flex: 1 1 0;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.faq-switch span:first-child {
+    position: relative;
+    border-radius: 4px 4px 1px 1px;
+    background: #f3f4f6;
+}
+
+.faq-switch span:first-child::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    border-radius: 50%;
+    background: #b4bac3;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.faq-switch span:last-child {
+    border-radius: 1px 1px 4px 4px;
+    background: #d3d8df;
+    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.faq-question[aria-expanded="true"] .faq-switch span:first-child {
+    background: #d3d8df;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.faq-question[aria-expanded="true"] .faq-switch span:first-child::after {
+    background: #ff3333;
+    box-shadow: 0 0 6px #ff3333;
+}
+
+.faq-question[aria-expanded="true"] .faq-switch span:last-child {
+    background: #f3f4f6;
+    box-shadow: none;
+}
+
+@media (hover: hover) {
+    .faq-item:hover {
+        border-color: rgba(255, 51, 51, 0.5);
+    }
+}
+
+/* ----- Réponse ----- */
+.faq-answer {
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.faq-answer-inner {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.faq-answer p {
+    margin: 0;
+    padding: 0.1rem 1.25rem 1.25rem calc(1.25rem + 2ch + 1rem);
+    color: #444;
+    line-height: 1.75;
+}
+
+/* Avec JavaScript : réponses repliées, dépliées en douceur à l'ouverture */
+.faq-container.is-ready .faq-answer {
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+}
+
+.faq-container.is-ready .faq-answer-inner {
+    visibility: hidden;
+    transition: visibility 0s linear 0.3s;
+}
+
+.faq-container.is-ready .faq-item.is-open .faq-answer {
+    grid-template-rows: 1fr;
+}
+
+.faq-container.is-ready .faq-item.is-open .faq-answer-inner {
+    visibility: visible;
+    transition: visibility 0s linear 0s;
+}
+
+/* Sans JavaScript : pas d'interrupteur, puisque tout est déjà affiché */
+.faq-container:not(.is-ready) .faq-switch {
+    display: none;
+}
+
+.faq-container:not(.is-ready) .faq-question {
+    cursor: default;
+}
+
+@media (max-width: 640px) {
+    .faq-list {
+        padding-left: 24px;
+    }
+
+    .faq-list::before {
+        left: 5px;
+    }
+
+    .faq-item::after {
+        left: -17px;
+        width: 17px;
+    }
+
+    .faq-item::before {
+        left: -26px;
+        width: 15px;
+        height: 15px;
+        top: 24px;
+    }
+
+    .faq-question {
+        gap: 0.7rem;
+        padding: 0.7rem 0.8rem 0.7rem 0.9rem;
+    }
+
+    .faq-label {
+        font-size: 1rem;
+    }
+
+    .faq-answer p {
+        padding: 0.1rem 0.9rem 1.1rem 0.9rem;
+        line-height: 1.65;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .faq-container.is-ready .faq-answer,
+    .faq-item,
+    .faq-item::before,
+    .faq-item::after,
+    .faq-switch span {
+        transition: none;
+    }
+}
