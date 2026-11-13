@@ -2004,77 +2004,6 @@
             background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
         }
 
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: white;
-            margin-bottom: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .faq-item:hover {
-            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.2);
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            transition: all 0.3s;
-            user-select: none;
-        }
-
-        .faq-question:hover {
-            background: #f8f8f8;
-        }
-
-        .faq-question h3 {
-            margin: 0;
-            color: #1a1a1a;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .faq-icon {
-            color: #ff3333;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-            flex-shrink: 0;
-            margin-left: 1rem;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-            padding: 0 1.5rem;
-            background: #f8f8f8;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 1.5rem;
-        }
-
-        .faq-answer p {
-            margin: 0;
-            line-height: 1.8;
-            color: #555;
-        }
-
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -2868,6 +2797,8 @@
     <link rel="stylesheet" href="/css/services-board.css">
     <!-- Avis clients -->
     <link rel="stylesheet" href="/css/avis.css">
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
     <header>
@@ -3697,124 +3628,180 @@
 
     <section id="faq" class="faq">
         <h2 class="animate-on-scroll">Questions Fréquentes</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Intervenez-vous en urgence ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, je suis disponible 24h/24 et 7j/7 pour toutes vos urgences électriques. Que ce soit pour une panne de courant, un disjoncteur qui saute ou tout autre problème électrique urgent, j'interviens rapidement pour assurer votre sécurité. Appelez-moi au 06 95 10 08 23.</p>
-                </div>
+        <!-- Chaque question est un bouton avec un interrupteur ; la réponse s'affiche quand on l'actionne
+             (js/faq.js). Pour ajouter une question : copiez un bloc faq-item et changez les numéros. -->
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Proposez-vous un devis gratuit ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">Intervenez-vous en urgence&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Oui, je suis disponible 24h/24 et 7j/7 pour toutes vos urgences électriques. Que ce soit pour une panne de courant, un disjoncteur qui saute ou tout autre problème électrique urgent, j'interviens rapidement pour assurer votre sécurité. Appelez-moi au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Absolument ! Je propose un devis gratuit et sans engagement pour tous vos projets électriques. Contactez-moi pour décrire votre projet, et je vous fournirai une estimation détaillée et transparente de mes services.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Proposez-vous un devis gratuit&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Absolument ! Je propose un devis gratuit et sans engagement pour tous vos projets électriques. Contactez-moi pour décrire votre projet, et je vous fournirai une estimation détaillée et transparente de mes services.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Êtes-vous certifié et assuré ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Êtes-vous certifié et assuré&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Oui, fort de 25 ans d'expérience, je suis qualifié et certifié. Tous mes travaux respectent strictement la norme NF C 15-100 en vigueur. Je suis titulaire d'une <strong>assurance RC professionnelle</strong> (responsabilité civile) ainsi que d'une <strong>garantie décennale</strong>, qui couvre vos installations pendant 10 ans après la réception des travaux. Vous êtes ainsi pleinement protégé en cas de sinistre.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, fort de 25 ans d'expérience, je suis qualifié et certifié. Tous mes travaux respectent strictement la norme NF C 15-100 en vigueur. Je suis titulaire d'une <strong>assurance RC professionnelle</strong> (responsabilité civile) ainsi que d'une <strong>garantie décennale</strong>, qui couvre vos installations pendant 10 ans après la réception des travaux. Vous êtes ainsi pleinement protégé en cas de sinistre.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Quelle est votre zone d'intervention&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Je suis basé à St Médard de Guizières et j'interviens dans un rayon de 50 km, incluant <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: underline;">Libourne</a>, <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: underline;">Coutras</a>, <a href="depannage-electrique-montpon-menesterol.html" style="color: #ff3333; text-decoration: underline;">Montpon-Ménestérol</a>, Guitres, Saint-Denis-de-Pile et toutes les communes environnantes en Gironde et Dordogne.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Quelle est votre zone d'intervention ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Quels types de travaux réalisez-vous&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Je réalise tous types de travaux électriques : installations complètes (domestiques et tertiaires), rénovations électriques, mise aux normes, installation de tableaux électriques, pose de prises et interrupteurs, éclairages, chauffage électrique, et dépannages urgents.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Je suis basé à St Médard de Guizières et j'interviens dans un rayon de 50 km, incluant <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: underline;">Libourne</a>, <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: underline;">Coutras</a>, <a href="depannage-electrique-montpon-menesterol.html" style="color: #ff3333; text-decoration: underline;">Montpon-Ménestérol</a>, Guitres, Saint-Denis-de-Pile et toutes les communes environnantes en Gironde et Dordogne.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Combien de temps prend une installation électrique&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>La durée varie selon l'ampleur du projet. Une installation simple peut prendre quelques heures, tandis qu'une installation complète ou une rénovation peut nécessiter plusieurs jours. Lors du devis, je vous fournirai une estimation précise du délai d'intervention.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Quels types de travaux réalisez-vous ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Acceptez-vous les paiements échelonnés&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>Pour les projets importants, je peux étudier des solutions de paiement adaptées. N'hésitez pas à m'en parler lors de l'établissement du devis. Je m'efforce de trouver des arrangements qui conviennent à tous.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Je réalise tous types de travaux électriques : installations complètes (domestiques et tertiaires), rénovations électriques, mise aux normes, installation de tableaux électriques, pose de prises et interrupteurs, éclairages, chauffage électrique, et dépannages urgents.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q8" aria-expanded="true" aria-controls="faq-r8">
+                            <span class="faq-num" aria-hidden="true">08</span>
+                            <span class="faq-label">Fournissez-vous le matériel électrique&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r8" role="region" aria-labelledby="faq-q8">
+                        <div class="faq-answer-inner">
+                            <p>Oui, je peux fournir tout le matériel électrique nécessaire pour vos travaux. Je travaille avec des marques de qualité reconnues pour garantir la sécurité et la durabilité de vos installations. Le coût du matériel est inclus dans le devis.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Combien de temps prend une installation électrique ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q9" aria-expanded="true" aria-controls="faq-r9">
+                            <span class="faq-num" aria-hidden="true">09</span>
+                            <span class="faq-label">Installez-vous des panneaux photovoltaïques en Gironde&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r9" role="region" aria-labelledby="faq-q9">
+                        <div class="faq-answer-inner">
+                            <p>Oui, Red Den Connexion installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> pour les particuliers et les professionnels en Gironde et en Dordogne. Je gère l'ensemble du projet : étude de faisabilité, installation, raccordement et mise en service. Devis gratuit au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>La durée varie selon l'ampleur du projet. Une installation simple peut prendre quelques heures, tandis qu'une installation complète ou une rénovation peut nécessiter plusieurs jours. Lors du devis, je vous fournirai une estimation précise du délai d'intervention.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q10" aria-expanded="true" aria-controls="faq-r10">
+                            <span class="faq-num" aria-hidden="true">10</span>
+                            <span class="faq-label">Installez-vous des bornes de recharge pour véhicules électriques&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r10" role="region" aria-labelledby="faq-q10">
+                        <div class="faq-answer-inner">
+                            <p>Oui, je suis désormais qualifié IRVE niveau P1 pour l'installation de <a href="installation-prise-vehicule-electrique.html" style="color: #ff3333; text-decoration: underline;">bornes de recharge (Wallbox)</a> jusqu'à 22 kW à votre domicile ou dans vos locaux professionnels, conformément aux normes en vigueur. Zone : St Médard de Guizières, Libourne, Coutras et environs. Devis gratuit au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Acceptez-vous les paiements échelonnés ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q11" aria-expanded="true" aria-controls="faq-r11">
+                            <span class="faq-num" aria-hidden="true">11</span>
+                            <span class="faq-label">Installez-vous des caméras de sécurité&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r11" role="region" aria-labelledby="faq-q11">
+                        <div class="faq-answer-inner">
+                            <p>Oui, Red Den Connexion installe des <a href="installation-cameras-securite.html" style="color: #ff3333; text-decoration: underline;">systèmes de vidéosurveillance</a> (caméras IP, analogiques) pour particuliers et professionnels : câblage, pose des caméras et configuration de la visualisation à distance. Devis gratuit disponible.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Pour les projets importants, je peux étudier des solutions de paiement adaptées. N'hésitez pas à m'en parler lors de l'établissement du devis. Je m'efforce de trouver des arrangements qui conviennent à tous.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Fournissez-vous le matériel électrique ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, je peux fournir tout le matériel électrique nécessaire pour vos travaux. Je travaille avec des marques de qualité reconnues pour garantir la sécurité et la durabilité de vos installations. Le coût du matériel est inclus dans le devis.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Installez-vous des panneaux photovoltaïques en Gironde ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, Red Den Connexion installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> pour les particuliers et les professionnels en Gironde et en Dordogne. Je gère l'ensemble du projet : étude de faisabilité, installation, raccordement et mise en service. Devis gratuit au 06 95 10 08 23.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Installez-vous des bornes de recharge pour véhicules électriques ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, je suis désormais qualifié IRVE niveau P1 pour l'installation de <a href="installation-prise-vehicule-electrique.html" style="color: #ff3333; text-decoration: underline;">bornes de recharge (Wallbox)</a> jusqu'à 22 kW à votre domicile ou dans vos locaux professionnels, conformément aux normes en vigueur. Zone : St Médard de Guizières, Libourne, Coutras et environs. Devis gratuit au 06 95 10 08 23.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Installez-vous des caméras de sécurité ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, Red Den Connexion installe des <a href="installation-cameras-securite.html" style="color: #ff3333; text-decoration: underline;">systèmes de vidéosurveillance</a> (caméras IP, analogiques) pour particuliers et professionnels : câblage, pose des caméras et configuration de la visualisation à distance. Devis gratuit disponible.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Installez-vous des climatisations ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Je réalise toute la <a href="installation-climatisation.html" style="color: #ff3333; text-decoration: underline;">partie électrique de votre climatisation</a> (monosplit ou multisplit) : ligne dédiée depuis le tableau, protection adaptée, coupure de proximité et raccordement des unités. La partie frigorifique et la mise en service sont assurées par un frigoriste certifié, en coordination avec moi. Devis gratuit au 06 95 10 08 23.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q12" aria-expanded="true" aria-controls="faq-r12">
+                            <span class="faq-num" aria-hidden="true">12</span>
+                            <span class="faq-label">Installez-vous des climatisations&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r12" role="region" aria-labelledby="faq-q12">
+                        <div class="faq-answer-inner">
+                            <p>Je réalise toute la <a href="installation-climatisation.html" style="color: #ff3333; text-decoration: underline;">partie électrique de votre climatisation</a> (monosplit ou multisplit) : ligne dédiée depuis le tableau, protection adaptée, coupure de proximité et raccordement des unités. La partie frigorifique et la mise en service sont assurées par un frigoriste certifié, en coordination avec moi. Devis gratuit au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -4162,24 +4149,6 @@
                     event.stopPropagation();
                 });
             }
-
-            // FAQ - Toggle au clic
-            document.querySelectorAll('.faq-question').forEach(question => {
-                question.addEventListener('click', function() {
-                    const faqItem = this.parentElement;
-                    const isActive = faqItem.classList.contains('active');
-
-                    // Fermer tous les items
-                    document.querySelectorAll('.faq-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
-
-                    // Ouvrir l'item cliqué s'il n'était pas actif
-                    if (!isActive) {
-                        faqItem.classList.add('active');
-                    }
-                });
-            });
 
             // Back to top button
             const backToTop = document.getElementById('backToTop');
@@ -4648,6 +4617,7 @@
     <script src="/js/diagnostic.js" defer></script>
     <script src="/js/services-board.js" defer></script>
     <script src="/js/avis.js" defer></script>
+    <script src="/js/faq.js" defer></script>
     <script src="/js/before-after.js" defer></script>
     <script src="/js/showcase.js" defer></script>
 </body>
