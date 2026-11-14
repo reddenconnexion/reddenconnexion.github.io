@@ -1,0 +1,363 @@
+/*
+ * Section « Contactez-moi »
+ * -------------------------
+ * À gauche, un bornier sombre : trois bornes à vis aux couleurs
+ * conventionnelles, une par moyen de contact (L rouge = téléphone,
+ * N bleu = e-mail, terre vert/jaune = localisation).
+ * À droite, le formulaire de devis : une rangée de voyants passe au vert à
+ * mesure que les champs obligatoires sont remplis, puis le bouton d'envoi
+ * se met « sous tension » (comportement dans js/contact.js).
+ *
+ * Sans JavaScript, le formulaire fonctionne normalement, sans les voyants.
+ */
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+/* ----- Bornier ----- */
+.contact-bornier {
+    padding: 1.75rem;
+    border-radius: 20px;
+    background: #1a1a1a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+.contact-bornier-titre {
+    margin: 0 0 1.25rem;
+    color: #c9cdd4;
+    font-family: 'Orbitron', 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.contact-item:last-child {
+    padding-bottom: 0;
+}
+
+/* Borne : un plot de couleur avec sa vis au centre */
+.contact-borne {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 58px;
+    height: 66px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Orbitron', 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.22), 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.contact-borne::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: -15px;
+    border: 2px solid #6d737c;
+    border-radius: 50%;
+    background: linear-gradient(40deg, #c9cdd3 0, #c9cdd3 44%, #5d636c 44%, #5d636c 56%, #c9cdd3 56%, #c9cdd3 100%);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+}
+
+.contact-borne-phase {
+    background: #e62222;
+}
+
+.contact-borne-neutre {
+    background: #1f6fe0;
+}
+
+.contact-borne-terre {
+    background: repeating-linear-gradient(-55deg, #2e9e44 0, #2e9e44 9px, #f4c400 9px, #f4c400 15px);
+    color: #111;
+    text-shadow: 0 0 3px #fff, 0 0 3px #fff;
+}
+
+.contact-item-texte {
+    min-width: 0;
+}
+
+.contact-item h3 {
+    margin: 0 0 0.2rem;
+    color: #c9cdd4;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.contact-item a,
+.contact-item .contact-valeur {
+    display: block;
+    margin: 0;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.contact-item a:hover {
+    color: #ff8a8a;
+}
+
+.contact-item .contact-note {
+    margin: 0.2rem 0 0;
+    color: #c9cdd4;
+    font-size: 0.9rem;
+}
+
+/* ----- Formulaire ----- */
+.contact-form {
+    padding: 1.75rem;
+    border: 1px solid #e3e5e8;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form-titre {
+    margin: 0 0 1.25rem;
+    color: #1a1a1a;
+    font-size: 1.4rem;
+}
+
+/* Voyants des champs obligatoires */
+.contact-voyants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    margin: 0 0 1.4rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 12px;
+    background: #1a1a1a;
+    color: #c9cdd4;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.contact-voyants[hidden] {
+    display: none;
+}
+
+.contact-voyant {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: color 0.2s;
+}
+
+.contact-voyant::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border: 1px solid #6a6a6a;
+    border-radius: 50%;
+    background: #333;
+    transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.contact-voyant.is-ok {
+    color: #fff;
+}
+
+.contact-voyant.is-ok::before {
+    border-color: #7ee2a0;
+    background: #2ecc71;
+    box-shadow: 0 0 8px #2ecc71;
+}
+
+#contactForm {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem 1rem;
+}
+
+.form-group {
+    min-width: 0;
+}
+
+.form-group-large,
+#contactForm .submit-btn,
+#contactForm #formMessage {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #1a1a1a;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.8rem 0.9rem;
+    border: 2px solid #d5d9df;
+    border-radius: 10px;
+    background: #fff;
+    color: #1a1a1a;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Champ sélectionné : « sous tension » */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ff3333;
+    box-shadow: 0 0 0 4px rgba(255, 51, 51, 0.16);
+}
+
+.form-group textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+/* Bouton d'envoi : son voyant s'allume quand tout est rempli */
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    width: 100%;
+    min-height: 56px;
+    padding: 0.9rem 1.5rem;
+    border: 0;
+    border-radius: 12px;
+    background: #1a1a1a;
+    color: #fff;
+    font: inherit;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.25s, box-shadow 0.25s, transform 0.1s;
+}
+
+.submit-btn::before {
+    content: "";
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #6a6a6a;
+    border-radius: 50%;
+    background: #333;
+    transition: background-color 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.submit-btn:hover {
+    background: #2d2d2d;
+}
+
+.submit-btn:active {
+    transform: scale(0.99);
+}
+
+.submit-btn:focus-visible {
+    outline: 3px solid #ff3333;
+    outline-offset: 3px;
+}
+
+/* Sans les voyants (pas de JavaScript) ou dès que tout est rempli : bouton rouge */
+#contactForm:not(.a-des-voyants) .submit-btn,
+#contactForm.is-pret .submit-btn {
+    background: #e60000;
+    box-shadow: 0 6px 22px rgba(255, 51, 51, 0.45);
+}
+
+#contactForm:not(.a-des-voyants) .submit-btn::before {
+    display: none;
+}
+
+#contactForm.is-pret .submit-btn::before {
+    border-color: #fff;
+    background: #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+#contactForm.is-pret .submit-btn:hover,
+#contactForm:not(.a-des-voyants) .submit-btn:hover {
+    background: #ff3333;
+}
+
+@media (max-width: 900px) {
+    .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.25rem;
+    }
+
+    .contact-bornier,
+    .contact-form {
+        padding: 1.25rem;
+        border-radius: 16px;
+    }
+}
+
+@media (max-width: 520px) {
+    #contactForm {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .contact-borne {
+        width: 50px;
+        height: 58px;
+    }
+
+    .contact-borne::before {
+        width: 26px;
+        height: 26px;
+        margin-left: -13px;
+        top: 8px;
+    }
+
+    .contact-item a,
+    .contact-item .contact-valeur {
+        font-size: 1.08rem;
+    }
+
+    /* L'adresse e-mail doit tenir sur une ligne */
+    .contact-item a[href^="mailto:"] {
+        font-size: clamp(0.8rem, 4.1vw, 1.08rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-voyant,
+    .contact-voyant::before,
+    .submit-btn,
+    .submit-btn::before {
+        transition: none;
+    }
+}

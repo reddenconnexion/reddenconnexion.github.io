@@ -398,9 +398,6 @@
         .services-grid .service-card:nth-child(3) { transition-delay: 0.3s; }
 
 
-        .contact-grid .contact-item:nth-child(1) { transition-delay: 0.1s; }
-        .contact-grid .contact-item:nth-child(2) { transition-delay: 0.2s; }
-        .contact-grid .contact-item:nth-child(3) { transition-delay: 0.3s; }
 
         .fade-in {
             animation: fadeIn 1s ease-out;
@@ -1857,117 +1854,6 @@
             }
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-item {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(255, 51, 51, 0.2);
-            border-color: #ff3333;
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item h3 {
-            margin-bottom: 0.5rem;
-            color: #1a1a1a;
-        }
-
-        .contact-item a {
-            color: #ff3333;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            word-break: break-all;
-            display: block;
-        }
-
-        .contact-item a:hover {
-            color: #cc0000;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 3rem auto 0;
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #ff3333;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            background: #ff3333;
-            color: white;
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.4);
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            background: #cc0000;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 51, 51, 0.6);
-        }
-
         #formMessage {
             margin-top: 1rem;
             padding: 1rem;
@@ -2764,10 +2650,6 @@
             }
             .gallery-more[hidden] { display: none; }
 
-            /* Contact : cartes compactes */
-            .contact-grid { gap: 0.8rem; margin-bottom: 2rem; }
-            .contact-item { padding: 1rem; }
-            .contact-icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
         }
 
         /* Les photos du carrousel s'ouvrent en grand au clic (lightbox existante #lightbox) */
@@ -2799,6 +2681,8 @@
     <link rel="stylesheet" href="/css/avis.css">
     <!-- Questions fréquentes -->
     <link rel="stylesheet" href="/css/faq.css">
+    <!-- Contact -->
+    <link rel="stylesheet" href="/css/contact.css?v=1">
     <!-- Fils électriques (motif du site) -->
     <link rel="stylesheet" href="/css/fils.css?v=2">
 </head>
@@ -3811,29 +3695,40 @@
 
     <section id="contact">
         <h2 class="animate-on-scroll">Contactez-moi</h2>
-        <div class="contact-grid">
-            <div class="contact-item animate-on-scroll">
-                <div class="contact-icon">📞</div>
-                <h3>Téléphone</h3>
-                <a href="tel:0695100823">06 95 10 08 23</a>
-                <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Disponible 24h/24 - 7j/7</p>
+        <!-- À gauche le bornier (trois bornes : téléphone, e-mail, localisation), à droite le formulaire.
+             Les voyants au-dessus du formulaire sont ajoutés par js/contact.js. -->
+        <div class="contact-layout">
+            <div class="contact-bornier animate-on-scroll">
+                <p class="contact-bornier-titre">Trois bornes pour me joindre</p>
+                <div class="contact-item">
+                    <span class="contact-borne contact-borne-phase" aria-hidden="true">L</span>
+                    <div class="contact-item-texte">
+                        <h3>Téléphone</h3>
+                        <a href="tel:0695100823">06 95 10 08 23</a>
+                        <p class="contact-note">Disponible 24h/24 - 7j/7</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-borne contact-borne-neutre" aria-hidden="true">N</span>
+                    <div class="contact-item-texte">
+                        <h3>Email</h3>
+                        <a href="mailto:reddenconnexion@gmail.com">reddenconnexion@gmail.com</a>
+                        <p class="contact-note">Réponse rapide garantie</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-borne contact-borne-terre" aria-hidden="true">PE</span>
+                    <div class="contact-item-texte">
+                        <h3>Localisation</h3>
+                        <p class="contact-valeur">St Médard de Guizières</p>
+                        <p class="contact-note">33230 - Gironde</p>
+                    </div>
+                </div>
             </div>
-            <div class="contact-item animate-on-scroll">
-                <div class="contact-icon">📧</div>
-                <h3>Email</h3>
-                <a href="mailto:reddenconnexion@gmail.com">reddenconnexion@gmail.com</a>
-                <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Réponse rapide garantie</p>
-            </div>
-            <div class="contact-item animate-on-scroll">
-                <div class="contact-icon">📍</div>
-                <h3>Localisation</h3>
-                <p style="color: #666; margin-top: 0.5rem; font-weight: bold;">St Médard de Guizières</p>
-                <p style="color: #666;">33230 - Gironde</p>
-            </div>
-        </div>
 
-        <div class="contact-form animate-on-scroll">
-            <h3 style="text-align: center; margin-bottom: 2rem; color: #ff3333;">Demande de devis gratuit</h3>
+            <div class="contact-form animate-on-scroll">
+                <h3 class="contact-form-titre">Demande de devis gratuit</h3>
+                <div class="contact-voyants" id="contactVoyants" aria-hidden="true" hidden></div>
             <form id="contactForm" action="https://formspree.io/f/xeorbyrg" method="POST">
                 <!-- Honeypot field - Protection anti-spam -->
                 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -3846,11 +3741,11 @@
 
                 <div class="form-group">
                     <label for="name">Nom complet *</label>
-                    <input type="text" id="name" name="name" required maxlength="100" minlength="2">
+                    <input type="text" id="name" name="name" required data-voyant="Nom" maxlength="100" minlength="2">
                 </div>
                 <div class="form-group">
                     <label for="phone">Téléphone *</label>
-                    <input type="tel" id="phone" name="phone" required pattern="[0-9\s\+\-\(\)]{10,20}" title="Numéro de téléphone valide (10-20 caractères)">
+                    <input type="tel" id="phone" name="phone" required data-voyant="Téléphone" pattern="[0-9\s\+\-\(\)]{10,20}" title="Numéro de téléphone valide (10-20 caractères)">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -3858,9 +3753,9 @@
                 </div>
                 <div class="form-group">
                     <label for="city">Ville *</label>
-                    <input type="text" id="city" name="city" required maxlength="100" minlength="2" placeholder="Ex: St Médard de Guizières">
+                    <input type="text" id="city" name="city" required data-voyant="Ville" maxlength="100" minlength="2" placeholder="Ex: St Médard de Guizières">
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-large">
                     <label for="service">Type de service</label>
                     <select id="service" name="service">
                         <option value="">Sélectionnez un service</option>
@@ -3871,13 +3766,14 @@
                         <option value="Autre">Autre</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-large">
                     <label for="message">Décrivez votre projet *</label>
-                    <textarea id="message" name="message" required maxlength="2000" minlength="10"></textarea>
+                    <textarea id="message" name="message" required data-voyant="Projet" maxlength="2000" minlength="10"></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Envoyer ma demande</button>
                 <div id="formMessage"></div>
             </form>
+            </div>
         </div>
     </section>
 
@@ -4620,6 +4516,7 @@
     <script src="/js/services-board.js" defer></script>
     <script src="/js/avis.js" defer></script>
     <script src="/js/faq.js" defer></script>
+    <script src="/js/contact.js?v=1" defer></script>
     <script src="/js/before-after.js" defer></script>
     <script src="/js/showcase.js" defer></script>
     <script src="/js/fil-progression.js?v=2" defer></script>
