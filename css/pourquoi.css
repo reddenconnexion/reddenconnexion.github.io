@@ -1,0 +1,197 @@
+/*
+ * Section « Pourquoi Me Choisir ? »
+ * ---------------------------------
+ * Quatre appareils de mesure : chaque atout est affiché comme une valeur
+ * relevée sur un afficheur (chiffres rouges sur fond noir), avec en dessous
+ * un bargraphe dont les segments s'allument quand la carte arrive à l'écran.
+ * Les chiffres défilent jusqu'à leur valeur (js/pourquoi.js).
+ *
+ * Sans JavaScript, les valeurs finales et les bargraphes pleins sont affichés.
+ */
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.why-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1.1rem 1.1rem 1.4rem;
+    border: 1px solid #e3e5e8;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    text-align: left;
+}
+
+/* ----- Afficheur ----- */
+.why-ecran {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.9rem 0.9rem 0.75rem;
+    border: 1px solid #3d3d3d;
+    border-radius: 12px;
+    background: #0c0c0c;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Valeur au-dessus, unité dessous : même hauteur pour les quatre afficheurs */
+.why-mesure {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+}
+
+.why-valeur {
+    color: #ff3333;
+    font-family: 'Orbitron', 'Segoe UI', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 0 0 14px rgba(255, 51, 51, 0.6);
+    white-space: nowrap;
+}
+
+.why-unite {
+    color: #c9cdd4;
+    font-family: 'Orbitron', 'Segoe UI', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Bargraphe : dix segments */
+.why-barres {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 3px;
+}
+
+.why-barres span {
+    height: 6px;
+    border-radius: 1px;
+    background: #ff3333;
+    box-shadow: 0 0 6px rgba(255, 51, 51, 0.7);
+}
+
+/* Avec JavaScript : segments éteints, puis allumés un à un à l'apparition */
+.why-grid.is-ready .why-barres span {
+    background: #2f3237;
+    box-shadow: none;
+}
+
+.why-grid.is-ready .why-item.is-vu .why-barres span {
+    animation: whySegment 0.25s ease-out forwards;
+}
+
+.why-item.is-vu .why-barres span:nth-child(1) { animation-delay: 0.05s; }
+.why-item.is-vu .why-barres span:nth-child(2) { animation-delay: 0.15s; }
+.why-item.is-vu .why-barres span:nth-child(3) { animation-delay: 0.25s; }
+.why-item.is-vu .why-barres span:nth-child(4) { animation-delay: 0.35s; }
+.why-item.is-vu .why-barres span:nth-child(5) { animation-delay: 0.45s; }
+.why-item.is-vu .why-barres span:nth-child(6) { animation-delay: 0.55s; }
+.why-item.is-vu .why-barres span:nth-child(7) { animation-delay: 0.65s; }
+.why-item.is-vu .why-barres span:nth-child(8) { animation-delay: 0.75s; }
+.why-item.is-vu .why-barres span:nth-child(9) { animation-delay: 0.85s; }
+.why-item.is-vu .why-barres span:nth-child(10) { animation-delay: 0.95s; }
+
+@keyframes whySegment {
+    to {
+        background: #ff3333;
+        box-shadow: 0 0 6px rgba(255, 51, 51, 0.7);
+    }
+}
+
+/* ----- Texte ----- */
+.why-item h3 {
+    margin: 1.1rem 0 0.45rem;
+    color: #1a1a1a;
+    font-size: 1.2rem;
+    line-height: 1.25;
+}
+
+.why-item p {
+    margin: 0;
+    color: #555;
+    line-height: 1.55;
+}
+
+.why-lien {
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 0.9rem 0 0;
+    border: 0;
+    background: none;
+    color: #c40000;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.why-lien:hover {
+    color: #ff3333;
+    text-decoration: underline;
+}
+
+.why-lien:focus-visible {
+    outline: 3px solid #ff3333;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+@media (max-width: 1000px) {
+    .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .why-grid {
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+    }
+
+    .why-item {
+        padding: 0.7rem 0.7rem 1rem;
+        border-radius: 14px;
+    }
+
+    .why-ecran {
+        padding: 0.7rem 0.65rem 0.6rem;
+    }
+
+    .why-valeur {
+        font-size: 1.55rem;
+    }
+
+    .why-unite {
+        font-size: 0.6rem;
+    }
+
+    .why-item h3 {
+        margin-top: 0.8rem;
+        font-size: 1rem;
+    }
+
+    .why-item p {
+        font-size: 0.88rem;
+        line-height: 1.45;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .why-grid.is-ready .why-barres span {
+        background: #ff3333;
+        box-shadow: 0 0 6px rgba(255, 51, 51, 0.7);
+        animation: none;
+    }
+}
