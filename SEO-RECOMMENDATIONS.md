@@ -100,8 +100,8 @@ La cause n'est pas prouvée (l'export ne donne pas le détail jour par jour), ma
 **À faire hors code :**
 - Dans Search Console, « Inspecter l'URL » sur les trois pages puis « Demander une indexation » une fois la mise en ligne faite.
 - Vérifier dans le même écran l'« URL canonique sélectionnée par Google » pour la page rénovation.
-- **Prix à harmoniser** : `tarifs-devis.html` annonce 3 000 à 8 000 € pour rénover 100 m², alors que `renovation-electrique.html` et `conseils/prix-renovation-electrique.html` annoncent 8 000 à 12 000 €. Choisir la bonne fourchette et l'écrire partout.
-- Ajouter sur la page Libourne deux ou trois interventions réelles (quartier, type de panne, durée).
+- ✅ **Prix harmonisés (13/11)** : 3 000 à 8 000 € pour rénover 100 m² (30 à 80 €/m²) sur toutes les pages. Dans l'article conseils, le chantier à 11 300 € reste, présenté comme un cas lourd.
+- ✅ **Une intervention réelle ajoutée sur la page Libourne (13/11)**. En ajouter une ou deux autres (quartier, type de panne, durée).
 
 ### 📌 Baseline — 13/11/2026 (référence pour le point du 13/12/2026)
 
