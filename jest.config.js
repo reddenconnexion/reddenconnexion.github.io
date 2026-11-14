@@ -27,6 +27,7 @@ export default {
         '!js/services-board.js', // Exclure le tableau des services (manipulation du DOM, testé via E2E)
         '!js/avis.js', // Exclure le défilement des avis (manipulation du DOM, testé via E2E)
         '!js/faq.js', // Exclure la FAQ (manipulation du DOM, testé via E2E)
+        '!js/zone.js', // Exclure le tableau des départs (manipulation du DOM, testé via E2E)
         '!js/contact.js', // Exclure les voyants du formulaire (manipulation du DOM, testé via E2E)
         '!js/fil-progression.js', // Exclure le fil de progression (manipulation du DOM, testé via E2E)
         '!**/node_modules/**'

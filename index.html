@@ -2683,6 +2683,8 @@
     <link rel="stylesheet" href="/css/faq.css">
     <!-- Contact -->
     <link rel="stylesheet" href="/css/contact.css?v=1">
+    <!-- Zone d'intervention -->
+    <link rel="stylesheet" href="/css/zone.css?v=1">
     <!-- Fils électriques (motif du site) -->
     <link rel="stylesheet" href="/css/fils.css?v=2">
 </head>
@@ -3478,6 +3480,8 @@
             <h2 class="animate-on-scroll">Zone d'Intervention de Votre Électricien</h2>
             <p class="animate-on-scroll">📍 Basé à St Médard de Guizières · 17 communes à moins de 45 min de route</p>
 
+            <!-- La carte à gauche, le tableau des départs à droite (js/zone.js). -->
+            <div class="zone-layout">
             <!-- Carte interactive avec popups photo -->
             <div class="map-wrapper animate-on-scroll">
                 <div class="map-info-badge">⚡ Intervention rapide 24h/24</div>
@@ -3502,6 +3506,154 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Tableau des départs : les communes desservies, de la plus proche à la plus lointaine.
+                 Les temps de trajet doivent rester identiques à ceux de RDC_CITIES (script de la carte, plus bas).
+                 data-ville = nom exact de la commune dans RDC_CITIES. -->
+            <div class="zone-departs animate-on-scroll" data-zone>
+                <h3 class="zone-departs-titre">Tableau des départs</h3>
+                <p class="zone-source">Départ : St Médard de Guizières</p>
+                <div class="zone-filtres" role="group" aria-label="Filtrer par temps de trajet" hidden></div>
+                <ul class="zone-liste">
+                        <li class="zone-depart" data-minutes="6" data-ville="Saint-Seurin-sur-l&#x27;Isle">
+                            <a href="depannage-electrique-saint-seurin-sur-lisle.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Saint-Seurin-sur-l'Isle</span>
+                                <span class="zone-depart-temps">6 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 13%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Saint-Seurin-sur-l&#x27;Isle sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="7" data-ville="Abzac">
+                            <a href="depannage-electrique-abzac.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Abzac</span>
+                                <span class="zone-depart-temps">7 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 16%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Abzac sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="8" data-ville="Coutras">
+                            <a href="depannage-electrique-coutras.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Coutras</span>
+                                <span class="zone-depart-temps">8 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 18%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Coutras sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="8" data-ville="Les Peintures">
+                            <a href="depannage-electrique-les-peintures.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Les Peintures</span>
+                                <span class="zone-depart-temps">8 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 18%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Les Peintures sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="10" data-ville="Les Églisottes">
+                            <a href="depannage-electrique-les-eglisottes.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Les Églisottes</span>
+                                <span class="zone-depart-temps">10 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 22%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Les Églisottes sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="12" data-ville="Guîtres">
+                            <a href="depannage-electrique-guitres.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Guîtres</span>
+                                <span class="zone-depart-temps">12 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 27%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Guîtres sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="12" data-ville="Petit-Palais-et-Cornemps">
+                            <a href="depannage-electrique-petit-palais-et-cornemps.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Petit-Palais-et-Cornemps</span>
+                                <span class="zone-depart-temps">12 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 27%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Petit-Palais-et-Cornemps sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="17" data-ville="Lussac">
+                            <a href="depannage-electrique-lussac.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Lussac</span>
+                                <span class="zone-depart-temps">17 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 38%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Lussac sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="18" data-ville="Montpon-Ménestérol">
+                            <a href="depannage-electrique-montpon-menesterol.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Montpon-Ménestérol</span>
+                                <span class="zone-depart-temps">18 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 40%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Montpon-Ménestérol sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="18" data-ville="Saint-Denis-de-Pile">
+                            <a href="depannage-electrique-saint-denis-de-pile.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Saint-Denis-de-Pile</span>
+                                <span class="zone-depart-temps">18 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 40%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Saint-Denis-de-Pile sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="20" data-ville="Lapouyade">
+                            <a href="depannage-electrique-lapouyade.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Lapouyade</span>
+                                <span class="zone-depart-temps">20 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 44%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Lapouyade sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="20" data-ville="Libourne">
+                            <a href="depannage-electrique-libourne.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Libourne</span>
+                                <span class="zone-depart-temps">20 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 44%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Libourne sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="22" data-ville="Castillon-la-Bataille">
+                            <a href="depannage-electrique-castillon-la-bataille.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Castillon-la-Bataille</span>
+                                <span class="zone-depart-temps">22 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 49%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Castillon-la-Bataille sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="22" data-ville="Laruscade">
+                            <a href="depannage-electrique-laruscade.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Laruscade</span>
+                                <span class="zone-depart-temps">22 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 49%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Laruscade sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="30" data-ville="Sainte-Foy-la-Grande">
+                            <a href="depannage-electrique-sainte-foy-la-grande.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Sainte-Foy-la-Grande</span>
+                                <span class="zone-depart-temps">30 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 67%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Sainte-Foy-la-Grande sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="35" data-ville="Saint-André-de-Cubzac">
+                            <a href="depannage-electrique-saint-andre-de-cubzac.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Saint-André-de-Cubzac</span>
+                                <span class="zone-depart-temps">35 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 78%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Saint-André-de-Cubzac sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                        <li class="zone-depart" data-minutes="45" data-ville="Blaye">
+                            <a href="depannage-electrique-blaye.html" class="zone-depart-lien">
+                                <span class="zone-depart-nom">Blaye</span>
+                                <span class="zone-depart-temps">45 min</span>
+                                <span class="zone-jauge" aria-hidden="true"><span style="width: 100%"></span></span>
+                            </a>
+                            <button type="button" class="zone-voir" aria-label="Voir Blaye sur la carte" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
+                        </li>
+                </ul>
+            </div>
+            </div><!-- /.zone-layout -->
 
             <p style="margin-top: 2rem; text-align: center; font-style: italic; opacity: 0.85;">
                 Et toutes les communes environnantes en Gironde et Dordogne · Service 24h/24, 7j/7
@@ -4243,6 +4395,7 @@
         function initLeafletMap() {
             const stMedard = RDC_BASE;
             const cities = RDC_CITIES;
+            const rdcMarkers = {};
 
             // Lien vers la fiche Google My Business
             const gmbLink = 'https://www.google.com/search?q=Denis+MERIOT+Électricien+RED+DEN+Connexion+St+Médard+de+Guizières';
@@ -4390,10 +4543,14 @@
                             <a href="tel:0695100823" style="display:block;flex:1;background:linear-gradient(135deg,#ff3333,#cc0000);color:#fff;padding:9px 8px;border-radius:8px;text-decoration:none;font-weight:700;font-size:12.5px;text-align:center;">📞 Appeler</a>
                         </div>
                     </div>`;
-                L.marker(city.coords, { icon: cityIcon })
+                rdcMarkers[city.name] = L.marker(city.coords, { icon: cityIcon })
                     .addTo(map)
                     .bindPopup(popupHtml, { maxWidth: 320, className: 'rdc-photo-popup' });
             });
+
+            // Le tableau des départs (js/zone.js) utilise la carte et ses marqueurs
+            window.rdcZone = { map: map, markers: rdcMarkers };
+            document.dispatchEvent(new Event('rdc:carte-prete'));
         }
     </script>
 
@@ -4517,6 +4674,7 @@
     <script src="/js/avis.js" defer></script>
     <script src="/js/faq.js" defer></script>
     <script src="/js/contact.js?v=1" defer></script>
+    <script src="/js/zone.js?v=1" defer></script>
     <script src="/js/before-after.js" defer></script>
     <script src="/js/showcase.js" defer></script>
     <script src="/js/fil-progression.js?v=2" defer></script>
