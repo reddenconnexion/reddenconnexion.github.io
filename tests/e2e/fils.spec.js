@@ -3,8 +3,8 @@
  * Red Den Connexion - Électricien St Médard de Guizières
  *
  * Trois fils aux couleurs conventionnelles (rouge, bleu, vert/jaune) signent
- * le site : sous les titres de section, en haut du pied de page et entre
- * quelques sections de l'accueil. On vérifie que le motif est bien appliqué
+ * le site sous les titres de section, et un fil fin sous le menu se charge
+ * en rouge quand on descend dans la page. On vérifie que le motif est bien appliqué
  * sur plusieurs familles de pages et qu'il ne dérange pas la mise en page.
  */
 
@@ -30,25 +30,28 @@ test.describe('Fils électriques — page d\'accueil', () => {
         expect(await after(title, 'box-shadow')).toBe('none');
     });
 
-    test('trois nappes de fils séparent des sections, sans ajouter de hauteur', async ({ page }) => {
-        const separators = page.locator('.fils-separateur');
-        await expect(separators).toHaveCount(3);
-        for (let i = 0; i < 3; i++) {
-            const sep = separators.nth(i);
-            await expect(sep).toHaveAttribute('aria-hidden', 'true');
-            // Marges négatives égales à la hauteur : la nappe chevauche la jonction
-            const extra = await sep.evaluate(el => {
-                const s = getComputedStyle(el);
-                return el.offsetHeight + parseFloat(s.marginTop) + parseFloat(s.marginBottom);
-            });
-            expect(extra).toBe(0);
-        }
+    test('plus de fils ondulés entre les sections ni au pied de page', async ({ page }) => {
+        await expect(page.locator('.fils-separateur')).toHaveCount(0);
+        expect(await before(page.locator('footer'), 'content')).toBe('none');
     });
 
-    test('le pied de page porte la nappe de fils', async ({ page }) => {
-        const footer = page.locator('footer');
-        expect(await before(footer, 'background-image')).toContain('data:image/svg+xml');
-        expect(await before(footer, 'position')).toBe('absolute');
+    test('le fil sous le menu se charge à mesure que l\'on descend', async ({ page }) => {
+        await page.addStyleTag({ content: 'html { scroll-behavior: auto !important; }' });
+        const wire = page.locator('header .fil-progression');
+        await expect(wire).toHaveCount(1);
+        await expect(wire).toHaveAttribute('aria-hidden', 'true');
+        const fill = () => page.locator('.fil-progression-courant').evaluate(el => {
+            const m = new DOMMatrixReadOnly(getComputedStyle(el).transform);
+            return m.a;
+        });
+        expect(await fill()).toBe(0);
+        await page.evaluate(() => window.scrollTo(0, (document.documentElement.scrollHeight - window.innerHeight) / 2));
+        await expect.poll(fill).toBeGreaterThan(0.45);
+        expect(await fill()).toBeLessThan(0.55);
+        await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+        await expect.poll(fill).toBeGreaterThan(0.99);
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await expect.poll(fill).toBe(0);
     });
 
     test('le motif ne fait pas déborder la page, y compris sur téléphone', async ({ page }) => {
@@ -59,9 +62,8 @@ test.describe('Fils électriques — page d\'accueil', () => {
         }
     });
 
-    test('les fils ne gênent pas les clics', async ({ page }) => {
-        const values = await page.$$eval('.fils-separateur', els => els.map(el => getComputedStyle(el).pointerEvents));
-        expect(values).toEqual(['none', 'none', 'none']);
+    test('le fil ne gêne pas les clics du menu', async ({ page }) => {
+        expect(await page.locator('.fil-progression').evaluate(el => getComputedStyle(el).pointerEvents)).toBe('none');
     });
 });
 
@@ -69,11 +71,11 @@ test.describe('Fils électriques — autres pages', () => {
     test.describe.configure({ mode: 'parallel' });
 
     for (const url of ['/depannage-electrique-coutras.html', '/renovation-electrique.html', '/tarifs-devis.html']) {
-        test(`titres et pied de page sur ${url}`, async ({ page }) => {
+        test(`titres et fil de progression sur ${url}`, async ({ page }) => {
             await page.goto(url);
             const title = page.locator('[data-faq]').locator('xpath=preceding-sibling::h2[1]');
             expect(await after(title, 'background-image')).toContain('data:image/svg+xml');
-            expect(await before(page.locator('footer'), 'background-image')).toContain('data:image/svg+xml');
+            await expect(page.locator('header .fil-progression')).toHaveCount(1);
         });
     }
 
@@ -84,10 +86,10 @@ test.describe('Fils électriques — autres pages', () => {
         expect(await after(title, 'background-image')).toBe('none');
     });
 
-    for (const url of ['/conseils/', '/realisations/', '/mentions-legales.html']) {
-        test(`pied de page sur ${url}`, async ({ page }) => {
+    for (const url of ['/conseils/', '/realisations/']) {
+        test(`fil de progression sur ${url}`, async ({ page }) => {
             await page.goto(url);
-            expect(await before(page.locator('footer'), 'background-image')).toContain('data:image/svg+xml');
+            await expect(page.locator('header .fil-progression')).toHaveCount(1);
         });
     }
 });
