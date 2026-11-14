@@ -1,0 +1,235 @@
+/*
+ * Section « Zone d'Intervention »
+ * -------------------------------
+ * La carte à gauche ; à droite un « tableau des départs » : les communes
+ * desservies, de la plus proche à la plus lointaine, chacune avec son temps
+ * de trajet et une jauge. Trois boutons filtrent par temps de trajet, et un
+ * bouton par ligne montre la commune sur la carte (js/zone.js).
+ *
+ * Sans JavaScript, toutes les communes sont listées avec leur lien.
+ */
+
+.zone-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 3rem;
+    text-align: left;
+}
+
+.zone-layout .map-wrapper {
+    max-width: none;
+    margin: 0;
+}
+
+.zone-layout #map {
+    max-width: none;
+}
+
+/* ----- Tableau des départs ----- */
+.zone-departs {
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+    box-sizing: border-box;
+    padding: 1.25rem;
+    border: 1px solid rgba(255, 51, 51, 0.35);
+    border-radius: 20px;
+    background: #111;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+}
+
+.zone-departs-titre {
+    margin: 0 0 0.6rem;
+    color: #fff;
+    font-family: 'Orbitron', 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.zone .zone-source {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: none;
+    margin: 0 0 0.9rem;
+    color: #c9cdd4;
+    font-size: 0.9rem;
+}
+
+.zone-source::before {
+    content: "";
+    flex-shrink: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #2ecc71;
+    box-shadow: 0 0 8px #2ecc71;
+}
+
+/* Filtres par temps de trajet */
+.zone-filtres {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+}
+
+.zone-filtres[hidden] {
+    display: none;
+}
+
+.zone-filtre {
+    flex: 1 1 0;
+    min-height: 44px;
+    padding: 0.4rem 0.3rem;
+    border: 2px solid #3a3d42;
+    border-radius: 10px;
+    background: #1a1a1a;
+    color: #c9cdd4;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.zone-filtre[aria-pressed="true"] {
+    border-color: #ff3333;
+    background: #e60000;
+    color: #fff;
+    box-shadow: 0 0 14px rgba(255, 51, 51, 0.45);
+}
+
+.zone-filtre:focus-visible,
+.zone-voir:focus-visible,
+.zone-depart-lien:focus-visible {
+    outline: 3px solid #ffcc00;
+    outline-offset: 2px;
+}
+
+.zone-liste {
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0 4px 0 0;
+    list-style: none;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #555 transparent;
+}
+
+.zone-depart {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.zone-depart[hidden] {
+    display: none;
+}
+
+.zone-depart-lien {
+    display: grid;
+    flex: 1 1 auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.25rem 0.75rem;
+    align-items: center;
+    min-width: 0;
+    padding: 0.5rem 0.15rem;
+    border-radius: 6px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.zone-depart-nom {
+    font-size: 0.98rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.zone-depart-temps {
+    color: #ff9c9c;
+    font-size: 0.92rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* Jauge : longueur proportionnelle au temps de trajet (45 min = pleine) */
+.zone-jauge {
+    grid-column: 1 / -1;
+    display: block;
+    height: 4px;
+    border-radius: 2px;
+    background: #2f3237;
+    overflow: hidden;
+}
+
+.zone-jauge > span {
+    display: block;
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #c40000, #ff3333);
+}
+
+@media (hover: hover) {
+    .zone-depart-lien:hover .zone-depart-nom {
+        color: #ff8a8a;
+    }
+}
+
+/* Bouton « voir sur la carte » */
+.zone-voir {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: #c9cdd4;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.zone-voir[hidden] {
+    display: none;
+}
+
+.zone-voir:hover {
+    color: #ff3333;
+}
+
+@media (max-width: 900px) {
+    .zone-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    /* Sur téléphone la liste prend sa hauteur naturelle, sans défilement interne */
+    .zone-departs {
+        height: auto;
+        padding: 1rem;
+        border-radius: 16px;
+    }
+
+    .zone-liste {
+        overflow: visible;
+        padding: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .zone-filtre {
+        transition: none;
+    }
+}
