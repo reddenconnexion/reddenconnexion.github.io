@@ -156,14 +156,6 @@
         .why-us-list { list-style: none; max-width: 800px; margin: 2rem auto; }
         .why-us-list li { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding-left: 3rem; position: relative; }
         .why-us-list li::before { content: '✓'; position: absolute; left: 1rem; color: #ff3333; font-size: 1.5rem; font-weight: bold; }
-        .faq-item { background: white; margin-bottom: 1rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem; background: #f8f8f8; }
-        .faq-item.active .faq-answer { max-height: 500px; padding: 1.5rem; }
         .contact-cta { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%); color: white; text-align: center; padding: 60px 2rem; margin-top: 4rem; border-radius: 15px; }
         .contact-cta h2 { color: white; }
         .contact-cta h2::after { background: #ff3333; }
@@ -189,6 +181,8 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
     <header>
@@ -347,95 +341,150 @@
 
     <section class="solutions-bg">
         <h2>Questions Fréquentes</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>En combien de temps arrivez-vous à Saint-Seurin-sur-l'Isle ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Saint-Seurin-sur-l'Isle est ma commune voisine — je suis à moins de 10 minutes de route. Pour une urgence électrique, c'est l'un des temps de réponse les plus rapides du secteur. Appelez-moi au 06 95 10 08 23.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous chez les particuliers et les professionnels ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">En combien de temps arrivez-vous à Saint-Seurin-sur-l'Isle&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Saint-Seurin-sur-l'Isle est ma commune voisine — je suis à moins de 10 minutes de route. Pour une urgence électrique, c'est l'un des temps de réponse les plus rapides du secteur. Appelez-moi au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, je prends en charge aussi bien les dépannages chez les particuliers (panne, court-circuit, prise grillée) que les besoins professionnels : commerces, ateliers, bureaux du centre-ville et de la zone d'activité de Saint-Seurin.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Intervenez-vous chez les particuliers et les professionnels&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Oui, je prends en charge aussi bien les dépannages chez les particuliers (panne, court-circuit, prise grillée) que les besoins professionnels : commerces, ateliers, bureaux du centre-ville et de la zone d'activité de Saint-Seurin.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Mon disjoncteur saute dès que je branche un appareil, que faire ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Mon disjoncteur saute dès que je branche un appareil, que faire&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Cela indique soit un appareil défectueux (court-circuit), soit une surcharge sur la ligne, soit un défaut de différentiel. 1) Débranchez tout. 2) Réenclenchez. 3) Branchez un seul appareil à la fois pour identifier le coupable. Si le disjoncteur saute sans rien de branché, appelez-moi immédiatement.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Cela indique soit un appareil défectueux (court-circuit), soit une surcharge sur la ligne, soit un défaut de différentiel. 1) Débranchez tout. 2) Réenclenchez. 3) Branchez un seul appareil à la fois pour identifier le coupable. Si le disjoncteur saute sans rien de branché, appelez-moi immédiatement.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Faites-vous des installations de panneaux solaires à Saint-Seurin&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> sur toitures résidentielles et bâtiments professionnels. Étude solaire gratuite, dimensionnement et raccordement Enedis inclus.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Faites-vous des installations de panneaux solaires à Saint-Seurin ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Pouvez-vous remplacer mon vieux tableau à fusibles&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Oui, c'est l'un de mes services courants. Voir <a href="installation-tableau.html" style="color: #ff3333; text-decoration: underline;">remplacement tableau électrique</a>. J'installe un tableau neuf avec disjoncteurs différentiels conformes NF C 15-100 et je garantis l'intervention.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> sur toitures résidentielles et bâtiments professionnels. Étude solaire gratuite, dimensionnement et raccordement Enedis inclus.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Êtes-vous habilité pour borne de recharge VE&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>Oui, je suis habilité IRVE et j'installe des bornes Wallbox conformes pour véhicules électriques et hybrides rechargeables. Devis gratuit.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Pouvez-vous remplacer mon vieux tableau à fusibles ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Je suis bailleur d'un logement à Saint-Seurin. Quelles sont mes obligations électriques&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>Pour un logement de plus de 15 ans donné en location, un diagnostic électrique doit être annexé au bail. L'installation doit rester en sécurité pendant toute la location. Concrètement, ça veut dire que si un locataire signale un problème (différentiel qui saute, prise qui chauffe, absence de terre), le bailleur doit faire intervenir. J'interviens sous mandat ou directement, je laisse un compte-rendu écrit utile pour arbitrer entre dépannage simple et remise à niveau de l'installation.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, c'est l'un de mes services courants. Voir <a href="installation-tableau.html" style="color: #ff3333; text-decoration: underline;">remplacement tableau électrique</a>. J'installe un tableau neuf avec disjoncteurs différentiels conformes NF C 15-100 et je garantis l'intervention.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q8" aria-expanded="true" aria-controls="faq-r8">
+                            <span class="faq-num" aria-hidden="true">08</span>
+                            <span class="faq-label">J'habite près de la voie ferrée à Saint-Seurin. Les vibrations peuvent-elles affecter mon installation&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r8" role="region" aria-labelledby="faq-q8">
+                        <div class="faq-answer-inner">
+                            <p>Sur des installations anciennes oui, à la marge. Les vibrations liées au trafic ferroviaire peuvent accélérer le desserrement de connexions au tableau, l'usure de prises mal fixées, voire la dégradation de gaines mal scellées. Sur une installation correctement faite avec des serrages aux couples préconisés et du matériel bien fixé, l'impact est négligeable. Quand j'interviens dans ce périmètre, je vérifie systématiquement les serrages au tableau — c'est un point de contrôle bon marché qui évite bien des soucis.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Êtes-vous habilité pour borne de recharge VE ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q9" aria-expanded="true" aria-controls="faq-r9">
+                            <span class="faq-num" aria-hidden="true">09</span>
+                            <span class="faq-label">J'habite dans une commune limitrophe en Dordogne. Pouvez-vous intervenir aussi&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r9" role="region" aria-labelledby="faq-q9">
+                        <div class="faq-answer-inner">
+                            <p>Oui, sans hésitation. La Roche-Chalais et les autres communes dordognotes proches de Saint-Seurin sont dans ma zone d'intervention. La limite administrative entre Gironde et Dordogne ne change rien sur le plan technique : le bâti et les normes sont identiques. Pour le suivi Enedis, selon votre adresse exacte, le centre de relation client peut être différent — je vous oriente vers le bon interlocuteur si nécessaire.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, je suis habilité IRVE et j'installe des bornes Wallbox conformes pour véhicules électriques et hybrides rechargeables. Devis gratuit.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Je suis bailleur d'un logement à Saint-Seurin. Quelles sont mes obligations électriques ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Pour un logement de plus de 15 ans donné en location, un diagnostic électrique doit être annexé au bail. L'installation doit rester en sécurité pendant toute la location. Concrètement, ça veut dire que si un locataire signale un problème (différentiel qui saute, prise qui chauffe, absence de terre), le bailleur doit faire intervenir. J'interviens sous mandat ou directement, je laisse un compte-rendu écrit utile pour arbitrer entre dépannage simple et remise à niveau de l'installation.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>J'habite près de la voie ferrée à Saint-Seurin. Les vibrations peuvent-elles affecter mon installation ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Sur des installations anciennes oui, à la marge. Les vibrations liées au trafic ferroviaire peuvent accélérer le desserrement de connexions au tableau, l'usure de prises mal fixées, voire la dégradation de gaines mal scellées. Sur une installation correctement faite avec des serrages aux couples préconisés et du matériel bien fixé, l'impact est négligeable. Quand j'interviens dans ce périmètre, je vérifie systématiquement les serrages au tableau — c'est un point de contrôle bon marché qui évite bien des soucis.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>J'habite dans une commune limitrophe en Dordogne. Pouvez-vous intervenir aussi ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, sans hésitation. La Roche-Chalais et les autres communes dordognotes proches de Saint-Seurin sont dans ma zone d'intervention. La limite administrative entre Gironde et Dordogne ne change rien sur le plan technique : le bâti et les normes sont identiques. Pour le suivi Enedis, selon votre adresse exacte, le centre de relation client peut être différent — je vous oriente vers le bon interlocuteur si nécessaire.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Je vends un logement à Saint-Seurin, faut-il refaire l'électricité avant la vente ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Pas forcément tout refaire, mais souvent sécuriser. Pour un logement de plus de 15 ans, un diagnostic électrique est obligatoire à la vente et met fréquemment en évidence des anomalies (absence de terre, pas de différentiel 30 mA, tableau vétuste). Plutôt que de tout reprendre, je traite en priorité les points relevés pour lever les anomalies, avec un compte-rendu écrit utile à la transaction. Voir mon guide sur le <a href="conseils/diagnostic-electrique-avant-vente.html" style="color: #ff3333; text-decoration: underline;">diagnostic électrique avant vente</a>.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q10" aria-expanded="true" aria-controls="faq-r10">
+                            <span class="faq-num" aria-hidden="true">10</span>
+                            <span class="faq-label">Je vends un logement à Saint-Seurin, faut-il refaire l'électricité avant la vente&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r10" role="region" aria-labelledby="faq-q10">
+                        <div class="faq-answer-inner">
+                            <p>Pas forcément tout refaire, mais souvent sécuriser. Pour un logement de plus de 15 ans, un diagnostic électrique est obligatoire à la vente et met fréquemment en évidence des anomalies (absence de terre, pas de différentiel 30 mA, tableau vétuste). Plutôt que de tout reprendre, je traite en priorité les points relevés pour lever les anomalies, avec un compte-rendu écrit utile à la transaction. Voir mon guide sur le <a href="conseils/diagnostic-electrique-avant-vente.html" style="color: #ff3333; text-decoration: underline;">diagnostic électrique avant vente</a>.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -471,14 +520,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

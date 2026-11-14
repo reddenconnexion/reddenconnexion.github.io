@@ -433,55 +433,13 @@
             left: 0;
         }
 
-        .faq-item {
-            background: white;
-            margin-bottom: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
 
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
 
-        .faq-question:hover {
-            background: #f8f8f8;
-        }
 
-        .faq-question h3 {
-            margin: 0;
-            color: #1a1a1a;
-            font-size: 1.1rem;
-        }
 
-        .faq-icon {
-            color: #ff3333;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
 
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            padding: 0 1.5rem;
-            background: #f8f8f8;
-        }
 
-        .faq-item.active .faq-answer {
-            max-height: 600px;
-            padding: 1.5rem;
-        }
 
         .contact-cta {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%);
@@ -599,6 +557,8 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
     <header>
@@ -800,74 +760,108 @@
 
     <section>
         <h2>Questions fréquentes — Rénovation Libourne</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Combien coûte une rénovation électrique à Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Comptez en moyenne 30 à 80 €/m² pour une rénovation complète. Pour une maison de 100 m² à Libourne, le budget se situe entre 3 000 € et 8 000 € selon l'état de l'installation existante. Une simple mise aux normes du tableau électrique seul est plus accessible (à partir de 1 500 €). Je vous fournis un devis gratuit et détaillé après un diagnostic sur place.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Combien de temps durent les travaux à Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">Combien coûte une rénovation électrique à Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Comptez en moyenne 30 à 80 €/m² pour une rénovation complète. Pour une maison de 100 m² à Libourne, le budget se situe entre 3 000 € et 8 000 € selon l'état de l'installation existante. Une simple mise aux normes du tableau électrique seul est plus accessible (à partir de 1 500 €). Je vous fournis un devis gratuit et détaillé après un diagnostic sur place.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Pour un appartement de 50 m² : 3 à 5 jours. Pour une maison de 100 m² : 7 à 10 jours. Une mise aux normes du tableau seul : 1 journée. Je vous communique un planning précis lors du devis et je m'y tiens — pas de chantier ouvert qui traîne pendant des semaines.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Combien de temps durent les travaux à Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Pour un appartement de 50 m² : 3 à 5 jours. Pour une maison de 100 m² : 7 à 10 jours. Une mise aux normes du tableau seul : 1 journée. Je vous communique un planning précis lors du devis et je m'y tiens — pas de chantier ouvert qui traîne pendant des semaines.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Faut-il quitter le logement pendant les travaux ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Faut-il quitter le logement pendant les travaux&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Non, je travaille très régulièrement en site occupé à Libourne. Je coupe le courant pièce par pièce, je remets l'essentiel en service le soir (frigo, chauffage, prise principale). Pour une rénovation lourde avec ouverture des murs, un déménagement temporaire peut être plus confortable mais ce n'est pas obligatoire.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Non, je travaille très régulièrement en site occupé à Libourne. Je coupe le courant pièce par pièce, je remets l'essentiel en service le soir (frigo, chauffage, prise principale). Pour une rénovation lourde avec ouverture des murs, un déménagement temporaire peut être plus confortable mais ce n'est pas obligatoire.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Quelles aides puis-je obtenir à Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Selon vos revenus, l'ANAH peut aider les propriétaires modestes, et la Région Nouvelle-Aquitaine propose des aides ponctuelles. Je ne suis pas certifié RGE : les aides réservées aux entreprises RGE ne s'appliquent pas à mes travaux. Je vous oriente vers les bons interlocuteurs lors du devis.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Quelles aides puis-je obtenir à Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Faut-il refaire la peinture après la rénovation&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Pas nécessairement. Sur un logement déjà fini, je privilégie le passage en apparent (plinthes électriques, goulottes décoratives blanches ou bois) qui s'intègre proprement. Si vous rénovez intégralement, le câblage passe encastré avant les finitions peintures/papier. À discuter lors du devis selon votre situation.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Selon vos revenus, l'ANAH peut aider les propriétaires modestes, et la Région Nouvelle-Aquitaine propose des aides ponctuelles. Je ne suis pas certifié RGE : les aides réservées aux entreprises RGE ne s'appliquent pas à mes travaux. Je vous oriente vers les bons interlocuteurs lors du devis.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Délivrez-vous l'attestation Consuel&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>Oui, pour toute rénovation complète ou nouveau raccordement Enedis, je fournis le dossier Consuel. C'est l'attestation officielle de conformité de votre installation, exigée par Enedis pour mettre le compteur en service. Indispensable aussi en cas de vente.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Faut-il refaire la peinture après la rénovation ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Pas nécessairement. Sur un logement déjà fini, je privilégie le passage en apparent (plinthes électriques, goulottes décoratives blanches ou bois) qui s'intègre proprement. Si vous rénovez intégralement, le câblage passe encastré avant les finitions peintures/papier. À discuter lors du devis selon votre situation.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Délivrez-vous l'attestation Consuel ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, pour toute rénovation complète ou nouveau raccordement Enedis, je fournis le dossier Consuel. C'est l'attestation officielle de conformité de votre installation, exigée par Enedis pour mettre le compteur en service. Indispensable aussi en cas de vente.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Et si j'ai une panne urgente avant la rénovation ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>J'interviens aussi en dépannage 24h/24 à Libourne. Voir ma page dédiée au <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: underline;">dépannage électrique à Libourne</a> — la plupart du temps, je peux sécuriser l'urgence puis revenir programmer la rénovation à tête reposée.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Et si j'ai une panne urgente avant la rénovation&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>J'interviens aussi en dépannage 24h/24 à Libourne. Voir ma page dédiée au <a href="depannage-electrique-libourne.html" style="color: #ff3333; text-decoration: underline;">dépannage électrique à Libourne</a> — la plupart du temps, je peux sécuriser l'urgence puis revenir programmer la rénovation à tête reposée.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -903,20 +897,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaqReno(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            if (!isActive) {
-                faqItem.classList.add('active');
-            }
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

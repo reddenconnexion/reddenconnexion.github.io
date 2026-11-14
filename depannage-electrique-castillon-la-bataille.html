@@ -239,14 +239,6 @@
         .why-us-list { list-style: none; max-width: 800px; margin: 2rem auto; }
         .why-us-list li { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding-left: 3rem; position: relative; }
         .why-us-list li::before { content: '✓'; position: absolute; left: 1rem; color: #ff3333; font-size: 1.5rem; font-weight: bold; }
-        .faq-item { background: white; margin-bottom: 1rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem; background: #f8f8f8; }
-        .faq-item.active .faq-answer { max-height: 500px; padding: 1.5rem; }
         .contact-cta { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%); color: white; text-align: center; padding: 60px 2rem; margin-top: 4rem; border-radius: 15px; }
         .contact-cta h2 { color: white; }
         .contact-cta h2::after { background: #ff3333; }
@@ -272,6 +264,8 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
     <header>
@@ -434,86 +428,136 @@
 
     <section class="solutions-bg">
         <h2>Questions Fréquentes</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Quel est votre délai d'intervention à Castillon-la-Bataille ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Depuis ma base à St Médard de Guizières, j'arrive à Castillon-la-Bataille en environ 25-30 minutes. Pour les urgences critiques (risque d'incendie, court-circuit actif), je priorise le déplacement.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous dans les propriétés viticoles autour de Castillon ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">Quel est votre délai d'intervention à Castillon-la-Bataille&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Depuis ma base à St Médard de Guizières, j'arrive à Castillon-la-Bataille en environ 25-30 minutes. Pour les urgences critiques (risque d'incendie, court-circuit actif), je priorise le déplacement.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'interviens dans les exploitations viticoles, châteaux et domaines agricoles autour de Castillon-la-Bataille. Je maîtrise les contraintes électriques spécifiques aux bâtiments agricoles : puissances importantes, alimentation des chais, conformité professionnelle.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Intervenez-vous dans les propriétés viticoles autour de Castillon&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'interviens dans les exploitations viticoles, châteaux et domaines agricoles autour de Castillon-la-Bataille. Je maîtrise les contraintes électriques spécifiques aux bâtiments agricoles : puissances importantes, alimentation des chais, conformité professionnelle.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Combien coûte un dépannage électrique à Castillon-la-Bataille ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Combien coûte un dépannage électrique à Castillon-la-Bataille&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Le tarif dépend de la nature de la panne, du moment d'intervention et des pièces nécessaires. Je vous communique un devis transparent avant toute intervention. Devis gratuit pour tous travaux d'installation et de rénovation.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Le tarif dépend de la nature de la panne, du moment d'intervention et des pièces nécessaires. Je vous communique un devis transparent avant toute intervention. Devis gratuit pour tous travaux d'installation et de rénovation.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Installez-vous des bornes de recharge à Castillon&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'installe des <a href="installation-prise-vehicule-electrique.html" style="color: #ff3333; text-decoration: underline;">bornes IRVE (Wallbox)</a> pour véhicules électriques à Castillon-la-Bataille et dans tout le secteur. Je suis habilité IRVE et je gère les démarches réglementaires.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Installez-vous des bornes de recharge à Castillon ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Faites-vous des mises aux normes dans les maisons anciennes de Castillon&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Oui, les maisons de pierre et maisons girondines anciennes du secteur ont souvent des installations électriques vétustes. Je réalise des <a href="renovation-electrique-castillon-la-bataille.html" style="color: #ff3333; text-decoration: underline;">rénovations électriques complètes à Castillon-la-Bataille</a> et des mises aux normes NF C 15-100.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'installe des <a href="installation-prise-vehicule-electrique.html" style="color: #ff3333; text-decoration: underline;">bornes IRVE (Wallbox)</a> pour véhicules électriques à Castillon-la-Bataille et dans tout le secteur. Je suis habilité IRVE et je gère les démarches réglementaires.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Que faire en cas de panne totale à Castillon-la-Bataille&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>1) Vérifiez si vos voisins ont aussi une panne (problème réseau Enedis). 2) Si la panne est uniquement chez vous, vérifiez le disjoncteur principal. 3) Si le problème persiste ou si vous sentez une odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Faites-vous des mises aux normes dans les maisons anciennes de Castillon ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Ma maison est en zone inondable près des quais. Comment l'installation doit-elle être pensée&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>Une partie des quartiers de bord de Dordogne à Castillon est en PPRI. Quand on rénove un rez-de-chaussée concerné, on remonte tout ce qui peut l'être : prises au-dessus du niveau de référence de la crue, tableau en étage si possible, alimentation des appareils techniques (chaudière, VMC, pompes) repositionnée. Ce sont des choix qui ne coûtent pas plus cher si on les fait dès la rénovation, et qui peuvent éviter une remise à niveau complète après inondation.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, les maisons de pierre et maisons girondines anciennes du secteur ont souvent des installations électriques vétustes. Je réalise des <a href="renovation-electrique-castillon-la-bataille.html" style="color: #ff3333; text-decoration: underline;">rénovations électriques complètes à Castillon-la-Bataille</a> et des mises aux normes NF C 15-100.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q8" aria-expanded="true" aria-controls="faq-r8">
+                            <span class="faq-num" aria-hidden="true">08</span>
+                            <span class="faq-label">J'ai un commerce dans le centre de Castillon. Pouvez-vous intervenir sans casser la journée&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r8" role="region" aria-labelledby="faq-q8">
+                        <div class="faq-answer-inner">
+                            <p>Oui, c'est habituel sur les commerces du centre-ville. Pour les interventions lourdes (remplacement de tableau, changement de comptage, gros travaux), je m'organise en concertation avec vous pour profiter d'une fermeture (lundi matin, soirée, journée de congé hebdomadaire). Pour une urgence en pleine activité, j'arrive vite et je minimise la coupure — souvent on peut isoler la zone en panne tout en gardant le reste du commerce en service.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Que faire en cas de panne totale à Castillon-la-Bataille ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>1) Vérifiez si vos voisins ont aussi une panne (problème réseau Enedis). 2) Si la panne est uniquement chez vous, vérifiez le disjoncteur principal. 3) Si le problème persiste ou si vous sentez une odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Ma maison est en zone inondable près des quais. Comment l'installation doit-elle être pensée ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Une partie des quartiers de bord de Dordogne à Castillon est en PPRI. Quand on rénove un rez-de-chaussée concerné, on remonte tout ce qui peut l'être : prises au-dessus du niveau de référence de la crue, tableau en étage si possible, alimentation des appareils techniques (chaudière, VMC, pompes) repositionnée. Ce sont des choix qui ne coûtent pas plus cher si on les fait dès la rénovation, et qui peuvent éviter une remise à niveau complète après inondation.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>J'ai un commerce dans le centre de Castillon. Pouvez-vous intervenir sans casser la journée ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, c'est habituel sur les commerces du centre-ville. Pour les interventions lourdes (remplacement de tableau, changement de comptage, gros travaux), je m'organise en concertation avec vous pour profiter d'une fermeture (lundi matin, soirée, journée de congé hebdomadaire). Pour une urgence en pleine activité, j'arrive vite et je minimise la coupure — souvent on peut isoler la zone en panne tout en gardant le reste du commerce en service.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous dans les chais et exploitations viticoles à Castillon ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, le castillonnais est une zone viticole importante (AOC Castillon Côtes-de-Bordeaux). J'interviens sur les chais et bâtiments d'exploitation : triphasé pour pressoirs et pompes œnologiques, matériel IP65 dans les zones lavées au jet, parafoudre pour protéger les automates de régulation thermique. Pendant les vendanges, je priorise les exploitations — une panne sur un pressoir, ça ne peut pas attendre.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q9" aria-expanded="true" aria-controls="faq-r9">
+                            <span class="faq-num" aria-hidden="true">09</span>
+                            <span class="faq-label">Intervenez-vous dans les chais et exploitations viticoles à Castillon&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r9" role="region" aria-labelledby="faq-q9">
+                        <div class="faq-answer-inner">
+                            <p>Oui, le castillonnais est une zone viticole importante (AOC Castillon Côtes-de-Bordeaux). J'interviens sur les chais et bâtiments d'exploitation : triphasé pour pressoirs et pompes œnologiques, matériel IP65 dans les zones lavées au jet, parafoudre pour protéger les automates de régulation thermique. Pendant les vendanges, je priorise les exploitations — une panne sur un pressoir, ça ne peut pas attendre.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -550,14 +594,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

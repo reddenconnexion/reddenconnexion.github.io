@@ -157,14 +157,6 @@
         .why-us-list { list-style: none; max-width: 800px; margin: 2rem auto; }
         .why-us-list li { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding-left: 3rem; position: relative; }
         .why-us-list li::before { content: '✓'; position: absolute; left: 1rem; color: #ff3333; font-size: 1.5rem; font-weight: bold; }
-        .faq-item { background: white; margin-bottom: 1rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem; background: #f8f8f8; }
-        .faq-item.active .faq-answer { max-height: 500px; padding: 1.5rem; }
         .contact-cta { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%); color: white; text-align: center; padding: 60px 2rem; margin-top: 4rem; border-radius: 15px; }
         .contact-cta h2 { color: white; }
         .contact-cta h2::after { background: #ff3333; }
@@ -190,6 +182,8 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
     <header>
@@ -348,68 +342,108 @@
 
     <section class="solutions-bg">
         <h2>Questions Fréquentes</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>En combien de temps arrivez-vous aux Peintures ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Les Peintures est tout proche de ma base à St Médard de Guizières — j'interviens en quelques minutes. C'est l'une des communes où j'arrive le plus vite. Pour une urgence, appelez le 06 95 10 08 23.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Combien coûte un dépannage électrique aux Peintures ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">En combien de temps arrivez-vous aux Peintures&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Les Peintures est tout proche de ma base à St Médard de Guizières — j'interviens en quelques minutes. C'est l'une des communes où j'arrive le plus vite. Pour une urgence, appelez le 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Le tarif dépend de la nature de la panne, du moment d'intervention (jour, nuit, week-end) et des pièces nécessaires. Je vous communique un devis transparent avant toute intervention, sans frais de déplacement gonflés grâce à ma proximité immédiate avec Les Peintures.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Combien coûte un dépannage électrique aux Peintures&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Le tarif dépend de la nature de la panne, du moment d'intervention (jour, nuit, week-end) et des pièces nécessaires. Je vous communique un devis transparent avant toute intervention, sans frais de déplacement gonflés grâce à ma proximité immédiate avec Les Peintures.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous dans les hameaux et écarts autour des Peintures ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Intervenez-vous dans les hameaux et écarts autour des Peintures&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Oui, l'habitat des Peintures est dispersé entre le bourg, les lotissements et de nombreux écarts ruraux en lisière de forêt. J'interviens partout : bourg, hameaux, fermes isolées. Ma connaissance du terrain rural me permet de trouver et de réparer efficacement.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, l'habitat des Peintures est dispersé entre le bourg, les lotissements et de nombreux écarts ruraux en lisière de forêt. J'interviens partout : bourg, hameaux, fermes isolées. Ma connaissance du terrain rural me permet de trouver et de réparer efficacement.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Faites-vous des installations de panneaux solaires aux Peintures&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> sur les maisons des Peintures. Le secteur rural, avec ses pavillons et ses maisons de campagne bien exposées, est idéal pour l'autoconsommation solaire. Étude et devis gratuits.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Faites-vous des installations de panneaux solaires aux Peintures ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Ma maison récente a un tableau qui sature, que faire&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>C'est fréquent dans les lotissements récents des Peintures : l'installation était correcte à la livraison, mais les usages se sont ajoutés (clim, plaque induction, borne de recharge, piscine) et le tableau arrive à saturation. Plutôt que d'empiler les multiprises, je réorganise le tableau et j'ajoute les circuits dédiés et différentiels nécessaires.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> sur les maisons des Peintures. Le secteur rural, avec ses pavillons et ses maisons de campagne bien exposées, est idéal pour l'autoconsommation solaire. Étude et devis gratuits.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Mes lumières faiblissent dans un hameau des Peintures. Est-ce normal&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>En bout de ligne Enedis, dans les écarts éloignés du transformateur, on rencontre régulièrement de légères baisses de tension en période de forte consommation. Je commence par mesurer la tension réseau avant de chercher un défaut dans la maison. Si la tension est en limite basse, le souci est sur la ligne et je vous oriente vers Enedis ; si elle est correcte, on cherche à l'intérieur.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Ma maison récente a un tableau qui sature, que faire ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>C'est fréquent dans les lotissements récents des Peintures : l'installation était correcte à la livraison, mais les usages se sont ajoutés (clim, plaque induction, borne de recharge, piscine) et le tableau arrive à saturation. Plutôt que d'empiler les multiprises, je réorganise le tableau et j'ajoute les circuits dédiés et différentiels nécessaires.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Mes lumières faiblissent dans un hameau des Peintures. Est-ce normal ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>En bout de ligne Enedis, dans les écarts éloignés du transformateur, on rencontre régulièrement de légères baisses de tension en période de forte consommation. Je commence par mesurer la tension réseau avant de chercher un défaut dans la maison. Si la tension est en limite basse, le souci est sur la ligne et je vous oriente vers Enedis ; si elle est correcte, on cherche à l'intérieur.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>J'ai acheté une vieille maison rurale aux Peintures à rénover. Par où commencer ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Avant d'engager des travaux, je propose un diagnostic de l'installation : état du tableau, mesure de la terre, repérage des circuits et des éventuelles dépendances mal câblées. Sur le bâti rural ancien, la priorité va à la sécurité (différentiels 30 mA, mise à la terre fiable). Vous savez ensuite ce qu'il faut reprendre d'abord et ce qui peut attendre.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">J'ai acheté une vieille maison rurale aux Peintures à rénover. Par où commencer&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>Avant d'engager des travaux, je propose un diagnostic de l'installation : état du tableau, mesure de la terre, repérage des circuits et des éventuelles dépendances mal câblées. Sur le bâti rural ancien, la priorité va à la sécurité (différentiels 30 mA, mise à la terre fiable). Vous savez ensuite ce qu'il faut reprendre d'abord et ce qui peut attendre.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -444,14 +478,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

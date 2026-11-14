@@ -159,14 +159,6 @@
         .why-us-list { list-style: none; max-width: 800px; margin: 2rem auto; }
         .why-us-list li { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding-left: 3rem; position: relative; }
         .why-us-list li::before { content: '✓'; position: absolute; left: 1rem; color: #ff3333; font-size: 1.5rem; font-weight: bold; }
-        .faq-item { background: white; margin-bottom: 1rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem; background: #f8f8f8; }
-        .faq-item.active .faq-answer { max-height: 500px; padding: 1.5rem; }
         .contact-cta { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%); color: white; text-align: center; padding: 60px 2rem; margin-top: 4rem; border-radius: 15px; }
         .contact-cta h2 { color: white; }
         .contact-cta h2::after { background: #ff3333; }
@@ -192,6 +184,8 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
     <header>
@@ -394,77 +388,122 @@
 
     <section class="solutions-bg">
         <h2>Questions Fréquentes</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>En combien de temps arrivez-vous à Blaye ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Blaye se trouve à environ 45 minutes de ma base à St Médard de Guizières. Pour une urgence, je me mobilise immédiatement après votre appel au 06 95 10 08 23 et je vous tiens informé du délai d'arrivée précis.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Êtes-vous spécialistes du bâti ancien à Blaye ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">En combien de temps arrivez-vous à Blaye&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Blaye se trouve à environ 45 minutes de ma base à St Médard de Guizières. Pour une urgence, je me mobilise immédiatement après votre appel au 06 95 10 08 23 et je vous tiens informé du délai d'arrivée précis.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, Blaye est une ville historique avec un patrimoine bâti ancien important (citadelle, centre historique, maisons en pierre). J'ai l'habitude de rénover des installations électriques anciennes en respectant le caractère du bâti et la norme NF C 15-100. Voir mon service de <a href="renovation-electrique.html" style="color: #ff3333; text-decoration: underline;">rénovation électrique</a>.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Êtes-vous spécialistes du bâti ancien à Blaye&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Oui, Blaye est une ville historique avec un patrimoine bâti ancien important (citadelle, centre historique, maisons en pierre). J'ai l'habitude de rénover des installations électriques anciennes en respectant le caractère du bâti et la norme NF C 15-100. Voir mon service de <a href="renovation-electrique.html" style="color: #ff3333; text-decoration: underline;">rénovation électrique</a>.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous dans les exploitations viticoles ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Intervenez-vous dans les exploitations viticoles&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Oui, le Blayais compte de nombreuses exploitations viticoles (AOC Blaye, Côtes-de-Bourg). J'interviens sur les chais, locaux techniques et bâtiments d'exploitation : tableaux force, alimentation pompes, éclairage de chai, mise aux normes.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, le Blayais compte de nombreuses exploitations viticoles (AOC Blaye, Côtes-de-Bourg). J'interviens sur les chais, locaux techniques et bâtiments d'exploitation : tableaux force, alimentation pompes, éclairage de chai, mise aux normes.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Faites-vous des installations photovoltaïques à Blaye&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> sur les toitures de maisons et de bâtiments agricoles autour de Blaye. Étude de faisabilité, dimensionnement et raccordement Enedis inclus. Devis gratuit.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Faites-vous des installations photovoltaïques à Blaye ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Intervenez-vous dans les communes voisines&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'interviens dans tout le Blayais : Saint-Martin-Lacaussade, Cars, Plassac, Saint-Seurin-de-Cursac, Saint-Genès-de-Blaye, Berson et alentours.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> sur les toitures de maisons et de bâtiments agricoles autour de Blaye. Étude de faisabilité, dimensionnement et raccordement Enedis inclus. Devis gratuit.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Que faire en cas de panne totale à Blaye&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>1) Vérifiez si vos voisins ont aussi une panne (problème réseau Enedis). 2) Si la panne est uniquement chez vous, vérifiez le disjoncteur principal. 3) Si le problème persiste ou si vous sentez une odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23. Ne touchez à rien en cas de fumée ou d'étincelles.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous dans les communes voisines ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Le matériel électrique extérieur dure-t-il moins longtemps à Blaye qu'ailleurs&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>Oui, sensiblement. La proximité de l'estuaire de la Gironde et l'air salin par vent d'ouest accélèrent la corrosion : coffrets en plastique qui se piquent, vis qui rouillent, contacts qui s'oxydent. Sur le secteur de Blaye, je recommande systématiquement du matériel IP65 avec presse-étoupes inox dès qu'il s'agit d'extérieur, et de l'inox marin pour les façades les plus exposées. Le surcoût est marginal, mais la durée de vie est multipliée.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'interviens dans tout le Blayais : Saint-Martin-Lacaussade, Cars, Plassac, Saint-Seurin-de-Cursac, Saint-Genès-de-Blaye, Berson et alentours.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Que faire en cas de panne totale à Blaye ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>1) Vérifiez si vos voisins ont aussi une panne (problème réseau Enedis). 2) Si la panne est uniquement chez vous, vérifiez le disjoncteur principal. 3) Si le problème persiste ou si vous sentez une odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23. Ne touchez à rien en cas de fumée ou d'étincelles.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Le matériel électrique extérieur dure-t-il moins longtemps à Blaye qu'ailleurs ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, sensiblement. La proximité de l'estuaire de la Gironde et l'air salin par vent d'ouest accélèrent la corrosion : coffrets en plastique qui se piquent, vis qui rouillent, contacts qui s'oxydent. Sur le secteur de Blaye, je recommande systématiquement du matériel IP65 avec presse-étoupes inox dès qu'il s'agit d'extérieur, et de l'inox marin pour les façades les plus exposées. Le surcoût est marginal, mais la durée de vie est multipliée.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Je rénove une maison ancienne près de la citadelle. Y a-t-il des contraintes particulières ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Une partie du centre historique de Blaye est en site protégé autour de la citadelle. En extérieur, on ne peut pas faire passer des goulottes apparentes en façade visible ni saigner certains éléments classés. À l'intérieur, on adapte les cheminements : combles, sous-sols, faux-plafonds, plinthes. Je prends le temps de réfléchir au passage des câbles avant de tirer le premier mètre, et si votre maison est dans un périmètre soumis à autorisation, je vous oriente sur les démarches à anticiper avant les travaux.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q8" aria-expanded="true" aria-controls="faq-r8">
+                            <span class="faq-num" aria-hidden="true">08</span>
+                            <span class="faq-label">Je rénove une maison ancienne près de la citadelle. Y a-t-il des contraintes particulières&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r8" role="region" aria-labelledby="faq-q8">
+                        <div class="faq-answer-inner">
+                            <p>Une partie du centre historique de Blaye est en site protégé autour de la citadelle. En extérieur, on ne peut pas faire passer des goulottes apparentes en façade visible ni saigner certains éléments classés. À l'intérieur, on adapte les cheminements : combles, sous-sols, faux-plafonds, plinthes. Je prends le temps de réfléchir au passage des câbles avant de tirer le premier mètre, et si votre maison est dans un périmètre soumis à autorisation, je vous oriente sur les démarches à anticiper avant les travaux.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -498,14 +537,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

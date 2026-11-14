@@ -324,38 +324,10 @@
             font-weight: bold;
         }
 
-        .faq-item {
-            background: white;
-            margin: 0 auto 1rem;
-            max-width: 850px;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
 
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
 
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            padding: 0 1.5rem;
-            background: #f8f8f8;
-        }
 
-        .faq-item.active .faq-answer { max-height: 600px; padding: 1.5rem; }
 
         .updated-date {
             text-align: center;
@@ -451,6 +423,8 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
     <header>
@@ -551,49 +525,81 @@
 
     <section>
         <h2>Questions Fréquentes</h2>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Pourquoi mon interrupteur différentiel saute-t-il sans raison ?</h3>
-                <span class="faq-icon">▼</span>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-answer">
-                <p>Un différentiel qui saute signale une fuite de courant à la terre sur l'un des circuits qu'il protège : appareil défectueux, humidité, câble abîmé, ou trop d'appareils sur un même différentiel. Un mauvais calibrage ou un câblage incorrect lors d'un ajout récent est aussi une cause fréquente. Un diagnostic permet d'isoler l'origine.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Comment trouver quel appareil fait disjoncter le différentiel ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>On débranche tous les appareils du groupe protégé, on réarme, puis on rebranche un appareil à la fois jusqu'à ce que le différentiel saute à nouveau. Si le défaut persiste sans aucun appareil branché, il s'agit d'un défaut de l'installation elle-même, que je localise à l'aide d'un mesureur d'isolement.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Quelle est la différence entre un disjoncteur et un interrupteur différentiel ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Le disjoncteur protège contre les surcharges et courts-circuits (excès de courant). L'interrupteur différentiel protège les personnes en coupant le courant dès qu'il détecte une fuite vers la terre (30 mA). Les deux sont complémentaires et obligatoires dans un <a href="installation-tableau.html" style="color:#ff3333; text-decoration:underline;">tableau aux normes NF C 15-100</a>.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Quel type d'interrupteur différentiel choisir (A, AC ou F) ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Le type AC couvre les circuits courants. Le type A est obligatoire pour les plaques de cuisson, le lave-linge et les bornes de recharge. Le type F (ou Hpi) protège les circuits sensibles avec électronique. Un mauvais type entraîne des déclenchements ou une protection insuffisante : je vérifie l'adéquation avec vos appareils.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Intervenez-vous en urgence si mon différentiel saute ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Oui, j'interviens 24h/24 et 7j/7 sur St Médard de Guizières et dans un rayon de 50 km. Si votre différentiel ne se réarme plus ou en cas d'odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23.</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">Pourquoi mon interrupteur différentiel saute-t-il sans raison&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Un différentiel qui saute signale une fuite de courant à la terre sur l'un des circuits qu'il protège : appareil défectueux, humidité, câble abîmé, ou trop d'appareils sur un même différentiel. Un mauvais calibrage ou un câblage incorrect lors d'un ajout récent est aussi une cause fréquente. Un diagnostic permet d'isoler l'origine.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Comment trouver quel appareil fait disjoncter le différentiel&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>On débranche tous les appareils du groupe protégé, on réarme, puis on rebranche un appareil à la fois jusqu'à ce que le différentiel saute à nouveau. Si le défaut persiste sans aucun appareil branché, il s'agit d'un défaut de l'installation elle-même, que je localise à l'aide d'un mesureur d'isolement.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Quelle est la différence entre un disjoncteur et un interrupteur différentiel&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Le disjoncteur protège contre les surcharges et courts-circuits (excès de courant). L'interrupteur différentiel protège les personnes en coupant le courant dès qu'il détecte une fuite vers la terre (30 mA). Les deux sont complémentaires et obligatoires dans un <a href="installation-tableau.html" style="color:#ff3333; text-decoration:underline;">tableau aux normes NF C 15-100</a>.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Quel type d'interrupteur différentiel choisir (A, AC ou F)&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Le type AC couvre les circuits courants. Le type A est obligatoire pour les plaques de cuisson, le lave-linge et les bornes de recharge. Le type F (ou Hpi) protège les circuits sensibles avec électronique. Un mauvais type entraîne des déclenchements ou une protection insuffisante : je vérifie l'adéquation avec vos appareils.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Intervenez-vous en urgence si mon différentiel saute&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'interviens 24h/24 et 7j/7 sur St Médard de Guizières et dans un rayon de 50 km. Si votre différentiel ne se réarme plus ou en cas d'odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <p class="updated-date">Dernière mise à jour : mai 2026</p>
@@ -604,14 +610,7 @@
     <p>&copy; 2026 Red Den Connexion - Tous droits r&eacute;serv&eacute;s</p>
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions l&eacute;gales</a> | <a href="confidentialite.html">Politique de confidentialit&eacute;</a></p>
     </footer>
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

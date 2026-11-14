@@ -359,38 +359,10 @@
             margin-bottom: 1rem;
         }
 
-        .faq-item {
-            background: white;
-            margin: 0 auto 1rem;
-            max-width: 850px;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
 
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
 
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            padding: 0 1.5rem;
-            background: #f8f8f8;
-        }
 
-        .faq-item.active .faq-answer { max-height: 600px; padding: 1.5rem; }
 
         .updated-date {
             text-align: center;
@@ -445,6 +417,8 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
     <header>
@@ -597,49 +571,81 @@
 
     <section>
         <h2>Questions Fréquentes</h2>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Faut-il une autorisation pour installer des caméras de surveillance chez soi ?</h3>
-                <span class="faq-icon">▼</span>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-answer">
-                <p>Pour un domicile privé, filmer l'intérieur de votre propriété est libre. En revanche, vos caméras ne doivent pas filmer la voie publique ni la propriété de vos voisins. Pour un commerce ou une entreprise filmant un espace ouvert au public, une déclaration en préfecture et l'information des personnes sont obligatoires.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Quel est le prix d'installation d'un système de vidéosurveillance ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Le prix dépend du nombre de caméras, du type (IP/PoE, analogique, WiFi) et de la longueur de câblage. Pour une maison, un système de 4 caméras avec enregistreur se situe souvent entre 800 et 2 500 € posé. Je réalise un <a href="tarifs-devis.html" style="color:#ff3333; text-decoration:underline;">devis gratuit</a> après visite du site.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Caméras IP (PoE) ou WiFi : que choisir ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Les caméras IP/PoE, alimentées et connectées par un seul câble réseau, offrent la meilleure fiabilité et qualité d'image, idéales en installation fixe. Les caméras WiFi sont plus simples à poser dans les zones difficiles à câbler mais dépendent de la qualité du réseau sans fil.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Peut-on consulter ses caméras de sécurité à distance ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Oui. La plupart des systèmes modernes permettent de visionner les images en direct et les enregistrements depuis un smartphone ou un ordinateur, où que vous soyez. Je configure l'accès distant lors de la mise en service.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Réalisez-vous uniquement le câblage ou aussi la mise en service ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Je prends en charge l'ensemble : étude des angles, alimentation et câblage électrique, fixation des caméras, raccordement de l'enregistreur et configuration de base avec vérification des images et de la détection de mouvement.</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">Faut-il une autorisation pour installer des caméras de surveillance chez soi&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Pour un domicile privé, filmer l'intérieur de votre propriété est libre. En revanche, vos caméras ne doivent pas filmer la voie publique ni la propriété de vos voisins. Pour un commerce ou une entreprise filmant un espace ouvert au public, une déclaration en préfecture et l'information des personnes sont obligatoires.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Quel est le prix d'installation d'un système de vidéosurveillance&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Le prix dépend du nombre de caméras, du type (IP/PoE, analogique, WiFi) et de la longueur de câblage. Pour une maison, un système de 4 caméras avec enregistreur se situe souvent entre 800 et 2 500 € posé. Je réalise un <a href="tarifs-devis.html" style="color:#ff3333; text-decoration:underline;">devis gratuit</a> après visite du site.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Caméras IP (PoE) ou WiFi : que choisir&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Les caméras IP/PoE, alimentées et connectées par un seul câble réseau, offrent la meilleure fiabilité et qualité d'image, idéales en installation fixe. Les caméras WiFi sont plus simples à poser dans les zones difficiles à câbler mais dépendent de la qualité du réseau sans fil.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Peut-on consulter ses caméras de sécurité à distance&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Oui. La plupart des systèmes modernes permettent de visionner les images en direct et les enregistrements depuis un smartphone ou un ordinateur, où que vous soyez. Je configure l'accès distant lors de la mise en service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Réalisez-vous uniquement le câblage ou aussi la mise en service&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Je prends en charge l'ensemble : étude des angles, alimentation et câblage électrique, fixation des caméras, raccordement de l'enregistreur et configuration de base avec vérification des images et de la détection de mouvement.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <p class="updated-date">Dernière mise à jour : mai 2026</p>
@@ -650,14 +656,7 @@
     <p>&copy; 2026 Red Den Connexion - Tous droits r&eacute;serv&eacute;s</p>
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

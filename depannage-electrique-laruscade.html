@@ -155,14 +155,6 @@
         .why-us-list { list-style: none; max-width: 800px; margin: 2rem auto; }
         .why-us-list li { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding-left: 3rem; position: relative; }
         .why-us-list li::before { content: '✓'; position: absolute; left: 1rem; color: #ff3333; font-size: 1.5rem; font-weight: bold; }
-        .faq-item { background: white; margin-bottom: 1rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem; background: #f8f8f8; }
-        .faq-item.active .faq-answer { max-height: 500px; padding: 1.5rem; }
         .contact-cta { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%); color: white; text-align: center; padding: 60px 2rem; margin-top: 4rem; border-radius: 15px; }
         .contact-cta h2 { color: white; }
         .contact-cta h2::after { background: #ff3333; }
@@ -188,6 +180,8 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
     <header>
@@ -346,86 +340,136 @@
 
     <section class="solutions-bg">
         <h2>Questions Fréquentes</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>En combien de temps arrivez-vous à Laruscade ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Laruscade est à environ 25 minutes de ma base à St Médard de Guizières. Pour une urgence, je me mobilise immédiatement après votre appel au 06 95 10 08 23.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous dans les exploitations viticoles ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">En combien de temps arrivez-vous à Laruscade&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Laruscade est à environ 25 minutes de ma base à St Médard de Guizières. Pour une urgence, je me mobilise immédiatement après votre appel au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'interviens régulièrement dans les châteaux et chais viticoles AOC Côtes-de-Bourg : tableaux force, alimentation pompes et pressoirs, éclairage de chai, mise aux normes des locaux d'exploitation. Devis adapté à votre activité.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Intervenez-vous dans les exploitations viticoles&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'interviens régulièrement dans les châteaux et chais viticoles AOC Côtes-de-Bourg : tableaux force, alimentation pompes et pressoirs, éclairage de chai, mise aux normes des locaux d'exploitation. Devis adapté à votre activité.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Faites-vous des rénovations dans les bâtis anciens ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Faites-vous des rénovations dans les bâtis anciens&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Oui, beaucoup de demeures viticoles et maisons en pierre de Laruscade ont des installations anciennes. Je reprends l'ensemble du circuit en respectant le caractère du bâti. Voir <a href="renovation-electrique.html" style="color: #ff3333; text-decoration: underline;">rénovation électrique</a>.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, beaucoup de demeures viticoles et maisons en pierre de Laruscade ont des installations anciennes. Je reprends l'ensemble du circuit en respectant le caractère du bâti. Voir <a href="renovation-electrique.html" style="color: #ff3333; text-decoration: underline;">rénovation électrique</a>.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Installez-vous des panneaux solaires sur les bâtiments agricoles&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Oui, les toitures de hangars et chais sont souvent idéales pour le photovoltaïque (grandes surfaces bien orientées). Étude de faisabilité, dimensionnement, autoconsommation ou injection. Voir <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux solaires</a>.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Installez-vous des panneaux solaires sur les bâtiments agricoles ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Que faire en cas de panne sur une pompe ou un pressoir&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>En période de vendange, une panne sur l'alimentation force est critique. Appelez-moi immédiatement au 06 95 10 08 23 — j'interviens en priorité chez les viticulteurs en période active. En attendant, coupez la ligne au tableau et n'intervenez pas vous-même sur du triphasé.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, les toitures de hangars et chais sont souvent idéales pour le photovoltaïque (grandes surfaces bien orientées). Étude de faisabilité, dimensionnement, autoconsommation ou injection. Voir <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux solaires</a>.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Intervenez-vous dans les communes voisines de Laruscade&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'interviens dans tout le pays de Bourg : Cavignac, Cézac, Saint-Mariens, Lapouyade, Marsas et alentours. Tarif identique sur tout le secteur.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Que faire en cas de panne sur une pompe ou un pressoir ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">J'ai un élevage à Laruscade. Comment garantir la continuité électrique sur la salle de traite&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>C'est une vraie question. Une salle de traite avec son groupe froid à lait ne supporte pas l'arrêt — quelques heures peuvent suffire à perdre une traite. Sur ces installations, je travaille la sectorisation et la protection sélective : un défaut sur une prise de hangar ne doit pas faire tomber la salle de traite ni le groupe froid. Concrètement, ça veut dire des circuits séparés, des protections différentielles indépendantes, et idéalement un onduleur dédié sur les organes les plus critiques (régulation, refroidissement du lait). Pour les exploitations qui peuvent l'envisager, un groupe électrogène de secours sur prise dédiée est aussi une option à considérer.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>En période de vendange, une panne sur l'alimentation force est critique. Appelez-moi immédiatement au 06 95 10 08 23 — j'interviens en priorité chez les viticulteurs en période active. En attendant, coupez la ligne au tableau et n'intervenez pas vous-même sur du triphasé.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q8" aria-expanded="true" aria-controls="faq-r8">
+                            <span class="faq-num" aria-hidden="true">08</span>
+                            <span class="faq-label">Ma ferme à Laruscade est en bout de ligne Enedis. Y a-t-il un risque foudre particulier&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r8" role="region" aria-labelledby="faq-q8">
+                        <div class="faq-answer-inner">
+                            <p>Oui, sensiblement plus qu'en zone urbaine dense. Les longues lignes aériennes en milieu rural captent davantage de surtensions atmosphériques lors des orages — c'est l'une des principales causes de dégâts d'électroménager et de domotique chez les clients ruraux. Je recommande systématiquement un parafoudre Type 2 en tête de tableau, et si votre ligne est aérienne sur une longue distance, un coordonné Type 1+2. Le coût est marginal au regard de la protection apportée à vos appareils sensibles (panneaux PV, domotique, électroménager récent).</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous dans les communes voisines de Laruscade ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, j'interviens dans tout le pays de Bourg : Cavignac, Cézac, Saint-Mariens, Lapouyade, Marsas et alentours. Tarif identique sur tout le secteur.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>J'ai un élevage à Laruscade. Comment garantir la continuité électrique sur la salle de traite ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>C'est une vraie question. Une salle de traite avec son groupe froid à lait ne supporte pas l'arrêt — quelques heures peuvent suffire à perdre une traite. Sur ces installations, je travaille la sectorisation et la protection sélective : un défaut sur une prise de hangar ne doit pas faire tomber la salle de traite ni le groupe froid. Concrètement, ça veut dire des circuits séparés, des protections différentielles indépendantes, et idéalement un onduleur dédié sur les organes les plus critiques (régulation, refroidissement du lait). Pour les exploitations qui peuvent l'envisager, un groupe électrogène de secours sur prise dédiée est aussi une option à considérer.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Ma ferme à Laruscade est en bout de ligne Enedis. Y a-t-il un risque foudre particulier ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, sensiblement plus qu'en zone urbaine dense. Les longues lignes aériennes en milieu rural captent davantage de surtensions atmosphériques lors des orages — c'est l'une des principales causes de dégâts d'électroménager et de domotique chez les clients ruraux. Je recommande systématiquement un parafoudre Type 2 en tête de tableau, et si votre ligne est aérienne sur une longue distance, un coordonné Type 1+2. Le coût est marginal au regard de la protection apportée à vos appareils sensibles (panneaux PV, domotique, électroménager récent).</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Mon chai d'AOC Côtes-de-Bourg a besoin d'une remise à niveau, mais le budget est serré. Comment faire ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>C'est une situation courante sur les exploitations familiales. La règle que je propose : on commence par <strong>l'urgent et le critique</strong> — sécurité du tableau force, conformité IP65 des zones lavées, protection des automates de régulation. Le reste (éclairage technique amélioré, prises de réserve, refonte des départs) peut s'étaler sur plusieurs campagnes et profiter des inter-saisons. On planifie ensemble en fonction du calendrier de votre exploitation et de votre trésorerie.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q9" aria-expanded="true" aria-controls="faq-r9">
+                            <span class="faq-num" aria-hidden="true">09</span>
+                            <span class="faq-label">Mon chai d'AOC Côtes-de-Bourg a besoin d'une remise à niveau, mais le budget est serré. Comment faire&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r9" role="region" aria-labelledby="faq-q9">
+                        <div class="faq-answer-inner">
+                            <p>C'est une situation courante sur les exploitations familiales. La règle que je propose : on commence par <strong>l'urgent et le critique</strong> — sécurité du tableau force, conformité IP65 des zones lavées, protection des automates de régulation. Le reste (éclairage technique amélioré, prises de réserve, refonte des départs) peut s'étaler sur plusieurs campagnes et profiter des inter-saisons. On planifie ensemble en fonction du calendrier de votre exploitation et de votre trésorerie.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -460,14 +504,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

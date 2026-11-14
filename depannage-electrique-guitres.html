@@ -239,14 +239,6 @@
         .why-us-list { list-style: none; max-width: 800px; margin: 2rem auto; }
         .why-us-list li { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding-left: 3rem; position: relative; }
         .why-us-list li::before { content: '✓'; position: absolute; left: 1rem; color: #ff3333; font-size: 1.5rem; font-weight: bold; }
-        .faq-item { background: white; margin-bottom: 1rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem; background: #f8f8f8; }
-        .faq-item.active .faq-answer { max-height: 500px; padding: 1.5rem; }
         .contact-cta { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%); color: white; text-align: center; padding: 60px 2rem; margin-top: 4rem; border-radius: 15px; }
         .contact-cta h2 { color: white; }
         .contact-cta h2::after { background: #ff3333; }
@@ -272,6 +264,8 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
     <header>
@@ -433,86 +427,136 @@
 
     <section class="solutions-bg">
         <h2>Questions Fréquentes</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>En combien de temps arrivez-vous à Guitres ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Guitres est à moins de 10 minutes de route de ma base à St Médard de Guizières. C'est l'une des communes où j'interviens le plus rapidement dans toute ma zone. En cas d'urgence, appelez le 06 95 10 08 23.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Combien coûte un dépannage électrique à Guitres ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">En combien de temps arrivez-vous à Guitres&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Guitres est à moins de 10 minutes de route de ma base à St Médard de Guizières. C'est l'une des communes où j'interviens le plus rapidement dans toute ma zone. En cas d'urgence, appelez le 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Le tarif dépend de la nature de la panne, du moment d'intervention et des pièces nécessaires. Je vous communique un devis transparent avant toute intervention. Pas de frais de déplacement cachés grâce à ma proximité.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Combien coûte un dépannage électrique à Guitres&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Le tarif dépend de la nature de la panne, du moment d'intervention et des pièces nécessaires. Je vous communique un devis transparent avant toute intervention. Pas de frais de déplacement cachés grâce à ma proximité.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous pour les maisons anciennes à Guitres ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Intervenez-vous pour les maisons anciennes à Guitres&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Oui, le secteur de Guitres compte de nombreuses maisons anciennes avec des installations vétustes. Je suis spécialisé dans la mise aux normes NF C 15-100 et la rénovation complète d'installations anciennes, y compris le remplacement des câblages en aluminium.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, le secteur de Guitres compte de nombreuses maisons anciennes avec des installations vétustes. Je suis spécialisé dans la mise aux normes NF C 15-100 et la rénovation complète d'installations anciennes, y compris le remplacement des câblages en aluminium.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Faites-vous aussi des installations photovoltaïques à Guitres&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> à Guitres et dans toute la région. Le secteur rural est idéal pour l'autoconsommation solaire. Contactez-moi pour un devis gratuit.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Faites-vous aussi des installations photovoltaïques à Guitres ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Intervenez-vous dans les hameaux autour de Guitres&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'interviens dans tous les hameaux autour de Guitres : Marcenais, Saint-Martin-du-Bois, Saint-Denis-de-Pile et les écarts ruraux. Ma connaissance du terrain local me permet d'intervenir efficacement partout.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> à Guitres et dans toute la région. Le secteur rural est idéal pour l'autoconsommation solaire. Contactez-moi pour un devis gratuit.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Que faire en cas de panne totale à Guîtres&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>1) Vérifiez si vos voisins ont aussi une panne (problème réseau Enedis). 2) Si la panne est uniquement chez vous, vérifiez le disjoncteur principal. 3) Si le problème persiste ou si vous sentez une odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous dans les hameaux autour de Guitres ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Mes lumières faiblissent par moments. Est-ce un problème électrique chez moi&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>Pas forcément. Autour de Guîtres, en bout de ligne Enedis, on rencontre régulièrement des baisses de tension légères en période de forte consommation (hiver, été), surtout dans les hameaux éloignés du transformateur de quartier. Quand un client me décrit des « lumières qui faiblissent » ou des appareils qui redémarrent inopinément, je commence par mesurer la tension réseau avant de chercher un défaut dans l'installation. Si la tension est en limite basse, le problème est sur la ligne — je vous oriente vers Enedis pour signaler. Si la tension est correcte, on cherche dans la maison.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'interviens dans tous les hameaux autour de Guitres : Marcenais, Saint-Martin-du-Bois, Saint-Denis-de-Pile et les écarts ruraux. Ma connaissance du terrain local me permet d'intervenir efficacement partout.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q8" aria-expanded="true" aria-controls="faq-r8">
+                            <span class="faq-num" aria-hidden="true">08</span>
+                            <span class="faq-label">J'ai acheté un corps de ferme rénové autour de Guîtres. Comment vérifier l'électricité&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r8" role="region" aria-labelledby="faq-q8">
+                        <div class="faq-answer-inner">
+                            <p>Question classique. Sur ce type de bien rénové il y a 5 à 15 ans, l'électricité a souvent été le poste traité trop vite par rapport au reste : tableau monté à la va-vite, dépendances câblées en domino, mise à la terre absente sur les bâtiments annexes, prises de jardin mal protégées. Je propose un diagnostic préalable avant que vous n'engagiez d'autres travaux : on regarde le tableau, on mesure la terre, on cartographie les départs et les dépendances. Vous savez ensuite ce qui doit être repris en priorité et ce qui peut attendre.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Que faire en cas de panne totale à Guîtres ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>1) Vérifiez si vos voisins ont aussi une panne (problème réseau Enedis). 2) Si la panne est uniquement chez vous, vérifiez le disjoncteur principal. 3) Si le problème persiste ou si vous sentez une odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Mes lumières faiblissent par moments. Est-ce un problème électrique chez moi ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Pas forcément. Autour de Guîtres, en bout de ligne Enedis, on rencontre régulièrement des baisses de tension légères en période de forte consommation (hiver, été), surtout dans les hameaux éloignés du transformateur de quartier. Quand un client me décrit des « lumières qui faiblissent » ou des appareils qui redémarrent inopinément, je commence par mesurer la tension réseau avant de chercher un défaut dans l'installation. Si la tension est en limite basse, le problème est sur la ligne — je vous oriente vers Enedis pour signaler. Si la tension est correcte, on cherche dans la maison.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>J'ai acheté un corps de ferme rénové autour de Guîtres. Comment vérifier l'électricité ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Question classique. Sur ce type de bien rénové il y a 5 à 15 ans, l'électricité a souvent été le poste traité trop vite par rapport au reste : tableau monté à la va-vite, dépendances câblées en domino, mise à la terre absente sur les bâtiments annexes, prises de jardin mal protégées. Je propose un diagnostic préalable avant que vous n'engagiez d'autres travaux : on regarde le tableau, on mesure la terre, on cartographie les départs et les dépendances. Vous savez ensuite ce qui doit être repris en priorité et ce qui peut attendre.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Je voudrais une borne VE et du photovoltaïque sur ma maison à Guîtres. Faut-il refaire le tableau ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Ça dépend de l'âge de l'installation. Sur les pavillons récents (post 2010) avec tableau aux normes et puissance souscrite suffisante, on peut souvent ajouter borne VE et photovoltaïque sans refaire le tableau, juste en l'étendant. Sur les bâtis plus anciens, il faut souvent d'abord remettre à niveau l'installation existante (différentiels 30 mA partout, mise à la terre fiable, AGCP correct) avant d'ajouter ces nouveaux postes. Je fais le tour avec vous avant de chiffrer pour éviter les mauvaises surprises.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q9" aria-expanded="true" aria-controls="faq-r9">
+                            <span class="faq-num" aria-hidden="true">09</span>
+                            <span class="faq-label">Je voudrais une borne VE et du photovoltaïque sur ma maison à Guîtres. Faut-il refaire le tableau&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r9" role="region" aria-labelledby="faq-q9">
+                        <div class="faq-answer-inner">
+                            <p>Ça dépend de l'âge de l'installation. Sur les pavillons récents (post 2010) avec tableau aux normes et puissance souscrite suffisante, on peut souvent ajouter borne VE et photovoltaïque sans refaire le tableau, juste en l'étendant. Sur les bâtis plus anciens, il faut souvent d'abord remettre à niveau l'installation existante (différentiels 30 mA partout, mise à la terre fiable, AGCP correct) avant d'ajouter ces nouveaux postes. Je fais le tour avec vous avant de chiffrer pour éviter les mauvaises surprises.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -553,14 +597,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>
