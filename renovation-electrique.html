@@ -315,55 +315,13 @@
             margin-bottom: 0.5rem;
         }
 
-        .faq-item {
-            background: white;
-            margin-bottom: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
 
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
 
-        .faq-question:hover {
-            background: #f8f8f8;
-        }
 
-        .faq-question h3 {
-            margin: 0;
-            color: #1a1a1a;
-            font-size: 1.1rem;
-        }
 
-        .faq-icon {
-            color: #ff3333;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
 
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            padding: 0 1.5rem;
-            background: #f8f8f8;
-        }
 
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 1.5rem;
-        }
 
         .contact-cta {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%);
@@ -525,6 +483,10 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
+    <!-- Fils électriques (motif du site) -->
+    <link rel="stylesheet" href="/css/fils.css">
 </head>
 <body>
     <header>
@@ -754,74 +716,108 @@
 
     <section>
         <h2>Questions Fréquentes - Rénovation Électrique</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Comment savoir si mon installation électrique est vétuste ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Une installation électrique vétuste se reconnaît à plusieurs signes : tableau à fusibles en porcelaine, fils en tissu ou sans gaine, prises sans terre, absence d'interrupteur différentiel 30 mA, disjoncteur qui saute souvent, ou installation de plus de 15 ans jamais rénovée. Si vous cochez un de ces points, votre installation présente un risque d'électrocution ou d'incendie. Je réalise un diagnostic complet et vous propose une mise aux normes NF C 15-100 adaptée, avec devis gratuit.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Combien coûte une rénovation électrique complète ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">Comment savoir si mon installation électrique est vétuste&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Une installation électrique vétuste se reconnaît à plusieurs signes : tableau à fusibles en porcelaine, fils en tissu ou sans gaine, prises sans terre, absence d'interrupteur différentiel 30 mA, disjoncteur qui saute souvent, ou installation de plus de 15 ans jamais rénovée. Si vous cochez un de ces points, votre installation présente un risque d'électrocution ou d'incendie. Je réalise un diagnostic complet et vous propose une mise aux normes NF C 15-100 adaptée, avec devis gratuit.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Le coût dépend de la surface, de l'état actuel de l'installation et de l'étendue des travaux. En moyenne, comptez entre 30 € et 80 €/m² pour une rénovation complète, soit 3 000 € à 8 000 € pour une maison de 100 m². Je vous propose un devis gratuit et détaillé après diagnostic de votre installation.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Combien coûte une rénovation électrique complète&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Le coût dépend de la surface, de l'état actuel de l'installation et de l'étendue des travaux. En moyenne, comptez entre 30 € et 80 €/m² pour une rénovation complète, soit 3 000 € à 8 000 € pour une maison de 100 m². Je vous propose un devis gratuit et détaillé après diagnostic de votre installation.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Combien de temps durent les travaux ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Combien de temps durent les travaux&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Pour une rénovation complète d'un appartement de 50m², comptez 3 à 5 jours. Pour une maison de 100m², plutôt 7 à 10 jours. Une simple mise aux normes du tableau peut se faire en 1 journée. Je vous donnons un planning précis lors du devis.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Pour une rénovation complète d'un appartement de 50m², comptez 3 à 5 jours. Pour une maison de 100m², plutôt 7 à 10 jours. Une simple mise aux normes du tableau peut se faire en 1 journée. Je vous donnons un planning précis lors du devis.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Dois-je refaire toute la peinture après&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Pas nécessairement ! Si votre logement est déjà rénové, je privilégie le passage en apparent (plinthes, goulottes décoratives) pour minimiser les dégâts. Si vous rénovez entièrement, je passe les câbles encastrés avant vos travaux de finition. Je travaille de manière propre et soignée.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Dois-je refaire toute la peinture après ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Puis-je bénéficier d'aides financières&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Selon vos revenus, l'ANAH peut aider les propriétaires modestes, et des aides locales existent. Je ne suis pas certifié RGE : les aides réservées aux entreprises RGE ne s'appliquent pas à mes travaux. De mon côté, je suis en franchise de TVA : mes devis sont sans TVA. Je vous oriente vers les bons interlocuteurs lors du devis.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Pas nécessairement ! Si votre logement est déjà rénové, je privilégie le passage en apparent (plinthes, goulottes décoratives) pour minimiser les dégâts. Si vous rénovez entièrement, je passe les câbles encastrés avant vos travaux de finition. Je travaille de manière propre et soignée.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">La mise aux normes est-elle obligatoire&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>Obligatoire lors d'une vente (diagnostic électrique de moins de 3 ans) ou pour les locations (diagnostic de moins de 6 ans). Pour votre résidence principale, ce n'est pas une obligation légale, mais c'est fortement recommandé pour votre sécurité, surtout si l'installation a plus de 15 ans.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Puis-je bénéficier d'aides financières ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Selon vos revenus, l'ANAH peut aider les propriétaires modestes, et des aides locales existent. Je ne suis pas certifié RGE : les aides réservées aux entreprises RGE ne s'appliquent pas à mes travaux. De mon côté, je suis en franchise de TVA : mes devis sont sans TVA. Je vous oriente vers les bons interlocuteurs lors du devis.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>La mise aux normes est-elle obligatoire ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Obligatoire lors d'une vente (diagnostic électrique de moins de 3 ans) ou pour les locations (diagnostic de moins de 6 ans). Pour votre résidence principale, ce n'est pas une obligation légale, mais c'est fortement recommandé pour votre sécurité, surtout si l'installation a plus de 15 ans.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqReno(this)">
-                    <h3>Qu'est-ce que la norme NF C 15-100 ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>C'est la norme française qui régit les installations électriques basse tension. Elle définit les règles de conception, de réalisation et de vérification des installations électriques pour garantir la sécurité des personnes et des biens. Elle impose notamment : protection différentielle 30mA, nombre minimum de prises par pièce, circuits dédiés, mise à la terre obligatoire, etc.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Qu'est-ce que la norme NF C 15-100&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>C'est la norme française qui régit les installations électriques basse tension. Elle définit les règles de conception, de réalisation et de vérification des installations électriques pour garantir la sécurité des personnes et des biens. Elle impose notamment : protection différentielle 30mA, nombre minimum de prises par pièce, circuits dédiés, mise à la terre obligatoire, etc.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -854,20 +850,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaqReno(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            if (!isActive) {
-                faqItem.classList.add('active');
-            }
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

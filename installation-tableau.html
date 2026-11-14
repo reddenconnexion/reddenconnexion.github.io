@@ -324,38 +324,10 @@
             font-weight: bold;
         }
 
-        .faq-item {
-            background: white;
-            margin: 0 auto 1rem;
-            max-width: 850px;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
 
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
 
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            padding: 0 1.5rem;
-            background: #f8f8f8;
-        }
 
-        .faq-item.active .faq-answer { max-height: 600px; padding: 1.5rem; }
 
         .updated-date {
             text-align: center;
@@ -451,6 +423,10 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
+    <!-- Fils électriques (motif du site) -->
+    <link rel="stylesheet" href="/css/fils.css">
 </head>
 <body>
     <header>
@@ -563,49 +539,81 @@
 
     <section>
         <h2>Questions Fréquentes</h2>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Combien coûte le remplacement d'un tableau électrique ?</h3>
-                <span class="faq-icon">▼</span>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-answer">
-                <p>Le prix d'un remplacement de tableau électrique varie généralement de 800 à 2 000 € selon le nombre de circuits, la mise en conformité nécessaire et l'ajout éventuel d'un parafoudre. Je fournis toujours un <a href="tarifs-devis.html" style="color:#ff3333; text-decoration:underline;">devis gratuit</a> et détaillé avant toute intervention. Appelez-moi au 06 95 10 08 23.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Quand faut-il changer son tableau électrique ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Il faut envisager le remplacement si votre tableau utilise encore des fusibles à porcelaine, s'il n'a pas d'interrupteur différentiel 30 mA, si les disjoncteurs sautent souvent, lors d'une <a href="renovation-electrique.html" style="color:#ff3333; text-decoration:underline;">rénovation</a>, ou avant la vente ou la mise en location du logement.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Combien de temps dure l'installation d'un tableau électrique ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Le remplacement d'un tableau électrique prend généralement une demi-journée à une journée complète selon le nombre de circuits et l'état de l'installation existante. La coupure de courant est limitée au strict nécessaire.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Le Consuel est-il obligatoire après l'installation d'un tableau ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>L'attestation Consuel est obligatoire pour une installation neuve ou une rénovation totale avant le raccordement ou la remise en service par Enedis. Pour un simple remplacement de tableau sur une installation existante, elle n'est pas systématique : je vous indique le cas qui s'applique à votre projet.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Un tableau électrique doit-il être conforme à la norme NF C 15-100 ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Oui. La norme NF C 15-100 impose notamment un interrupteur différentiel 30 mA, un nombre minimum de circuits, un repérage clair et des réserves pour évolutions. Toutes mes installations respectent cette norme.</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">Combien coûte le remplacement d'un tableau électrique&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Le prix d'un remplacement de tableau électrique varie généralement de 800 à 2 000 € selon le nombre de circuits, la mise en conformité nécessaire et l'ajout éventuel d'un parafoudre. Je fournis toujours un <a href="tarifs-devis.html" style="color:#ff3333; text-decoration:underline;">devis gratuit</a> et détaillé avant toute intervention. Appelez-moi au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Quand faut-il changer son tableau électrique&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Il faut envisager le remplacement si votre tableau utilise encore des fusibles à porcelaine, s'il n'a pas d'interrupteur différentiel 30 mA, si les disjoncteurs sautent souvent, lors d'une <a href="renovation-electrique.html" style="color:#ff3333; text-decoration:underline;">rénovation</a>, ou avant la vente ou la mise en location du logement.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Combien de temps dure l'installation d'un tableau électrique&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Le remplacement d'un tableau électrique prend généralement une demi-journée à une journée complète selon le nombre de circuits et l'état de l'installation existante. La coupure de courant est limitée au strict nécessaire.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Le Consuel est-il obligatoire après l'installation d'un tableau&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>L'attestation Consuel est obligatoire pour une installation neuve ou une rénovation totale avant le raccordement ou la remise en service par Enedis. Pour un simple remplacement de tableau sur une installation existante, elle n'est pas systématique : je vous indique le cas qui s'applique à votre projet.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Un tableau électrique doit-il être conforme à la norme NF C 15-100&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Oui. La norme NF C 15-100 impose notamment un interrupteur différentiel 30 mA, un nombre minimum de circuits, un repérage clair et des réserves pour évolutions. Toutes mes installations respectent cette norme.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <p class="updated-date">Dernière mise à jour : mai 2026</p>
@@ -616,14 +624,7 @@
     <p>&copy; 2026 Red Den Connexion - Tous droits r&eacute;serv&eacute;s</p>
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

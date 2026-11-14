@@ -155,14 +155,6 @@
         .why-us-list { list-style: none; max-width: 800px; margin: 2rem auto; }
         .why-us-list li { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding-left: 3rem; position: relative; }
         .why-us-list li::before { content: '✓'; position: absolute; left: 1rem; color: #ff3333; font-size: 1.5rem; font-weight: bold; }
-        .faq-item { background: white; margin-bottom: 1rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem; background: #f8f8f8; }
-        .faq-item.active .faq-answer { max-height: 500px; padding: 1.5rem; }
         .contact-cta { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%); color: white; text-align: center; padding: 60px 2rem; margin-top: 4rem; border-radius: 15px; }
         .contact-cta h2 { color: white; }
         .contact-cta h2::after { background: #ff3333; }
@@ -188,6 +180,10 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
+    <!-- Fils électriques (motif du site) -->
+    <link rel="stylesheet" href="/css/fils.css">
 </head>
 <body>
     <header>
@@ -346,86 +342,136 @@
 
     <section class="solutions-bg">
         <h2>Questions Fréquentes</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>En combien de temps arrivez-vous à Saint-Denis-de-Pile ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Saint-Denis-de-Pile est à environ 20 minutes de ma base à St Médard de Guizières. Pour une urgence, je me mobilise immédiatement après votre appel au 06 95 10 08 23 et je vous tiens informé du délai d'arrivée précis.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Mon tableau électrique date des années 70, faut-il le changer ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">En combien de temps arrivez-vous à Saint-Denis-de-Pile&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Saint-Denis-de-Pile est à environ 20 minutes de ma base à St Médard de Guizières. Pour une urgence, je me mobilise immédiatement après votre appel au 06 95 10 08 23 et je vous tiens informé du délai d'arrivée précis.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Si votre tableau est en porcelaine, comporte des fusibles à broches ou n'a pas de disjoncteur différentiel 30 mA, oui — il ne respecte plus la norme NF C 15-100 et présente un risque (incendie, électrocution). Voir ma <a href="installation-tableau.html" style="color: #ff3333; text-decoration: underline;">service de remplacement de tableau</a>. Devis gratuit après visite.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Mon tableau électrique date des années 70, faut-il le changer&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Si votre tableau est en porcelaine, comporte des fusibles à broches ou n'a pas de disjoncteur différentiel 30 mA, oui — il ne respecte plus la norme NF C 15-100 et présente un risque (incendie, électrocution). Voir ma <a href="installation-tableau.html" style="color: #ff3333; text-decoration: underline;">service de remplacement de tableau</a>. Devis gratuit après visite.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Faites-vous des rénovations complètes à Saint-Denis-de-Pile ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Faites-vous des rénovations complètes à Saint-Denis-de-Pile&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Oui, je reprends l'ensemble du circuit électrique de pavillons et de maisons anciennes : tableau, câblages, prises, éclairage, mise à la terre. Voir <a href="renovation-electrique.html" style="color: #ff3333; text-decoration: underline;">rénovation électrique</a>.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, je reprends l'ensemble du circuit électrique de pavillons et de maisons anciennes : tableau, câblages, prises, éclairage, mise à la terre. Voir <a href="renovation-electrique.html" style="color: #ff3333; text-decoration: underline;">rénovation électrique</a>.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Intervenez-vous le week-end et la nuit&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Oui, je suis disponible 24h/24 et 7j/7 pour les urgences. Une coupure totale, une odeur de brûlé, des étincelles à une prise — appelez-moi immédiatement au 06 95 10 08 23, ne touchez à rien.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous le week-end et la nuit ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Installez-vous des bornes de recharge pour véhicule électrique&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Oui, je suis habilité IRVE et j'installe des Wallbox conformes à la norme NF C 15-100, avec déclaration au Consuel. Voir ma <a href="installation-prise-vehicule-electrique.html" style="color: #ff3333; text-decoration: underline;">page borne VE</a>.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, je suis disponible 24h/24 et 7j/7 pour les urgences. Une coupure totale, une odeur de brûlé, des étincelles à une prise — appelez-moi immédiatement au 06 95 10 08 23, ne touchez à rien.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Que faire si seule la moitié de ma maison est sans courant&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>Cela indique généralement qu'un disjoncteur divisionnaire a sauté ou qu'un différentiel s'est déclenché. Vérifiez votre tableau : si un module est en position basse, remettez-le. Si ça saute aussitôt, ne forcez pas — il y a un défaut sur le circuit. Appelez-moi au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Installez-vous des bornes de recharge pour véhicule électrique ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Mon pavillon date des années 80. Faut-il refaire le tableau électrique&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>Très souvent oui, mais pas pour des raisons cosmétiques — pour la sécurité. Sur ces tableaux d'origine, il manque presque systématiquement des différentiels 30 mA sur les circuits non humides (chambres, séjour), parfois le parafoudre n'existe pas, et la mise à la terre n'est pas toujours fiable. Tant que rien ne défaille, ça fonctionne ; le jour où un appareil pose un défaut d'isolement, la protection ne déclenche pas comme elle devrait. Je propose une mise en sécurité ciblée : tableau remplacé, différentiels ajoutés, terre vérifiée. C'est rapide et raisonnable financièrement.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, je suis habilité IRVE et j'installe des Wallbox conformes à la norme NF C 15-100, avec déclaration au Consuel. Voir ma <a href="installation-prise-vehicule-electrique.html" style="color: #ff3333; text-decoration: underline;">page borne VE</a>.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q8" aria-expanded="true" aria-controls="faq-r8">
+                            <span class="faq-num" aria-hidden="true">08</span>
+                            <span class="faq-label">J'ai un atelier ou un local d'activité à Saint-Denis. Quels sont vos délais en cas de panne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r8" role="region" aria-labelledby="faq-q8">
+                        <div class="faq-answer-inner">
+                            <p>Pour un pro, une panne, c'est une journée de chiffre perdue. Pour les locaux d'activité de Saint-Denis-de-Pile, je m'efforce d'intervenir dans l'heure quand c'est techniquement possible. Si on travaille ensemble sur l'installation d'origine ou sur sa rénovation, je suis l'organisation du tableau pour qu'un dépannage d'urgence soit possible rapidement : circuits sectorisés, prises de réserve, protections différentielles bien réparties. Un défaut sur une machine ne doit pas couper tout l'atelier.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Que faire si seule la moitié de ma maison est sans courant ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Cela indique généralement qu'un disjoncteur divisionnaire a sauté ou qu'un différentiel s'est déclenché. Vérifiez votre tableau : si un module est en position basse, remettez-le. Si ça saute aussitôt, ne forcez pas — il y a un défaut sur le circuit. Appelez-moi au 06 95 10 08 23.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Mon pavillon date des années 80. Faut-il refaire le tableau électrique ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Très souvent oui, mais pas pour des raisons cosmétiques — pour la sécurité. Sur ces tableaux d'origine, il manque presque systématiquement des différentiels 30 mA sur les circuits non humides (chambres, séjour), parfois le parafoudre n'existe pas, et la mise à la terre n'est pas toujours fiable. Tant que rien ne défaille, ça fonctionne ; le jour où un appareil pose un défaut d'isolement, la protection ne déclenche pas comme elle devrait. Je propose une mise en sécurité ciblée : tableau remplacé, différentiels ajoutés, terre vérifiée. C'est rapide et raisonnable financièrement.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>J'ai un atelier ou un local d'activité à Saint-Denis. Quels sont vos délais en cas de panne ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Pour un pro, une panne, c'est une journée de chiffre perdue. Pour les locaux d'activité de Saint-Denis-de-Pile, je m'efforce d'intervenir dans l'heure quand c'est techniquement possible. Si on travaille ensemble sur l'installation d'origine ou sur sa rénovation, je suis l'organisation du tableau pour qu'un dépannage d'urgence soit possible rapidement : circuits sectorisés, prises de réserve, protections différentielles bien réparties. Un défaut sur une machine ne doit pas couper tout l'atelier.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Je veux installer une pompe à chaleur. Mon installation actuelle peut-elle accueillir ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Question classique sur les pavillons de Saint-Denis. Une PAC air-eau tire entre 2 et 5 kW selon le modèle, sur un circuit dédié avec son propre disjoncteur et différentiel. La vraie question, c'est la marge disponible sur votre tableau et votre puissance souscrite. Sur les pavillons des années 70-80 abonnés en 6 ou 9 kVA, on est souvent en limite — il faut passer en 12 kVA, et parfois remplacer le tableau d'origine pour faire de la place. Je vérifie tout ça avant de chiffrer, pour éviter les surcoûts en cours de chantier.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q9" aria-expanded="true" aria-controls="faq-r9">
+                            <span class="faq-num" aria-hidden="true">09</span>
+                            <span class="faq-label">Je veux installer une pompe à chaleur. Mon installation actuelle peut-elle accueillir&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r9" role="region" aria-labelledby="faq-q9">
+                        <div class="faq-answer-inner">
+                            <p>Question classique sur les pavillons de Saint-Denis. Une PAC air-eau tire entre 2 et 5 kW selon le modèle, sur un circuit dédié avec son propre disjoncteur et différentiel. La vraie question, c'est la marge disponible sur votre tableau et votre puissance souscrite. Sur les pavillons des années 70-80 abonnés en 6 ou 9 kVA, on est souvent en limite — il faut passer en 12 kVA, et parfois remplacer le tableau d'origine pour faire de la place. Je vérifie tout ça avant de chiffrer, pour éviter les surcoûts en cours de chantier.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -459,14 +505,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

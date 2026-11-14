@@ -157,14 +157,6 @@
         .why-us-list { list-style: none; max-width: 800px; margin: 2rem auto; }
         .why-us-list li { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding-left: 3rem; position: relative; }
         .why-us-list li::before { content: '✓'; position: absolute; left: 1rem; color: #ff3333; font-size: 1.5rem; font-weight: bold; }
-        .faq-item { background: white; margin-bottom: 1rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem; background: #f8f8f8; }
-        .faq-item.active .faq-answer { max-height: 500px; padding: 1.5rem; }
         .contact-cta { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%); color: white; text-align: center; padding: 60px 2rem; margin-top: 4rem; border-radius: 15px; }
         .contact-cta h2 { color: white; }
         .contact-cta h2::after { background: #ff3333; }
@@ -190,6 +182,10 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
+    <!-- Fils électriques (motif du site) -->
+    <link rel="stylesheet" href="/css/fils.css">
 </head>
 <body>
     <header>
@@ -348,68 +344,108 @@
 
     <section class="solutions-bg">
         <h2>Questions Fréquentes</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>En combien de temps arrivez-vous à St Médard de Guizières ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Je suis installé dans la commune même : à St Médard de Guizières, j'interviens en quelques minutes. C'est ma ville, je n'ai aucun trajet à faire. Pour une urgence électrique, appelez le 06 95 10 08 23, c'est le temps de réponse le plus court possible.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Vous êtes vraiment basé à St Médard de Guizières ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">En combien de temps arrivez-vous à St Médard de Guizières&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Je suis installé dans la commune même : à St Médard de Guizières, j'interviens en quelques minutes. C'est ma ville, je n'ai aucun trajet à faire. Pour une urgence électrique, appelez le 06 95 10 08 23, c'est le temps de réponse le plus court possible.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui. Red Den Connexion est domiciliée 13 rue Robert Boulin, à St Médard de Guizières. Je ne suis pas un électricien qui vient de loin avec des frais de déplacement : j'habite et je travaille ici, je connais la commune et son bâti depuis des années.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Vous êtes vraiment basé à St Médard de Guizières&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Oui. Red Den Connexion est domiciliée 13 rue Robert Boulin, à St Médard de Guizières. Je ne suis pas un électricien qui vient de loin avec des frais de déplacement : j'habite et je travaille ici, je connais la commune et son bâti depuis des années.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Mon tableau électrique date des années 70, faut-il le changer ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Mon tableau électrique date des années 70, faut-il le changer&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Beaucoup de maisons du bourg et des hameaux de St Médard ont encore un tableau à fusibles ou à porte-fusibles d'origine. Ce n'est pas forcément dangereux du jour au lendemain, mais ça n'offre plus la protection des personnes attendue aujourd'hui (différentiels 30 mA). Je fais un diagnostic, je vous dis si une simple mise en sécurité suffit ou s'il faut remplacer le tableau, et je chiffre les deux options.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Beaucoup de maisons du bourg et des hameaux de St Médard ont encore un tableau à fusibles ou à porte-fusibles d'origine. Ce n'est pas forcément dangereux du jour au lendemain, mais ça n'offre plus la protection des personnes attendue aujourd'hui (différentiels 30 mA). Je fais un diagnostic, je vous dis si une simple mise en sécurité suffit ou s'il faut remplacer le tableau, et je chiffre les deux options.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Faites-vous l'installation de panneaux solaires à St Médard&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> sur les maisons de St Médard et des communes voisines. Le secteur, avec ses pavillons et ses maisons de campagne aux belles toitures, se prête bien à l'autoconsommation. Étude et devis gratuits.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Faites-vous l'installation de panneaux solaires à St Médard ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Intervenez-vous dans les communes autour de St Médard&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Oui, St Médard de Guizières est ma base : de là je rayonne très vite sur <a href="depannage-electrique-saint-seurin-sur-lisle.html" style="color: #ff3333; text-decoration: underline;">Saint-Seurin-sur-l'Isle</a>, <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: underline;">Coutras</a>, <a href="depannage-electrique-les-peintures.html" style="color: #ff3333; text-decoration: underline;">Les Peintures</a>, <a href="depannage-electrique-guitres.html" style="color: #ff3333; text-decoration: underline;">Guîtres</a>, Les Églisottes, Abzac et toute la vallée de l'Isle. C'est la position centrale idéale pour intervenir rapidement dans tout le nord du Libournais.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> sur les maisons de St Médard et des communes voisines. Le secteur, avec ses pavillons et ses maisons de campagne aux belles toitures, se prête bien à l'autoconsommation. Étude et devis gratuits.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">J'ai une maison ancienne dans le bourg. Pouvez-vous rénover sans tout casser&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>Oui, c'est tout l'intérêt de connaître le bâti local. Dans le bourg de St Médard, on a des maisons en pierre mitoyennes où il faut soigner les cheminements pour limiter les saignées. Je privilégie les passages en plinthe, en goulotte discrète ou par les combles selon la configuration, et je reprends en priorité ce qui touche à la sécurité (tableau, terre, différentiels) avant l'esthétique.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous dans les communes autour de St Médard ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, St Médard de Guizières est ma base : de là je rayonne très vite sur <a href="depannage-electrique-saint-seurin-sur-lisle.html" style="color: #ff3333; text-decoration: underline;">Saint-Seurin-sur-l'Isle</a>, <a href="depannage-electrique-coutras.html" style="color: #ff3333; text-decoration: underline;">Coutras</a>, <a href="depannage-electrique-les-peintures.html" style="color: #ff3333; text-decoration: underline;">Les Peintures</a>, <a href="depannage-electrique-guitres.html" style="color: #ff3333; text-decoration: underline;">Guîtres</a>, Les Églisottes, Abzac et toute la vallée de l'Isle. C'est la position centrale idéale pour intervenir rapidement dans tout le nord du Libournais.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>J'ai une maison ancienne dans le bourg. Pouvez-vous rénover sans tout casser ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, c'est tout l'intérêt de connaître le bâti local. Dans le bourg de St Médard, on a des maisons en pierre mitoyennes où il faut soigner les cheminements pour limiter les saignées. Je privilégie les passages en plinthe, en goulotte discrète ou par les combles selon la configuration, et je reprends en priorité ce qui touche à la sécurité (tableau, terre, différentiels) avant l'esthétique.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Je passe à la voiture électrique, pouvez-vous installer une borne chez moi ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, je suis habilité IRVE et j'installe des bornes Wallbox à domicile. En zone semi-rurale comme St Médard, où on roule plus que la moyenne, une borne a vraiment du sens. Je vérifie d'abord la puissance souscrite et l'état du tableau, puis je dimensionne la borne en conséquence. Devis gratuit.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Je passe à la voiture électrique, pouvez-vous installer une borne chez moi&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>Oui, je suis habilité IRVE et j'installe des bornes Wallbox à domicile. En zone semi-rurale comme St Médard, où on roule plus que la moyenne, une borne a vraiment du sens. Je vérifie d'abord la puissance souscrite et l'état du tableau, puis je dimensionne la borne en conséquence. Devis gratuit.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -445,14 +481,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

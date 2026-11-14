@@ -8,7 +8,20 @@
  * Le comportement est dans js/faq.js.
  *
  * Sans JavaScript, toutes les réponses restent affichées.
+ *
+ * Utilisée par la page d'accueil et par toutes les pages qui ont une FAQ
+ * (dépannage par commune, rénovation, installations, tarifs).
  */
+
+/* Police des numéros (déjà chargée sur la page d'accueil ; déclarée ici pour
+   les autres pages). Fichier auto-hébergé : aucun appel à un serveur tiers. */
+@font-face {
+    font-family: 'Orbitron';
+    font-style: normal;
+    font-weight: 700 900;
+    font-display: swap;
+    src: url('/fonts/orbitron-latin.woff2') format('woff2');
+}
 
 .faq-container {
     max-width: 860px;

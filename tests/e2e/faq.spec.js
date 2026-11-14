@@ -131,3 +131,45 @@ test.describe('Questions fréquentes — sans JavaScript', () => {
         await expect(page.locator('#faq .faq-master')).toBeHidden();
     });
 });
+
+// Les autres pages du site (dépannage par commune, rénovation, installations,
+// tarifs) utilisent le même composant : on en contrôle une de chaque famille.
+const AUTRES_PAGES = [
+    '/depannage-electrique-abzac.html',
+    '/depannage-electrique-coutras.html',
+    '/depannage-urgent.html',
+    '/installation-tableau.html',
+    '/renovation-electrique.html',
+    '/tarifs-devis.html',
+];
+
+test.describe('Questions fréquentes — autres pages', () => {
+    test.describe.configure({ mode: 'parallel' });
+
+    for (const url of AUTRES_PAGES) {
+        test(`la FAQ fonctionne sur ${url}`, async ({ page }) => {
+            await page.goto(url);
+            await expect(page.locator('[data-faq].is-ready')).toHaveCount(1);
+            await page.addStyleTag({ content: 'html { scroll-behavior: auto !important; }' });
+
+            const items = page.locator('[data-faq] .faq-item');
+            expect(await items.count()).toBeGreaterThanOrEqual(5);
+            // À l'arrivée : seule la première réponse est ouverte
+            await expect(page.locator('[data-faq] .faq-item.is-open')).toHaveCount(1);
+            await expect(page.locator('#faq-r1 p')).toBeVisible();
+            await expect(page.locator('#faq-r2 p')).toBeHidden();
+
+            const second = page.locator('#faq-q2');
+            await second.evaluate(el => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
+            await second.click();
+            await expect(second).toHaveAttribute('aria-expanded', 'true');
+            await expect(page.locator('#faq-r2 p')).toBeVisible();
+            // La première reste ouverte : les questions sont indépendantes
+            await expect(page.locator('#faq-r1 p')).toBeVisible();
+
+            // Plus aucune trace de l'ancien mécanisme
+            await expect(page.locator('.faq-icon')).toHaveCount(0);
+            await expect(page.locator('[onclick*="toggleFaq"]')).toHaveCount(0);
+        });
+    }
+});

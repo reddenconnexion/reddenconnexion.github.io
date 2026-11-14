@@ -391,55 +391,13 @@
             font-weight: bold;
         }
 
-        .faq-item {
-            background: white;
-            margin-bottom: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
 
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
 
-        .faq-question:hover {
-            background: #f8f8f8;
-        }
 
-        .faq-question h3 {
-            margin: 0;
-            color: #1a1a1a;
-            font-size: 1.1rem;
-        }
 
-        .faq-icon {
-            color: #ff3333;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
 
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            padding: 0 1.5rem;
-            background: #f8f8f8;
-        }
 
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 1.5rem;
-        }
 
         .contact-cta {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%);
@@ -601,6 +559,10 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
+    <!-- Fils électriques (motif du site) -->
+    <link rel="stylesheet" href="/css/fils.css">
 </head>
 <body>
     <header>
@@ -802,84 +764,122 @@
 
     <section class="solutions-bg">
         <h2>Questions Fréquentes - Dépannage Électrique Libourne</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqService(this)">
-                    <h3>Combien coûte un dépannage électrique à Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Le tarif dépend de la nature de la panne, du moment d'intervention (jour/nuit/weekend) et des pièces nécessaires. Comptez à partir de 80 € pour une intervention simple en journée. Je vous communique un devis transparent avant toute intervention. Pour Libourne, pas de frais de déplacement supplémentaires car je suis à proximité. En cas d'urgence vitale (risque d'incendie), j'interviens d'abord pour sécuriser.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqService(this)">
-                    <h3>Quel est le tarif d'un dépannage de nuit ou le week-end à Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">Combien coûte un dépannage électrique à Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Le tarif dépend de la nature de la panne, du moment d'intervention (jour/nuit/weekend) et des pièces nécessaires. Comptez à partir de 80 € pour une intervention simple en journée. Je vous communique un devis transparent avant toute intervention. Pour Libourne, pas de frais de déplacement supplémentaires car je suis à proximité. En cas d'urgence vitale (risque d'incendie), j'interviens d'abord pour sécuriser.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Les interventions d'urgence de nuit (22h–7h), les dimanches et les jours fériés font l'objet d'une majoration, comme pour tout dépannage électrique. À Libourne, je vous annonce le tarif applicable au téléphone, avant de prendre la route : vous savez exactement à quoi vous attendre, sans mauvaise surprise sur la facture. En journée et en semaine, le tarif reste celui d'une intervention standard.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Quel est le tarif d'un dépannage de nuit ou le week-end à Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Les interventions d'urgence de nuit (22h–7h), les dimanches et les jours fériés font l'objet d'une majoration, comme pour tout dépannage électrique. À Libourne, je vous annonce le tarif applicable au téléphone, avant de prendre la route : vous savez exactement à quoi vous attendre, sans mauvaise surprise sur la facture. En journée et en semaine, le tarif reste celui d'une intervention standard.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqService(this)">
-                    <h3>Que faire avant mon arrivée en cas de coupure à Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Que faire avant mon arrivée en cas de coupure à Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Vérifiez d'abord si vos voisins à Libourne sont aussi touchés : si oui, c'est une coupure du réseau Enedis (09 72 67 50 33). Si la panne ne concerne que votre logement, coupez le disjoncteur général, débranchez les appareils suspects (radiateur, four, électroménager) et ne touchez à rien en cas d'odeur de brûlé ou de fumée. Puis appelez-moi au 06 95 10 08 23 : je diagnostique et rétablis le courant en toute sécurité.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Vérifiez d'abord si vos voisins à Libourne sont aussi touchés : si oui, c'est une coupure du réseau Enedis (09 72 67 50 33). Si la panne ne concerne que votre logement, coupez le disjoncteur général, débranchez les appareils suspects (radiateur, four, électroménager) et ne touchez à rien en cas d'odeur de brûlé ou de fumée. Puis appelez-moi au 06 95 10 08 23 : je diagnostique et rétablis le courant en toute sécurité.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Combien de temps pour arriver à Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Depuis ma base à St Médard de Guizières, j'arrive généralement à Libourne en 20-25 minutes. En cas d'urgence critique (risque d'incendie, danger immédiat), je priorise votre intervention et je peux arriver encore plus rapidement.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqService(this)">
-                    <h3>Combien de temps pour arriver à Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Vous connaissez bien le secteur de Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Absolument ! Électricien depuis 25 ans, j'interviens régulièrement à Libourne. Je connais parfaitement la ville, ses quartiers (centre-ville, Peychotte, zone Condat, etc.), et le type d'installations électriques que l'on y trouve. Cette connaissance locale me permet d'intervenir plus efficacement et rapidement.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Depuis ma base à St Médard de Guizières, j'arrive généralement à Libourne en 20-25 minutes. En cas d'urgence critique (risque d'incendie, danger immédiat), je priorise votre intervention et je peux arriver encore plus rapidement.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Intervenez-vous aussi pour les professionnels à Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'interviens pour les particuliers ET les professionnels à Libourne : commerces du centre-ville, restaurants, bureaux, entreprises de la zone Condat. Je comprends l'importance d'une intervention rapide pour éviter les pertes d'activité. Disponible 24h/24 pour vos urgences professionnelles.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqService(this)">
-                    <h3>Vous connaissez bien le secteur de Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Faites-vous aussi des installations complètes à Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>Oui, au-delà du dépannage urgent, je réalise également des <a href="installation-tableau.html" style="color: #ff3333; text-decoration: underline;">installations de tableaux électriques</a> et des <a href="renovation-electrique-libourne.html" style="color: #ff3333; text-decoration: underline;">rénovations électriques complètes à Libourne</a> (mise aux normes NF C 15-100, refonte du câblage, attestation Consuel). Contactez-moi pour un devis gratuit.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Absolument ! Électricien depuis 25 ans, j'interviens régulièrement à Libourne. Je connais parfaitement la ville, ses quartiers (centre-ville, Peychotte, zone Condat, etc.), et le type d'installations électriques que l'on y trouve. Cette connaissance locale me permet d'intervenir plus efficacement et rapidement.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqService(this)">
-                    <h3>Intervenez-vous aussi pour les professionnels à Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, j'interviens pour les particuliers ET les professionnels à Libourne : commerces du centre-ville, restaurants, bureaux, entreprises de la zone Condat. Je comprends l'importance d'une intervention rapide pour éviter les pertes d'activité. Disponible 24h/24 pour vos urgences professionnelles.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqService(this)">
-                    <h3>Faites-vous aussi des installations complètes à Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, au-delà du dépannage urgent, je réalise également des <a href="installation-tableau.html" style="color: #ff3333; text-decoration: underline;">installations de tableaux électriques</a> et des <a href="renovation-electrique-libourne.html" style="color: #ff3333; text-decoration: underline;">rénovations électriques complètes à Libourne</a> (mise aux normes NF C 15-100, refonte du câblage, attestation Consuel). Contactez-moi pour un devis gratuit.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaqService(this)">
-                    <h3>Que faire en cas de panne totale à Libourne ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>1) Vérifiez si vos voisins à Libourne ont aussi une panne (problème de réseau Enedis). 2) Si la panne est uniquement chez vous, vérifiez votre disjoncteur principal. 3) Si le problème persiste ou si vous sentez une odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23. Ne touchez à rien en cas de fumée ou d'étincelles.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q8" aria-expanded="true" aria-controls="faq-r8">
+                            <span class="faq-num" aria-hidden="true">08</span>
+                            <span class="faq-label">Que faire en cas de panne totale à Libourne&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r8" role="region" aria-labelledby="faq-q8">
+                        <div class="faq-answer-inner">
+                            <p>1) Vérifiez si vos voisins à Libourne ont aussi une panne (problème de réseau Enedis). 2) Si la panne est uniquement chez vous, vérifiez votre disjoncteur principal. 3) Si le problème persiste ou si vous sentez une odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23. Ne touchez à rien en cas de fumée ou d'étincelles.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -917,20 +917,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaqService(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            if (!isActive) {
-                faqItem.classList.add('active');
-            }
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

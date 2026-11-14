@@ -359,38 +359,10 @@
             margin-bottom: 1rem;
         }
 
-        .faq-item {
-            background: white;
-            margin: 0 auto 1rem;
-            max-width: 850px;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
 
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
 
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            padding: 0 1.5rem;
-            background: #f8f8f8;
-        }
 
-        .faq-item.active .faq-answer { max-height: 600px; padding: 1.5rem; }
 
         .updated-date {
             text-align: center;
@@ -459,6 +431,10 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
+    <!-- Fils électriques (motif du site) -->
+    <link rel="stylesheet" href="/css/fils.css">
 </head>
 <body>
     <header>
@@ -608,49 +584,81 @@
 
     <section>
         <h2>Questions Fréquentes</h2>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Une climatisation doit-elle avoir une ligne électrique dédiée ?</h3>
-                <span class="faq-icon">▼</span>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-answer">
-                <p>Oui. Un climatiseur fixe se raccorde sur un circuit spécialisé partant directement du tableau, avec son propre disjoncteur dimensionné selon la puissance de l'appareil et la notice du fabricant, et une protection différentielle 30 mA. Le brancher sur une prise existante ou sur un circuit déjà chargé expose à des déclenchements et à un échauffement des câbles.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Installez-vous aussi les unités et le circuit frigorifique ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Je réalise toute la partie électrique. La pose des liaisons frigorifiques, le tirage au vide et la mise en service doivent être faits par une entreprise titulaire de l'attestation de capacité pour la manipulation des fluides frigorigènes : je travaille en coordination avec un frigoriste certifié pour que tout soit prêt le jour de sa venue.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Mon abonnement électrique est-il suffisant pour ajouter une clim ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Un monosplit de 2,5 à 3,5 kW de froid consomme environ 1 kW électrique en pointe, un multisplit davantage. Je vérifie la puissance souscrite, le calibre du disjoncteur de branchement et la place disponible dans le tableau lors de la visite, et je vous indique si une augmentation de puissance ou une extension de tableau est utile.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Combien coûte le raccordement électrique d'une climatisation ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Le prix dépend surtout de la distance entre le tableau et l'unité extérieure, du passage des câbles et de l'état du tableau. Pour un monosplit avec une distance raisonnable, comptez généralement entre 250 et 600 € pour la ligne dédiée, la protection et le raccordement. Le <a href="tarifs-devis.html" style="color:#ff3333; text-decoration:underline;">devis est gratuit</a> après visite.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Faut-il une autorisation pour poser l'unité extérieure ?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Une unité extérieure posée en façade visible depuis la rue peut nécessiter une déclaration préalable en mairie selon le plan local d'urbanisme, et une copropriété demande l'accord de l'assemblée générale. Pensez aussi au bruit vis-à-vis des voisins : on choisit l'emplacement ensemble lors de la visite.</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">Une climatisation doit-elle avoir une ligne électrique dédiée&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Oui. Un climatiseur fixe se raccorde sur un circuit spécialisé partant directement du tableau, avec son propre disjoncteur dimensionné selon la puissance de l'appareil et la notice du fabricant, et une protection différentielle 30 mA. Le brancher sur une prise existante ou sur un circuit déjà chargé expose à des déclenchements et à un échauffement des câbles.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Installez-vous aussi les unités et le circuit frigorifique&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Je réalise toute la partie électrique. La pose des liaisons frigorifiques, le tirage au vide et la mise en service doivent être faits par une entreprise titulaire de l'attestation de capacité pour la manipulation des fluides frigorigènes : je travaille en coordination avec un frigoriste certifié pour que tout soit prêt le jour de sa venue.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Mon abonnement électrique est-il suffisant pour ajouter une clim&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Un monosplit de 2,5 à 3,5 kW de froid consomme environ 1 kW électrique en pointe, un multisplit davantage. Je vérifie la puissance souscrite, le calibre du disjoncteur de branchement et la place disponible dans le tableau lors de la visite, et je vous indique si une augmentation de puissance ou une extension de tableau est utile.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Combien coûte le raccordement électrique d'une climatisation&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Le prix dépend surtout de la distance entre le tableau et l'unité extérieure, du passage des câbles et de l'état du tableau. Pour un monosplit avec une distance raisonnable, comptez généralement entre 250 et 600 € pour la ligne dédiée, la protection et le raccordement. Le <a href="tarifs-devis.html" style="color:#ff3333; text-decoration:underline;">devis est gratuit</a> après visite.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Faut-il une autorisation pour poser l'unité extérieure&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Une unité extérieure posée en façade visible depuis la rue peut nécessiter une déclaration préalable en mairie selon le plan local d'urbanisme, et une copropriété demande l'accord de l'assemblée générale. Pensez aussi au bruit vis-à-vis des voisins : on choisit l'emplacement ensemble lors de la visite.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <p class="updated-date">Dernière mise à jour : novembre 2026</p>
@@ -661,14 +669,7 @@
     <p>&copy; 2026 Red Den Connexion - Tous droits r&eacute;serv&eacute;s</p>
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>

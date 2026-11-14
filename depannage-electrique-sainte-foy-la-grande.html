@@ -239,14 +239,6 @@
         .why-us-list { list-style: none; max-width: 800px; margin: 2rem auto; }
         .why-us-list li { padding: 1.5rem; margin-bottom: 1rem; background: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding-left: 3rem; position: relative; }
         .why-us-list li::before { content: '✓'; position: absolute; left: 1rem; color: #ff3333; font-size: 1.5rem; font-weight: bold; }
-        .faq-item { background: white; margin-bottom: 1rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
-        .faq-question:hover { background: #f8f8f8; }
-        .faq-question h3 { margin: 0; color: #1a1a1a; font-size: 1.1rem; }
-        .faq-icon { color: #ff3333; font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem; background: #f8f8f8; }
-        .faq-item.active .faq-answer { max-height: 500px; padding: 1.5rem; }
         .contact-cta { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #8b0000 75%, #cc0000 100%); color: white; text-align: center; padding: 60px 2rem; margin-top: 4rem; border-radius: 15px; }
         .contact-cta h2 { color: white; }
         .contact-cta h2::after { background: #ff3333; }
@@ -272,6 +264,10 @@
       loadScript(function(){beTracker.t({hash:"affa10a962c067911ee9714e88faa737"})});
     })();
     </script>
+    <!-- Questions fréquentes -->
+    <link rel="stylesheet" href="/css/faq.css">
+    <!-- Fils électriques (motif du site) -->
+    <link rel="stylesheet" href="/css/fils.css">
 </head>
 <body>
     <header>
@@ -434,86 +430,136 @@
 
     <section class="solutions-bg">
         <h2>Questions Fréquentes</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Quel est votre délai d'intervention à Sainte-Foy-la-Grande ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Depuis ma base à St Médard de Guizières, j'arrive à Sainte-Foy-la-Grande en environ 35-40 minutes. Pour les urgences critiques (risque d'incendie, court-circuit actif), je priorise le déplacement.</p>
-                </div>
+        <div class="faq-container" data-faq>
+            <div class="faq-toolbar">
+                <button type="button" class="faq-master" aria-pressed="false" hidden>Tout allumer</button>
             </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Intervenez-vous aussi en centre-ville de Sainte-Foy ?</h3>
-                    <span class="faq-icon">▼</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-r1">
+                            <span class="faq-num" aria-hidden="true">01</span>
+                            <span class="faq-label">Quel est votre délai d'intervention à Sainte-Foy-la-Grande&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-answer-inner">
+                            <p>Depuis ma base à St Médard de Guizières, j'arrive à Sainte-Foy-la-Grande en environ 35-40 minutes. Pour les urgences critiques (risque d'incendie, court-circuit actif), je priorise le déplacement.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'interviens dans tout le centre-ville, les quartiers résidentiels, les commerces et les communes limitrophes comme Pineuilh et Les Lèves-et-Thoumeyragues.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-r2">
+                            <span class="faq-num" aria-hidden="true">02</span>
+                            <span class="faq-label">Intervenez-vous aussi en centre-ville de Sainte-Foy&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'interviens dans tout le centre-ville, les quartiers résidentiels, les commerces et les communes limitrophes comme Pineuilh et Les Lèves-et-Thoumeyragues.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Combien coûte un dépannage à Sainte-Foy-la-Grande ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q3" aria-expanded="true" aria-controls="faq-r3">
+                            <span class="faq-num" aria-hidden="true">03</span>
+                            <span class="faq-label">Combien coûte un dépannage à Sainte-Foy-la-Grande&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-answer-inner">
+                            <p>Le tarif dépend de la nature de la panne, du moment d'intervention et des pièces nécessaires. Je vous communique un devis transparent avant toute intervention, sans surprise. Devis gratuit pour tous travaux.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Le tarif dépend de la nature de la panne, du moment d'intervention et des pièces nécessaires. Je vous communique un devis transparent avant toute intervention, sans surprise. Devis gratuit pour tous travaux.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q4" aria-expanded="true" aria-controls="faq-r4">
+                            <span class="faq-num" aria-hidden="true">04</span>
+                            <span class="faq-label">Installez-vous des panneaux solaires à Sainte-Foy-la-Grande&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-answer-inner">
+                            <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> à Sainte-Foy-la-Grande et dans tout le secteur. Idéal pour l'autoconsommation et la réduction de votre facture énergétique.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Installez-vous des panneaux solaires à Sainte-Foy-la-Grande ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q5" aria-expanded="true" aria-controls="faq-r5">
+                            <span class="faq-num" aria-hidden="true">05</span>
+                            <span class="faq-label">Faites-vous des rénovations électriques dans les maisons de Sainte-Foy&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-answer-inner">
+                            <p>Oui, Sainte-Foy-la-Grande possède un beau patrimoine bâti avec de nombreuses maisons dont les installations électriques sont datées. Je réalise des <a href="renovation-electrique-sainte-foy-la-grande.html" style="color: #ff3333; text-decoration: underline;">rénovations électriques complètes à Sainte-Foy-la-Grande</a> et des mises aux normes NF C 15-100.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, j'installe des <a href="installation-panneaux-photovoltaiques.html" style="color: #ff3333; text-decoration: underline;">panneaux photovoltaïques</a> à Sainte-Foy-la-Grande et dans tout le secteur. Idéal pour l'autoconsommation et la réduction de votre facture énergétique.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q6" aria-expanded="true" aria-controls="faq-r6">
+                            <span class="faq-num" aria-hidden="true">06</span>
+                            <span class="faq-label">Que faire en cas de panne totale à Sainte-Foy-la-Grande&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-answer-inner">
+                            <p>1) Vérifiez si vos voisins ont aussi une panne (problème réseau Enedis). 2) Si la panne est uniquement chez vous, vérifiez le disjoncteur principal. 3) Si le problème persiste ou si vous sentez une odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Faites-vous des rénovations électriques dans les maisons de Sainte-Foy ?</h3>
-                    <span class="faq-icon">▼</span>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q7" aria-expanded="true" aria-controls="faq-r7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-label">Travaillez-vous sur des maisons à colombages du centre de Sainte-Foy&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-answer-inner">
+                            <p>Oui, et c'est un type de chantier qui demande méthode. Sur une maison à pans de bois, on ne saigne pas les colombages structurels, on ne pose pas n'importe quelle gaine en contact avec le torchis. Le câblage suit des cheminements alternatifs (sous-faîtière, faux-plafonds, plinthes, gaines au sol). Côté sécurité, je suis particulièrement strict : parafoudre en tête de tableau, différentiels 30 mA systématiques, AGCP accessible. C'est plus long à concevoir mais c'est la condition pour ne pas dénaturer le bâti et garantir la sécurité incendie sur une structure bois.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Oui, Sainte-Foy-la-Grande possède un beau patrimoine bâti avec de nombreuses maisons dont les installations électriques sont datées. Je réalise des <a href="renovation-electrique-sainte-foy-la-grande.html" style="color: #ff3333; text-decoration: underline;">rénovations électriques complètes à Sainte-Foy-la-Grande</a> et des mises aux normes NF C 15-100.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q8" aria-expanded="true" aria-controls="faq-r8">
+                            <span class="faq-num" aria-hidden="true">08</span>
+                            <span class="faq-label">Mon immeuble est classé. Pouvez-vous quand même rénover l'électricité&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r8" role="region" aria-labelledby="faq-q8">
+                        <div class="faq-answer-inner">
+                            <p>Oui, mais on s'adapte. Sur un immeuble classé ou inscrit à l'inventaire, certaines interventions extérieures (coffret apparent en façade, goulottes visibles depuis la rue) sont soumises à autorisation. Je m'informe avant de commencer et je vous oriente vers les démarches à anticiper, particulièrement pour les gros travaux. À l'intérieur, on adapte les cheminements pour préserver les éléments de caractère (moulures, parquets anciens, plafonds peints).</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Que faire en cas de panne totale à Sainte-Foy-la-Grande ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>1) Vérifiez si vos voisins ont aussi une panne (problème réseau Enedis). 2) Si la panne est uniquement chez vous, vérifiez le disjoncteur principal. 3) Si le problème persiste ou si vous sentez une odeur de brûlé, appelez-moi immédiatement au 06 95 10 08 23.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Travaillez-vous sur des maisons à colombages du centre de Sainte-Foy ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, et c'est un type de chantier qui demande méthode. Sur une maison à pans de bois, on ne saigne pas les colombages structurels, on ne pose pas n'importe quelle gaine en contact avec le torchis. Le câblage suit des cheminements alternatifs (sous-faîtière, faux-plafonds, plinthes, gaines au sol). Côté sécurité, je suis particulièrement strict : parafoudre en tête de tableau, différentiels 30 mA systématiques, AGCP accessible. C'est plus long à concevoir mais c'est la condition pour ne pas dénaturer le bâti et garantir la sécurité incendie sur une structure bois.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Mon immeuble est classé. Pouvez-vous quand même rénover l'électricité ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, mais on s'adapte. Sur un immeuble classé ou inscrit à l'inventaire, certaines interventions extérieures (coffret apparent en façade, goulottes visibles depuis la rue) sont soumises à autorisation. Je m'informe avant de commencer et je vous oriente vers les démarches à anticiper, particulièrement pour les gros travaux. À l'intérieur, on adapte les cheminements pour préserver les éléments de caractère (moulures, parquets anciens, plafonds peints).</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <h3>Risque incendie sur bâti ancien : faut-il une attention particulière ?</h3>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, et c'est particulièrement vrai à Sainte-Foy avec son bâti à colombages. Tout défaut électrique non détecté peut se propager dans la structure bois. Je recommande systématiquement, en plus du minimum réglementaire : un parafoudre Type 2 en tête de tableau, des disjoncteurs différentiels 30 mA sur tous les circuits (pas seulement sur les humides), et un détecteur de fumée DAAF correctement positionné dans chaque niveau habité. Pour les installations très anciennes, je suggère aussi un contrôle Consuel volontaire après rénovation, pour faire le point sur la conformité globale.</p>
+                <div class="faq-item">
+                    <h3 class="faq-heading">
+                        <button type="button" class="faq-question" id="faq-q9" aria-expanded="true" aria-controls="faq-r9">
+                            <span class="faq-num" aria-hidden="true">09</span>
+                            <span class="faq-label">Risque incendie sur bâti ancien : faut-il une attention particulière&nbsp;?</span>
+                            <span class="faq-switch" aria-hidden="true"><span></span><span></span></span>
+                        </button>
+                    </h3>
+                    <div class="faq-answer" id="faq-r9" role="region" aria-labelledby="faq-q9">
+                        <div class="faq-answer-inner">
+                            <p>Oui, et c'est particulièrement vrai à Sainte-Foy avec son bâti à colombages. Tout défaut électrique non détecté peut se propager dans la structure bois. Je recommande systématiquement, en plus du minimum réglementaire : un parafoudre Type 2 en tête de tableau, des disjoncteurs différentiels 30 mA sur tous les circuits (pas seulement sur les humides), et un détecteur de fumée DAAF correctement positionné dans chaque niveau habité. Pour les installations très anciennes, je suggère aussi un contrôle Consuel volontaire après rénovation, pour faire le point sur la conformité globale.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -549,14 +595,7 @@
         <p style="margin-top: 0.5rem;"><a href="mentions-legales.html">Mentions légales</a> | <a href="confidentialite.html">Politique de confidentialité</a></p>
     </footer>
 
-    <script>
-        function toggleFaq(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) faqItem.classList.add('active');
-        }
-    </script>
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/faq.js" defer></script>
 </body>
 </html>
