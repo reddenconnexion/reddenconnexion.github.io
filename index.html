@@ -567,6 +567,10 @@
             flex-direction: column;
         }
 
+        /* Nom de l'entreprise cliquable : remonte en haut de l'accueil */
+        nav a.company-info,
+        nav a.company-info:hover { color: inherit; text-decoration: none; }
+
         .company-name {
             font-size: 1.5rem;
             font-weight: bold;
@@ -2681,10 +2685,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="company-info">
+                <a class="company-info" href="#accueil" aria-label="Red Den Connexion – retour en haut de l&#39;accueil">
                     <span class="company-name">Red Den Connexion</span>
                     <span class="company-motto">Électricité <span style="color: #ff3333;">●</span> Honnêteté <span style="color: #ff3333;">●</span> Sérénité</span>
-                </div>
+                </a>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
             <ul id="menu">
