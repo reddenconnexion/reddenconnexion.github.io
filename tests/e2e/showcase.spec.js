@@ -143,3 +143,55 @@ test.describe('Carrousel — affichage d\'une photo en grand (lightbox)', () => 
         await expect(page.locator('#lightbox-caption')).toHaveText('');
     });
 });
+
+test.describe('Carrousel — défilement manuel', () => {
+    test.beforeEach(async ({ page }) => {
+        await page.goto('/');
+        await page.waitForFunction(() => document.querySelector('.showcase')?.dataset.manual === 'true');
+        await page.locator('.showcase').scrollIntoViewIfNeeded();
+    });
+
+    const offset = (page, i = 0) => page.locator('.showcase-row').nth(i).evaluate(
+        r => new DOMMatrix(getComputedStyle(r).transform).m41
+    );
+
+    test('le défilement automatique continue (piloté par le script)', async ({ page }) => {
+        await page.mouse.move(0, 0);
+        const a = await offset(page);
+        await page.waitForTimeout(600);
+        const b = await offset(page);
+        expect(b).not.toBe(a);
+    });
+
+    test('glisser une rangée à la souris la déplace, sans ouvrir la photo', async ({ page }) => {
+        const row = page.locator('.showcase-row').first();
+        const box = await row.boundingBox();
+        const y = box.y + box.height / 2;
+        const before = await offset(page);
+        await page.mouse.move(600, y);
+        await page.mouse.down();
+        await page.mouse.move(500, y, { steps: 5 });
+        await page.mouse.move(400, y, { steps: 5 });
+        const during = await offset(page);
+        await page.mouse.up();
+        // Décalage d'environ -200 px (au bouclage près)
+        const loop = await row.evaluate(r => r.children[r.children.length / 2].offsetLeft - r.children[0].offsetLeft);
+        const moved = ((during - before) % loop + loop) % loop;
+        expect(Math.abs(moved - (loop - 200))).toBeLessThan(25);
+        await expect(page.locator('#lightbox.active')).toHaveCount(0);
+    });
+
+    test('les boutons ‹ › font défiler les rangées', async ({ page }) => {
+        const next = page.getByRole('button', { name: /vers la droite/ });
+        const prev = page.getByRole('button', { name: /vers la gauche/ });
+        await expect(next).toBeVisible();
+        await expect(prev).toBeVisible();
+        const before = await offset(page);
+        await next.click(); // la souris quitte les rangées : défilement auto + poussée
+        await page.waitForTimeout(800);
+        const after = await offset(page);
+        const loop = await page.locator('.showcase-row').first().evaluate(r => r.children[r.children.length / 2].offsetLeft - r.children[0].offsetLeft);
+        const moved = ((before - after) % loop + loop) % loop; // déplacement vers la gauche
+        expect(moved).toBeGreaterThan(200);
+    });
+});

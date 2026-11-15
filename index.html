@@ -2599,6 +2599,41 @@
 
         /* Pause au survol : permet de cliquer confortablement sur une photo */
         .showcase-row:hover { animation-play-state: paused; }
+
+        /* Défilement manuel (js/showcase.js) : le script pilote les rangées */
+        .showcase.is-manual { overflow: hidden; }
+        .showcase.is-manual .showcase-row {
+            animation: none;
+            cursor: grab;
+            touch-action: pan-y;
+            -webkit-user-select: none;
+                    user-select: none;
+        }
+        .showcase.is-manual .showcase-row.is-dragging,
+        .showcase.is-manual .showcase-row.is-dragging img { cursor: grabbing; }
+        .showcase.is-manual .showcase-tile img { -webkit-user-drag: none; }
+
+        .showcase-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+        .showcase-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid #ff3333;
+            background: #fff;
+            color: #ff3333;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .showcase-btn:hover { background: #ff3333; color: #fff; }
+        .showcase-btn:focus-visible { outline: 3px solid #142033; outline-offset: 2px; }
     </style>
     <!-- Metricool : balise inline (visible pour la vérification d'installation) ; le tracker ne s'exécute qu'après consentement explicite (RGPD). -->
     <script>
