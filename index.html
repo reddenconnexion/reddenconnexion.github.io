@@ -2670,8 +2670,9 @@
     <link rel="stylesheet" href="/css/zone.css?v=1">
     <!-- Fils électriques (motif du site) -->
     <link rel="stylesheet" href="/css/fils.css?v=2">
-    <!-- Thème « bâche » : identité des supports de chantier (chargé en dernier) -->
-    <link rel="stylesheet" href="/css/theme-bache.css?v=1">
+    <!-- Thème « bâche » : désactivé par défaut, activé par l'interrupteur de design (js/theme-switch.js) -->
+    <link rel="stylesheet" href="/css/theme-bache.css?v=2" id="theme-bache" disabled>
+    <script src="/js/theme-switch.js?v=1"></script>
 </head>
 <body>
     <header>
@@ -2924,11 +2925,11 @@
 
     <!-- Section d'introduction SEO -->
     <section style="max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center;">
-        <p style="font-size: 1.05rem; line-height: 1.9; color: #e9dfda;">
-            Moi c'est <strong style="color: #ffc81a;">Denis MERIOT</strong>, électricien passionné depuis plus de 25 ans.
-            J'ai créé mon entreprise, <strong style="color: #ffffff;">Red Den Connexion</strong>, en septembre 2025
-            (<a href="a-propos.html" style="color: #ffc81a;">mon parcours</a>).
-            Installé à <strong style="color: #ffffff;">St Médard de Guizières</strong>, j'interviens sur
+        <p style="font-size: 1.05rem; line-height: 1.9; color: #555;">
+            Moi c'est <strong style="color: #cc0000;">Denis MERIOT</strong>, électricien passionné depuis plus de 25 ans.
+            J'ai créé mon entreprise, <strong style="color: #333;">Red Den Connexion</strong>, en septembre 2025
+            (<a href="a-propos.html" style="color: #cc0000;">mon parcours</a>).
+            Installé à <strong style="color: #333;">St Médard de Guizières</strong>, j'interviens sur
             <strong>Libourne</strong>, <strong>Coutras</strong>, <strong>Montpon-Ménestérol</strong> et toute la Gironde.
             Je travaille chez vous comme je le ferais chez un ami : avec soin, transparence et le sourire.
             <strong>Rénovation électrique</strong>, <strong>installation de tableau ou de borne de recharge</strong>, <strong>mise aux normes NF C 15-100</strong> ou <strong>dépannage urgent</strong>,

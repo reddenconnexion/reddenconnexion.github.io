@@ -4,7 +4,8 @@
    fond noir chaud éclairé de rouge, bandeau rouge en haut, filet et
    pastilles jaunes, bandeau jaune en bas avec le numéro.
    Chargé en dernier sur toutes les pages : il surcharge les styles
-   existants sans les supprimer (retirer ce fichier = retour à l'ancien look).
+   existants sans les supprimer. Désactivé par défaut : c'est l'interrupteur
+   de design (js/theme-switch.js) qui l'active à la demande du visiteur.
    ===================================================================== */
 
 /* Police de la bâche, auto-hébergée (RGPD : pas d'appel à Google) */
@@ -278,3 +279,9 @@ main > nav.breadcrumb a, .article-hero .breadcrumb a,
 }
 
 /* Pastilles et puces rouges des cartes -> rouge bâche */
+
+/* Accueil : bloc « Moi c'est Denis MERIOT » (couleurs écrites dans la page) */
+section[style*="max-width: 900px"] > p[style*="color: #555"] { color: #e9dfda !important; }
+section[style*="max-width: 900px"] > p strong[style*="#cc0000"],
+section[style*="max-width: 900px"] > p a[style*="#cc0000"] { color: var(--b-yellow) !important; }
+section[style*="max-width: 900px"] > p strong[style*="#333"] { color: #fff !important; }
