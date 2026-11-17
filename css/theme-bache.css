@@ -1,0 +1,280 @@
+/* =====================================================================
+   Thème « Bâche » — Red Den Connexion
+   Reprend l'identité de la bâche et des panneaux de chantier :
+   fond noir chaud éclairé de rouge, bandeau rouge en haut, filet et
+   pastilles jaunes, bandeau jaune en bas avec le numéro.
+   Chargé en dernier sur toutes les pages : il surcharge les styles
+   existants sans les supprimer (retirer ce fichier = retour à l'ancien look).
+   ===================================================================== */
+
+/* Police de la bâche, auto-hébergée (RGPD : pas d'appel à Google) */
+@font-face { font-family: 'Fira Sans Condensed'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/fira-sans-condensed-600.woff2') format('woff2'); }
+@font-face { font-family: 'Fira Sans Condensed'; font-style: normal; font-weight: 800; font-display: swap; src: url('/fonts/fira-sans-condensed-800.woff2') format('woff2'); }
+@font-face { font-family: 'Fira Sans Condensed'; font-style: normal; font-weight: 900; font-display: swap; src: url('/fonts/fira-sans-condensed-900.woff2') format('woff2'); }
+
+:root {
+    --b-ink: #17110f;            /* fond de la bâche */
+    --b-panel: #221816;          /* panneaux sombres */
+    --b-panel-line: rgba(255, 200, 26, 0.18);
+    --b-red: #ef2a22;
+    --b-red-deep: #b10f14;
+    --b-red-mid: #c41418;
+    --b-yellow: #ffc81a;
+    --b-yellow-hi: #ffe14d;
+    --b-yellow-lo: #ffb80f;
+    --b-orange: #f79a0a;
+    --b-on-yellow: #120808;      /* texte sur jaune */
+    --b-text: #f4ede9;           /* texte courant sur fond sombre */
+    --b-text-soft: #cfc3bd;
+    --b-font: 'Fira Sans Condensed', 'Arial Narrow', 'Segoe UI', sans-serif;
+    --b-yellow-grad: linear-gradient(180deg, #ffe14d 0%, #ffb80f 100%);
+    --b-red-band: linear-gradient(90deg, #b10f14 0%, #ef2a22 50%, #c41418 100%);
+    --b-filet: linear-gradient(90deg, rgba(255,122,26,0) 0%, #ffb21a 45%, #ffe14d 100%);
+}
+
+/* ---------- Fond de bâche ---------- */
+html { background: var(--b-ink); }
+body {
+    background-color: var(--b-ink);
+    background-image:
+        repeating-linear-gradient(115deg, rgba(255,255,255,0) 0 46px, rgba(255,80,60,0.06) 47px 50px),
+        radial-gradient(circle at 12% 18%, rgba(201,21,27,0.55) 0%, rgba(125,12,17,0.35) 18%, rgba(23,17,15,0) 42%),
+        radial-gradient(circle at 100% 55%, rgba(142,13,18,0.45) 0%, rgba(23,17,15,0) 34%),
+        radial-gradient(circle at 0% 92%, rgba(142,13,18,0.35) 0%, rgba(23,17,15,0) 30%);
+    background-attachment: fixed;
+}
+
+/* ---------- Typographie : celle de la bâche ---------- */
+h1, h2, h3,
+.company-name,
+.cta-button,
+nav ul a {
+    font-family: var(--b-font);
+}
+h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55);
+}
+h3 { font-weight: 800; }
+
+/* ---------- En-tête : le bandeau rouge ---------- */
+header,
+header.scrolled {
+    background: var(--b-red-band);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    border-bottom: 0;
+}
+
+.company-name {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff;
+    background: none !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-shadow: 0 3px 0 rgba(90, 0, 0, 0.55), 0 0 18px rgba(255, 170, 120, 0.35);
+}
+.company-motto { color: #fff; }
+.company-motto span { color: var(--b-yellow) !important; }
+nav ul a { color: #fff; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.02em; }
+nav ul a:hover, nav ul a:focus-visible { color: var(--b-yellow-hi); }
+.nav-logo img, .logo-section img {
+    filter: drop-shadow(0 0 10px rgba(255, 70, 40, 0.8));
+}
+
+/* Bouton « Tarifs » du menu et menu mobile */
+nav ul a[href*="tarifs-devis"][style*="background"] {
+    background: var(--b-yellow-grad) !important;
+    color: var(--b-on-yellow) !important;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.45);
+}
+@media (max-width: 480px) {
+    .company-name { letter-spacing: 0.01em; font-size: 1.15rem; }
+}
+.mobile-menu-btn { color: #fff; }
+@media (max-width: 768px) {
+    nav ul { background: var(--b-ink); border-top: 4px solid var(--b-yellow); }
+}
+
+/* ---------- Héros ---------- */
+.hero { background: transparent; }
+.hero::before { opacity: 0.35; }
+h1, .hero h1 {
+    font-family: var(--b-font);
+    font-weight: 900;
+    text-transform: none;
+    background: none;
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+    text-shadow: 0 5px 0 rgba(0, 0, 0, 0.55), 0 0 30px rgba(255, 120, 60, 0.35);
+}
+.hero-subtitle { color: var(--b-text); }
+.hero-subtitle .highlight { color: var(--b-yellow); }
+
+/* Pastilles de services : celles de la bâche */
+.hero-service-pill {
+    background: var(--b-yellow-grad);
+    color: var(--b-on-yellow);
+    border: 0;
+    border-radius: 13px;
+    font-family: var(--b-font);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.45);
+}
+.hero-service-pill:hover { background: var(--b-yellow-grad); color: var(--b-on-yellow); transform: translateY(-2px); }
+
+/* ---------- Boutons d'appel ---------- */
+.cta-button { border-radius: 14px; text-transform: uppercase; letter-spacing: 0.02em; }
+.cta-primary {
+    background: var(--b-yellow-grad);
+    color: var(--b-on-yellow);
+    font-weight: 900;
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.5);
+}
+.cta-primary:hover { box-shadow: 0 9px 0 rgba(0, 0, 0, 0.5), 0 0 28px rgba(255, 190, 30, 0.45); }
+.cta-secondary {
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    border: 2px solid var(--b-yellow);
+}
+.cta-secondary:hover { background: rgba(255, 200, 26, 0.12); border-color: var(--b-yellow-hi); }
+
+/* ---------- Sections claires -> fond de bâche ---------- */
+.showcase, .why-us, .gallery, .faq, .trust-badges, .diagnostic,
+#services, #contact, .testimonials, .zone,
+.services, .page-content, main {
+    background: transparent;
+}
+
+
+
+/* ---------- Pied de page : le bandeau jaune ---------- */
+footer {
+    position: relative;
+    background: linear-gradient(180deg, #ffe85a 0%, #ffc81a 55%, #f79a0a 100%);
+    color: var(--b-on-yellow);
+    font-weight: 600;
+    margin-top: 40px;
+}
+footer::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: -38px;
+    height: 40px;
+    background: #ffe85a;
+    clip-path: ellipse(75% 100% at 50% 100%);
+    pointer-events: none;
+}
+footer a, footer a span { color: var(--b-on-yellow) !important; font-weight: 700; }
+footer a[href^="tel:"] {
+    font-family: var(--b-font);
+    font-weight: 900;
+    font-size: 1.6rem;
+    letter-spacing: 0.02em;
+}
+footer [style*="border-top"] { border-top-color: rgba(18, 8, 8, 0.25) !important; }
+footer p[style*="opacity: 0.5"] { opacity: 0.85 !important; }
+
+/* ---------- Accessibilité ---------- */
+:focus-visible { outline-color: var(--b-yellow); }
+
+/* ---------- Lisibilité sur le fond sombre ---------- */
+section > h2, .showcase-heading h2, .why-us h2, .gallery h2, .faq h2,
+.testimonials h2, .zone h2, #services h2, #contact h2, .diagnostic h2 { color: #fff; }
+.showcase-heading p, .showcase > p,
+.diagnostic-intro, .board-intro, .section-intro, .section-subtitle,
+.services-board.is-ready .board-intro, .section-wrap:not(.bg-light) > p {
+    color: var(--b-text-soft);
+}
+.section-wrap:not(.bg-light) > p { color: var(--b-text-soft) !important; }
+.section-wrap:not(.bg-light) > p strong, .section-wrap:not(.bg-light) > h2 { color: #fff; }
+
+/* Articles de conseils : une feuille claire posée sur la bâche, pour lire confortablement */
+.article-body {
+    background: #fff;
+    border-radius: 14px;
+    padding: clamp(20px, 4vw, 48px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    border-top: 6px solid var(--b-yellow);
+}
+
+
+/* ---------- Sections blanches des pages services / communes ---------- */
+.solutions-bg, .gray-bg { background: transparent; }
+
+/* Texte posé directement sur la bâche : clair */
+section > h2, section > .container > h2,
+.related > h2, .case-section > h2 { color: #fff; }
+section > p, section > .container > p,
+section > p.intro-text, .intro-commerciale p, .price-note {
+    color: var(--b-text-soft);
+}
+section > p strong, section > .container > p strong,
+.intro-commerciale strong { color: #fff; }
+
+/* Titres et chapeaux à couleur écrite en dur dans la page (style="…") */
+section > h2[style*="color: #1a1a1a"], section[style*="background: transparent"] > h2 { color: #fff !important; }
+section:not([class]) > p[style*="color: #666"], section:not([class]) > p[style*="color: #555"],
+section > div[style*="color: #444"] { color: var(--b-text-soft) !important; }
+section > div[style*="color: #444"] strong { color: #fff; }
+section > p:not([style*="background"]) a[style*="color"], .price-note a { color: var(--b-yellow) !important; }
+/* Blocs restés clairs : texte sombre */
+.case-section:not([style*="transparent"]) > p, p.intro-text[style*="background"] { color: #444; }
+section > p a, .intro-commerciale a, .price-note a { color: var(--b-yellow); }
+main > nav.breadcrumb a, .article-hero .breadcrumb a,
+.article-meta-author strong { color: var(--b-yellow); }
+
+/* ---------- En-têtes de pages et bandeaux d'appel : la bâche ---------- */
+.hero-service, .hero-case, .hero-blog, .hero-tarifs,
+.cta-block, .contact-cta, .cta-section, .video-section {
+    background:
+        repeating-linear-gradient(115deg, rgba(255,255,255,0) 0 30px, rgba(255,80,60,0.07) 31px 33px),
+        radial-gradient(circle at 14% 50%, #c9151b 0%, #7d0c11 18%, #33090b 38%, rgba(26,14,14,0) 60%),
+        radial-gradient(circle at 100% 20%, #8e0d12 0%, rgba(40,10,10,0) 35%),
+        #17110f;
+    color: #fff;
+    position: relative;
+    border-bottom: 6px solid var(--b-yellow);
+    border-image: var(--b-filet) 1;
+}
+.hero-service h1, .hero-case h1, .hero-blog h1, .hero-tarifs h1 {
+    font-size: clamp(2rem, 5vw, 3.6rem);
+}
+.hero-service .subtitle, .hero-case p, .hero-blog p, .hero-tarifs p { color: var(--b-text); }
+.location-badge, .urgence-badge {
+    font-family: var(--b-font);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.urgence-badge {
+    background: var(--b-yellow-grad) !important;
+    color: var(--b-on-yellow) !important;
+    border: 0 !important;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.45);
+}
+.contact-cta h2, .cta-block h2, .cta-section h2 { color: #fff; }
+.contact-cta p, .cta-block p, .cta-section p { color: var(--b-text); }
+
+/* Tous les boutons d'appel = pastille jaune de la bâche */
+.cta-urgent, .article-cta, .article-card-cta, .submit-btn, .btn-primary,
+.avis-cta-primary, .cta-band a[href^="tel:"] {
+    background: var(--b-yellow-grad) !important;
+    color: var(--b-on-yellow) !important;
+    border: 0 !important;
+    font-family: var(--b-font);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.5) !important;
+}
+.cta-urgent:hover, .article-cta:hover, .submit-btn:hover, .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.5), 0 0 26px rgba(255, 190, 30, 0.45) !important;
+}
+
+/* Pastilles et puces rouges des cartes -> rouge bâche */
