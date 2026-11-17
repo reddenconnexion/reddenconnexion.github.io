@@ -31,6 +31,7 @@ export default {
         '!js/zone.js', // Exclure le tableau des départs (manipulation du DOM, testé via E2E)
         '!js/contact.js', // Exclure les voyants du formulaire (manipulation du DOM, testé via E2E)
         '!js/fil-progression.js', // Exclure le fil de progression (manipulation du DOM, testé via E2E)
+        '!js/theme-switch.js', // Exclure l'interrupteur de design (manipulation du DOM, testé via E2E)
         '!**/node_modules/**'
     ],
 
