@@ -115,6 +115,17 @@ Les corrections mettent trois à six semaines à se voir dans Google : le point 
 
 ---
 
+## ✅ Correction Appliquée (20 novembre 2026) — une seule entreprise dans les données structurées
+
+Passe déclenchée par un test dans Gemini (Google Maps) : « meilleur électricien du coin » ne cite pas Red Den Connexion.
+
+- ✅ **24 pages villes** (18 dépannage, 6 rénovation) déclaraient chacune un électricien différent : « Red Den Connexion - Électricien Abzac », adresse « Zone d'intervention Abzac », coordonnées GPS d'Abzac, et ainsi de suite. Soit 24 établissements qui n'existent pas, à côté de la vraie fiche. Elles déclarent maintenant toutes la même entreprise que l'accueil : même identifiant (`@id`), nom « Red Den Connexion », 13 rue Robert Boulin à Saint-Médard-de-Guizières, mêmes coordonnées. La commune desservie reste dans `areaServed`.
+- Rien de visible n'a changé : ni titre, ni H1, ni texte.
+
+**Ce que le site ne règle pas.** Gemini dans Maps répond à partir des fiches Google : distance, nombre et ancienneté des avis, texte des avis, catégories, services. Voir l'Action Prioritaire n°1 ci-dessous.
+
+---
+
 ## 🎯 Actions Prioritaires à Réaliser (Hors code)
 
 ### 1. Google Business Profile (fiche vérifiée ✅ — passer en mode entretien)
