@@ -1,5 +1,5 @@
 /**
- * Interrupteur de design : classique par défaut, bâche à la demande.
+ * Interrupteur de design : classique par défaut, alternatif (style bâche) à la demande.
  */
 import { test, expect } from '@playwright/test';
 
@@ -14,12 +14,12 @@ test.describe('Interrupteur de design', () => {
         expect(await headerBg(page)).toContain('rgb(26, 26, 26)');
     });
 
-    test('un clic passe au design bâche, un second revient au classique', async ({ page }) => {
+    test('un clic passe au design alternatif, un second revient au classique', async ({ page }) => {
         await page.goto('/');
         const btn = page.locator('.design-switch');
         await btn.click();
         await expect(btn).toHaveAttribute('aria-checked', 'true');
-        await expect(btn).toContainText('bâche');
+        await expect(btn).toContainText('alternatif');
         await expect.poll(() => headerBg(page)).toContain('rgb(239, 42, 34)');
         await btn.click();
         await expect(btn).toHaveAttribute('aria-checked', 'false');
@@ -34,8 +34,8 @@ test.describe('Interrupteur de design', () => {
         await expect.poll(() => headerBg(page)).toContain('rgb(239, 42, 34)');
     });
 
-    test('l\'adresse ?design=bache active directement le design bâche', async ({ page }) => {
-        await page.goto('/tarifs-devis.html?design=bache');
+    test('l\'adresse ?design=alternatif active directement le design alternatif', async ({ page }) => {
+        await page.goto('/tarifs-devis.html?design=alternatif');
         await expect(page.locator('.design-switch')).toHaveAttribute('aria-checked', 'true');
         await expect.poll(() => headerBg(page)).toContain('rgb(239, 42, 34)');
     });

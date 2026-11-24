@@ -1,12 +1,13 @@
 /**
- * Interrupteur de design : « Classique » (par défaut) ou « Bâche ».
+ * Interrupteur de design : « Classique » (par défaut) ou « Alternatif »
+ * (le style de la bâche de chantier).
  *
  * La feuille /css/theme-bache.css est présente sur chaque page mais désactivée
  * (attribut disabled). Ce script l'active si le visiteur a choisi le style
  * bâche, et ajoute un petit interrupteur flottant pour basculer.
  * Le choix est mémorisé sur l'appareil (localStorage) et suit le visiteur
  * de page en page. On peut aussi forcer un style par l'adresse :
- *   ?design=bache   ou   ?design=classique
+ *   ?design=alternatif   ou   ?design=classique   (?design=bache reste accepté)
  * Sans JavaScript, le site garde son design classique.
  */
 (function () {
@@ -24,6 +25,7 @@
 
     var param = null;
     try { param = new URLSearchParams(location.search).get('design'); } catch (e) { /* ancien navigateur */ }
+    if (param === 'alternatif') param = 'bache';
     if (param === 'bache' || param === 'classique') save(param);
 
     var bache = (param || read()) === 'bache';
@@ -59,9 +61,9 @@
 
         function render() {
             btn.setAttribute('aria-checked', bache ? 'true' : 'false');
-            btn.setAttribute('aria-label', 'Design bâche de chantier');
-            btn.title = bache ? 'Revenir au design classique' : 'Essayer le design bâche';
-            label.textContent = bache ? 'Design : bâche' : 'Design : classique';
+            btn.setAttribute('aria-label', 'Design alternatif');
+            btn.title = bache ? 'Revenir au design classique' : 'Essayer le design alternatif';
+            label.textContent = bache ? 'Design : alternatif' : 'Design : classique';
         }
         btn.addEventListener('click', function () {
             bache = !bache;
